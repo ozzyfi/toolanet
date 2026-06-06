@@ -4,7 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ToolA — The field's memory. From breakdown to evidenced closure.</title>
-<meta name="description" content="ToolA transforms breakdown, intervention, evidence, and closure data from the field into structured maintenance memory. Your operations become visible, queryable, and AI-ready." />
+<meta name="description" content="ToolA turns field breakdowns, interventions, evidence and closures into structured maintenance memory. Your operations become visible, queryable, and AI-ready." />
+<meta property="og:title" content="ToolA — The field's memory. From breakdown to evidenced closure." />
+<meta property="og:description" content="ToolA turns field breakdowns, interventions, evidence and closures into structured maintenance memory. Your operations become visible, queryable, and AI-ready." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://toola.net/" />
+<meta property="og:image" content="https://toola.net/og-image.png" />
+<meta property="og:site_name" content="ToolA" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ToolA — The field's memory. From breakdown to evidenced closure." />
+<meta name="twitter:description" content="ToolA turns field breakdowns, interventions, evidence and closures into structured maintenance memory. Your operations become visible, queryable, and AI-ready." />
+<meta name="twitter:image" content="https://toola.net/og-image.png" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -596,9 +607,7 @@
     </div>
 
     <div class="mt-20">
-      <div class="text-center mb-10">
-        <h3 class="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-forest-900">ToolA's core capabilities</h3>
-      </div>
+      
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="card">
           <div class="icon-box mb-3">
@@ -961,8 +970,10 @@
           <label for="pilotEmail" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Email</label>
           <input type="email" id="pilotEmail" name="email" required placeholder="email@company.com" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
-        <button type="submit" class="w-full mt-1 px-5 py-3 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition flex items-center justify-center gap-2">
-          Send Pilot Request →
+                </button>
+        <p id="pilotFormError" class="hidden text-[16.5px] text-red-600 text-center mt-2" role="alert"></p>
+        <button type="submit" id="pilotSubmitBtn" class="w-full mt-1 px-5 py-3 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+          <span class="btn-label">Send Pilot Request →
         </button>
         <p class="text-[16.5px] text-ink-300 text-center mt-1">Your information is kept confidential and used only to contact you.</p>
       </form>
@@ -1020,20 +1031,42 @@
       if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
     });
     if (form) {
+      const submitBtn = document.getElementById('pilotSubmitBtn');
+      const btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+      const formError = document.getElementById('pilotFormError');
+      const originalLabel = btnLabel ? btnLabel.textContent : '';
+      const loadingLabel = btnLabel ? btnLabel.getAttribute('data-loading') || ('Sending…') : '';
+
       form.addEventListener('submit', function(e) {
         e.preventDefault();
+        if (formError) { formError.classList.add('hidden'); formError.textContent = ''; }
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnLabel) btnLabel.textContent = loadingLabel;
+
         fetch('https://formspree.io/f/xkoaoopq', {
           method: 'POST',
           body: new FormData(form),
           headers: { 'Accept': 'application/json' }
-        }).then(function() {
-          form.classList.add('hidden');
-          success.classList.remove('hidden');
+        }).then(function(res) {
+          if (res.ok) {
+            form.classList.add('hidden');
+            success.classList.remove('hidden');
+          } else {
+            if (btnLabel) btnLabel.textContent = originalLabel;
+            if (submitBtn) submitBtn.disabled = false;
+            if (formError) {
+              formError.textContent = 'Something went wrong. Please try again.';
+              formError.classList.remove('hidden');
+            }
+          }
         }).catch(function(err) {
-          // On network error, show success to user and log the error
+          if (btnLabel) btnLabel.textContent = originalLabel;
+          if (submitBtn) submitBtn.disabled = false;
+          if (formError) {
+            formError.textContent = 'Something went wrong. Please try again.';
+            formError.classList.remove('hidden');
+          }
           console.error('Form submission error:', err);
-          form.classList.add('hidden');
-          success.classList.remove('hidden');
         });
       });
     }
