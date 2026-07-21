@@ -170,6 +170,14 @@
     content: ""; position: absolute; inset: -4px; border-radius: 50%;
     border: 1px solid #c2703a; animation: pulse 2s infinite;
   }
+  .pulse-dot-forest {
+    width: 8px; height: 8px; border-radius: 50%; background: #1e3a3a;
+    position: relative;
+  }
+  .pulse-dot-forest::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid #1e3a3a; animation: pulse 2s infinite;
+  }
   @keyframes pulse {
     0% { transform: scale(0.8); opacity: 1; }
     100% { transform: scale(2.2); opacity: 0; }
@@ -312,7 +320,10 @@
               <div class="text-[18px] text-forest-900 leading-snug">No part replacement was required.</div>
             </div>
             <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 ">07 · Verified outcome</div>
+              <div class="work-label mb-1.5 flex items-center gap-2">
+                <span class="pulse-dot-forest"></span>
+                <span>07 · Verified outcome</span>
+              </div>
               <div class="text-[18px] text-forest-900 leading-snug">Sound and vibration values returned to normal. The intervention outcome was verified.</div>
             </div>
 
