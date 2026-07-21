@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ToolA — Sahanın hafızası. Arızadan kanıtlı kapanışa.</title>
-<meta name="description" content="ToolA, sahadan gelen arıza, müdahale, kanıt ve kapanış verilerini yapılandırılmış bakım hafızasına dönüştürür. Operasyonunuz görünür, sorgulanabilir ve AI-ready hale gelir." />
-<meta property="og:title" content="ToolA — Sahanın hafızası. Arızadan kanıtlı kapanışa." />
-<meta property="og:description" content="ToolA, sahadan gelen arıza, müdahale, kanıt ve kapanış verilerini yapılandırılmış bakım hafızasına dönüştürür. Operasyonunuz görünür, sorgulanabilir ve AI-ready hale gelir." />
+<title>ToolA — Zor kazanılan teknik çözümler kaybolmasın.</title>
+<meta name="description" content="ToolA, karmaşık endüstriyel ekipman arızalarında uzmanların bulduğu çözümleri; kanıt, teşhis muhakemesi, müdahale ve doğrulanmış sonuçla birlikte yeniden kullanılabilir teknik hafızaya dönüştürür." />
+<meta property="og:title" content="ToolA — Zor kazanılan teknik çözümler kaybolmasın." />
+<meta property="og:description" content="ToolA, karmaşık endüstriyel ekipman arızalarında uzmanların bulduğu çözümleri; kanıt, teşhis muhakemesi, müdahale ve doğrulanmış sonuçla birlikte yeniden kullanılabilir teknik hafızaya dönüştürür." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://toola.net/" />
 <meta property="og:image" content="https://toola.net/og-image.png" />
 <meta property="og:site_name" content="ToolA" />
 <meta property="og:locale" content="tr_TR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ToolA — Sahanın hafızası. Arızadan kanıtlı kapanışa." />
-<meta name="twitter:description" content="ToolA, sahadan gelen arıza, müdahale, kanıt ve kapanış verilerini yapılandırılmış bakım hafızasına dönüştürür. Operasyonunuz görünür, sorgulanabilir ve AI-ready hale gelir." />
+<meta name="twitter:title" content="ToolA — Zor kazanılan teknik çözümler kaybolmasın." />
+<meta name="twitter:description" content="ToolA, karmaşık endüstriyel ekipman arızalarında uzmanların bulduğu çözümleri; kanıt, teşhis muhakemesi, müdahale ve doğrulanmış sonuçla birlikte yeniden kullanılabilir teknik hafızaya dönüştürür." />
 <meta name="twitter:image" content="https://toola.net/og-image.png" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -203,39 +203,39 @@
       </div>
       <div class="flex flex-col leading-none h-12 justify-center">
         <span class="font-semibold text-[20px] tracking-tight text-forest-900 leading-none">ToolA</span>
-        <span class="text-[13px] text-ink-500 tracking-wide leading-none mt-1">Sahanın hafızası</span>
+        <span class="text-[13px] text-ink-500 tracking-wide leading-none mt-1">Teknik hafıza katmanı</span>
       </div>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-[18px] text-ink-700">
-      <a href="#teknisyen-hafizasi" class="hover:text-forest-700 transition">Teknisyenler için</a>
-      <a href="#yonetici-paneli" class="hover:text-forest-700 transition">Yöneticiler için</a>
+      <a href="#akis" class="hover:text-forest-700 transition">Nasıl Çalışır</a>
+      <a href="#deger" class="hover:text-forest-700 transition">Sağladığı Değer</a>
       <a href="#guvenlik" class="hover:text-forest-700 transition">Güvenlik</a>
     </nav>
     <div class="hidden md:flex items-center gap-3">
-      <div class="flex items-center gap-2 text-[16.5px]">
-        <span class="text-forest-700 font-semibold">TR</span>
+      <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Pilot Görüşmesi</a>
+      <div class="flex items-center gap-2 text-[18px] ml-1">
+        <span class="text-forest-700 font-semibold">forest-700</span>
         <span class="text-ink-300">/</span>
         <a href="en.html" class="text-ink-500 hover:text-forest-700">EN</a>
       </div>
-      <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Pilot Başlat →</a>
     </div>
     <button id="mobileMenuBtn" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false" class="md:hidden w-10 h-10 rounded-md text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
-      <svg id="hamburgerIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg id="hamburgerIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
-      <svg id="closeIcon" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 6L6 18M6 6l12 12"/>
+      <svg id="closeIcon" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
       </svg>
     </button>
   </div>
   <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md">
     <div class="px-6 py-4 space-y-1">
-      <a href="#teknisyen-hafizasi" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Teknisyenler için</a>
-      <a href="#yonetici-paneli" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Yöneticiler için</a>
+      <a href="#akis" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Nasıl Çalışır</a>
+      <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Sağladığı Değer</a>
       <a href="#guvenlik" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Güvenlik</a>
-      <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Başlat →</a>
+      <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Görüşmesi →</a>
       <div class="pt-3 mt-2 border-t border-line-soft flex items-center gap-2 text-[18px]">
-        <span class="text-forest-700 font-semibold">TR</span>
+        <span class="text-forest-700 font-semibold">forest-700</span>
         <span class="text-ink-300">/</span>
         <a href="en.html" class="text-ink-500 hover:text-forest-700">EN</a>
       </div>
@@ -255,113 +255,73 @@
     <div class="grid lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-7">
         <h1 class="text-4xl md:text-6xl lg:text-[64px] font-semibold tracking-[-0.025em] leading-[1.05] text-forest-900 mb-6">
-          Sahanın hafızası.<br>
-          <span class="gradient-text">Arızadan kanıtlı kapanışa.</span>
+          Zor kazanılan<br>
+          <span class="gradient-text">teknik çözümler kaybolmasın.</span>
         </h1>
         <p class="text-[18px] text-ink-500 leading-relaxed max-w-xl mb-9">
-          ToolA, sahadan gelen arıza, müdahale, kanıt ve kapanış verilerini yapılandırılmış bakım hafızasına dönüştürür. Böylece operasyonunuz görünür, sorgulanabilir ve AI-ready hale gelir.
+          ToolA, karmaşık endüstriyel ekipman arızalarında uzmanların bulduğu çözümleri; kanıt, teşhis muhakemesi, müdahale ve doğrulanmış sonuçla birlikte yeniden kullanılabilir teknik hafızaya dönüştürür.
         </p>
         <div class="flex flex-wrap items-center gap-3 mb-12">
-          <a href="#pilot" data-pilot-trigger class="btn-primary">Pilot Başlat →</a>
+          <a href="#pilot" data-pilot-trigger class="btn-primary">Pilot Görüşmesi Ayarlayın</a>
           <a href="#akis" class="btn-ghost">Nasıl Çalışır? ↓</a>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-lg">
-          <div>
-            <div class="text-3xl md:text-4xl font-bold text-forest-900 tracking-tight">&lt;60s</div>
-            <div class="text-[16.5px] text-ink-500 leading-snug">Kaynak referanslı cevap</div>
-          </div>
-          <div>
-            <div class="text-3xl md:text-4xl font-bold text-forest-900 tracking-tight">−%40</div>
-            <div class="text-[16.5px] text-ink-500 leading-snug">Gereksiz parça değişimi</div>
-          </div>
-          <div>
-            <div class="text-3xl md:text-4xl font-bold text-forest-900 tracking-tight">%30–50</div>
-            <div class="text-[16.5px] text-ink-500 leading-snug">Duruş süresi azalması</div>
-          </div>
+        <div class="flex items-start gap-3 text-[16.5px] text-ink-500 max-w-xl">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-forest-700 mt-0.5 flex-shrink-0" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p>Veriniz size aittir; açık onayınız olmadan üçüncü taraflarla paylaşılmaz veya başka amaçlarla kullanılmaz.</p>
         </div>
       </div>
 
-      <!-- Live Workflow Visual -->
+      <!-- P-204 vaka örneği: 7 adım -->
       <div class="lg:col-span-5">
-        <div class="rounded-3xl shadow-card" style="background: linear-gradient(180deg, #fafaf7 0%, #f4f1e8 100%); border: 1px solid #ece7dc; padding: 28px;">
-          <div class="flex items-center justify-between mb-5">
-            <div class="flex items-center gap-2">
-              <span class="pulse-dot"></span>
-              <span class="work-label">Canlı İş Akışı</span>
-            </div>
-            <span class="font-mono text-[13.5px] text-ink-300">#1842</span>
-          </div>
-
-          <div class="space-y-3">
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 16px;">
-              <div class="work-label mb-2">İş Emri</div>
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-md bg-copper-50 flex items-center justify-center text-copper-600">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="text-[18px] font-medium text-forest-900">Pompa P-204</div>
-                  <div class="text-[16.5px] text-ink-500">Yüksek ses yapıyor.</div>
-                </div>
+        <div class="rounded-3xl border border-line-soft bg-white/85 backdrop-blur-sm shadow-card p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-md bg-copper-50 flex items-center justify-center text-copper-600">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
               </div>
-            </div>
-
-            <div class="flex items-center justify-center text-ink-300 py-0.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </div>
-
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 16px;">
-              <div class="work-label mb-2">Kanıt</div>
-              <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-[16.5px] px-2.5 py-1 rounded-md bg-forest-50 text-forest-700 flex items-center gap-1.5">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-                  Ses kaydı
-                </span>
-                <span class="text-[16.5px] px-2.5 py-1 rounded-md bg-forest-50 text-forest-700 flex items-center gap-1.5">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                  Fotoğraf
-                </span>
-                <span class="text-[16.5px] px-2.5 py-1 rounded-md bg-forest-50 text-forest-700 flex items-center gap-1.5">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-                  Ölçüm
-                </span>
+              <div>
+                <div class="text-[18px] font-medium text-forest-900">Pompa P-204</div>
+                <div class="text-[16.5px] text-ink-500">Yapılandırılmış teknik vaka</div>
               </div>
-            </div>
-
-            <div class="flex items-center justify-center text-ink-300 py-0.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </div>
-
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; border-left: 3px solid #c2703a; padding: 16px;">
-              <div class="work-label mb-2 text-copper-700">ToolA Önerisi</div>
-              <div class="text-[18px] text-forest-900 font-medium mb-1.5">Önce kaplin hizasını kontrol edin.</div>
-              <div class="flex items-center gap-2 text-[16.5px] text-ink-500 font-mono">
-                <span>Bakım kılavuzu s.42</span>
-                <span class="w-1 h-1 rounded-full bg-ink-300"></span>
-                <span>İş emri #1842</span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-center text-ink-300 py-0.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </div>
-
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 16px;">
-              <div class="work-label mb-2">Kapanış</div>
-              <div class="text-[18px] text-forest-900">Kaplin hizalandı. Ses kesildi.</div>
             </div>
           </div>
 
-          <div class="mt-5 pt-4 border-t border-line-soft">
-            <div class="work-label mb-1.5 flex items-center gap-1.5">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-              Hafıza
+          <div class="space-y-1.5">
+                        <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 ">01 · Belirti</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Pompa yüksek ses yapıyor.</div>
             </div>
-            <div class="text-[16.5px] text-ink-700 italic leading-relaxed">
-              "P-204'te yüksek ses varsa önce kaplin hizası kontrol edilmeli."
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #9aa5a3; padding: 14px;">
+              <div class="work-label mb-1.5 text-ink-500">02 · Kanıt</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Ses kaydı, fotoğraf, titreşim ölçümü.</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #9aa5a3; padding: 14px;">
+              <div class="work-label mb-1.5 text-ink-500">03 · Elenen ihtimaller</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Rulman arızası, kavitasyon, sıcaklık.</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #1e3a3a; padding: 14px;">
+              <div class="work-label mb-1.5 text-forest-700">04 · Kök neden</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Kaplin hizasızlığı (0.4 mm).</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 ">05 · Müdahale</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Kaplin lazer ile hizalandı.</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 ">06 · Kullanılan parça</div>
+              <div class="text-[18px] text-forest-900 leading-snug">— (mevcut parça korundu)</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 ">07 · Doğrulanmış sonuç</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Ses kesildi. 3 ay izlemede sorun yok.</div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-line-soft">
+              <div class="work-label mb-1.5 flex items-center gap-1.5">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                Hafıza
+              </div>
+              <div class="text-[16.5px] text-ink-500 leading-relaxed">Bu vaka artık ekibin tamamı tarafından aranabilir, sorgulanabilir ve yeniden kullanılabilir.</div>
             </div>
           </div>
         </div>
@@ -380,471 +340,225 @@
       <span class="text-ink-300">·</span>
       <span class="text-[18px] font-semibold text-ink-700">HAVELSAN JetCube</span>
       <span class="text-ink-300">·</span>
-      <span class="text-[18px] font-semibold text-ink-700">QSTP Incubation</span>
+      <span class="text-[18px] font-semibold text-ink-700">QSTP Full Incubation</span>
     </div>
   </div>
 </section>
 
-<!-- ================== PROBLEM ================== -->
-<section class="py-24 md:py-32">
+<!-- ================== SORUN ================== -->
+<section id="sorun" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-14">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        İş emri kapatılıyor. Ama arıza neden oluştu, hangi kanıta dayanarak çözüldü, bir daha olur mu?
+        Bir arıza çözüldüğünde kayıt çoğu zaman şuna iner:
       </h2>
-      <p class="text-[16.5px] text-ink-500 leading-relaxed">
-        Bu üç soruya cevabınız varsa, elinizde bir hafıza var. Yoksa her vakayı sıfırdan öğreniyorsunuz.
-      </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4">
-      <div class="card">
-        <div class="icon-box mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>
-          </svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-2">Aynı arıza, aynı parça, aynı müdahale</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">
-          Aynı ekipmanda aynı arıza tekrar tekrar yaşanıyor. Plansız duruş, üretim kaybı ve yeniden değiştirilen parça maliyeti her tekrarda büyüyor. 6 ayda üç kez aynı rulman değişimi, üç kez aynı üretim hattı kaybı demek.
-        </p>
+    <div class="card !p-8 md:!p-10 max-w-2xl mb-6">
+      <div class="text-[18px] text-ink-500 leading-relaxed italic">
+        "Arıza giderildi."
       </div>
-      <div class="card">
-        <div class="icon-box mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
-          </svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-2">İş kapanıyor, kurum öğrenmiyor</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">İş emri "kapandı" olarak işaretleniyor ama arızanın nedeni, çözümün dayandığı kanıt ve sonuç çoğu zaman kayıt altına alınmıyor. Aynı bilgi bir sonraki vakada sıfırdan araştırılıyor.</p>
+    </div>
+
+    <div class="card !p-8 md:!p-10 max-w-2xl mb-6 ml-auto">
+      <div class="text-[18px] text-ink-500 leading-relaxed italic">
+        "Parça değiştirildi."
       </div>
-      <div class="card">
-        <div class="icon-box mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-2">Deneyimli teknisyen gidiyor, bilgisi de gidiyor</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Yıllarca sahada çalışmış bir teknisyen ekipten ayrıldığında, "bu pompanın sesi bana bir şey diyor" seviyesindeki bilgi kurumda kalmıyor. Yeni teknisyen aynı arızayı sıfırdan öğreniyor.</p>
-      </div>
-      <div class="card">
-        <div class="icon-box mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-2">AI yatırımınız, veriniz kadar güçlü</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Bağlamsız ve eksik saha kayıtlarıyla ChatGPT, Copilot veya Azure OpenAI de güvenilir cevap üretemez. ToolA veriyi AI-ready hale getirir; hangi modeli kullanırsanız kullanın.</p>
-      </div>
+    </div>
+
+    <div class="max-w-2xl mt-12">
+      <p class="text-[18px] text-ink-700 leading-relaxed">
+        Oysa çözümü değerli yapan teşhis süreci, elenen ihtimaller ve karar gerekçesi kaybolur. Aynı arıza tekrarlandığında ekipler yeniden sıfırdan başlar.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ================== SOLUTION OVERVIEW ================== -->
-<section id="teknisyen-hafizasi" class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
+<!-- ================== TOOLA NE YAPAR ================== -->
+<section id="ne-yapar" class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
   <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
   <div class="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-copper-500/10 blur-3xl"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-16">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-        Teknisyen çözer. <span class="text-copper-500">ToolA öğrenir.</span>
+        Her zor vakayı yapılandırılmış teknik kayda dönüştürür.
       </h2>
       <p class="text-[16.5px] text-white/70 leading-relaxed">
-        Deneyimli teknisyen arızayı dokümana bakmadan çözebilir. ToolA; sesli not, fotoğraf, ölçüm ve kapanış kayıtlarından bu çözümü yakalar. Belirtiyi, kök nedeni, müdahaleyi ve sonucu yapılandırarak kurumsal hafızaya dönüştürür.
+        
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-4 mb-10">
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="w-10 h-10 rounded-lg bg-copper-500/20 flex items-center justify-center text-copper-500 mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/></svg>
-        </div>
-        <div class="text-[16.5px] font-mono text-copper-500 mb-2">01 · KAYNAK</div>
-        <h3 class="text-[18px] font-semibold mb-2">Teknik Dokümanlar</h3>
-        <p class="text-[16.5px] text-white/60 leading-relaxed">OEM kılavuzları, servis prosedürleri, parça katalogları ve HSE dokümanları.</p>
-      </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="w-10 h-10 rounded-lg bg-copper-500/20 flex items-center justify-center text-copper-500 mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </div>
-        <div class="text-[16.5px] font-mono text-copper-500 mb-2">02 · KANIT</div>
-        <h3 class="text-[18px] font-semibold mb-2">Saha Kanıtı</h3>
-        <p class="text-[16.5px] text-white/60 leading-relaxed">Fotoğraf, video, ses kaydı, hata kodu, ölçüm ve sensör verisi.</p>
-      </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="w-10 h-10 rounded-lg bg-copper-500/20 flex items-center justify-center text-copper-500 mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div class="text-[16.5px] font-mono text-copper-500 mb-2">03 · DENEYİM</div>
-        <h3 class="text-[18px] font-semibold mb-2">Teknisyen Deneyimi</h3>
-        <p class="text-[16.5px] text-white/60 leading-relaxed">Geçmiş çözümler, kapanış notları, kök nedenler ve tekrar eden arıza örüntüleri.</p>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 md:p-8 mb-10">
+      <div class="text-[16.5px] font-mono text-copper-500 mb-3">YAPILANDIRILMIŞ TEKNİK KAYIT</div>
+      <div class="text-[18px] md:text-[20px] text-white/90 leading-relaxed tracking-wide">
+        <strong>Belirti</strong> → <strong>Kanıt</strong> → <strong>Elenen ihtimaller</strong> → <strong>Kök neden</strong> → <strong>Müdahale</strong> → <strong>Kullanılan parça</strong> → <strong>Doğrulanmış sonuç</strong>
       </div>
     </div>
 
-    <div class="text-center text-[18px] text-white/50 italic">
-      Bugün en deneyimli teknisyeninizin bildiği şey, yarın tüm ekibin kullanımında olur.
+    <div class="max-w-2xl">
+      <p class="text-[16.5px] text-white/70 leading-relaxed">
+        Böylece bulunan çözüm yalnızca teknisyenin hafızasında kalmaz; tüm ekip tarafından aranabilir, doğrulanabilir ve yeniden kullanılabilir hale gelir.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ================== EXAMPLE MEMORY ================== -->
-<section class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-5">
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-          Doküman, saha kanıtı ve teknisyen deneyimi tek hafızada birleşir.
-        </h2>
-        <p class="text-[16px] text-ink-500 leading-relaxed">
-          Her kapanış; belirti, kök neden, müdahale, sonuç ve kaynak bilgisiyle yapılandırılmış olarak kaydedilir. Sonraki vakalarda teknisyen, bu hafızadan beslenen bir öneriyle karşılaşır.
-        </p>
-      </div>
-
-      <div class="lg:col-span-7">
-        <div class="card !p-0 overflow-hidden">
-          <div class="px-6 py-4 border-b border-line-soft flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="pulse-dot"></span>
-              <span class="font-semibold text-[16.5px] text-forest-900">Pompa P-204</span>
-              <span class="text-[16.5px] text-ink-500">· Yüksek ses / titreşim</span>
-            </div>
-            <span class="font-mono text-[13.5px] text-ink-300">#1842</span>
-          </div>
-
-          <div class="p-6 grid grid-cols-2 gap-y-4 gap-x-6">
-            <div>
-              <div class="work-label mb-1">Kanıt</div>
-              <div class="text-[18px] text-ink-700">Ses kaydı + fotoğraf</div>
-            </div>
-            <div>
-              <div class="work-label mb-1">İlk Tahmin</div>
-              <div class="text-[18px] text-ink-700">Rulman arızası</div>
-            </div>
-            <div>
-              <div class="work-label mb-1">Gerçek Neden</div>
-              <div class="text-[18px] text-copper-600 font-medium">Kaplin hizasızlığı</div>
-            </div>
-            <div>
-              <div class="work-label mb-1">Müdahale</div>
-              <div class="text-[18px] text-ink-700">Kaplin hizalandı</div>
-            </div>
-            <div class="col-span-2">
-              <div class="work-label mb-1">Sonuç</div>
-              <div class="text-[18px] text-ink-700">Ses kesildi</div>
-            </div>
-          </div>
-
-          <div class="px-6 py-5 bg-forest-50 border-t border-line-soft">
-            <div class="work-label mb-2 text-copper-700">Hafıza</div>
-            <p class="text-[16.5px] text-forest-900 italic leading-relaxed">
-              "Bu ekipmanda yüksek ses varsa önce kaplin hizası kontrol edilmeli."
-            </p>
-            <div class="mt-3 flex items-center gap-3 text-[16.5px] text-ink-500 font-mono">
-              <span>Kaynak: İş emri #1842</span>
-              <span class="w-1 h-1 rounded-full bg-ink-300"></span>
-              <span>Bakım kılavuzu s.42</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== HOW IT WORKS (5-step) ================== -->
+<!-- ================== NASIL ÇALIŞIR (4-step) ================== -->
 <section id="akis" class="py-24 md:py-32 border-t border-line-soft">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-14">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Arızadan kanıtlı kapanışa, tek akış.
+        Nasıl çalışır?
       </h2>
       <p class="text-[16.5px] text-ink-500 leading-relaxed">
-        Sahada işi bitiren AI akışı. Beş adım, tek hafıza.
+        Dört adım: vakayı kaydedin, ToolA yapılandırsın, uzman doğrulasın, ekip yeniden kullansın.
       </p>
     </div>
 
-    <div class="grid step-grid md:grid-cols-5 gap-5">
-      <div class="step-card">
+    <div class="grid step-grid md:grid-cols-4 gap-5">
+            <div class="step-card">
         <span class="step-num">01</span>
         <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
         </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Arıza gelir</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">İş emri, WhatsApp, mobil uygulama veya ERP üzerinden görev düşer.</p>
+        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Vakayı kaydedin</h3>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Teknisyen ses, fotoğraf, video, ölçüm ve notlarını ekler.</p>
       </div>
       <div class="step-card">
         <span class="step-num">02</span>
         <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
         </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Kanıt toplanır</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Fotoğraf, sesli not, hata kodu, ölçüm veya kısa gözlem eklenir.</p>
+        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">ToolA yapılandırsın</h3>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">ToolA, eklenen bilgileri yapılandırılmış teknik vaka taslağına dönüştürür ve eksik noktaları belirler.</p>
       </div>
       <div class="step-card">
         <span class="step-num">03</span>
         <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">ToolA teşhis önerir</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Dokümanlar, geçmiş iş emirleri ve benzer vakalardan cevap üretir.</p>
+        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Uzman doğrulasın</h3>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Yetkili mühendis eksik bilgileri tamamlar, vakayı inceler ve onaylar.</p>
       </div>
       <div class="step-card">
         <span class="step-num">04</span>
         <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Teknisyen müdahale eder</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Yapılan işlem, kullanılan parça ve sonuç kayıt altına alınır.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">05</span>
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Kapanış hafızaya dönüşür</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Belirti, kök neden, çözüm ve kanıtlar sonraki vaka için kullanılabilir olur.</p>
-      </div>
-    </div>
-
-    <div class="mt-20">
-      <div class="text-center mb-10">
-        <h3 class="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-forest-900">ToolA'nın temel yetenekleri</h3>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Kaynak Referanslı Teşhis</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Dokümanlar, geçmiş vakalar ve saha kanıtlarından kaynak referanslı öneriler.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Kanıt Yakalama</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Fotoğraf, ses, hata kodu ve ölçümler iş kaydına bağlanır.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Akıllı Kapanış</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Teknisyen konuşur; ToolA kapanış kaydını yapılandırır.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Teknisyen Hafızası</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Onaylanan çözümler kurumsal hafızaya eklenir.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l6 6m0-6L1 7"/><path d="M5 12V4a2 2 0 0 1 2-2h2"/><rect x="9" y="2" width="6" height="12" rx="3"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Offline Çalışma</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Saha ve yüksek güvenlikli ortamlarda internet olmadan çalışabilir.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
-          <h4 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">ERP Entegrasyonu</h4>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">SAP, Maximo veya mevcut iş emri sistemlerine entegre edilebilir.</p>
-        </div>
+        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Ekip yeniden kullansın</h3>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Benzer arızalarda geçmiş doğrulanmış çözümlere hızlıca ulaşılır.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================== MANAGER PANEL ================== -->
-<section id="yonetici-paneli" class="py-24 md:py-32 bg-forest-50 border-y border-line-soft">
+<!-- ================== SAĞLADIĞI DEĞER ================== -->
+<section id="deger" class="py-24 md:py-32 bg-forest-50 border-y border-line-soft">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-14">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Kararlarınızı saha gerçekliğine dayandırın.
+        Sağladığı değer
       </h2>
-      <p class="text-[16.5px] text-ink-500 leading-relaxed">
-        AI-ready veri skorunuz, eksik alanlarınız, tekrar eden arızalarınız ve sorgulanabilir hafızanız — hepsi tek panelde.
-      </p>
     </div>
 
-    <div class="grid lg:grid-cols-12 gap-6">
-      <!-- Quality score panel -->
-      <div class="lg:col-span-5">
-        <div class="card !p-0 overflow-hidden h-full">
-          <div class="px-6 py-4 border-b border-line-soft flex items-center justify-between">
-            <span class="font-semibold text-[18px] text-forest-900">Veri Kalitesi Skoru</span>
-            <span class="inline-flex items-center gap-1.5 text-[16.5px] font-medium text-forest-700 bg-forest-50 border border-forest-100 px-2.5 py-1 rounded-full">
-              <span class="pulse-dot"></span>Canlı
-            </span>
-          </div>
-          <div class="p-6">
-            <div class="flex items-end gap-3 mb-2">
-              <div class="text-[56px] font-semibold text-forest-900 tracking-[-0.03em] leading-none">87%</div>
-              <div class="pb-2 text-[16.5px] text-ink-500">AI-ready bakım verisi</div>
-            </div>
-            <div class="bar-track mb-6">
-              <div class="bar-fill" style="width: 87%"></div>
-            </div>
-
-            <div class="space-y-3">
-              <div class="data-row">
-                <div>
-                  <div class="text-[16.5px] text-forest-900 font-medium">Eksik kök nedenler</div>
-                  <div class="text-[16.5px] text-ink-500 font-mono">tanımsız alan</div>
-                </div>
-                <div class="text-[20px] font-semibold text-copper-600">49</div>
-              </div>
-              <div class="data-row">
-                <div>
-                  <div class="text-[16.5px] text-forest-900 font-medium">Kanıtsız kapanan işler</div>
-                  <div class="text-[16.5px] text-ink-500 font-mono">iş kaydı</div>
-                </div>
-                <div class="text-[20px] font-semibold text-copper-600">18</div>
-              </div>
-              <div class="data-row">
-                <div>
-                  <div class="text-[16.5px] text-forest-900 font-medium">Ekipmana bağlanmamış fotoğraflar</div>
-                  <div class="text-[16.5px] text-ink-500 font-mono">medya kaydı</div>
-                </div>
-                <div class="text-[20px] font-semibold text-copper-600">12</div>
-              </div>
-              <div class="data-row">
-                <div>
-                  <div class="text-[16.5px] text-forest-900 font-medium">Belirsiz ekipman / lokasyon</div>
-                  <div class="text-[16.5px] text-ink-500 font-mono">kayıt</div>
-                </div>
-                <div class="text-[20px] font-semibold text-copper-600">7</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="grid md:grid-cols-2 gap-4">
+            <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></div>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Aynı arızayı tekrar sıfırdan teşhis etme ihtiyacını azaltır.</p>
       </div>
-
-      <!-- Right column -->
-      <div class="lg:col-span-7 space-y-6">
-        <div class="card">
-          <div class="flex items-center justify-between mb-4">
-            <span class="work-label">Tekrar Eden Arızalar</span>
-            <span class="text-[16.5px] text-ink-500 font-mono">son 30 gün</span>
-          </div>
-          <div class="space-y-3">
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[18px] text-forest-900 font-medium">Pompa P-204</span>
-                <span class="font-mono text-[16.5px] text-copper-600">7 vaka</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[18px] text-forest-900 font-medium">Klima Oda 304</span>
-                <span class="font-mono text-[16.5px] text-copper-600">5 vaka</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill" style="width: 55%"></div></div>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[18px] text-forest-900 font-medium">Jeneratör G-12</span>
-                <span class="font-mono text-[16.5px] text-copper-600">4 vaka</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill" style="width: 44%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card !bg-forest-900 !border-forest-700 text-white">
-          <div class="flex items-center gap-2 mb-4">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2703a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <span class="work-label !text-copper-500">Yönetici Soruları</span>
-          </div>
-          <div class="space-y-2.5">
-            <div class="text-[16.5px] text-white/85 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10">
-              "Son 30 günde en çok tekrar eden arıza ve kök nedeni ne?"
-            </div>
-            <div class="text-[16.5px] text-white/85 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10">
-              "Hangi işler kanıt olmadan kapatılmış?"
-            </div>
-            <div class="text-[16.5px] text-white/85 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10">
-              "Hangi ekipmanda aynı parça tekrar tekrar değiştiriliyor?"
-            </div>
-            <div class="text-[16.5px] text-white/85 px-3 py-2.5 rounded-lg bg-white/5 border border-white/10">
-              "Hangi arızalarda gereksiz müdahale riski yüksek?"
-            </div>
-          </div>
-        </div>
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Kıdemli uzmanlara bağımlılığı düşürür.</p>
       </div>
-    </div>
-
-    <div class="mt-12 text-center text-[16.5px] text-ink-500 italic max-w-2xl mx-auto">
-      AI'dan önce bakım verinizin kalitesini görün.
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Personel değişiminde teknik bilgi kaybı riskini azaltır.</p>
+      </div>
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Geçmiş müdahale ve parça sonuçlarını görünür hale getirir.</p>
+      </div>
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Yeni ekip üyelerinin doğrulanmış vakalardan öğrenmesini kolaylaştırır.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================== SECURITY ================== -->
+<!-- ================== MEVCUT SİSTEMLER ================== -->
+<section class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-2xl mb-10">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
+        Mevcut sistemlerinizi değiştirmez
+      </h2>
+      <p class="text-[18px] text-ink-700 leading-relaxed">
+        ToolA, CMMS, EAM veya ERP sisteminizin yerini almaz. Mevcut sistemlerinizin saklamadığı teşhis muhakemesi ve doğrulanmış çözüm bilgisini tamamlar.
+      </p>
+    </div>
+
+    <div class="card !p-7 max-w-3xl border-l-4 !border-l-copper-500">
+      <div class="flex items-start gap-3">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-copper-600 mt-0.5 flex-shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">
+          <strong>Değildir.</strong> Günlük kontrol listeleri veya rutin bakım kayıtları için değildir. Teşhisi zor, tekrarlayan ve yüksek etkili arızalarda devreye girer.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== KİMLER İÇİN ================== -->
+<section class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-2xl mb-14">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
+        Kimler için?
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-7">
+        <div class="text-[16.5px] font-mono text-copper-500 mb-3">BUGÜNKÜ ODAĞIMIZ</div>
+        <p class="text-[18px] text-white/90 leading-relaxed">
+          Enerji ve endüstriyel üretimdeki tekrarlayan, karmaşık ve yüksek etkili ekipman arızaları.
+        </p>
+      </div>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-7">
+        <div class="text-[16.5px] font-mono text-copper-500 mb-3">GENİŞLEME ALANLARI</div>
+        <p class="text-[18px] text-white/90 leading-relaxed">
+          Altyapı, havacılık, savunma ve denizcilik gibi kritik teknik operasyonlar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== VERİ GÜVENLİĞİ ================== -->
 <section id="guvenlik" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-14">
+    <div class="max-w-2xl mb-10">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Veriniz altyapınızdan asla çıkmaz.
+        Veri güvenliği
       </h2>
-      <p class="text-[16.5px] text-ink-500 leading-relaxed">
-        ToolA; veri güvenliği, denetlenebilirlik ve offline çalışma gerektiren saha operasyonları için tasarlanır. Hangi AI'ın kullanılacağını siz belirlersiniz.
+    </div>
+
+    <div class="card !p-7 md:!p-9 max-w-3xl flex items-start gap-4">
+      <div class="w-10 h-10 rounded-lg bg-forest-50 text-forest-700 flex items-center justify-center flex-shrink-0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <p class="text-[18px] text-ink-700 leading-relaxed">
+        Veriniz size aittir; açık onayınız olmadan üçüncü taraflarla paylaşılmaz veya başka amaçlarla kullanılmaz.
       </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-4 mb-10">
-      <div class="card">
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Tam İzole Mimari</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Air-gapped ağlarda çalışır. Sıfır dış veri iletimi.</p>
-      </div>
-      <div class="card">
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Kurumsal Güvenlik</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Şifreleme, rol bazlı erişim ve müşteri kontrollü güvenlik seçenekleriyle tasarlanır.</p>
-      </div>
-      <div class="card">
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </div>
-        <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Kaynak Gösterimi</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Her yanıt kaynak sayfa, doküman, geçmiş iş veya saha kanıtını referans gösterir.</p>
-      </div>
-      <div class="card">
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Denetlenebilir Hafıza</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Hangi veriden hangi cevap üretildiği ve kimin onayladığı kayıt altında kalır.</p>
-      </div>
-    </div>
-
-    <div class="card !bg-white">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">Hangi AI'ın kullanılacağını siz belirlersiniz</div>
-      <p class="text-[18px] text-ink-500 mb-5">ToolA kendi modelini dayatmaz. Saha verinizi düzenler, kaynaklandırır ve kurumunuzun izin verdiği AI ortamında kullanılabilir hale getirir.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">ChatGPT / Connector</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">Claude / MCP</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">Microsoft Copilot / M365</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">Gemini / API</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">Azure OpenAI</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-forest-50 text-forest-700 font-medium">Local LLM / On-prem</span>
-        <span class="text-[16.5px] px-3 py-2 rounded-lg bg-copper-50 text-copper-700 font-medium">Tam izole kurulum</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ================== PILOT CTA ================== -->
+<!-- ================== PİLOT CTA ================== -->
 <section id="pilot" class="py-24 md:py-32">
   <div class="max-w-5xl mx-auto px-6 md:px-8">
     <div class="rounded-3xl bg-forest-900 text-white p-8 md:p-14 relative overflow-hidden">
@@ -852,43 +566,16 @@
       <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-copper-500/15 blur-3xl"></div>
       <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-forest-500/30 blur-3xl"></div>
 
-      <div class="relative grid lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-7">
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-            6 haftada gerçek sahada kanıtlayın.
-          </h2>
-          <p class="text-[16px] text-white/70 leading-relaxed mb-8 max-w-xl">
-            Bir ekip, birkaç bakım senaryosu ve kendi dokümanlarınızla ToolA'yı sahada test edin. Pilot sonunda kaynaklı cevap süresi, kapanış kalitesi, tekrar eden arızalar ve gereksiz müdahale riskini birlikte ölçelim.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <a href="#pilot" data-pilot-trigger class="btn-primary !bg-copper-500 hover:!bg-copper-600">Pilot Başlat →</a>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5">
-          <div class="space-y-1 text-white">
-            <div class="pilot-metric !border-white/10">
-              <div class="v !text-white">5–10</div>
-              <div class="l !text-white/70">Teknisyen</div>
-            </div>
-            <div class="pilot-metric !border-white/10">
-              <div class="v !text-white">2–3</div>
-              <div class="l !text-white/70">Bakım Senaryosu</div>
-            </div>
-            <div class="pilot-metric !border-white/10">
-              <div class="v !text-white">200–500</div>
-              <div class="l !text-white/70">Sayfa Doküman</div>
-            </div>
-            <div class="pilot-metric !border-white/10">
-              <div class="v !text-white">6</div>
-              <div class="l !text-white/70">Hafta</div>
-            </div>
-            <div class="pilot-metric !border-white/10">
-              <div class="v !text-white">1</div>
-              <div class="l !text-white/70">Pilot Etki Raporu</div>
-            </div>
-          </div>
-        </div>
+      <div class="relative max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-5">
+          Her zor çözüm, yeniden kullanılabilir bir teknik vakaya dönüşsün.
+        </h2>
+        <p class="text-[18px] text-white/70 leading-relaxed mb-8">
+          Tek bir ekipman ailesi ve sınırlı bir teknik ekiple başlayın.
+        </p>
+        <a href="#pilot" data-pilot-trigger class="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition">
+          Pilot Görüşmesi Ayarlayın →
+        </a>
       </div>
     </div>
   </div>
@@ -905,15 +592,15 @@
           </svg>
         </div>
         <span class="font-semibold text-[16.5px] text-forest-900">ToolA</span>
-        <span class="text-[16.5px] text-ink-500 ml-1">Sahanın hafızası</span>
+        <span class="text-[16.5px] text-ink-500 ml-1">Teknik hafıza katmanı</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[16.5px] text-ink-500">
         <span class="text-ink-700">info@toola.net</span>
         <span class="text-ink-300">·</span>
-        <span>QSTP, Doha, Qatar</span>
-        <span class="text-ink-300">·</span>
         <span>Teknopark İstanbul, Türkiye</span>
+        <span class="text-ink-300">·</span>
+        <span>QSTP Full Incubation, Doha</span>
       </div>
 
       <div class="flex items-center gap-4">
@@ -921,7 +608,7 @@
         <div class="flex items-center gap-1.5">
           <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA LinkedIn" class="w-8 h-8 rounded-md flex items-center justify-center text-ink-500 hover:text-forest-700 hover:bg-forest-50 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 0 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
             </svg>
           </a>
           <a href="https://www.instagram.com/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA Instagram" class="w-8 h-8 rounded-md flex items-center justify-center text-ink-500 hover:text-forest-700 hover:bg-forest-50 transition">
@@ -938,23 +625,16 @@
 </footer>
 
 <!-- ================== PILOT MODAL ================== -->
-<div id="pilotModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="pilotModalTitle">
+<div id="pilotModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-6" role="dialog" aria-modal="true" aria-labelledby="pilotModalTitle">
   <div id="pilotModalOverlay" class="absolute inset-0 bg-forest-900/60 backdrop-blur-sm"></div>
-
-  <div class="relative max-w-md mx-auto mt-[6vh] md:mt-[10vh] bg-white rounded-2xl shadow-lift overflow-hidden" style="max-height: 90vh; overflow-y: auto;">
-    <button id="pilotModalClose" type="button" aria-label="Kapat" class="absolute top-3.5 right-3.5 w-9 h-9 rounded-md text-ink-500 hover:bg-forest-50 hover:text-forest-700 flex items-center justify-center transition">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  <div class="relative bg-white rounded-2xl border border-line-soft shadow-lift max-w-md w-full max-h-[90vh] overflow-y-auto p-7 md:p-9">
+    <button id="pilotModalClose" type="button" aria-label="Kapat" class="absolute top-4 right-4 w-9 h-9 rounded-md text-ink-500 hover:text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
     </button>
 
-    <div class="p-7 md:p-8">
+    <div id="pilotFormWrap">
       <div class="mb-6">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="w-6 h-px bg-copper-500"></span>
-          <span class="text-[16.5px] font-mono tracking-[0.14em] uppercase text-copper-600 font-semibold">PİLOT</span>
-        </div>
-        <h2 id="pilotModalTitle" class="text-[26px] md:text-[28px] font-semibold tracking-[-0.02em] leading-[1.15] text-forest-900 mb-2">
-          Pilotunuzu Başlatın
-        </h2>
+        <h2 id="pilotModalTitle" class="text-[26px] md:text-[28px] font-semibold tracking-[-0.02em] leading-[1.15] text-forest-900 mb-2">Pilot Görüşmesi Ayarlayın</h2>
         <p class="text-[18px] text-ink-500">24 saat içinde size dönüş yapacağız.</p>
       </div>
 
@@ -975,10 +655,9 @@
           <label for="pilotEmail" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">E-posta</label>
           <input type="email" id="pilotEmail" name="email" required placeholder="email@sirket.com" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
-                </button>
         <p id="pilotFormError" class="hidden text-[16.5px] text-red-600 text-center mt-2" role="alert"></p>
         <button type="submit" id="pilotSubmitBtn" class="w-full mt-1 px-5 py-3 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
-          <span class="btn-label">Pilot Talebi Gönder →
+          <span class="btn-label">Pilot Görüşmesi Talebi Gönder →</span>
         </button>
         <p class="text-[16.5px] text-ink-300 text-center mt-1">Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</p>
       </form>
@@ -996,6 +675,7 @@
     </div>
   </div>
 </div>
+
 
 <script>
   (function() {
