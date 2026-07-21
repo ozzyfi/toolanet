@@ -252,20 +252,20 @@
   <div class="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-forest-100/40 blur-3xl"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 md:px-8 pt-20 pb-24 md:pt-28 md:pb-32">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-7">
         <h1 class="text-4xl md:text-6xl lg:text-[64px] font-semibold tracking-[-0.025em] leading-[1.05] text-forest-900 mb-6">
           Zor kazanılan<br>
           <span class="gradient-text">teknik çözümler kaybolmasın.</span>
         </h1>
-        <p class="text-[18px] text-ink-500 leading-relaxed max-w-xl mb-9">
+        <p class="text-[18px] text-ink-700 leading-[1.65] mb-10">
           ToolA, karmaşık endüstriyel ekipman arızalarında uzmanların bulduğu çözümleri; kanıt, teşhis muhakemesi, müdahale ve doğrulanmış sonuçla birlikte yeniden kullanılabilir teknik hafızaya dönüştürür.
         </p>
         <div class="flex flex-wrap items-center gap-3 mb-12">
           <a href="#pilot" data-pilot-trigger class="btn-primary">Pilot Görüşmesi Ayarlayın</a>
           <a href="#akis" class="btn-ghost">Nasıl Çalışır? ↓</a>
         </div>
-        <div class="flex items-start gap-3 text-[16.5px] text-ink-500 max-w-xl">
+        <div class="flex items-start gap-3 text-[16.5px] text-ink-500">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-forest-700 mt-0.5 flex-shrink-0" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <p>Mevcut CMMS, EAM ve ERP sistemlerinizi değiştirmeden çalışır.</p>
         </div>
@@ -281,7 +281,7 @@
               </div>
               <div>
                 <div class="text-[18px] font-medium text-forest-900">Pompa P-204</div>
-                <div class="text-[16.5px] text-ink-500">Yapılandırılmış teknik vaka</div>
+                <div class="text-[16.5px] text-ink-500">Örnek yapılandırılmış teknik vaka</div>
               </div>
             </div>
           </div>
@@ -297,15 +297,15 @@
             </div>
             <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #9aa5a3; padding: 14px;">
               <div class="work-label mb-1.5 text-ink-500">03 · Elenen ihtimaller</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Rulman arızası, kavitasyon, sıcaklık.</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Rulman aşınması, kavitasyon, mekanik gevşeklik.</div>
             </div>
             <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #1e3a3a; padding: 14px;">
               <div class="work-label mb-1.5 text-forest-700">04 · Kök neden</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Kaplin hizasızlığı (0.4 mm).</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Kaplin hizasızlığı (0,4 mm).</div>
             </div>
             <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
               <div class="work-label mb-1.5 ">05 · Müdahale</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Kaplin lazer ile hizalandı.</div>
+              <div class="text-[18px] text-forest-900 leading-snug">Kaplin lazerle hizalandı.</div>
             </div>
             <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
               <div class="work-label mb-1.5 ">06 · Parça sonucu</div>
@@ -607,29 +607,32 @@
 
 <!-- ================== FOOTER ================== -->
 <footer class="border-t border-line-soft bg-white/50">
-  <div class="max-w-6xl mx-auto px-6 md:px-8 py-10">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-      <div class="flex items-center gap-2.5">
+  <div class="max-w-6xl mx-auto px-6 md:px-8 py-7">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+      <!-- Sol: logo + ToolA + tagline -->
+      <div class="flex items-center gap-2.5 shrink-0">
         <div class="w-7 h-7 rounded-md bg-forest-700 flex items-center justify-center">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <span class="font-semibold text-[16.5px] text-forest-900">ToolA</span>
-        <span class="text-[16.5px] text-ink-500 ml-1">Teknik hafıza katmanı</span>
+        <span class="font-semibold text-[16.5px] text-forest-900 whitespace-nowrap">ToolA</span>
+        <span class="text-[16.5px] text-ink-500 whitespace-nowrap">Teknik hafıza katmanı</span>
       </div>
 
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[16.5px] text-ink-500">
-        <span class="text-ink-700">info@toola.net</span>
+      <!-- Orta: iletişim / lokasyon -->
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-[15px] text-ink-500">
+        <span class="text-ink-700 whitespace-nowrap">info@toola.net</span>
         <span class="text-ink-300">·</span>
-        <span>Teknopark İstanbul, Türkiye</span>
+        <span class="whitespace-nowrap">Teknopark İstanbul, Türkiye</span>
         <span class="text-ink-300">·</span>
-        <span>QSTP Full Incubation, Doha</span>
+        <span class="whitespace-nowrap">QSTP Full Incubation, Doha</span>
       </div>
 
-      <div class="flex items-center gap-4">
-        <div class="text-[16.5px] text-ink-500">© 2026 ToolA</div>
-        <div class="flex items-center gap-1.5">
+      <!-- Sağ: copyright + sosyal -->
+      <div class="flex items-center justify-end gap-3 shrink-0">
+        <span class="text-[15px] text-ink-500 whitespace-nowrap">© 2026 ToolA</span>
+        <div class="flex items-center gap-1">
           <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA LinkedIn" class="w-8 h-8 rounded-md flex items-center justify-center text-ink-500 hover:text-forest-700 hover:bg-forest-50 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 0 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
