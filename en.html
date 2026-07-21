@@ -2,6 +2,41 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
+<script>
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ToolA — Don't let hard-won technical solutions disappear.</title>
 <meta name="description" content="ToolA turns the solutions experts find for complex industrial equipment failures — together with the evidence, diagnostic reasoning, intervention, and verified outcome — into reusable technical memory." />
@@ -224,7 +259,7 @@
       <div class="flex items-center gap-2 text-[18px] ml-1">
         <span class="text-forest-700 font-semibold">EN</span>
         <span class="text-ink-300">/</span>
-        <a href="index.html" class="text-ink-500 hover:text-forest-700">TR</a>
+        <a href="/" onclick="setLang('tr'); return false;" class="text-ink-500 hover:text-forest-700">TR</a>
       </div>
     </div>
     <button id="mobileMenuBtn" type="button" aria-label="Toggle menu" aria-expanded="false" class="md:hidden w-10 h-10 rounded-md text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
@@ -245,7 +280,7 @@
       <div class="pt-3 mt-2 border-t border-line-soft flex items-center gap-2 text-[18px]">
         <span class="text-forest-700 font-semibold">EN</span>
         <span class="text-ink-300">/</span>
-        <a href="index.html" class="text-ink-500 hover:text-forest-700">TR</a>
+        <a href="/" onclick="setLang('tr'); return false;" class="text-ink-500 hover:text-forest-700">TR</a>
       </div>
     </div>
   </div>
@@ -700,6 +735,11 @@
 
 
 <script>
+  function setLang(lang) {
+    try { localStorage.setItem('toolA_lang', lang); } catch (e) {}
+    window.location.href = (lang === 'tr') ? '/' : '/en';
+  }
+
   (function() {
     const modal = document.getElementById('pilotModal');
     const overlay = document.getElementById('pilotModalOverlay');
