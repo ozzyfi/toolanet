@@ -13,6 +13,7 @@
     // 1) Manuel secim oncelikli — aninda yonlendir
     if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
     if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
 
     // 2) localStorage bossa — browser language senkron fallback
     var nav = (navigator.language || 'en').toLowerCase();
