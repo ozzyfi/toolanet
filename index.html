@@ -724,39 +724,62 @@
     <div class="max-w-3xl mb-12">
       <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">ÖRNEK · MV KABLO EKİ</div>
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Kurulumda her şey doğru görünüyor — ama ek noktasında tork eksik kalmış.
+        Kurulum sırasında teknik sapmaları görün.
       </h2>
-      <p class="text-[18px] text-ink-700 leading-relaxed">Bu örnek, bir MV kablo eki kurulumunun kritik ölçüm ve test değerleri ile nasıl kayıt altına alındığını gösterir. Tanımlanmış bir sapma varsa, kurulum sırasında görünür hale gelir.</p>
+      <p class="text-[18px] text-ink-700 leading-relaxed">Bu örnekte kritik ölçüm ve VLF testi uygun; bağlantı torku ise gerekli değerin altında.</p>
     </div>
 
     <div class="card !p-7 md:!p-9 max-w-3xl">
       <div class="space-y-3">
                 <div class="data-row">
-          <div>
+          <div class="min-w-0">
             <div class="text-[16.5px] text-forest-900 font-medium">Kritik ölçüm</div>
-            <div class="text-[16.5px] text-ink-500 font-mono">Tolerans: 215–225 mm ✓</div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
+              <div>
+                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Gerekli</div>
+                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">215–225 mm</div>
+              </div>
+            <div>
+              <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Ölçülen</div>
+              <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">218 mm</div>
+            </div>
+            </div>
           </div>
-          <div class="text-[18px] font-semibold text-forest-700">218 mm</div>
+          <div class="text-[16.5px] font-semibold text-forest-700 self-start whitespace-nowrap text-right">Uygun ✓</div>
         </div>
         <div class="data-row">
-          <div>
+          <div class="min-w-0">
             <div class="text-[16.5px] text-forest-900 font-medium">Bağlantı torku</div>
-            <div class="text-[16.5px] text-ink-500 font-mono">Gerekli değer: 40 Nm</div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
+              <div>
+                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Gerekli</div>
+                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">40 Nm</div>
+              </div>
+            <div>
+              <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Ölçülen</div>
+              <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">31 Nm</div>
+            </div>
+            </div>
           </div>
-          <div class="text-[18px] font-semibold text-copper-600">⚠ Kontrol gerekli</div>
+          <div class="text-[16.5px] font-semibold text-copper-600 self-start whitespace-nowrap text-right">⚠ Kontrol gerekli</div>
         </div>
         <div class="data-row">
-          <div>
+          <div class="min-w-0">
             <div class="text-[16.5px] text-forest-900 font-medium">VLF testi</div>
-            <div class="text-[16.5px] text-ink-500 font-mono">Sonuç kaydedildi ✓</div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
+              <div>
+                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Sonuç</div>
+                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">Kaydedildi</div>
+              </div>
+            </div>
           </div>
-          <div class="text-[18px] font-semibold text-forest-700">Geçti</div>
+          <div class="text-[16.5px] font-semibold text-forest-700 self-start whitespace-nowrap text-right">Geçti ✓</div>
         </div>
       </div>
     </div>
 
-    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">Kurulum sırasında oluşan bilgiler ekipmanın teknik geçmişine eklenir. İleride aynı noktada arıza oluşursa ilk kurulum bilgileri, kullanılan malzeme, ölçüm ve test sonuçları geçmiş bakım ve arızalarla birlikte görülebilir. Arızanın kök nedeni ve yapılan müdahalenin sonucu da aynı teknik geçmişe eklenir.</p>
-    <p class="text-[16.5px] text-ink-500 leading-relaxed mt-3 max-w-3xl">ToolA nihai teknik kabulün yerine geçmez. Gerekli kanıtların toplanmasına ve tanımlanmış teknik sapmaların görünür hale gelmesine yardımcı olur.</p>
+    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">Kurulum kaydı ekipmanın teknik geçmişine eklenir. Aynı noktada ileride arıza oluşursa kullanılan malzeme, ölçüm ve test sonuçları geçmiş bakım, arıza, kök neden ve müdahalelerle birlikte görülebilir.</p>
+    <p class="text-[16.5px] text-ink-500 leading-relaxed mt-3 max-w-3xl">ToolA nihai teknik kabulün yerini almaz; gerekli kanıtları toplar ve tanımlanmış teknik sapmaları görünür hale getirir.</p>
   </div>
 </section>
 
