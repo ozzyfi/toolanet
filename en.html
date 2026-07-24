@@ -488,39 +488,59 @@
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-3xl mb-12">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        CLOSING A WORK ORDER DOES NOT MEAN THE WORK WAS DONE CORRECTLY.
+        Closing a work order does not mean the work was done correctly.
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="card !p-7">
-        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-3">MOST SYSTEMS CAN TELL YOU</div>
-        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">Most systems can tell you:</p>
-        <div class="space-y-2 text-[16.5px] text-ink-700">
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Who did the work?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>When was it done?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Which work order was closed?</span></div>
-        </div>
+    <div class="grid md:grid-cols-5 gap-6">
+      <!-- Sol kart: Mevcut sistemler (%40) -->
+      <div class="card !p-7 md:col-span-2">
+        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">Existing systems</h3>
+        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-5">Record the work</div>
+        <ul class="space-y-2 text-[16.5px] text-ink-700">
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Who did it?</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>When was it done?</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Which work order was closed?</span></li>
+        </ul>
       </div>
 
-      <div class="card !p-7 border-l-4 !border-l-copper-500">
-        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-3">FOR CRITICAL TECHNICAL WORK, OTHER QUESTIONS MATTER TOO</div>
-        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">For critical technical work, the real questions are:</p>
-        <div class="space-y-2 text-[16.5px] text-ink-700">
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Was the correct procedure followed?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Were the required measurements and tests completed?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What evidence shows that the work was done correctly?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What was the root cause of the fault?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Which possible causes were checked and ruled out?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Why was this intervention chosen?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the intervention actually work?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the same problem occur again?</span></div>
+      <!-- Sağ kart: ToolA (%60) -->
+      <div class="card !p-7 md:col-span-3 border-l-4 !border-l-copper-500">
+        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">ToolA</h3>
+        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-5">Records how the work was done and what the outcome was</div>
+
+        <div class="space-y-5">
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Execution</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Was the correct procedure followed?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Were the required measurements and tests completed?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What evidence shows that the work was done correctly?</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Diagnosis</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What was the root cause?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Which possible causes were checked and ruled out?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Why was this intervention chosen?</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Outcome</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the intervention actually work?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the same problem occur again?</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
     <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">
-      ToolA records this information together with the work and the equipment it belongs to.
+      ToolA records this technical information together with the work and the equipment it belongs to.
     </p>
   </div>
 </section>
@@ -912,7 +932,6 @@
       <div class="space-y-3 text-[16.5px] text-ink-700 border-t border-line-soft pt-5">
         <p class="leading-relaxed">Access controls, authorization and data-processing policies can be configured according to your organization’s requirements.</p>
         <p class="leading-relaxed">Structured technical records created by ToolA can be exported and integrated with your existing enterprise systems.</p>
-        <p class="leading-relaxed">__SEC_P4__</p>
       </div>
     </div>
   </div>

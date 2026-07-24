@@ -488,39 +488,59 @@
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-3xl mb-12">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        BİR İŞ EMRİNİN KAPANMASI, İŞİN DOĞRU YAPILDIĞINI GÖSTERMEZ.
+        İş emrinin kapanması, işin doğru yapıldığını göstermez.
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="card !p-7">
-        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-3">MEVCUT SİSTEMLER ÇOĞUNLUKLA</div>
-        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">Mevcut sistemler çoğunlukla şunu kaydeder:</p>
-        <div class="space-y-2 text-[16.5px] text-ink-700">
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Kim yaptı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne zaman yaptı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Hangi iş emri kapandı?</span></div>
-        </div>
+    <div class="grid md:grid-cols-5 gap-6">
+      <!-- Sol kart: Mevcut sistemler (%40) -->
+      <div class="card !p-7 md:col-span-2">
+        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">Mevcut sistemler</h3>
+        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-5">İşin kaydını tutar</div>
+        <ul class="space-y-2 text-[16.5px] text-ink-700">
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Kim yaptı?</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne zaman yaptı?</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Hangi iş emri kapandı?</span></li>
+        </ul>
       </div>
 
-      <div class="card !p-7 border-l-4 !border-l-copper-500">
-        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-3">KRİTİK TEKNİK İŞLERDE İSE ŞU SORULAR DA ÖNEMLİDİR</div>
-        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">Kritik teknik işlerde asıl sorular:</p>
-        <div class="space-y-2 text-[16.5px] text-ink-700">
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Doğru prosedür uygulandı mı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Gerekli ölçüm ve testler yapıldı mı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>İşin doğru yapıldığını hangi kanıt gösteriyor?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Arızanın kök nedeni neydi?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Hangi ihtimaller kontrol edildi ve elendi?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Neden bu müdahale yapıldı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Müdahale gerçekten işe yaradı mı?</span></div>
-          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Aynı problem tekrar etti mi?</span></div>
+      <!-- Sağ kart: ToolA (%60) -->
+      <div class="card !p-7 md:col-span-3 border-l-4 !border-l-copper-500">
+        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">ToolA</h3>
+        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-5">İşin nasıl yapıldığını ve sonucunu da kaydeder</div>
+
+        <div class="space-y-5">
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Uygulama</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Doğru prosedür uygulandı mı?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Gerekli ölçüm ve testler yapıldı mı?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>İşin doğru yapıldığını hangi kanıt gösteriyor?</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Teşhis</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Kök neden neydi?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Hangi ihtimaller kontrol edildi ve elendi?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Neden bu müdahale seçildi?</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Sonuç</div>
+            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Müdahale gerçekten işe yaradı mı?</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Aynı problem tekrar etti mi?</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
     <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">
-      ToolA bu bilgileri yapılan iş ve ekipmanla birlikte kayıt altına alır.
+      ToolA bu teknik bilgiyi yapılan iş ve ekipmanla ilişkilendirerek kayıt altına alır.
     </p>
   </div>
 </section>
@@ -912,7 +932,6 @@
       <div class="space-y-3 text-[16.5px] text-ink-700 border-t border-line-soft pt-5">
         <p class="leading-relaxed">Erişim, yetkilendirme ve veri işleme politikaları kurumsal gereksinimlerinize göre yapılandırılır.</p>
         <p class="leading-relaxed">ToolA tarafından oluşturulan yapılandırılmış teknik kayıtlar dışa aktarılabilir ve mevcut kurumsal sistemlerle entegre edilebilir.</p>
-        <p class="leading-relaxed">__SEC_P4__</p>
       </div>
     </div>
   </div>
