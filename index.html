@@ -399,7 +399,6 @@
       </div>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-[18px] text-ink-700">
-      <a href="#akis" class="hover:text-forest-700 transition">Nasıl Çalışır</a>
       <a href="#deger" class="hover:text-forest-700 transition">Sağladığı Değer</a>
       <a href="#kullanim" class="hover:text-forest-700 transition">Kullanım Alanları</a>
     </nav>
@@ -422,7 +421,6 @@
   </div>
   <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md" aria-hidden="true">
     <div class="px-6 py-4 space-y-1">
-      <a href="#akis" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Nasıl Çalışır</a>
       <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Sağladığı Değer</a>
       <a href="#kullanim" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Kullanım Alanları</a>
       <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Görüşmesi →</a>
@@ -446,14 +444,17 @@
   <div class="relative max-w-6xl mx-auto px-6 md:px-8 pt-20 pb-24 md:pt-28 md:pb-32">
     <div class="grid lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-8">
+        <div class="mb-7 flex flex-col gap-1.5">
+          <span class="font-mono text-[14px] font-semibold tracking-[0.16em] uppercase text-copper-600">ToolA</span>
+          <span class="font-mono text-[12.5px] tracking-[0.14em] uppercase text-ink-500">Kritik Teknik İş Zekâsı</span>
+        </div>
         <h1 class="text-4xl md:text-5xl lg:text-[48px] font-semibold tracking-[-0.025em] leading-[1.25] text-forest-900 mb-6">
           İş emri kapandı.<br><span class="gradient-text">Peki gerçekten doğru mu yapıldı?</span>
         </h1>
-        <p class="text-[18px] text-ink-700 leading-[1.65] mb-4">ToolA, kritik teknik işlerde sapmaları iş tamamlanmadan görünür hale getirir; arıza sırasında teşhis sürecini ve kök nedeni kaydeder, yapılan müdahalenin sonucunu zaman içinde doğrular.</p>
-        <p class="text-[16.5px] text-ink-500 font-semibold leading-[1.6] mb-10">CMMS’niz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve yapılan müdahalenin gerçekten işe yarayıp yaramadığını da kaydeder.</p>
+        <p class="text-[18px] text-ink-700 leading-[1.65] mb-4">ToolA, kritik teknik işlerin doğru uygulanmasına yardımcı olur; kurulum, test ve bakım sırasında sapmaları görünür hale getirir, arıza anında teşhis sürecini kaydeder ve yapılan müdahalenin gerçekten işe yarayıp yaramadığını zaman içinde doğrular.</p>
+        <p class="text-[16.5px] text-ink-500 font-semibold leading-[1.6] mb-10">CMMS’niz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve sonucunu da kaydeder.</p>
         <div class="flex flex-wrap items-center gap-3 mb-10">
           <a href="#pilot" data-pilot-trigger class="btn-primary">Pilot Görüşmesi →</a>
-          <a href="#akis" class="btn-ghost">Nasıl Çalışır? ↓</a>
         </div>
         <div class="flex items-start gap-3 text-[16.5px] text-ink-500">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-forest-700 mt-0.5 flex-shrink-0" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -496,6 +497,42 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== AŞAMALAR ================== -->
+<section id="asamalar" class="py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.12em] uppercase mb-10 text-center">KRİTİK TEKNİK İŞİN HER AŞAMASINDA</div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+<div class="card !p-7">
+  <div class="text-[13px] font-mono text-copper-600 tracking-[0.14em] uppercase mb-3">01</div>
+  <h3 class="text-[20px] font-semibold text-forest-900 mb-2.5 leading-snug">Kurulum</h3>
+  <p class="text-[16px] text-ink-700 leading-relaxed">Doğru prosedürü, kritik ölçümleri ve teknik kriterleri teknisyenin önüne getirin. Eksikleri ve sapmaları iş tamamlanmadan görün.</p>
+</div>
+<div class="card !p-7">
+  <div class="text-[13px] font-mono text-copper-600 tracking-[0.14em] uppercase mb-3">02</div>
+  <h3 class="text-[20px] font-semibold text-forest-900 mb-2.5 leading-snug">Test / Devreye Alma</h3>
+  <p class="text-[16px] text-ink-700 leading-relaxed">Gerekli testleri, sonuçları ve teknik kriterleri kayıt altına alın; eksik veya tanımlanmış kriterlerin dışındaki sonuçları görünür hale getirin.</p>
+</div>
+<div class="card !p-7">
+  <div class="text-[13px] font-mono text-copper-600 tracking-[0.14em] uppercase mb-3">03</div>
+  <h3 class="text-[20px] font-semibold text-forest-900 mb-2.5 leading-snug">Bakım</h3>
+  <p class="text-[16px] text-ink-700 leading-relaxed">Ekipman geçmişini, önceki müdahaleleri ve kritik bakım adımlarını görün. Yapılan işi ölçüm, test ve saha kanıtlarıyla kayıt altına alın.</p>
+</div>
+<div class="card !p-7">
+  <div class="text-[13px] font-mono text-copper-600 tracking-[0.14em] uppercase mb-3">04</div>
+  <h3 class="text-[20px] font-semibold text-forest-900 mb-2.5 leading-snug">Arıza</h3>
+  <p class="text-[16px] text-ink-700 leading-relaxed">Belirti, saha kanıtları, olası nedenler, elenen ihtimaller, kök neden ve müdahaleyi yapılandırın.</p>
+</div>
+    </div>
+    <div class="mt-10 rounded-2xl border border-line-soft bg-white/85 backdrop-blur px-6 py-5 md:px-8 flex flex-col items-center text-center gap-3">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase">HER İŞTEN SONRA</div>
+      <div class="text-[18px] md:text-[19px] font-semibold text-forest-900 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+<span>Sonucu doğrula</span>  <span class="text-copper-500">→</span>  <span>Öğren</span>  <span class="text-copper-500">→</span>  <span>Yeniden kullan</span>
+      </div>
+      <p class="text-[15.5px] text-ink-500 leading-relaxed max-w-3xl">ToolA, yapılan işlemin veya müdahalenin sonucunu zaman içinde takip ederek hangi uygulamaların gerçekten işe yaradığını teknik hafızaya dönüştürür.</p>
     </div>
   </div>
 </section>
@@ -819,31 +856,6 @@
 
     <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">Kurulum kaydı ekipmanın teknik geçmişine eklenir. Aynı noktada ileride arıza oluşursa kullanılan malzeme, ölçüm ve test sonuçları geçmiş bakım, arıza, kök neden ve müdahalelerle birlikte görülebilir.</p>
     <p class="text-[16.5px] text-ink-500 leading-relaxed mt-3 max-w-3xl">ToolA nihai teknik kabulün yerini almaz; gerekli kanıtları toplar ve tanımlanmış teknik sapmaları görünür hale getirir.</p>
-  </div>
-</section>
-
-<!-- ================== NASIL ÇALIŞIR ================== -->
-<section id="akis" class="py-24 md:py-32 border-t border-line-soft">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-10">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Nasıl çalışır?
-      </h2>
-    </div>
-
-    <div class="card !p-6 md:!p-7 max-w-4xl">
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-3 text-[17px] md:text-[19px] text-forest-900 font-medium">
-        <span>İşi ve ekipmanı tanı</span>
-<span class="text-ink-300">→</span>
-<span>Kanıt topla</span>
-<span class="text-ink-300">→</span>
-<span>Teknik kaydı oluştur</span>
-<span class="text-ink-300">→</span>
-<span>Doğrula</span>
-<span class="text-ink-300">→</span>
-<span>Yeniden kullan</span>
-      </div>
-    </div>
   </div>
 </section>
 
