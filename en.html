@@ -232,6 +232,137 @@
   }
 </style>
 </head>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
+
+  .grain {
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(194,112,58,0.05), transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(30,58,58,0.06), transparent 40%);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(15,26,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,26,26,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 10px;
+    background: #1e3a3a; color: #fff; font-weight: 500; font-size: 14.5px;
+    transition: all .2s ease;
+  }
+  .btn-primary:hover { background: #0f1f1d; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 18px; border-radius: 10px;
+    color: #1e3a3a; font-weight: 500; font-size: 14.5px;
+    transition: all .2s ease;
+  }
+  .btn-ghost:hover { background: #f0f4f3; }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ece7dc;
+    border-radius: 18px;
+    padding: 26px;
+    transition: all .25s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,26,26,0.05), 0 12px 32px -8px rgba(15,26,26,0.08); }
+
+  .icon-box {
+    width: 44px; height: 44px; border-radius: 11px;
+    background: #f0f4f3; color: #1e3a3a;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  .step-card {
+    background: #fff; border: 1px solid #ece7dc; border-radius: 16px;
+    padding: 22px; position: relative;
+  }
+  .step-num {
+    position: absolute; top: -12px; left: 18px;
+    background: #1e3a3a; color: #fff;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    padding: 4px 10px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .work-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5a6a6a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .pilot-metric {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 18px 0;
+    border-top: 1px solid #ece7dc;
+  }
+  .pilot-metric:last-child { border-bottom: 1px solid #ece7dc; }
+  .pilot-metric .v { font-size: 36px; font-weight: 600; color: inherit; letter-spacing: -0.02em; }
+  .pilot-metric .l { font-size: 14px; color: inherit; opacity: 0.7; }
+
+  .data-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px dashed #ece7dc;
+  }
+  .data-row:last-child { border-bottom: none; }
+
+  .bar-track { height: 6px; background: #f0f4f3; border-radius: 4px; overflow: hidden; }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1e3a3a, #2f5a52);
+    border-radius: 4px;
+    transform-origin: left center;
+    animation: fillUp 1s ease-out both;
+  }
+  @keyframes fillUp {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill { animation: none; }
+  }
+
+  .pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #c2703a;
+    position: relative;
+  }
+  .pulse-dot::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid #c2703a; animation: pulse 2s infinite;
+  }
+  .pulse-dot-forest {
+    width: 8px; height: 8px; border-radius: 50%; background: #1e3a3a;
+    position: relative;
+  }
+  .pulse-dot-forest::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid #1e3a3a; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #1e3a3a 0%, #2f5a52 60%, #c2703a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .step-grid { grid-template-columns: 1fr !important; }
+    .pilot-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
 <body class="grain">
 
 <!-- ================== NAVBAR ================== -->
@@ -247,20 +378,20 @@
       </div>
       <div class="flex flex-col leading-none h-12 justify-center">
         <span class="font-semibold text-[20px] tracking-tight text-forest-900 leading-none">ToolA</span>
-        <span class="text-[13px] text-ink-500 tracking-wide leading-none mt-1">Technical memory layer</span>
+        <span class="text-[13px] text-ink-500 tracking-wide leading-none mt-1">Critical Technical Work Intelligence</span>
       </div>
     </a>
     <nav class="hidden md:flex items-center gap-8 text-[18px] text-ink-700">
-      <a href="#akis" class="hover:text-forest-700 transition">How it works</a>
-      <a href="#deger" class="hover:text-forest-700 transition">Value delivered</a>
-      <a href="#guvenlik" class="hover:text-forest-700 transition">Security</a>
+      <a href="#akis" class="hover:text-forest-700 transition">How It Works</a>
+      <a href="#deger" class="hover:text-forest-700 transition">Value</a>
+      <a href="#kullanim" class="hover:text-forest-700 transition">Use Cases</a>
     </nav>
     <div class="hidden md:flex items-center gap-3">
-      <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Pilot Scoping</a>
+      <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Book a Pilot</a>
       <div class="flex items-center gap-2 text-[18px] ml-1">
         <span class="text-forest-700 font-semibold">EN</span>
         <span class="text-ink-300">/</span>
-        <a href="index.html" onclick="setLang('tr')" class="text-ink-500 hover:text-forest-700">TR</a>
+        <a href="index.html" onclick="setLang('TR')" class="text-ink-500 hover:text-forest-700">TR</a>
       </div>
     </div>
     <button id="mobileMenuBtn" type="button" aria-label="Toggle menu" aria-expanded="false" class="md:hidden w-10 h-10 rounded-md text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
@@ -274,14 +405,14 @@
   </div>
   <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md">
     <div class="px-6 py-4 space-y-1">
-      <a href="#akis" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">How it works</a>
-      <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Value delivered</a>
-      <a href="#guvenlik" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Security</a>
-      <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Scoping →</a>
+      <a href="#akis" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">How It Works</a>
+      <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Value</a>
+      <a href="#kullanim" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Use Cases</a>
+      <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Book a Pilot →</a>
       <div class="pt-3 mt-2 border-t border-line-soft flex items-center gap-2 text-[18px]">
         <span class="text-forest-700 font-semibold">EN</span>
         <span class="text-ink-300">/</span>
-        <a href="index.html" onclick="setLang('tr')" class="text-ink-500 hover:text-forest-700">TR</a>
+        <a href="index.html" onclick="setLang('TR')" class="text-ink-500 hover:text-forest-700">TR</a>
       </div>
     </div>
   </div>
@@ -299,93 +430,57 @@
     <div class="grid lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-7">
         <h1 class="text-4xl md:text-6xl lg:text-[64px] font-semibold tracking-[-0.025em] leading-[1.05] text-forest-900 mb-6">
-          Don't let solutions to hard<br>
-          <span class="gradient-text">failures disappear.</span>
+          GET CRITICAL<br>
+          <span class="gradient-text">TECHNICAL WORK RIGHT.</span>
         </h1>
-        <p class="text-[18px] text-ink-700 leading-[1.65] mb-10">
-          ToolA turns the evidence, diagnostic reasoning, intervention, and verified outcome behind complex industrial equipment failures into reusable technical memory.
-        </p>
-        <div class="flex flex-wrap items-center gap-3 mb-12">
-          <a href="#pilot" data-pilot-trigger class="btn-primary">Schedule a Pilot Scoping Call</a>
-          <a href="#akis" class="btn-ghost">How it works ↓</a>
+        <p class="text-[18px] text-ink-700 leading-[1.65] mb-5">ToolA supports technicians during installation, testing, critical maintenance and fault response with the right procedures, equipment history and relevant past technical cases.</p>
+        <p class="text-[18px] text-ink-700 leading-[1.65] mb-5">It connects photos, measurements, test results and other field evidence to the work being performed, making missing information and defined technical deviations visible.</p>
+        <p class="text-[18px] text-ink-700 leading-[1.65] mb-10">During faults and interventions, ToolA turns the diagnostic process, root cause, intervention and verified outcome into reusable technical knowledge for your organization.</p>
+        <div class="flex flex-wrap items-center gap-3 mb-10">
+          <a href="#pilot" data-pilot-trigger class="btn-primary">Book a Pilot</a>
+          <a href="#akis" class="btn-ghost">How It Works ↓</a>
         </div>
         <div class="flex items-start gap-3 text-[16.5px] text-ink-500">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-forest-700 mt-0.5 flex-shrink-0" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <p>Works alongside your existing CMMS, EAM, and ERP systems — it does not replace them.</p>
+          <p>ToolA works alongside your existing CMMS, EAM and ERP systems. It does not replace them.</p>
         </div>
       </div>
 
-      <!-- P-204 vaka örneği: 7 adım -->
+      <!-- Sağ: 3-adım özet kart -->
       <div class="lg:col-span-5">
         <div class="rounded-3xl border border-line-soft bg-white/85 backdrop-blur-sm shadow-card p-5">
           <div class="flex items-center justify-between mb-4">
-            <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-md bg-copper-50 flex items-center justify-center text-copper-600">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-              </div>
-              <div>
-                <div class="text-[18px] font-medium text-forest-900">Pump P-204</div>
-                <div class="text-[16.5px] text-ink-500">Sample structured technical case</div>
-              </div>
-            </div>
-            <span class="pulse-dot-forest" aria-label="Active case"></span>
+            <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.12em] uppercase">TOOLA — THREE-PHASE FLOW</div>
+            <span class="pulse-dot-forest" aria-label="Active flow"></span>
           </div>
-
-          <div class="space-y-1.5">
+          <div class="space-y-3">
                         <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 ">01 · Symptom</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Pump is making a loud noise.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #9aa5a3; padding: 14px;">
-              <div class="work-label mb-1.5 text-ink-500">02 · Evidence</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Voice memo, photos, vibration measurement.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #9aa5a3; padding: 14px;">
-              <div class="work-label mb-1.5 text-ink-500">03 · Ruled-out</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Bearing wear, cavitation, mechanical looseness.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc;border-left: 3px solid #1e3a3a; padding: 14px;">
-              <div class="work-label mb-1.5 text-forest-700">04 · Root cause</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Coupling misalignment (0.4 mm).</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 ">05 · Intervention</div>
-              <div class="text-[18px] text-forest-900 leading-snug">The coupling was laser-aligned.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 ">06 · Part outcome</div>
-              <div class="text-[18px] text-forest-900 leading-snug">No part replacement was required.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 ">07 · Verified outcome</div>
-              <div class="text-[18px] text-forest-900 leading-snug">Sound and vibration values returned to normal. At the 3-month follow-up, the failure had not recurred — the intervention outcome was validated over time.</div>
-            </div>
-
-            <div class="mt-5 pt-4 border-t border-line-soft">
-              <div class="work-label mb-1.5 flex items-center gap-1.5">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-                Memory
+              <div class="work-label mb-1.5 flex items-center gap-2">
+                <span class="text-copper-600 font-semibold">01</span>
+                <span class="text-ink-500">·</span>
+                <span class="text-forest-700 uppercase tracking-wide">DURING THE WORK</span>
               </div>
-              <div class="text-[16.5px] text-ink-500 leading-relaxed">This case is now searchable, queryable, and reusable by the whole team.</div>
+              <div class="text-[16.5px] text-ink-700 leading-snug">Right procedure, equipment history, field evidence. Catch issues before work is done.</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 flex items-center gap-2">
+                <span class="text-copper-600 font-semibold">02</span>
+                <span class="text-ink-500">·</span>
+                <span class="text-forest-700 uppercase tracking-wide">WHEN A FAULT OCCURS</span>
+              </div>
+              <div class="text-[16.5px] text-ink-700 leading-snug">Diagnosis, ruled-out causes, root cause, intervention. Record how the result was reached.</div>
+            </div>
+            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
+              <div class="work-label mb-1.5 flex items-center gap-2">
+                <span class="text-copper-600 font-semibold">03</span>
+                <span class="text-ink-500">·</span>
+                <span class="text-forest-700 uppercase tracking-wide">AFTER THE WORK</span>
+              </div>
+              <div class="text-[16.5px] text-ink-700 leading-snug">Verified outcomes, reuse. Learn what actually worked.</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== TRUST STRIP ================== -->
-<section class="border-y border-line-soft bg-white/50">
-  <div class="max-w-6xl mx-auto px-6 md:px-8 py-6">
-    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-ink-500">
-      <span class="text-[18px] font-semibold text-ink-700">ITU Çekirdek</span>
-      <span class="text-ink-300">·</span>
-      <span class="text-[18px] font-semibold text-ink-700">EIT Digital</span>
-      <span class="text-ink-300">·</span>
-      <span class="text-[18px] font-semibold text-ink-700">HAVELSAN JetCube</span>
-      <span class="text-ink-300">·</span>
-      <span class="text-[18px] font-semibold text-ink-700">QSTP Full Incubation</span>
     </div>
   </div>
 </section>
@@ -393,213 +488,433 @@
 <!-- ================== SORUN ================== -->
 <section id="sorun" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-14">
+    <div class="max-w-3xl mb-12">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        When a failure is fixed, the record usually comes down to:
+        CLOSING A WORK ORDER DOES NOT MEAN THE WORK WAS DONE CORRECTLY.
       </h2>
     </div>
 
-    <div class="card !p-8 md:!p-10 max-w-2xl mb-6">
-      <div class="text-[18px] text-ink-500 leading-relaxed italic">
-        "Issue resolved."
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card !p-7">
+        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-3">MOST SYSTEMS CAN TELL YOU</div>
+        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">Most systems can tell you:</p>
+        <div class="space-y-2 text-[16.5px] text-ink-700">
+          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Who did the work?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>When was it done?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Which work order was closed?</span></div>
+        </div>
+      </div>
+
+      <div class="card !p-7 border-l-4 !border-l-copper-500">
+        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-3">FOR CRITICAL TECHNICAL WORK, OTHER QUESTIONS MATTER TOO</div>
+        <p class="text-[18px] text-ink-700 leading-relaxed mb-4">For critical technical work, the real questions are:</p>
+        <div class="space-y-2 text-[16.5px] text-ink-700">
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Was the correct procedure followed?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Were the required measurements and tests completed?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What evidence shows that the work was done correctly?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>What was the root cause of the fault?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Which possible causes were checked and ruled out?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Why was this intervention chosen?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the intervention actually work?</span></div>
+          <div class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the same problem occur again?</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="card !p-8 md:!p-10 max-w-2xl mb-6 ml-auto">
-      <div class="text-[18px] text-ink-500 leading-relaxed italic">
-        "Part replaced."
-      </div>
-    </div>
-
-    <div class="max-w-2xl mt-12">
-      <p class="text-[18px] text-ink-700 leading-relaxed">
-        But the diagnostic process, the ruled-out possibilities, and the reasoning behind the decision are lost. When the same failure happens again, teams start from zero.
-      </p>
-    </div>
+    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">
+      ToolA records this information together with the work and the equipment it belongs to.
+    </p>
   </div>
 </section>
 
-<!-- ================== TOOLA NE YAPAR ================== -->
-<section id="ne-yapar" class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
+<!-- ================== DO IT RIGHT ================== -->
+<section class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
   <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
-  <div class="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-copper-500/10 blur-3xl"></div>
+  <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-copper-500/10 blur-3xl"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-16">
+    <div class="max-w-3xl mb-12">
+      <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-3">DURING THE WORK</div>
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-        ToolA turns every hard-won solution into a structured and verified technical case.
+        DO IT RIGHT.
       </h2>
       <p class="text-[16.5px] text-white/70 leading-relaxed">
-        
+        Identify issues before the work is completed. ToolA gives technicians the technical information they need while the work is still being performed and captures the evidence created in the field.
       </p>
     </div>
 
-    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 md:p-8 mb-10">
-      <div class="text-[16.5px] font-mono text-copper-500 mb-3">STRUCTURED TECHNICAL CASE</div>
-      <div class="text-[18px] md:text-[20px] text-white/90 leading-relaxed tracking-wide">
-        <strong>Symptom</strong> → <strong>Evidence</strong> → <strong>Ruled-out possibilities</strong> → <strong>Root cause</strong> → <strong>Intervention</strong> → <strong>Part outcome</strong> → <strong>Verified outcome</strong>
+    <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+          </div>
+          <div class="text-[16.5px] font-mono text-copper-500">01 ·</div>
+        </div>
+        <h3 class="text-[20px] font-semibold mb-2">Bring the right procedure</h3>
+        <p class="text-[16.5px] text-white/70 leading-relaxed">Show the technical documents and critical steps relevant to the equipment and the work being performed.</p>
       </div>
-    </div>
-
-    <div class="max-w-2xl">
-      <p class="text-[16.5px] text-white/70 leading-relaxed">
-        The solution no longer lives only in one technician's memory. It becomes searchable, verifiable, and reusable by the whole team.
-      </p>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+          </div>
+          <div class="text-[16.5px] font-mono text-copper-500">02 ·</div>
+        </div>
+        <h3 class="text-[20px] font-semibold mb-2">Show equipment history</h3>
+        <p class="text-[16.5px] text-white/70 leading-relaxed">Bring previous installation, testing, maintenance, fault and intervention records into the technician’s workflow.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="text-[16.5px] font-mono text-copper-500">03 ·</div>
+        </div>
+        <h3 class="text-[20px] font-semibold mb-2">Capture field evidence</h3>
+        <p class="text-[16.5px] text-white/70 leading-relaxed">Connect photos, video, audio, measurements, test results and technical notes to the relevant work.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="text-[16.5px] font-mono text-copper-500">04 ·</div>
+        </div>
+        <h3 class="text-[20px] font-semibold mb-2">Make gaps and deviations visible</h3>
+        <p class="text-[16.5px] text-white/70 leading-relaxed">Highlight items that require attention based on defined measurements, tolerances and technical criteria.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================== NASIL ÇALIŞIR (4-step) ================== -->
+<!-- ================== UNDERSTAND WHAT HAPPENED ================== -->
+<section class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-3xl mb-12">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">WHEN A FAULT OCCURS</div>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
+        UNDERSTAND WHAT HAPPENED.
+      </h2>
+      <p class="text-[18px] text-ink-700 leading-relaxed">
+        ToolA gives technicians access not only to previous work orders, but also to the equipment’s technical history and relevant past cases.
+      </p>
+    </div>
+
+    <div class="card !p-7 md:!p-10 max-w-3xl">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-5">DIAGNOSTIC PROCESS STRUCTURE</div>
+      <div class="space-y-3">
+                <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Symptom</span>
+        </div>
+        <div class="flex items-center justify-center text-ink-300 py-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Field evidence</span>
+        </div>
+        <div class="flex items-center justify-center text-ink-300 py-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Possible causes</span>
+        </div>
+        <div class="flex items-center justify-center text-ink-300 py-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Checked and ruled-out causes</span>
+        </div>
+        <div class="flex items-center justify-center text-ink-300 py-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Root cause</span>
+        </div>
+        <div class="flex items-center justify-center text-ink-300 py-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div class="flex items-center gap-3 py-2.5 border-b border-line-soft last:border-b-0">
+          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0">•</div>
+          <span class="text-[17px] text-forest-900 font-medium">Intervention</span>
+        </div>
+      </div>
+      <p class="text-[16.5px] text-ink-500 leading-relaxed mt-5">This means the organization retains not only how the fault was closed, but also how the team reached the diagnosis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================== LEARN WHAT WORKS ================== -->
+<section class="py-24 md:py-32 bg-forest-50 border-y border-line-soft">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-3xl mb-12">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">AFTER THE WORK</div>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
+        LEARN WHAT WORKS.
+      </h2>
+      <p class="text-[18px] text-ink-700 leading-relaxed mb-4">An intervention should not end with a record that simply says "Fault resolved." or "Part replaced." ToolA structures the technical case.</p>
+    </div>
+
+    <div class="card !p-7 md:!p-8 max-w-3xl mb-10">
+      <p class="text-[16.5px] text-ink-700 leading-relaxed italic mb-4">An intervention should not end with a record that simply says:</p>
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mt-5 mb-3">TECHNICAL CASE STRUCTURE</div>
+      <p class="text-[18px] text-forest-900 font-medium leading-relaxed">Symptom → Evidence → Ruled-out causes → Root cause → Intervention → Part / material outcome → Verified outcome</p>
+    </div>
+
+    <div class="max-w-3xl">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">OUTCOME CAN BE VERIFIED OVER TIME</div>
+      <ul class="space-y-2.5 text-[17px] text-ink-700">
+        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the fault occur again?</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did measurements and test values return to normal?</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the replaced part actually solve the problem?</span></li>
+        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Did the same intervention work in similar cases?</span></li>
+      </ul>
+      <p class="text-[16.5px] text-ink-700 leading-relaxed mt-6">The team can therefore see not only what was done, but what actually worked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================== MV KABLO EKİ ÖRNEĞİ ================== -->
+<section class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-3xl mb-12">
+      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">EXAMPLE · MV CABLE JOINT</div>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
+        At installation everything looked right — but the joint was under-torqued.
+      </h2>
+      <p class="text-[18px] text-ink-700 leading-relaxed">This example shows how critical measurement and test values from an MV cable joint installation are recorded. If a defined deviation exists, it becomes visible during installation.</p>
+    </div>
+
+    <div class="card !p-7 md:!p-9 max-w-3xl">
+      <div class="space-y-3">
+                <div class="data-row">
+          <div>
+            <div class="text-[16.5px] text-forest-900 font-medium">Critical measurement</div>
+            <div class="text-[16.5px] text-ink-500 font-mono">Tolerance: 215–225 mm ✓</div>
+          </div>
+          <div class="text-[18px] font-semibold text-forest-700">218 mm</div>
+        </div>
+        <div class="data-row">
+          <div>
+            <div class="text-[16.5px] text-forest-900 font-medium">Connection torque</div>
+            <div class="text-[16.5px] text-ink-500 font-mono">Required value: 40 Nm</div>
+          </div>
+          <div class="text-[18px] font-semibold text-copper-600">⚠ Review required</div>
+        </div>
+        <div class="data-row">
+          <div>
+            <div class="text-[16.5px] text-forest-900 font-medium">VLF test</div>
+            <div class="text-[16.5px] text-ink-500 font-mono">Result recorded ✓</div>
+          </div>
+          <div class="text-[18px] font-semibold text-forest-700">Passed</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">Information created during installation becomes part of the equipment’s technical history. If a fault occurs at the same location later, the team can review the original installation information, materials used, measurements and test results together with previous maintenance and fault records. The root cause of the fault and the outcome of the intervention are added to the same technical history.</p>
+    <p class="text-[16.5px] text-ink-500 leading-relaxed mt-3 max-w-3xl">ToolA does not replace final engineering approval. It helps ensure that the required evidence is captured and that defined technical deviations are visible.</p>
+  </div>
+</section>
+
+<!-- ================== NASIL ÇALIŞIR ================== -->
 <section id="akis" class="py-24 md:py-32 border-t border-line-soft">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-14">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        How it works
+        HOW IT WORKS
       </h2>
-      <p class="text-[16.5px] text-ink-500 leading-relaxed">
-        Four steps: capture the case, ToolA structures it, an expert verifies it, the team reuses it.
-      </p>
+      <p class="text-[16.5px] text-ink-500 leading-relaxed">Five core steps to a structured technical record.</p>
     </div>
 
-    <div class="grid step-grid md:grid-cols-4 gap-5">
+    <div class="space-y-5">
             <div class="step-card">
         <span class="step-num">01</span>
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">Capture the case</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">The technician adds voice notes, photos, video, measurements, and written notes.</p>
+        <h3 class="text-[18px] font-semibold text-forest-900 mb-2">Understand the work and equipment</h3>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">ToolA brings together the work order, equipment information, technical documents and historical records.</p>
       </div>
       <div class="step-card">
         <span class="step-num">02</span>
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">ToolA structures it</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">ToolA turns the submitted information into a structured technical-case draft and identifies missing details.</p>
+        <h3 class="text-[18px] font-semibold text-forest-900 mb-2">Work in the field and capture evidence</h3>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">The technician adds photos, video, audio, measurements, test results and technical notes. Missing information and defined technical deviations become visible.</p>
       </div>
       <div class="step-card">
         <span class="step-num">03</span>
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">An expert verifies it</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">An authorized engineer completes missing information, reviews the case, and approves it.</p>
+        <h3 class="text-[18px] font-semibold text-forest-900 mb-2">Create the technical record</h3>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">The completed work or fault case becomes a structured technical record.</p>
       </div>
       <div class="step-card">
         <span class="step-num">04</span>
-        <div class="icon-box mb-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        </div>
-        <h3 class="text-[16.5px] font-semibold text-forest-900 mb-1.5">The team reuses it</h3>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Teams can quickly find past verified solutions when similar failures occur.</p>
+        <h3 class="text-[18px] font-semibold text-forest-900 mb-2">Expert review</h3>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">When required, an authorized engineer or supervisor reviews, corrects and approves critical information.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">05</span>
+        <h3 class="text-[18px] font-semibold text-forest-900 mb-2">Reuse it in the next job</h3>
+        <p class="text-[16.5px] text-ink-700 leading-relaxed">Previous work, root causes, interventions and verified outcomes can be reused in future technical work.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================== SAĞLADIĞI DEĞER ================== -->
-<section id="deger" class="py-24 md:py-32 bg-forest-50 border-y border-line-soft">
+<section id="deger" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
     <div class="max-w-2xl mb-14">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        The value it delivers
+        Value
       </h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
             <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></div>
-        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Reduces the need to diagnose the same failure from scratch.</p>
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Improve First-Time-Right performance.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Identify missing steps and technical deviations before the work is completed.</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+        <div>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Reduce rework and repeat site visits.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">See what was previously done to the same equipment and what the outcome was.</p>
+        </div>
+      </div>
+      <div class="card flex items-start gap-3.5">
+        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Reduce diagnostic time.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Reuse previous cases, root causes and verified solutions.</p>
+        </div>
       </div>
       <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Reduces the need to repeatedly call on senior experts for the same issues.</p>
+        <div>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Reduce dependency on senior experts.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Keep diagnostic reasoning and field experience from remaining only in the minds of a few experienced people.</p>
+        </div>
       </div>
       <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Reduces the risk of knowledge loss when staff change.</p>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Makes past interventions and part outcomes visible.</p>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <p class="text-[16.5px] text-ink-700 leading-relaxed pt-2">Helps new team members learn from verified cases.</p>
+        <div>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Build organizational technical memory.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Preserve technical history from installation and faults through intervention and verified outcome.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================== MEVCUT SİSTEMLER ================== -->
-<section class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-10">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        It doesn't replace your existing systems
-      </h2>
-      <p class="text-[18px] text-ink-700 leading-relaxed">
-        ToolA does not replace your CMMS, EAM, or ERP. It adds the diagnostic reasoning and verified-solution knowledge that is often missing in those systems.
-      </p>
-    </div>
-
-    <div class="card !p-7 max-w-3xl">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">WHAT IT IS NOT</div>
-      <p class="text-[16.5px] text-ink-700 leading-relaxed">
-        ToolA is not designed for daily checklists or routine maintenance records. It is designed for failures that are difficult to diagnose, recurring, or high-impact.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ================== KİMLER İÇİN ================== -->
 <section class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
   <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-14">
+    <div class="max-w-3xl mb-10">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-        Who it's for
+        WORKS ALONGSIDE YOUR EXISTING SYSTEMS
       </h2>
+      <p class="text-[18px] text-white/80 leading-relaxed mb-3">ToolA is not a CMMS, EAM or ERP.</p>
+      <p class="text-[16.5px] text-white/70 leading-relaxed">You continue to manage work orders and assets in your existing systems. ToolA adds the technical information layer that is often missing:</p>
     </div>
 
-          <div class="rounded-2xl bg-white/5 border border-white/10 p-7 md:p-9 max-w-3xl">
-        <p class="text-[18px] md:text-[19px] text-white/90 leading-[1.7]">
-          ToolA is designed for critical technical operations in energy, industrial manufacturing, infrastructure, aerospace, defense, and maritime. It is particularly suited to recurring, complex, and high-impact equipment failures.
-        </p>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-7 max-w-3xl mb-8">
+      <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-3">TECHNICAL INFORMATION LAYER</div>
+      <p class="text-[18px] md:text-[19px] text-white/90 leading-[1.7]">
+        Procedure + Field evidence + Technical reasoning + Root cause + Intervention + Verified outcome
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-2 max-w-3xl">
+      <span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">SAP</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">IBM Maximo</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Infor</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Oracle</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">EAM / CMMS</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">GIS / SCADA</span>
+<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Document systems</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================== KULLANIM ALANLARI ================== -->
+<section id="kullanim" class="py-24 md:py-32 border-t border-line-soft">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-3xl mb-14">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
+        USE CASES
+      </h2>
+      <p class="text-[18px] text-ink-700 leading-relaxed">ToolA is designed for operations where technical mistakes can lead to significant cost, downtime or safety risk.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+            <div class="card !p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">01</div>
+          <h3 class="text-[18px] font-semibold text-forest-900">Energy & Power Networks</h3>
+        </div>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Cables, transformers, switchgear, lines and field equipment</p>
       </div>
+      <div class="card !p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">02</div>
+          <h3 class="text-[18px] font-semibold text-forest-900">Data Centers & Critical Power</h3>
+        </div>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">MV systems, UPS, generators and critical power infrastructure</p>
+      </div>
+      <div class="card !p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">03</div>
+          <h3 class="text-[18px] font-semibold text-forest-900">Industrial Manufacturing</h3>
+        </div>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Critical production equipment, maintenance and recurring faults</p>
+      </div>
+      <div class="card !p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">04</div>
+          <h3 class="text-[18px] font-semibold text-forest-900">Infrastructure Operations</h3>
+        </div>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Distributed field assets and technical interventions</p>
+      </div>
+      <div class="card !p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">05</div>
+          <h3 class="text-[18px] font-semibold text-forest-900">Aviation · Defense · Maritime</h3>
+        </div>
+        <p class="text-[16.5px] text-ink-500 leading-relaxed">Technical operations where high reliability is required</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ================== VERİ GÜVENLİĞİ ================== -->
 <section id="guvenlik" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-10">
+    <div class="max-w-3xl mb-10">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Data security
+        SECURITY & DATA OWNERSHIP
       </h2>
     </div>
 
-    <div class="space-y-4 max-w-3xl">
-      <div class="card !p-7 md:!p-9 flex items-start gap-4">
+    <div class="card !p-7 md:!p-9 max-w-3xl">
+      <div class="flex items-start gap-4 mb-6">
         <div class="w-10 h-10 rounded-lg bg-forest-50 text-forest-700 flex items-center justify-center flex-shrink-0">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <p class="text-[18px] text-ink-700 leading-relaxed">
-          Your data remains yours. It is not shared with third parties or used for other purposes except as permitted by your consent and the data-processing terms defined in the agreement.
-        </p>
-      </div>
-      <div class="card !p-7 md:!p-9 flex items-start gap-4">
-        <div class="w-10 h-10 rounded-lg bg-forest-50 text-forest-700 flex items-center justify-center flex-shrink-0">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-        </div>
         <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Your data isn't locked to a platform.</h3>
-          <p class="text-[18px] text-ink-700 leading-relaxed">
-            Your verified technical cases are stored in a structured, portable format — not locked to any single CMMS, EAM, or ERP provider. Software vendors change, merge, get acquired; your verified technical memory shouldn't be tied to their fate. Export anytime, and keep using it even if you switch systems.
-          </p>
+          <h3 class="text-[20px] font-semibold text-forest-900 mb-1.5">Your data remains yours.</h3>
+          <p class="text-[16.5px] text-ink-700 leading-relaxed">Your technical data, field records and verified cases remain the property of your organization.</p>
         </div>
+      </div>
+      <div class="space-y-3 text-[16.5px] text-ink-700 border-t border-line-soft pt-5">
+        <p class="leading-relaxed">Access controls, authorization and data-processing policies can be configured according to your organization’s requirements.</p>
+        <p class="leading-relaxed">Structured technical records created by ToolA can be exported and integrated with your existing enterprise systems.</p>
+        <p class="leading-relaxed">__SEC_P4__</p>
       </div>
     </div>
   </div>
@@ -614,35 +929,47 @@
       <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-forest-500/30 blur-3xl"></div>
 
       <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-8 text-center">
-          Evaluate it in your own plant with a 6-week pilot.
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-5 text-center">
+          START WITH ONE CRITICAL TECHNICAL WORKFLOW.
         </h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-3">PILOT SCOPE</div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-3xl mx-auto">
           <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
             <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">5–10</div>
-            <div class="text-[16.5px] text-white/70">Technical users</div>
+            <div class="text-[15px] text-white/70">Technical users</div>
           </div>
           <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
             <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">1</div>
-            <div class="text-[16.5px] text-white/70">Critical equipment family</div>
+            <div class="text-[15px] text-white/70">Critical workflow or equipment family</div>
           </div>
           <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
-            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">6</div>
-            <div class="text-[16.5px] text-white/70">Weeks</div>
+            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">50–100</div>
+            <div class="text-[15px] text-white/70">Real field jobs or technical cases</div>
           </div>
           <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
             <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">1</div>
-            <div class="text-[16.5px] text-white/70">Pilot impact report</div>
+            <div class="text-[15px] text-white/70">Pilot impact report</div>
           </div>
         </div>
 
-        <p class="text-[18px] text-white/70 leading-relaxed mb-8 text-center max-w-2xl mx-auto">
-          Start with your own equipment, team, and real cases. At the end of the pilot, we'll evaluate technical case quality, the expert verification process, and the reuse of past solutions together.
-        </p>
+        <div class="max-w-2xl mx-auto mb-8">
+          <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase text-center mb-4">AT THE END OF THE PILOT, WE MEASURE</div>
+          <ul class="space-y-2 text-[16.5px] text-white/80">
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>First-Time-Right performance</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Rework / repeat site visits</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Diagnostic time</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Technical record quality</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Expert review time</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Reuse of root-cause and solution knowledge</span></li>
+          </ul>
+        </div>
 
         <div class="text-center">
-          <a href="#pilot" data-pilot-trigger class="btn-primary !text-[18px]">Schedule a Pilot Scoping Call →</a>
+          <a href="#pilot" data-pilot-trigger class="btn-primary !text-[18px]">Book a Pilot →</a>
         </div>
       </div>
     </div>
@@ -653,7 +980,6 @@
 <footer class="border-t border-line-soft bg-white/50">
   <div class="max-w-6xl mx-auto px-6 md:px-8 py-7">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-      <!-- Sol: logo + ToolA + tagline -->
       <div class="flex items-center gap-2.5 shrink-0">
         <div class="w-7 h-7 rounded-md bg-forest-700 flex items-center justify-center">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -661,10 +987,9 @@
           </svg>
         </div>
         <span class="font-semibold text-[16.5px] text-forest-900 whitespace-nowrap">ToolA</span>
-        <span class="text-[16.5px] text-ink-500 whitespace-nowrap">Technical memory layer</span>
+        <span class="text-[16.5px] text-ink-500 whitespace-nowrap">Critical Technical Work Intelligence</span>
       </div>
 
-      <!-- Orta: iletişim / lokasyon -->
       <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-[15px] text-ink-500">
         <span class="text-ink-700 whitespace-nowrap">info@toola.net</span>
         <span class="text-ink-300">·</span>
@@ -673,7 +998,6 @@
         <span class="whitespace-nowrap">QSTP, Doha, Qatar</span>
       </div>
 
-      <!-- Sağ: copyright + sosyal -->
       <div class="flex items-center justify-end gap-3 shrink-0">
         <span class="text-[15px] text-ink-500 whitespace-nowrap">© 2026 ToolA</span>
         <div class="flex items-center gap-1">
@@ -692,6 +1016,7 @@
         </div>
       </div>
     </div>
+    <div class="mt-6 text-center text-[16.5px] text-ink-700 italic">Do it right. Understand what happened. Learn what works.</div>
   </div>
 </footer>
 
@@ -749,6 +1074,88 @@
 
 
 <script>
+
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+
+
+
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          bg: '#fafaf7',
+          ink: {
+            900: '#0f1a1a',
+            700: '#2a3838',
+            500: '#5a6a6a',
+            300: '#9aa5a3',
+          },
+          forest: {
+            50:  '#f0f4f3',
+            100: '#dde7e4',
+            200: '#b9cdc7',
+            500: '#2f5a52',
+            700: '#1e3a3a',
+            900: '#0f1f1d',
+          },
+          copper: {
+            50:  '#fbf3eb',
+            100: '#f4e0cc',
+            500: '#c2703a',
+            600: '#a85a2a',
+            700: '#8a4720',
+          },
+          line: {
+            soft: '#ece7dc',
+            mid:  '#d8d2c2',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
+          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
+        },
+      }
+    }
+  }
+
+
+
   function setLang(lang) {
     try { localStorage.setItem('toolA_lang', lang); } catch (e) {}
     window.location.href = (lang === 'tr') ? '/' : '/en';
@@ -859,7 +1266,5 @@
       });
     }
   })();
-</script>
 
-</body>
-</html>
+</script>
