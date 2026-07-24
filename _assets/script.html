@@ -7,159 +7,23 @@
     var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
     var isTrPath = !isEnPath;
 
-    // 1) Manuel secim oncelikli — aninda yonlendir
     if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
     if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
-    if (stored) return; // Manuel secim var, baska kontrol yapma
+    if (stored) return;
 
-    // 2) localStorage bossa — browser language senkron fallback
     var nav = (navigator.language || 'en').toLowerCase();
     if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
     if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
 
-    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
     fetch('https://api.country.is/')
       .then(function(r) { return r.json(); })
       .then(function(d) {
-        if (!d || !d.country) return;
-        if (d.country === 'TR' && isEnPath) {
-          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
-          window.location.replace('/');
-        } else if (d.country !== 'TR' && isTrPath) {
-          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
-          window.location.replace('/en');
-        }
+        if (d.country === 'TR' && isEnPath) { localStorage.setItem('toolA_lang','tr'); window.location.replace('/'); }
+        else if (d.country !== 'TR' && isTrPath) { localStorage.setItem('toolA_lang','en'); window.location.replace('/en'); }
       })
       .catch(function() {});
   } catch (e) {}
 })();
-
-
-
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Outfit', 'system-ui', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
-        },
-        colors: {
-          bg: '#fafaf7',
-          ink: {
-            900: '#0f1a1a',
-            700: '#2a3838',
-            500: '#5a6a6a',
-            300: '#9aa5a3',
-          },
-          forest: {
-            50:  '#f0f4f3',
-            100: '#dde7e4',
-            200: '#b9cdc7',
-            500: '#2f5a52',
-            700: '#1e3a3a',
-            900: '#0f1f1d',
-          },
-          copper: {
-            50:  '#fbf3eb',
-            100: '#f4e0cc',
-            500: '#c2703a',
-            600: '#a85a2a',
-            700: '#8a4720',
-          },
-          line: {
-            soft: '#ece7dc',
-            mid:  '#d8d2c2',
-          },
-        },
-        boxShadow: {
-          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
-          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
-        },
-      }
-    }
-  }
-
-
-
-
-(function() {
-  try {
-    var stored = localStorage.getItem('toolA_lang');
-    var path = window.location.pathname;
-    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
-    var isTrPath = !isEnPath;
-
-    // 1) Manuel secim oncelikli — aninda yonlendir
-    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
-    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
-    if (stored) return; // Manuel secim var, baska kontrol yapma
-
-    // 2) localStorage bossa — browser language senkron fallback
-    var nav = (navigator.language || 'en').toLowerCase();
-    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
-    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
-
-    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
-    fetch('https://api.country.is/')
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (!d || !d.country) return;
-        if (d.country === 'TR' && isEnPath) {
-          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
-          window.location.replace('/');
-        } else if (d.country !== 'TR' && isTrPath) {
-          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
-          window.location.replace('/en');
-        }
-      })
-      .catch(function() {});
-  } catch (e) {}
-})();
-
-
-
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Outfit', 'system-ui', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
-        },
-        colors: {
-          bg: '#fafaf7',
-          ink: {
-            900: '#0f1a1a',
-            700: '#2a3838',
-            500: '#5a6a6a',
-            300: '#9aa5a3',
-          },
-          forest: {
-            50:  '#f0f4f3',
-            100: '#dde7e4',
-            200: '#b9cdc7',
-            500: '#2f5a52',
-            700: '#1e3a3a',
-            900: '#0f1f1d',
-          },
-          copper: {
-            50:  '#fbf3eb',
-            100: '#f4e0cc',
-            500: '#c2703a',
-            600: '#a85a2a',
-            700: '#8a4720',
-          },
-          line: {
-            soft: '#ece7dc',
-            mid:  '#d8d2c2',
-          },
-        },
-        boxShadow: {
-          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
-          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
-        },
-      }
-    }
-  }
 
 
 
@@ -169,26 +33,31 @@
   }
 
   (function() {
-    const modal = document.getElementById('pilotModal');
-    const overlay = document.getElementById('pilotModalOverlay');
-    const closeBtn = document.getElementById('pilotModalClose');
-    const form = document.getElementById('pilotForm');
-    const success = document.getElementById('pilotSuccess');
-    const successClose = document.getElementById('pilotSuccessClose');
-    const triggers = document.querySelectorAll('[data-pilot-trigger]');
+    // Pilot modal
+    var modal = document.getElementById('pilotModal');
+    var overlay = document.getElementById('pilotModalOverlay');
+    var closeBtn = document.getElementById('pilotModalClose');
+    var form = document.getElementById('pilotForm');
+    var success = document.getElementById('pilotSuccess');
+    var successClose = document.getElementById('pilotSuccessClose');
+    var triggers = document.querySelectorAll('[data-pilot-trigger]');
 
-    function open() {
+    function openModal() {
+      if (!modal) return;
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      form.classList.remove('hidden');
-      success.classList.add('hidden');
-      form.reset();
+      if (form) {
+        form.classList.remove('hidden');
+        try { form.reset(); } catch(e) {}
+      }
+      if (success) success.classList.add('hidden');
       setTimeout(function() {
         var f = document.getElementById('pilotName');
         if (f) f.focus();
       }, 50);
     }
-    function close() {
+    function closeModal() {
+      if (!modal) return;
       modal.classList.add('hidden');
       document.body.style.overflow = '';
     }
@@ -196,63 +65,79 @@
     triggers.forEach(function(t) {
       t.addEventListener('click', function(e) {
         e.preventDefault();
-        open();
+        openModal();
       });
     });
-    if (closeBtn) closeBtn.addEventListener('click', close);
-    if (overlay) overlay.addEventListener('click', close);
-    if (successClose) successClose.addEventListener('click', close);
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
-    });
-    if (form) {
-      const submitBtn = document.getElementById('pilotSubmitBtn');
-      const btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
-      const formError = document.getElementById('pilotFormError');
-      const originalLabel = btnLabel ? btnLabel.textContent : '';
-      const loadingLabel = btnLabel ? btnLabel.getAttribute('data-loading') || ('Gönderiliyor…') : '';
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+    if (successClose) successClose.addEventListener('click', closeModal);
 
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    // Form submit
+    if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
+        var formError = document.getElementById('pilotFormError');
+        var submitBtn = document.getElementById('pilotSubmitBtn');
+        var btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+        var originalLabel = btnLabel ? btnLabel.textContent : '';
+        var loadingLabel = btnLabel ? (btnLabel.getAttribute('data-loading') || 'Gönderiliyor…') : '';
+
         if (formError) { formError.classList.add('hidden'); formError.textContent = ''; }
         if (submitBtn) submitBtn.disabled = true;
         if (btnLabel) btnLabel.textContent = loadingLabel;
 
-        fetch('https://formspree.io/f/xkoaoopq', {
+        var data = new FormData(form);
+        fetch(form.action || 'https://formspree.io/f/xkoaoopq', {
           method: 'POST',
-          body: new FormData(form),
+          body: data,
           headers: { 'Accept': 'application/json' }
-        }).then(function(res) {
-          if (res.ok) {
-            form.classList.add('hidden');
-            success.classList.remove('hidden');
-          } else {
-            if (btnLabel) btnLabel.textContent = originalLabel;
+        }).then(function(resp) {
+          if (resp.ok) {
+            if (form) form.classList.add('hidden');
+            if (success) success.classList.remove('hidden');
             if (submitBtn) submitBtn.disabled = false;
-            if (formError) {
-              formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
-              formError.classList.remove('hidden');
-            }
+            if (btnLabel) btnLabel.textContent = originalLabel;
+          } else {
+            resp.json().then(function(d) {
+              if (formError) {
+                var msg = (d && d.errors) ? d.errors.map(function(e){return e.message;}).join(', ') : 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
+                formError.textContent = msg;
+                formError.classList.remove('hidden');
+              }
+              if (submitBtn) submitBtn.disabled = false;
+              if (btnLabel) btnLabel.textContent = originalLabel;
+            }).catch(function() {
+              if (formError) {
+                formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
+                formError.classList.remove('hidden');
+              }
+              if (submitBtn) submitBtn.disabled = false;
+              if (btnLabel) btnLabel.textContent = originalLabel;
+            });
           }
         }).catch(function(err) {
-          if (btnLabel) btnLabel.textContent = originalLabel;
-          if (submitBtn) submitBtn.disabled = false;
           if (formError) {
             formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
             formError.classList.remove('hidden');
           }
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnLabel) btnLabel.textContent = originalLabel;
           console.error('Form submission error:', err);
         });
       });
     }
 
     // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    var mobileBtn = document.getElementById('mobileMenuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var mobileLinks = document.querySelectorAll('.mobile-link');
     if (mobileBtn && mobileMenu) {
-      const hamburgerIcon = document.getElementById('hamburgerIcon');
-      const closeIcon = document.getElementById('closeIcon');
+      var hamburgerIcon = document.getElementById('hamburgerIcon');
+      var closeIcon = document.getElementById('closeIcon');
       mobileBtn.addEventListener('click', function() {
         var isOpen = !mobileMenu.classList.contains('hidden');
         mobileMenu.classList.toggle('hidden');
