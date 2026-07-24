@@ -561,8 +561,9 @@
         <h3 class="text-[22px] font-semibold text-forest-900 mb-2">Mevcut sistemler</h3>
         <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-5">İşin kaydını tutar</div>
         <ul class="space-y-2 text-[16.5px] text-ink-700">
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne yapıldı?</span></li>
           <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Kim yaptı?</span></li>
-          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne zaman yaptı?</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne zaman yapıldı?</span></li>
           <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Hangi iş emri kapandı?</span></li>
         </ul>
       </div>
@@ -586,7 +587,6 @@
             <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Teşhis</div>
             <ul class="space-y-1.5 text-[16.5px] text-ink-700">
               <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Kök neden neydi?</span></li>
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Hangi ihtimaller kontrol edildi ve elendi?</span></li>
               <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Neden bu müdahale seçildi?</span></li>
             </ul>
           </div>
@@ -595,7 +595,6 @@
             <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Sonuç</div>
             <ul class="space-y-1.5 text-[16.5px] text-ink-700">
               <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Müdahale gerçekten işe yaradı mı?</span></li>
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Aynı problem tekrar etti mi?</span></li>
             </ul>
           </div>
         </div>
@@ -603,7 +602,7 @@
     </div>
 
     <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">
-      ToolA bu teknik bilgiyi yapılan iş ve ekipmanın teknik geçmişiyle ilişkilendirerek kaydeder.
+      ToolA bu teknik bilgiyi yapılan iş ve ekipmanın teknik geçmişiyle ilişkilendirir.
     </p>
   </div>
 </section>
@@ -872,36 +871,29 @@
             <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">İlk seferde doğru yapma oranını artırın.</h3>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">İlk seferde doğru yapın.</h3>
           <p class="text-[16.5px] text-ink-500 leading-relaxed">Eksik adımları ve teknik sapmaları iş tamamlanmadan görün.</p>
         </div>
       </div>
       <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
         <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Tekrar işi ve tekrar saha ziyaretlerini azaltın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Aynı ekipmanda daha önce ne yapıldığını ve sonucunu görün.</p>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Tekrar işi azaltın.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Aynı ekipmanda daha önce ne yapıldığını ve sonucunu bilin.</p>
         </div>
       </div>
       <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Teşhis süresini kısaltın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Geçmiş vakaları, kök nedenleri, müdahaleleri ve doğrulanmış sonuçları yeniden kullanın.</p>
-        </div>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Kıdemli uzmanlara bağımlılığı azaltın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Teşhis muhakemesi ve saha deneyimi yalnızca birkaç kişinin hafızasında kalmasın.</p>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Teşhisi hızlandırın.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Geçmiş vakaları, kök nedenleri ve doğrulanmış çözümleri yeniden kullanın.</p>
         </div>
       </div>
       <div class="card flex items-start gap-3.5">
         <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
         <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Kurumsal teknik hafıza oluşturun.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Kurulumdan arızaya, müdahaleden doğrulanmış sonuca kadar teknik geçmişi koruyun.</p>
+          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Teknik bilgiyi kurumda tutun.</h3>
+          <p class="text-[16.5px] text-ink-500 leading-relaxed">Teşhis muhakemesi ve saha deneyimi yalnızca birkaç uzmanın hafızasında kalmasın.</p>
         </div>
       </div>
     </div>
