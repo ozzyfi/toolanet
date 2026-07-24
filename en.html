@@ -238,11 +238,17 @@
 </style>
 </head><style>
   .skip-link {
-    position: absolute; left: -9999px; top: 0; z-index: 100;
-    padding: 10px 16px; background: #1e3a3a; color: #fff;
-    font-size: 15px; border-radius: 0 0 8px 0;
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    z-index: 100;
   }
-  .skip-link:focus { left: 0; outline: 2px solid #c2703a; outline-offset: -2px; }
+  .skip-link:focus {
+    position: absolute; left: 12px; top: 12px; width: auto; height: auto;
+    padding: 10px 16px; background: #1e3a3a; color: #fff;
+    font-size: 15px; border-radius: 8px; text-decoration: none;
+    outline: 2px solid #c2703a; outline-offset: 2px;
+    clip: auto; overflow: visible; white-space: normal;
+  }
   html { scroll-behavior: smooth; }
   body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
 
