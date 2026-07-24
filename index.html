@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8" />
@@ -39,19 +38,25 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ToolA — Zor arızalarda bulunan çözümler kaybolmasın.</title>
-<meta name="description" content="ToolA, uzmanların karmaşık endüstriyel ekipman arızalarını çözerken kullandığı kanıtları, teşhis muhakemesini, müdahaleyi ve doğrulanmış sonucu yeniden kullanılabilir teknik hafızaya dönüştürür." />
-<meta property="og:title" content="ToolA — Zor arızalarda bulunan çözümler kaybolmasın." />
-<meta property="og:description" content="ToolA, uzmanların karmaşık endüstriyel ekipman arızalarını çözerken kullandığı kanıtları, teşhis muhakemesini, müdahaleyi ve doğrulanmış sonucu yeniden kullanılabilir teknik hafızaya dönüştürür." />
+<title>ToolA — Kritik Teknik İş Zekâsı</title>
+<meta name="description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
+<meta property="og:title" content="ToolA — Kritik Teknik İş Zekâsı" />
+<meta property="og:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://toola.net/" />
 <meta property="og:image" content="https://toola.net/og-image.png" />
 <meta property="og:site_name" content="ToolA" />
 <meta property="og:locale" content="tr_TR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ToolA — Zor arızalarda bulunan çözümler kaybolmasın." />
-<meta name="twitter:description" content="ToolA, uzmanların karmaşık endüstriyel ekipman arızalarını çözerken kullandığı kanıtları, teşhis muhakemesini, müdahaleyi ve doğrulanmış sonucu yeniden kullanılabilir teknik hafızaya dönüştürür." />
+<meta name="twitter:title" content="ToolA — Kritik Teknik İş Zekâsı" />
+<meta name="twitter:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
 <meta name="twitter:image" content="https://toola.net/og-image.png" />
+  <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#1e3a3a">
+<link rel="canonical" href="https://toola.net/">
+<link rel="alternate" hreflang="tr" href="https://toola.net/">
+<link rel="alternate" hreflang="en" href="https://toola.net/en">
+<link rel="alternate" hreflang="x-default" href="https://toola.net/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,8 +236,13 @@
     .pilot-grid { grid-template-columns: 1fr !important; }
   }
 </style>
-</head>
-<style>
+</head><style>
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    padding: 10px 16px; background: #1e3a3a; color: #fff;
+    font-size: 15px; border-radius: 0 0 8px 0;
+  }
+  .skip-link:focus { left: 0; outline: 2px solid #c2703a; outline-offset: -2px; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
 
@@ -361,10 +371,11 @@
     .step-grid { grid-template-columns: 1fr !important; }
     .pilot-grid { grid-template-columns: 1fr !important; }
   }
-</style>
-</head>
+</style></head>
 <body class="grain">
 
+<a href="#main" class="skip-link">İçeriğe atla</a>
+<main id="main">
 <!-- ================== NAVBAR ================== -->
 <header class="sticky top-0 z-50 backdrop-blur-md bg-bg/80 border-b border-line-soft">
   <div class="max-w-6xl mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
@@ -389,9 +400,9 @@
     <div class="hidden md:flex items-center gap-3">
       <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Pilot Görüşmesi →</a>
       <div class="flex items-center gap-2 text-[18px] ml-1">
-        <span class="text-forest-700 font-semibold">TR</span>
-        <span class="text-ink-300">/</span>
-        <a href="en.html" onclick="setLang('EN')" class="text-ink-500 hover:text-forest-700">EN</a>
+        <span class="text-forest-700 font-semibold" aria-current="true">TR</span>
+        <span class="text-ink-300" aria-hidden="true">/</span>
+        <a href="en.html" onclick="setLang('EN')" hreflang="EN" class="text-ink-500 hover:text-forest-700" lang="en">EN</a>
       </div>
     </div>
     <button id="mobileMenuBtn" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false" class="md:hidden w-10 h-10 rounded-md text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
@@ -403,16 +414,16 @@
       </svg>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md" aria-hidden="true">
     <div class="px-6 py-4 space-y-1">
       <a href="#akis" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Nasıl Çalışır</a>
       <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Sağladığı Değer</a>
       <a href="#kullanim" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Kullanım Alanları</a>
       <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Görüşmesi →</a>
       <div class="pt-3 mt-2 border-t border-line-soft flex items-center gap-2 text-[18px]">
-        <span class="text-forest-700 font-semibold">TR</span>
-        <span class="text-ink-300">/</span>
-        <a href="en.html" onclick="setLang('EN')" class="text-ink-500 hover:text-forest-700">EN</a>
+        <span class="text-forest-700 font-semibold" aria-current="true">TR</span>
+        <span class="text-ink-300" aria-hidden="true">/</span>
+        <a href="en.html" onclick="setLang('EN')" hreflang="EN" class="text-ink-500 hover:text-forest-700" lang="en">EN</a>
       </div>
     </div>
   </div>
@@ -1094,22 +1105,22 @@
         <p class="text-[18px] text-ink-500">24 saat içinde size dönüş yapacağız.</p>
       </div>
 
-      <form id="pilotForm" class="space-y-4" novalidate>
+      <form id="pilotForm" class="space-y-4" action="https://formspree.io/f/xkoaoopq" method="POST" novalidate>
         <div>
           <label for="pilotName" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Ad Soyad</label>
-          <input type="text" id="pilotName" name="name" required placeholder="Ahmet Yılmaz" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
+          <input type="text" id="pilotName" name="name" required aria-required="true" autocomplete="name" placeholder="Ahmet Yılmaz" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
         <div>
           <label for="pilotCompany" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Şirket</label>
-          <input type="text" id="pilotCompany" name="company" required placeholder="Şirket adı" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
+          <input type="text" id="pilotCompany" name="company" required aria-required="true" autocomplete="organization" placeholder="Şirket adı" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
         <div>
           <label for="pilotPhone" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Telefon</label>
-          <input type="tel" id="pilotPhone" name="phone" required placeholder="+90 5xx xxx xx xx" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
+          <input type="tel" id="pilotPhone" name="phone" required aria-required="true" autocomplete="tel" inputmode="tel" placeholder="+90 5xx xxx xx xx" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
         <div>
           <label for="pilotEmail" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">E-posta</label>
-          <input type="email" id="pilotEmail" name="email" required placeholder="email@sirket.com" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
+          <input type="email" id="pilotEmail" name="email" required aria-required="true" autocomplete="email" placeholder="email@sirket.com" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
         </div>
         <p id="pilotFormError" class="hidden text-[16.5px] text-red-600 text-center mt-2" role="alert"></p>
         <button type="submit" id="pilotSubmitBtn" class="w-full mt-1 px-5 py-3 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -1133,7 +1144,91 @@
 </div>
 
 
+</main>
+
 <script>
+
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+
+
+
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          bg: '#fafaf7',
+          ink: {
+            900: '#0f1a1a',
+            700: '#2a3838',
+            500: '#5a6a6a',
+            300: '#9aa5a3',
+          },
+          forest: {
+            50:  '#f0f4f3',
+            100: '#dde7e4',
+            200: '#b9cdc7',
+            500: '#2f5a52',
+            700: '#1e3a3a',
+            900: '#0f1f1d',
+          },
+          copper: {
+            50:  '#fbf3eb',
+            100: '#f4e0cc',
+            500: '#c2703a',
+            600: '#a85a2a',
+            700: '#8a4720',
+          },
+          line: {
+            soft: '#ece7dc',
+            mid:  '#d8d2c2',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
+          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
+        },
+      }
+    }
+  }
+
+
+
 
 (function() {
   try {
@@ -1311,6 +1406,7 @@
         mobileMenu.classList.toggle('hidden');
         var nowOpen = !isOpen;
         mobileBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+        mobileMenu.setAttribute('aria-hidden', nowOpen ? 'false' : 'true');
         if (hamburgerIcon) hamburgerIcon.classList.toggle('hidden', nowOpen);
         if (closeIcon) closeIcon.classList.toggle('hidden', !nowOpen);
         document.body.style.overflow = nowOpen ? 'hidden' : '';
@@ -1319,6 +1415,7 @@
         link.addEventListener('click', function() {
           mobileMenu.classList.add('hidden');
           mobileBtn.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
           if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
           if (closeIcon) closeIcon.classList.add('hidden');
           document.body.style.overflow = '';
@@ -1326,5 +1423,6 @@
       });
     }
   })();
+
 
 </script>

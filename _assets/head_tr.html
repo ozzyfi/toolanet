@@ -1,0 +1,238 @@
+<head>
+<meta charset="UTF-8" />
+<script>
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ToolA — Kritik Teknik İş Zekâsı</title>
+<meta name="description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
+<meta property="og:title" content="ToolA — Kritik Teknik İş Zekâsı" />
+<meta property="og:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://toola.net/" />
+<meta property="og:image" content="https://toola.net/og-image.png" />
+<meta property="og:site_name" content="ToolA" />
+<meta property="og:locale" content="tr_TR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ToolA — Kritik Teknik İş Zekâsı" />
+<meta name="twitter:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
+<meta name="twitter:image" content="https://toola.net/og-image.png" />
+  <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#1e3a3a">
+<link rel="canonical" href="https://toola.net/">
+<link rel="alternate" hreflang="tr" href="https://toola.net/">
+<link rel="alternate" hreflang="en" href="https://toola.net/en">
+<link rel="alternate" hreflang="x-default" href="https://toola.net/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          bg: '#fafaf7',
+          ink: {
+            900: '#0f1a1a',
+            700: '#2a3838',
+            500: '#5a6a6a',
+            300: '#9aa5a3',
+          },
+          forest: {
+            50:  '#f0f4f3',
+            100: '#dde7e4',
+            200: '#b9cdc7',
+            500: '#2f5a52',
+            700: '#1e3a3a',
+            900: '#0f1f1d',
+          },
+          copper: {
+            50:  '#fbf3eb',
+            100: '#f4e0cc',
+            500: '#c2703a',
+            600: '#a85a2a',
+            700: '#8a4720',
+          },
+          line: {
+            soft: '#ece7dc',
+            mid:  '#d8d2c2',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
+          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
+
+  .grain {
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(194,112,58,0.05), transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(30,58,58,0.06), transparent 40%);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(15,26,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,26,26,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 10px;
+    background: #1e3a3a; color: #fff; font-weight: 500; font-size: 14.5px;
+    transition: all .2s ease;
+  }
+  .btn-primary:hover { background: #0f1f1d; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 18px; border-radius: 10px;
+    color: #1e3a3a; font-weight: 500; font-size: 14.5px;
+    transition: all .2s ease;
+  }
+  .btn-ghost:hover { background: #f0f4f3; }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ece7dc;
+    border-radius: 18px;
+    padding: 26px;
+    transition: all .25s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,26,26,0.05), 0 12px 32px -8px rgba(15,26,26,0.08); }
+
+  .icon-box {
+    width: 44px; height: 44px; border-radius: 11px;
+    background: #f0f4f3; color: #1e3a3a;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  .step-card {
+    background: #fff; border: 1px solid #ece7dc; border-radius: 16px;
+    padding: 22px; position: relative;
+  }
+  .step-num {
+    position: absolute; top: -12px; left: 18px;
+    background: #1e3a3a; color: #fff;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    padding: 4px 10px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .work-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5a6a6a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .pilot-metric {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 18px 0;
+    border-top: 1px solid #ece7dc;
+  }
+  .pilot-metric:last-child { border-bottom: 1px solid #ece7dc; }
+  .pilot-metric .v { font-size: 36px; font-weight: 600; color: inherit; letter-spacing: -0.02em; }
+  .pilot-metric .l { font-size: 14px; color: inherit; opacity: 0.7; }
+
+  .data-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px dashed #ece7dc;
+  }
+  .data-row:last-child { border-bottom: none; }
+
+  .bar-track { height: 6px; background: #f0f4f3; border-radius: 4px; overflow: hidden; }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1e3a3a, #2f5a52);
+    border-radius: 4px;
+    transform-origin: left center;
+    animation: fillUp 1s ease-out both;
+  }
+  @keyframes fillUp {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill { animation: none; }
+  }
+
+  .pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #c2703a;
+    position: relative;
+  }
+  .pulse-dot::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid #c2703a; animation: pulse 2s infinite;
+  }
+  .pulse-dot-forest {
+    width: 8px; height: 8px; border-radius: 50%; background: #1e3a3a;
+    position: relative;
+  }
+  .pulse-dot-forest::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid #1e3a3a; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #1e3a3a 0%, #2f5a52 60%, #c2703a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .step-grid { grid-template-columns: 1fr !important; }
+    .pilot-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>

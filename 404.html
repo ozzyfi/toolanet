@@ -1,100 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8" />
+<script>
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var nav = (navigator.language || 'en').toLowerCase();
+    var lang = stored || (nav.indexOf('tr') === 0 ? 'tr' : 'en');
+    document.documentElement.lang = lang;
+  } catch (e) { document.documentElement.lang = 'en'; }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ToolA — Page not found</title>
-<meta name="description" content="The page you're looking for doesn't exist." />
-<meta property="og:title" content="ToolA — Page not found" />
-<meta property="og:image" content="https://toola.net/og-image.png" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://toola.net/" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#1e3a3a" />
+<title data-tr="Sayfa bulunamadı — ToolA" data-en="Page not found — ToolA">Sayfa bulunamadı — ToolA</title>
+<meta name="description" data-tr="Aradığınız sayfa bulunamadı. ToolA ana sayfasına dönebilirsiniz." data-en="The page you are looking for could not be found. You can return to the ToolA home page." content="Aradığınız sayfa bulunamadı. ToolA ana sayfasına dönebilirsiniz." />
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
-    background: #fafaf7;
-    color: #0f1a1a;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .wrap { max-width: 480px; text-align: center; }
-  .logo {
-    display: inline-flex; align-items: center; gap: 10px;
-    margin-bottom: 48px;
-  }
-  .logo-mark {
-    width: 36px; height: 36px; border-radius: 9px;
-    background: #1e3a3a; color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-  }
-  .logo-text { font-weight: 600; font-size: 18px; color: #1e3a3a; letter-spacing: -0.02em; }
-  .code {
-    font-size: 96px; font-weight: 700;
-    background: linear-gradient(135deg, #1e3a3a 0%, #2f5a52 60%, #c2703a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-  h1 { font-size: 22px; font-weight: 600; color: #0f1a1a; margin-bottom: 12px; letter-spacing: -0.01em; }
-  p  { font-size: 16.5px; color: #5a6a6a; line-height: 1.5; margin-bottom: 32px; }
-  .home-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 22px; border-radius: 10px;
-    background: #1e3a3a; color: #fff; font-weight: 500; font-size: 15.5px;
-    text-decoration: none; transition: all .2s ease;
-  }
-  .home-btn:hover { background: #0f1f1d; transform: translateY(-1px); }
-  .lang-link {
-    display: inline-block; margin-top: 20px;
-    font-size: 14.5px; color: #5a6a6a; text-decoration: none;
-    border-bottom: 1px solid #d8d2c2; padding-bottom: 2px;
-  }
-  .lang-link:hover { color: #1e3a3a; border-color: #1e3a3a; }
+  body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; margin: 0; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .card { max-width: 480px; text-align: center; background: #fff; border: 1px solid #ece7dc; border-radius: 20px; padding: 48px 32px; box-shadow: 0 4px 24px rgba(30,58,58,.06); }
+  .logo { width: 44px; height: 44px; border-radius: 10px; background: #1e3a3a; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -.02em; color: #0f1a1a; margin: 0 0 10px; }
+  p { font-size: 17px; line-height: 1.6; color: #5a6a6a; margin: 0 0 28px; }
+  a.btn { display: inline-block; padding: 12px 22px; background: #1e3a3a; color: #fff; text-decoration: none; border-radius: 10px; font-size: 15.5px; font-weight: 500; transition: background .2s; }
+  a.btn:hover { background: #0f1f1d; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <a href="/" class="logo" aria-label="ToolA home">
-      <span class="logo-mark">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-        </svg>
-      </span>
-      <span class="logo-text">ToolA</span>
-    </a>
-
-    <div class="code">404</div>
-    <h1 id="ttl">Page not found.</h1>
-    <p id="msg">The page you're looking for doesn't exist or has been moved.</p>
-    <a href="/" class="home-btn" id="home">← Back to home</a>
-    <br>
-    <a href="/en" class="lang-link" id="enlink">English version →</a>
+    <div class="card">
+      <div class="logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h1 data-tr="Sayfa bulunamadı" data-en="Page not found">Sayfa bulunamadı</h1>
+      <p data-tr="Aradığınız sayfa burada yok. ToolA ana sayfasına dönebilirsiniz." data-en="The page you are looking for is not here. You can return to the ToolA home page.">Aradığınız sayfa burada yok. ToolA ana sayfasına dönebilirsiniz.</p>
+      <a href="/" class="btn" data-tr="Ana sayfaya dön →" data-en="Back to home →">Ana sayfaya dön →</a>
+    </div>
   </div>
-
   <script>
     (function() {
-      var isTr = (navigator.language || 'en').toLowerCase().startsWith('tr');
-      if (isTr) {
-        document.documentElement.lang = 'tr';
-        document.title = 'ToolA — Sayfa bulunamadı';
-        document.getElementById('ttl').textContent = 'Sayfa bulunamadı.';
-        document.getElementById('msg').textContent = 'Aradığınız sayfa mevcut değil veya taşınmış olabilir.';
-        document.getElementById('home').innerHTML = '← Ana sayfaya dön';
-        document.getElementById('enlink').innerHTML = 'English version →';
-        document.getElementById('enlink').setAttribute('href', '/en');
-      }
+      try {
+        var stored = localStorage.getItem('toolA_lang');
+        var nav = (navigator.language || 'en').toLowerCase();
+        var lang = stored || (nav.indexOf('tr') === 0 ? 'tr' : 'en');
+        var homeHref = lang === 'en' ? '/en' : '/';
+        var btn = document.querySelector('a.btn');
+        if (btn) btn.setAttribute('href', homeHref);
+        document.querySelectorAll('[data-tr]').forEach(function(el) {
+          var t = el.getAttribute('data-' + lang);
+          if (t !== null) el.textContent = t;
+        });
+        var titleEl = document.querySelector('title');
+        if (titleEl) {
+          var t = titleEl.getAttribute('data-' + lang);
+          if (t !== null) document.title = t;
+        }
+        var descEl = document.querySelector('meta[name="description"]');
+        if (descEl) {
+          var t = descEl.getAttribute('data-' + lang);
+          if (t !== null) descEl.setAttribute('content', t);
+        }
+      } catch (e) {}
     })();
   </script>
 </body>

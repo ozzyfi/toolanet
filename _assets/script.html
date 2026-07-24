@@ -1,0 +1,280 @@
+<script>
+
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+
+
+
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          bg: '#fafaf7',
+          ink: {
+            900: '#0f1a1a',
+            700: '#2a3838',
+            500: '#5a6a6a',
+            300: '#9aa5a3',
+          },
+          forest: {
+            50:  '#f0f4f3',
+            100: '#dde7e4',
+            200: '#b9cdc7',
+            500: '#2f5a52',
+            700: '#1e3a3a',
+            900: '#0f1f1d',
+          },
+          copper: {
+            50:  '#fbf3eb',
+            100: '#f4e0cc',
+            500: '#c2703a',
+            600: '#a85a2a',
+            700: '#8a4720',
+          },
+          line: {
+            soft: '#ece7dc',
+            mid:  '#d8d2c2',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
+          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
+        },
+      }
+    }
+  }
+
+
+
+
+(function() {
+  try {
+    var stored = localStorage.getItem('toolA_lang');
+    var path = window.location.pathname;
+    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
+    var isTrPath = !isEnPath;
+
+    // 1) Manuel secim oncelikli — aninda yonlendir
+    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
+    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
+    if (stored) return; // Manuel secim var, baska kontrol yapma
+
+    // 2) localStorage bossa — browser language senkron fallback
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
+    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+
+    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
+    fetch('https://api.country.is/')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.country) return;
+        if (d.country === 'TR' && isEnPath) {
+          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
+          window.location.replace('/');
+        } else if (d.country !== 'TR' && isTrPath) {
+          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
+          window.location.replace('/en');
+        }
+      })
+      .catch(function() {});
+  } catch (e) {}
+})();
+
+
+
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          bg: '#fafaf7',
+          ink: {
+            900: '#0f1a1a',
+            700: '#2a3838',
+            500: '#5a6a6a',
+            300: '#9aa5a3',
+          },
+          forest: {
+            50:  '#f0f4f3',
+            100: '#dde7e4',
+            200: '#b9cdc7',
+            500: '#2f5a52',
+            700: '#1e3a3a',
+            900: '#0f1f1d',
+          },
+          copper: {
+            50:  '#fbf3eb',
+            100: '#f4e0cc',
+            500: '#c2703a',
+            600: '#a85a2a',
+            700: '#8a4720',
+          },
+          line: {
+            soft: '#ece7dc',
+            mid:  '#d8d2c2',
+          },
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
+          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
+        },
+      }
+    }
+  }
+
+
+
+  function setLang(lang) {
+    try { localStorage.setItem('toolA_lang', lang); } catch (e) {}
+    window.location.href = (lang === 'tr') ? '/' : '/en';
+  }
+
+  (function() {
+    const modal = document.getElementById('pilotModal');
+    const overlay = document.getElementById('pilotModalOverlay');
+    const closeBtn = document.getElementById('pilotModalClose');
+    const form = document.getElementById('pilotForm');
+    const success = document.getElementById('pilotSuccess');
+    const successClose = document.getElementById('pilotSuccessClose');
+    const triggers = document.querySelectorAll('[data-pilot-trigger]');
+
+    function open() {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      form.reset();
+      setTimeout(function() {
+        var f = document.getElementById('pilotName');
+        if (f) f.focus();
+      }, 50);
+    }
+    function close() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    triggers.forEach(function(t) {
+      t.addEventListener('click', function(e) {
+        e.preventDefault();
+        open();
+      });
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (overlay) overlay.addEventListener('click', close);
+    if (successClose) successClose.addEventListener('click', close);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+    if (form) {
+      const submitBtn = document.getElementById('pilotSubmitBtn');
+      const btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+      const formError = document.getElementById('pilotFormError');
+      const originalLabel = btnLabel ? btnLabel.textContent : '';
+      const loadingLabel = btnLabel ? btnLabel.getAttribute('data-loading') || ('Gönderiliyor…') : '';
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (formError) { formError.classList.add('hidden'); formError.textContent = ''; }
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnLabel) btnLabel.textContent = loadingLabel;
+
+        fetch('https://formspree.io/f/xkoaoopq', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          if (res.ok) {
+            form.classList.add('hidden');
+            success.classList.remove('hidden');
+          } else {
+            if (btnLabel) btnLabel.textContent = originalLabel;
+            if (submitBtn) submitBtn.disabled = false;
+            if (formError) {
+              formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
+              formError.classList.remove('hidden');
+            }
+          }
+        }).catch(function(err) {
+          if (btnLabel) btnLabel.textContent = originalLabel;
+          if (submitBtn) submitBtn.disabled = false;
+          if (formError) {
+            formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
+            formError.classList.remove('hidden');
+          }
+          console.error('Form submission error:', err);
+        });
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    if (mobileBtn && mobileMenu) {
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeIcon');
+      mobileBtn.addEventListener('click', function() {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        var nowOpen = !isOpen;
+        mobileBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+        mobileMenu.setAttribute('aria-hidden', nowOpen ? 'false' : 'true');
+        if (hamburgerIcon) hamburgerIcon.classList.toggle('hidden', nowOpen);
+        if (closeIcon) closeIcon.classList.toggle('hidden', !nowOpen);
+        document.body.style.overflow = nowOpen ? 'hidden' : '';
+      });
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+          if (closeIcon) closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  })();
+
+
+</script>
