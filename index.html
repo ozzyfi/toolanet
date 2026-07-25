@@ -1,1311 +1,1337 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<script>
-(function() {
-  try {
-    var stored = localStorage.getItem('toolA_lang');
-    var path = window.location.pathname;
-    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
-    var isTrPath = !isEnPath;
-
-    // 1) Manuel secim oncelikli — aninda yonlendir
-    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
-    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
-    if (stored) return; // Manuel secim var, baska kontrol yapma
-
-    // 2) localStorage bossa — browser language senkron fallback
-    var nav = (navigator.language || 'en').toLowerCase();
-    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
-    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
-
-    // 3) Arka plan: IP ulke tespiti — browser language ile uyusmazsa duzelt
-    fetch('https://api.country.is/')
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (!d || !d.country) return;
-        if (d.country === 'TR' && isEnPath) {
-          try { localStorage.setItem('toolA_lang', 'tr'); } catch (e) {}
-          window.location.replace('/');
-        } else if (d.country !== 'TR' && isTrPath) {
-          try { localStorage.setItem('toolA_lang', 'en'); } catch (e) {}
-          window.location.replace('/en');
-        }
-      })
-      .catch(function() {});
-  } catch (e) {}
-})();
-</script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ToolA — Kritik Teknik İş Zekâsı</title>
-<meta name="description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
-<meta property="og:title" content="ToolA — Kritik Teknik İş Zekâsı" />
-<meta property="og:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://toola.net/" />
-<meta property="og:image" content="https://toola.net/og-image.png" />
-<meta property="og:site_name" content="ToolA" />
-<meta property="og:locale" content="tr_TR" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ToolA — Kritik Teknik İş Zekâsı" />
-<meta name="twitter:description" content="ToolA, kurulum, test, kritik bakım ve arıza müdahalelerinde prosedür, ekipman geçmişi ve saha kanıtını yapılandırılmış teknik hafızaya dönüştürür. CMMS, EAM ve ERP'nin yanında çalışır." />
-<meta name="twitter:image" content="https://toola.net/og-image.png" />
-  <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#1e3a3a">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ToolA · Kritik Teknik İş Zekâsı</title>
+<meta name="description" id="metaDesc" content="CMMS'iniz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve sonucunu da kaydeder.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toola.net/">
+<meta property="og:title" content="ToolA · İş emri kapandı. Peki doğru mu yapıldı?">
+<meta property="og:description" content="CMMS'iniz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve sonucunu da kaydeder.">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<!-- Paylaşım görseli: 1200×630 bir görsel hazırlayıp aşağıdaki satırı açın.
+     <meta property="og:image" content="https://toola.net/og.png"> -->
+<meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://toola.net/">
-<link rel="alternate" hreflang="tr" href="https://toola.net/">
-<link rel="alternate" hreflang="en" href="https://toola.net/en">
+<link rel="alternate" hreflang="tr" href="https://toola.net/?lang=tr">
+<link rel="alternate" hreflang="en" href="https://toola.net/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://toola.net/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a3a'/%3E%3Cg fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 7L6 12L16 17L26 12L16 7Z'/%3E%3Cpath d='M6 20L16 25L26 20'/%3E%3Cpath d='M6 16L16 21L26 16'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2312332B'/%3E%3Crect x='8' y='14' width='16' height='3' rx='1.5' fill='white'/%3E%3Crect x='19' y='9' width='3' height='13' rx='1.5' fill='%23C0663A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Outfit', 'system-ui', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
-        },
-        colors: {
-          bg: '#fafaf7',
-          ink: {
-            900: '#0f1a1a',
-            700: '#2a3838',
-            500: '#5a6a6a',
-            300: '#9aa5a3',
-          },
-          forest: {
-            50:  '#f0f4f3',
-            100: '#dde7e4',
-            200: '#b9cdc7',
-            500: '#2f5a52',
-            700: '#1e3a3a',
-            900: '#0f1f1d',
-          },
-          copper: {
-            50:  '#fbf3eb',
-            100: '#f4e0cc',
-            500: '#c2703a',
-            600: '#a85a2a',
-            700: '#8a4720',
-          },
-          line: {
-            soft: '#ece7dc',
-            mid:  '#d8d2c2',
-          },
-        },
-        boxShadow: {
-          card: '0 1px 2px rgba(15,26,26,0.04), 0 4px 16px -4px rgba(15,26,26,0.06)',
-          lift: '0 4px 12px rgba(15,26,26,0.06), 0 12px 32px -8px rgba(15,26,26,0.10)',
-        },
-      }
-    }
-  }
-</script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
-
-  .grain {
-    background-image:
-      radial-gradient(circle at 12% 8%, rgba(194,112,58,0.05), transparent 35%),
-      radial-gradient(circle at 88% 92%, rgba(30,58,58,0.06), transparent 40%);
+  :root{
+    --ink:#12332B;
+    --green:#1B4A3F;
+    --green-tint:#F2F6F4;
+    --body:#55655D;
+    --muted:#64726B;
+    --line:#E5E3DD;
+    --line-soft:#F0EEE9;
+    --alert:#C0663A;
+    --alert-ink:#8A431F;
+    --alert-tint:#FBF0E9;
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --pad:clamp(20px,5vw,40px);
+    --maxw:1080px;
+    --r-sm:8px;
+    --r-md:14px;
+    --r-lg:22px;
   }
 
-  .grid-bg {
-    background-image:
-      linear-gradient(rgba(15,26,26,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15,26,26,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:#fff;color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  body.locked{overflow:hidden}
+  a{color:inherit}
+  ::selection{background:var(--green);color:#fff}
+  :focus-visible{outline:2px solid var(--alert);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);
   }
 
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 22px; border-radius: 10px;
-    background: #1e3a3a; color: #fff; font-weight: 500; font-size: 14.5px;
-    transition: all .2s ease;
-  }
-  .btn-primary:hover { background: #0f1f1d; transform: translateY(-1px); }
+  h1,h2,h3{line-height:1.14;letter-spacing:-.02em;font-weight:700}
+  h1{font-size:clamp(30px,5.2vw,62px)}
+  h2{font-size:clamp(26px,4.2vw,40px)}
+  h3{font-size:clamp(19px,2.4vw,23px);letter-spacing:-.01em}
+  p{color:var(--body)}
+  .lead{font-size:clamp(17px,2.1vw,20px);line-height:1.55}
 
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 18px; border-radius: 10px;
-    color: #1e3a3a; font-weight: 500; font-size: 14.5px;
-    transition: all .2s ease;
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
   }
-  .btn-ghost:hover { background: #f0f4f3; }
+  .bar{display:flex;align-items:center;gap:20px;height:66px}
+  .logo{font-weight:700;font-size:20px;letter-spacing:-.02em;text-decoration:none}
+  .logo span{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:-2px;
+  }
+  nav{display:flex;gap:26px;margin-left:auto}
+  nav a{font-size:15px;color:var(--body);text-decoration:none}
+  nav a:hover{color:var(--ink)}
+  .cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-size:15px;font-weight:600;padding:11px 20px;border-radius:var(--r-sm);
+    border:1px solid var(--ink);cursor:pointer;font-family:var(--sans);
+    transition:background .18s;
+  }
+  .cta:hover{background:var(--green);border-color:var(--green)}
+  .cta-lg{font-size:16px;padding:15px 26px}
 
-  .card {
-    background: #fff;
-    border: 1px solid #ece7dc;
-    border-radius: 18px;
-    padding: 26px;
-    transition: all .25s ease;
+  /* dil secici */
+  .langs{display:flex;align-items:center;gap:2px;flex-shrink:0}
+  .langs button{
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+    background:none;border:none;cursor:pointer;color:var(--muted);
+    padding:7px 7px;border-radius:var(--r-sm);line-height:1;
   }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,26,26,0.05), 0 12px 32px -8px rgba(15,26,26,0.08); }
+  .langs button:hover{color:var(--ink)}
+  .langs button[aria-pressed="true"]{color:var(--ink);font-weight:600;background:var(--green-tint)}
+  .langs i{color:var(--line);font-style:normal;font-size:12px}
+  @media(max-width:900px){nav{display:none}.bar{height:60px;gap:12px}.langs{margin-left:auto}}
+  @media(max-width:400px){.cta{padding:10px 14px;font-size:14px}}
 
-  .icon-box {
-    width: 44px; height: 44px; border-radius: 11px;
-    background: #f0f4f3; color: #1e3a3a;
-    display: inline-flex; align-items: center; justify-content: center;
-  }
+  /* ---------- sections ---------- */
+  section{padding:clamp(64px,9vw,110px) 0;border-bottom:1px solid var(--line-soft)}
+  section[id]{scroll-margin-top:84px}
+  .head{max-width:660px;margin-bottom:clamp(34px,5vw,52px)}
+  .head h2{margin-top:12px}
+  .head p{margin-top:16px}
 
-  .step-card {
-    background: #fff; border: 1px solid #ece7dc; border-radius: 16px;
-    padding: 22px; position: relative;
+  /* ---------- hero ---------- */
+  .hero{padding-top:clamp(50px,7vw,80px);padding-bottom:clamp(40px,5vw,56px);border-bottom:none}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(240px,270px);
+    column-gap:clamp(24px,3.2vw,40px);
   }
-  .step-num {
-    position: absolute; top: -12px; left: 18px;
-    background: #1e3a3a; color: #fff;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-    padding: 4px 10px; border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
+  .hero h1{grid-column:1;grid-row:1;max-width:none}
+  .hero-left{grid-column:1;grid-row:2;margin-top:26px}
+  .hero .lead{max-width:48ch}
+  .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero .foot{
+    margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--muted);max-width:54ch;
   }
-
-  .work-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: #5a6a6a;
-    font-family: 'JetBrains Mono', monospace;
+  /* kartın üst kenarı başlığın ikinci satırıyla hizalanır */
+  .scope-card{
+    grid-column:2;grid-row:1/span 2;align-self:start;
+    margin-top:calc(1.14 * clamp(30px,5.2vw,62px));
+    border:1px solid var(--line);border-radius:var(--r-md);background:#FBFAF8;
+    padding:clamp(18px,2.2vw,24px);
   }
-
-  .pilot-metric {
-    display: flex; align-items: baseline; gap: 12px;
-    padding: 18px 0;
-    border-top: 1px solid #ece7dc;
+  .scope-card .label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);
   }
-  .pilot-metric:last-child { border-bottom: 1px solid #ece7dc; }
-  .pilot-metric .v { font-size: 36px; font-weight: 600; color: inherit; letter-spacing: -0.02em; }
-  .pilot-metric .l { font-size: 14px; color: inherit; opacity: 0.7; }
-
-  .data-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 0; border-bottom: 1px dashed #ece7dc;
-  }
-  .data-row:last-child { border-bottom: none; }
-
-  .bar-track { height: 6px; background: #f0f4f3; border-radius: 4px; overflow: hidden; }
-  .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #1e3a3a, #2f5a52);
-    border-radius: 4px;
-    transform-origin: left center;
-    animation: fillUp 1s ease-out both;
-  }
-  @keyframes fillUp {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bar-fill { animation: none; }
-  }
-
-  .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: #c2703a;
-    position: relative;
-  }
-  .pulse-dot::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 50%;
-    border: 1px solid #c2703a; animation: pulse 2s infinite;
-  }
-  .pulse-dot-forest {
-    width: 8px; height: 8px; border-radius: 50%; background: #1e3a3a;
-    position: relative;
-  }
-  .pulse-dot-forest::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 50%;
-    border: 1px solid #1e3a3a; animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { transform: scale(0.8); opacity: 1; }
-    100% { transform: scale(2.2); opacity: 0; }
+  .scope-card ol{list-style:none;margin-top:12px}
+  .scope-card li{display:flex;gap:13px;align-items:baseline;padding:11px 0}
+  .scope-card li+li{border-top:1px solid var(--line-soft)}
+  .scope-card li:first-child{padding-top:4px}
+  .scope-card li:last-child{padding-bottom:2px}
+  .scope-card .n{font-family:var(--mono);font-size:12px;color:var(--alert);flex-shrink:0}
+  .scope-card .t{font-size:16px;font-weight:600;color:var(--ink);line-height:1.25}
+  .scope-card .d{font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+  @media(max-width:959px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero h1,.hero-left,.scope-card{grid-column:1;grid-row:auto}
+    .hero-left{margin-top:24px}
+    .scope-card{margin-top:34px;max-width:420px}
   }
 
-  .gradient-text {
-    background: linear-gradient(135deg, #1e3a3a 0%, #2f5a52 60%, #c2703a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* ---------- programlar seridi ---------- */
+  .trust{padding:22px 0 26px;border-bottom:1px solid var(--line-soft)}
+  .trust .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+  .trust .label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .trust .progs{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+  .trust .progs span{
+    font-size:14.5px;font-weight:600;color:var(--ink);opacity:.72;
+    letter-spacing:-.01em;
   }
 
-  @media (max-width: 768px) {
-    .step-grid { grid-template-columns: 1fr !important; }
-    .pilot-grid { grid-template-columns: 1fr !important; }
+  /* ---------- kanit ---------- */
+  .proof{background:var(--green-tint);border-bottom:1px solid var(--line)}
+  .record{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+  .rec-top{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 20px;border-bottom:1px solid var(--line-soft);background:#fff;
+  }
+  .rec-tag{font-family:var(--mono);font-size:12px;color:var(--ink)}
+  .rec-state{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .rec-cols,.rec-row{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;
+    gap:12px;align-items:baseline;padding:14px 20px;
+  }
+  .rec-cols{
+    background:#FBFAF8;border-bottom:1px solid var(--line-soft);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .rec-row{border-bottom:1px solid var(--line-soft)}
+  .rec-row:last-of-type{border-bottom:none}
+  .rec-row .name{font-weight:600;font-size:16px}
+  .rec-row .crit{font-family:var(--mono);font-size:14px;color:var(--body)}
+  .rec-row .val{font-family:var(--mono);font-size:17px;font-weight:600}
+  .rec-row .st{font-size:14px;font-weight:600;color:var(--green);text-align:right}
+  .rec-row.dev{background:var(--alert-tint)}
+  .rec-row.dev .val{color:var(--alert)}
+  .rec-row.dev .st{color:var(--alert-ink)}
+
+  .gauge{grid-column:1/-1;margin-top:6px}
+  .track{position:relative;height:34px}
+  .track .rail{position:absolute;left:0;right:0;top:15px;height:5px;background:#EDE9E2;border-radius:3px}
+  .track .band{position:absolute;top:15px;height:5px;background:var(--green);border-radius:3px}
+  .track .tick{position:absolute;top:8px;width:1px;height:19px;background:var(--green);opacity:.4}
+  .track .needle{
+    position:absolute;top:4px;width:3px;height:27px;
+    background:var(--alert);border-radius:2px;transform:translateX(-1.5px);
+  }
+  .gauge .scale{
+    display:flex;justify-content:space-between;font-family:var(--mono);
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+  .rec-note{
+    padding:16px 20px;background:#FBFAF8;border-top:1px solid var(--line-soft);
+    font-size:14.5px;color:var(--body);
+  }
+  .proof .disclaimer{margin-top:20px;color:var(--muted);font-style:italic;max-width:62ch;font-size:14.5px}
+
+  @media(max-width:640px){
+    .rec-cols{display:none}
+    .rec-row{grid-template-columns:1fr auto;gap:4px 12px;padding:16px 18px}
+    .rec-row .name{grid-column:1;font-size:16px}
+    .rec-row .st{grid-column:2;grid-row:1;text-align:right;font-size:13px}
+    .rec-row .crit{grid-column:1;grid-row:2;font-size:13px}
+    .rec-row .val{grid-column:2;grid-row:2;text-align:right;font-size:16px}
+    .rec-top{flex-direction:column;align-items:flex-start;gap:4px}
+  }
+
+  /* ---------- ne oldugu ---------- */
+  .what{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:center}
+  .notes{display:grid;gap:24px}
+  .notes h3{font-size:16px;font-weight:600;line-height:1.35;letter-spacing:0}
+  .notes p{margin-top:8px;font-size:15.5px}
+  .device{
+    max-width:286px;width:100%;margin:0 auto;
+    border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+    background:#fff;box-shadow:0 20px 44px rgba(18,51,43,.11);
+  }
+  .dev-bar{
+    display:flex;justify-content:space-between;background:var(--ink);color:#fff;
+    font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;padding:9px 15px;
+  }
+  .dev-bar span:last-child{opacity:.65}
+  .dev-screen{padding:18px 16px 16px;background:#FBFAF8}
+  .dev-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .dev-title{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-top:6px}
+  .dev-crit{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px}
+  .dev-val{font-family:var(--mono);font-size:40px;font-weight:600;color:var(--alert);letter-spacing:-.02em;margin-top:10px;line-height:1}
+  .dev-val span{font-size:15px;margin-left:5px;color:var(--muted)}
+  .dev-track{position:relative;height:22px;margin-top:12px}
+  .dev-rail{position:absolute;left:0;right:0;top:9px;height:4px;background:#EAE6DE;border-radius:2px}
+  .dev-band{position:absolute;left:55.6%;width:22.2%;top:9px;height:4px;background:var(--green);border-radius:2px}
+  .dev-needle{position:absolute;left:16.7%;top:2px;width:3px;height:18px;background:var(--alert);border-radius:2px}
+  .dev-warn{
+    margin-top:12px;padding:9px 11px;border-radius:var(--r-sm);background:var(--alert-tint);
+    border:1px solid var(--alert);font-size:12px;font-weight:600;color:var(--alert-ink);
+  }
+  .dev-input{margin-top:8px;padding:11px;border-radius:var(--r-sm);border:1px solid var(--line);background:#fff;font-size:12px;color:var(--muted)}
+  .dev-btn{margin-top:8px;padding:13px;border-radius:var(--r-sm);text-align:center;background:var(--alert);color:#fff;font-size:13px;font-weight:600}
+  @media(max-width:800px){.what{grid-template-columns:1fr;gap:36px}.device{order:-1;margin:0}}
+
+  /* ---------- bosluk ---------- */
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px)}
+  .panel{border:1px solid var(--line);border-radius:var(--r-md);padding:clamp(22px,3vw,30px)}
+  .panel.now{background:#FBFAF8}
+  .panel.toola{background:var(--ink);border-color:var(--ink)}
+  .panel.toola h3,.panel.toola li{color:#fff}
+  .panel h3{margin-bottom:18px}
+  .panel ul{list-style:none}
+  .panel li{padding:11px 0;border-top:1px solid var(--line-soft);font-size:16px;color:var(--body)}
+  .panel.toola li{border-top-color:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+  .panel li:first-child{border-top:none}
+  .gap-line{margin-top:28px;font-size:17px;font-weight:600;color:var(--ink)}
+  @media(max-width:760px){.cols2{grid-template-columns:1fr}}
+
+  /* ---------- nasil calisir ---------- */
+  .step{
+    display:grid;grid-template-columns:88px 1fr;gap:clamp(16px,3vw,36px);
+    padding:clamp(28px,4vw,40px) 0;border-top:1px solid var(--line);
+  }
+  .step:first-of-type{border-top:none;padding-top:0}
+  .step .num{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--alert);padding-top:6px}
+  .step p{margin-top:12px;max-width:60ch}
+  .applies{margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+  .qlist{list-style:none;margin-top:16px}
+  .qlist li{font-size:16px;color:var(--body);padding:7px 0 7px 20px;position:relative}
+  .qlist li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+  @media(max-width:640px){.step{grid-template-columns:1fr;gap:8px}.step .num{padding-top:0}}
+
+  /* ---------- vaka zinciri ---------- */
+  .chain{background:var(--green-tint)}
+  .chain-flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:26px}
+  .node{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 16px;font-size:15px;font-weight:500}
+  .node.final{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
+  .arrow{color:var(--muted);font-family:var(--mono);font-size:15px}
+  .chain p{margin-top:26px;font-size:17px;max-width:56ch}
+
+  /* ---------- deger ---------- */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,28px)}
+  .val-item{border-top:2px solid var(--ink);padding-top:18px}
+  .val-item h3{font-size:19px}
+  .val-item p{margin-top:10px;font-size:15.5px}
+  @media(max-width:860px){.grid4{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.grid4{grid-template-columns:1fr}}
+
+  /* ---------- kullanim alanlari ---------- */
+  .uses{list-style:none;border-top:1px solid var(--line)}
+  .uses li{
+    display:grid;grid-template-columns:1fr 1.2fr;gap:20px;
+    padding:20px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;
+  }
+  .uses strong{font-size:18px;font-weight:600}
+  .uses span{font-size:15.5px;color:var(--body)}
+  @media(max-width:640px){.uses li{grid-template-columns:1fr;gap:4px}}
+
+  /* ---------- sinirlar ---------- */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,28px)}
+  .bnd{border:1px solid var(--line);border-radius:var(--r-md);padding:clamp(22px,3vw,28px)}
+  .bnd h3{font-size:18px}
+  .bnd p{margin-top:12px;font-size:15.5px}
+  .systems{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--body);border:1px solid var(--line);border-radius:var(--r-sm);padding:5px 9px}
+  .fine{margin-top:12px;font-size:13.5px;color:var(--muted)}
+  @media(max-width:860px){.grid3{grid-template-columns:1fr}}
+
+  /* ---------- pilot ---------- */
+  .pilot{background:var(--ink);border-bottom:none;color:#fff}
+  .pilot h2,.pilot .eyebrow{color:#fff}
+  .pilot .eyebrow{opacity:.6}
+  .pilot p{color:rgba(255,255,255,.78)}
+  .scope{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--r-md);overflow:hidden;margin-top:8px;
+  }
+  .scope div{background:var(--ink);padding:24px 18px}
+  .scope b{display:block;font-family:var(--mono);font-size:clamp(24px,3.4vw,32px);font-weight:600;letter-spacing:-.02em}
+  .scope span{display:block;margin-top:8px;font-size:14.5px;color:rgba(255,255,255,.7);line-height:1.4}
+  .metrics{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
+  .metrics .eyebrow{color:rgba(255,255,255,.55)}
+  .metrics dl{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,48px);margin-top:6px}
+  .metrics dl > div{padding:14px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .metrics dt{font-size:15.5px;font-weight:600;color:#fff}
+  .metrics dd{font-size:14.5px;color:rgba(255,255,255,.62);margin-top:3px;line-height:1.45}
+  @media(max-width:700px){.metrics dl{grid-template-columns:1fr}}
+  .need{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
+  .need .eyebrow{color:rgba(255,255,255,.55)}
+  .need ul{list-style:none;margin-top:14px;max-width:60ch}
+  .need li{
+    font-size:16px;color:rgba(255,255,255,.88);padding:10px 0 10px 22px;
+    position:relative;border-top:1px solid rgba(255,255,255,.12);
+  }
+  .need li:first-child{border-top:none}
+  .need li::before{content:"—";position:absolute;left:0;color:rgba(255,255,255,.45)}
+  .partner{margin-top:26px;font-size:15.5px;color:rgba(255,255,255,.8)!important;max-width:60ch}
+  .founder{margin-top:14px;font-size:14.5px;color:rgba(255,255,255,.6)!important;max-width:56ch}
+  .pilot .actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:34px}
+  .pilot .cta{background:#fff;color:var(--ink);border-color:#fff}
+  .pilot .cta:hover{background:rgba(255,255,255,.86);border-color:rgba(255,255,255,.86)}
+  .linkish{
+    font-family:var(--mono);font-size:15px;color:rgba(255,255,255,.8);
+    text-decoration:none;background:none;border:none;cursor:pointer;padding:0;
+  }
+  .linkish:hover{color:#fff}
+  @media(max-width:860px){.scope{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.scope{grid-template-columns:1fr}}
+
+  /* ---------- footer ---------- */
+  footer{padding:44px 0 52px}
+  .fbar{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:space-between}
+  .fbar .who{font-weight:700;font-size:17px}
+  .fbar .where{font-size:14.5px;color:var(--body);margin-top:4px}
+  .fcontact{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .fmail{font-family:var(--mono);font-size:15px;color:var(--body);text-decoration:none}
+  .fmail:hover{color:var(--ink)}
+  .social{display:flex;gap:10px}
+  .social a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border:1px solid var(--line);border-radius:var(--r-sm);
+    color:var(--ink);transition:background .18s,border-color .18s;
+  }
+  .social a:hover{background:var(--green-tint);border-color:var(--green)}
+  .social svg{width:19px;height:19px;display:block}
+  .tagline{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+  @media(max-width:560px){.fcontact{align-items:flex-start}}
+
+  /* ---------- modal ---------- */
+  .overlay{
+    position:fixed;inset:0;z-index:100;display:none;
+    background:rgba(18,51,43,.42);backdrop-filter:blur(3px);
+    padding:20px;overflow-y:auto;
+  }
+  .overlay.open{display:flex;align-items:flex-start;justify-content:center}
+  .modal{
+    background:#fff;border-radius:var(--r-lg);width:100%;max-width:520px;
+    margin:auto;padding:clamp(26px,4vw,40px);position:relative;
+    box-shadow:0 30px 70px rgba(18,51,43,.28);
+  }
+  .modal h2{font-size:clamp(24px,3.6vw,31px)}
+  .modal .sub{margin-top:10px;font-size:16px}
+  .modal .close{
+    position:absolute;top:16px;right:16px;width:40px;height:40px;
+    display:flex;align-items:center;justify-content:center;
+    background:none;border:none;cursor:pointer;color:var(--muted);border-radius:var(--r-sm);
+  }
+  .modal .close:hover{background:var(--line-soft);color:var(--ink)}
+  .field{margin-top:20px}
+  .field label{display:block;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .field input{
+    width:100%;height:54px;padding:0 16px;font-family:var(--sans);font-size:16px;
+    color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+  }
+  .field input::placeholder{color:#9AA6A0}
+  .field input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(27,74,63,.12)}
+  .field input:invalid:not(:placeholder-shown){border-color:var(--alert)}
+  .submit{
+    width:100%;height:58px;margin-top:26px;border:none;border-radius:var(--r-md);
+    background:var(--alert);color:#fff;font-family:var(--sans);font-size:17px;
+    font-weight:600;cursor:pointer;transition:background .18s;
+  }
+  .submit:hover{background:#A9552F}
+  .submit[disabled]{opacity:.6;cursor:default}
+  .gotcha{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .formerr{
+    display:none;margin-top:14px;padding:12px 14px;border-radius:var(--r-sm);
+    background:var(--alert-tint);border:1px solid var(--alert);
+    font-size:14.5px;color:var(--alert-ink)!important;text-align:center;
+  }
+  .formerr.show{display:block}
+  .privacy{margin-top:16px;text-align:center;font-size:14.5px;color:var(--muted)}
+  .done{display:none;text-align:center;padding:14px 0 4px}
+  .done .tick{
+    width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:28px;
+  }
+  .modal.sent form,.modal.sent .sub{display:none}
+  .modal.sent .done{display:block}
+
+  /* ---------- hareket ---------- */
+  .rise{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+  .rise.in{opacity:1;transform:none}
+  .needle{opacity:0;transform:translateX(-1.5px) scaleY(.3)}
+  .gauge.in .needle{
+    opacity:1;transform:translateX(-1.5px) scaleY(1);
+    transition:opacity .35s ease .25s,transform .5s cubic-bezier(.2,.8,.3,1) .25s;
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rise,.needle{opacity:1;transform:none;transition:none}
+    .gauge.in .needle{transform:translateX(-1.5px);transition:none}
   }
 </style>
-</head><style>
-  .skip-link {
-    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    z-index: 100;
-  }
-  .skip-link:focus {
-    position: absolute; left: 12px; top: 12px; width: auto; height: auto;
-    padding: 10px 16px; background: #1e3a3a; color: #fff;
-    font-size: 15px; border-radius: 8px; text-decoration: none;
-    outline: 2px solid #c2703a; outline-offset: 2px;
-    clip: auto; overflow: visible; white-space: normal;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', system-ui, sans-serif; background: #fafaf7; color: #0f1a1a; -webkit-font-smoothing: antialiased; }
+<noscript><style>.rise{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
 
-  .grain {
-    background-image:
-      radial-gradient(circle at 12% 8%, rgba(194,112,58,0.05), transparent 35%),
-      radial-gradient(circle at 88% 92%, rgba(30,58,58,0.06), transparent 40%);
-  }
-
-  .grid-bg {
-    background-image:
-      linear-gradient(rgba(15,26,26,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15,26,26,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 25px; border-radius: 11px;
-    background: #1e3a3a; color: #fff; font-weight: 500; font-size: 15.5px;
-    transition: all .2s ease;
-  }
-  .btn-primary:hover { background: #0f1f1d; transform: translateY(-1px); }
-
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 21px; border-radius: 11px;
-    color: #1e3a3a; font-weight: 500; font-size: 15.5px;
-    transition: all .2s ease;
-  }
-  .btn-ghost:hover { background: #f0f4f3; }
-
-  .card {
-    background: #fff;
-    border: 1px solid #ece7dc;
-    border-radius: 18px;
-    padding: 26px;
-    transition: all .25s ease;
-  }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(15,26,26,0.05), 0 12px 32px -8px rgba(15,26,26,0.08); }
-
-  .icon-box {
-    width: 44px; height: 44px; border-radius: 11px;
-    background: #f0f4f3; color: #1e3a3a;
-    display: inline-flex; align-items: center; justify-content: center;
-  }
-
-  .step-card {
-    background: #fff; border: 1px solid #ece7dc; border-radius: 16px;
-    padding: 22px; position: relative;
-  }
-  .step-num {
-    position: absolute; top: -12px; left: 18px;
-    background: #1e3a3a; color: #fff;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-    padding: 4px 10px; border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .work-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: #5a6a6a;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .pilot-metric {
-    display: flex; align-items: baseline; gap: 12px;
-    padding: 18px 0;
-    border-top: 1px solid #ece7dc;
-  }
-  .pilot-metric:last-child { border-bottom: 1px solid #ece7dc; }
-  .pilot-metric .v { font-size: 36px; font-weight: 600; color: inherit; letter-spacing: -0.02em; }
-  .pilot-metric .l { font-size: 14px; color: inherit; opacity: 0.7; }
-
-  .data-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 0; border-bottom: 1px dashed #ece7dc;
-  }
-  .data-row:last-child { border-bottom: none; }
-
-  .bar-track { height: 6px; background: #f0f4f3; border-radius: 4px; overflow: hidden; }
-  .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #1e3a3a, #2f5a52);
-    border-radius: 4px;
-    transform-origin: left center;
-    animation: fillUp 1s ease-out both;
-  }
-  @keyframes fillUp {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bar-fill { animation: none; }
-  }
-
-  .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: #c2703a;
-    position: relative;
-  }
-  .pulse-dot::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 50%;
-    border: 1px solid #c2703a; animation: pulse 2s infinite;
-  }
-  .pulse-dot-forest {
-    width: 8px; height: 8px; border-radius: 50%; background: #1e3a3a;
-    position: relative;
-  }
-  .pulse-dot-forest::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 50%;
-    border: 1px solid #1e3a3a; animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { transform: scale(0.8); opacity: 1; }
-    100% { transform: scale(2.2); opacity: 0; }
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, #1e3a3a 0%, #2f5a52 60%, #c2703a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  @media (max-width: 768px) {
-    .step-grid { grid-template-columns: 1fr !important; }
-    .pilot-grid { grid-template-columns: 1fr !important; }
-  }
-</style></head>
-<body class="grain">
-
-<a href="#main" class="skip-link">İçeriğe atla</a>
-<main id="main">
-<!-- ================== NAVBAR ================== -->
-<header class="sticky top-0 z-50 backdrop-blur-md bg-bg/80 border-b border-line-soft">
-  <div class="max-w-6xl mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg bg-forest-700 flex items-center justify-center">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <div class="flex flex-col leading-none h-12 justify-center">
-        <span class="font-semibold text-[20px] tracking-tight text-forest-900 leading-none">ToolA</span>
-        <span class="text-[13px] text-ink-500 tracking-wide leading-none mt-1">Kritik Teknik İş Zekâsı</span>
-      </div>
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-[18px] text-ink-700">
-      <a href="#yapilirken" class="hover:text-forest-700 transition">Nasıl Çalışır</a>
-      <a href="#deger" class="hover:text-forest-700 transition">Sağladığı Değer</a>
-      <a href="#kullanim" class="hover:text-forest-700 transition">Kullanım Alanları</a>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">ToolA<span data-i18n="logo.tag">Kritik Teknik İş Zekâsı</span></a>
+    <nav>
+      <a href="#nasil" data-i18n="nav.how">Nasıl çalışır</a>
+      <a href="#deger" data-i18n="nav.value">Sağladığı değer</a>
+      <a href="#alanlar" data-i18n="nav.uses">Kullanım alanları</a>
     </nav>
-    <div class="hidden md:flex items-center gap-3">
-      <a href="#pilot" data-pilot-trigger class="btn-primary !py-2 !px-4 !text-[16.5px]">Pilot Görüşmesi →</a>
-      <div class="flex items-center gap-2 text-[18px] ml-1">
-        <span class="text-forest-700 font-semibold" aria-current="true">TR</span>
-        <span class="text-ink-300" aria-hidden="true">/</span>
-        <a href="en.html" onclick="setLang('EN')" hreflang="EN" class="text-ink-500 hover:text-forest-700" lang="en">EN</a>
-      </div>
-    </div>
-    <button id="mobileMenuBtn" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false" class="md:hidden w-10 h-10 rounded-md text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
-      <svg id="hamburgerIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-      <svg id="closeIcon" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
-      </svg>
-    </button>
-  </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-line-soft bg-bg/95 backdrop-blur-md" aria-hidden="true">
-    <div class="px-6 py-4 space-y-1">
-      <a href="#yapilirken" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Nasıl Çalışır</a>
-      <a href="#deger" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Sağladığı Değer</a>
-      <a href="#kullanim" class="mobile-link block text-[16.5px] font-medium text-forest-900 py-2.5 hover:text-copper-600 transition">Kullanım Alanları</a>
-      <a href="#pilot" data-pilot-trigger class="mobile-link block text-[16.5px] font-semibold text-copper-600 py-2.5">Pilot Görüşmesi →</a>
-      <div class="pt-3 mt-2 border-t border-line-soft flex items-center gap-2 text-[18px]">
-        <span class="text-forest-700 font-semibold" aria-current="true">TR</span>
-        <span class="text-ink-300" aria-hidden="true">/</span>
-        <a href="en.html" onclick="setLang('EN')" hreflang="EN" class="text-ink-500 hover:text-forest-700" lang="en">EN</a>
-      </div>
+    <button class="cta js-pilot" data-i18n="cta.pilot">Pilot görüşmesi →</button>
+    <div class="langs">
+      <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+      <i>/</i>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
   </div>
 </header>
 
-<div id="top"></div>
+<!-- 1 · HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <h1 class="rise" data-i18n-html="hero.h1">İş emri kapandı.<br>Peki doğru mu yapıldı?</h1>
 
-<!-- ================== HERO ================== -->
-<section class="relative overflow-hidden">
-  <div class="absolute inset-0 grid-bg opacity-50"></div>
-  <div class="absolute top-20 right-10 w-72 h-72 rounded-full bg-copper-100/40 blur-3xl"></div>
-  <div class="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-forest-100/40 blur-3xl"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 md:px-8 pt-20 pb-10 md:pt-28 md:pb-12">
-    <div class="grid lg:grid-cols-12 gap-12 items-start">
-      <div class="lg:col-span-8">
-        <div class="mb-7 flex flex-col gap-1.5">
-          <span class="font-mono text-[14px] font-semibold tracking-[0.16em] uppercase text-copper-600">ToolA</span>
-          <span class="font-mono text-[12.5px] tracking-[0.14em] uppercase text-ink-500">Kritik Teknik İş Zekâsı</span>
-        </div>
-        <h1 class="text-4xl md:text-5xl lg:text-[48px] font-semibold tracking-[-0.025em] leading-[1.25] text-forest-900 mb-6">
-          İş emri kapandı.<br><span class="gradient-text">Peki gerçekten doğru mu yapıldı?</span>
-        </h1>
-        <p class="text-[18px] text-ink-700 leading-[1.65] mb-4">ToolA, kritik teknik işlerin doğru uygulanmasına yardımcı olur; kurulum, test ve bakım sırasında sapmaları görünür hale getirir, arıza anında teşhis sürecini kaydeder ve yapılan müdahalenin gerçekten işe yarayıp yaramadığını zaman içinde doğrular.</p>
-        <p class="text-[16.5px] text-ink-500 font-semibold leading-[1.6] mb-10">CMMS’niz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve sonucunu da kaydeder.</p>
-        <div class="flex flex-wrap items-center gap-3 mb-10">
-          <a href="#pilot" data-pilot-trigger class="btn-primary">Pilot Görüşmesi →</a>
-        </div>
-        <div class="flex items-start gap-3 text-[16.5px] text-ink-500">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-forest-700 mt-0.5 flex-shrink-0" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <p>Mevcut CMMS, EAM ve ERP sistemlerinizin yanında çalışır; onların yerini almaz.</p>
-        </div>
+    <div class="hero-left">
+      <p class="lead rise" data-i18n="hero.lead">
+        CMMS'iniz neyin yapıldığını kaydeder. ToolA, işin nasıl yapıldığını ve
+        sonucunu da kaydeder.
+      </p>
+      <div class="actions rise">
+        <button class="cta cta-lg js-pilot" data-i18n="cta.pilot">Pilot görüşmesi →</button>
       </div>
-
-      <!-- Sağ: 3-adım özet kart -->
-      <div class="lg:col-span-4">
-        <div class="rounded-3xl border border-line-soft bg-white/85 backdrop-blur-sm shadow-card p-5">
-          <div class="flex items-center justify-between mb-4">
-            <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.12em] uppercase">TOOLA · KRİTİK TEKNİK İŞLER</div>
-            <span class="pulse-dot" aria-label="Aktif akış"></span>
-          </div>
-          <div class="space-y-3">
-                        <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 flex items-center gap-2">
-                <span class="text-copper-600 font-semibold">01</span>
-                <span class="text-ink-500">·</span>
-                <span class="text-forest-700 uppercase tracking-wide">Kurulum</span>
-              </div>
-              <div class="text-[16.5px] text-ink-700 leading-snug">Prosedür, kritik ölçümler ve teknik kriterler. Sapmaları iş tamamlanmadan görün.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 flex items-center gap-2">
-                <span class="text-copper-600 font-semibold">02</span>
-                <span class="text-ink-500">·</span>
-                <span class="text-forest-700 uppercase tracking-wide">Test / Devreye Alma</span>
-              </div>
-              <div class="text-[16.5px] text-ink-700 leading-snug">Gerekli testleri ve sonuçları kaydedin. Eksikleri ve kriter dışı sonuçları görün.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 flex items-center gap-2">
-                <span class="text-copper-600 font-semibold">03</span>
-                <span class="text-ink-500">·</span>
-                <span class="text-forest-700 uppercase tracking-wide">Bakım</span>
-              </div>
-              <div class="text-[16.5px] text-ink-700 leading-snug">Ekipman geçmişini görün. Bakımı ölçüm, test ve saha kanıtlarıyla kaydedin.</div>
-            </div>
-            <div class="rounded-2xl bg-white" style="border: 1px solid #ece7dc; padding: 14px;">
-              <div class="work-label mb-1.5 flex items-center gap-2">
-                <span class="text-copper-600 font-semibold">04</span>
-                <span class="text-ink-500">·</span>
-                <span class="text-forest-700 uppercase tracking-wide">Arıza</span>
-              </div>
-              <div class="text-[16.5px] text-ink-700 leading-snug">Belirti, kanıt, elenen ihtimaller, kök neden ve müdahaleyi yapılandırın.</div>
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-line-soft text-center">
-            <div class="text-[12px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-2">HER İŞTEN SONRA</div>
-            <div class="text-[14px] text-ink-700 font-semibold flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1">
-<span>Doğrula</span>  <span class="text-copper-500">→</span>  <span>Öğren</span>  <span class="text-copper-500">→</span>  <span>Yeniden kullan</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== SORUN ================== -->
-<section id="sorun" class="pt-0 pb-24 md:pb-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="mb-20 rounded-2xl border border-line-soft bg-white/85 backdrop-blur px-6 py-5 md:px-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[16.5px] text-ink-700 font-semibold">
-      <span class="whitespace-nowrap">QSTP</span>
-      <span class="text-ink-300 font-normal">·</span>
-      <span class="whitespace-nowrap">İTÜ Çekirdek</span>
-      <span class="text-ink-300 font-normal">·</span>
-      <span class="whitespace-nowrap">EIT Digital</span>
-      <span class="text-ink-300 font-normal">·</span>
-      <span class="whitespace-nowrap">HAVELSAN JetCube</span>
-    </div>
-    <div class="max-w-3xl mb-12">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        İş emrinin kapanması, işin doğru yapıldığını göstermez.
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-5 gap-6">
-      <!-- Sol kart: Mevcut sistemler (%40) -->
-      <div class="card !p-7 md:col-span-2">
-        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">Mevcut sistemler</h3>
-        <div class="text-[16.5px] font-mono text-ink-500 tracking-[0.08em] uppercase mb-5">İşin kaydını tutar</div>
-        <ul class="space-y-2 text-[16.5px] text-ink-700">
-          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne yapıldı?</span></li>
-          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Kim yaptı?</span></li>
-          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Ne zaman yapıldı?</span></li>
-          <li class="flex items-start gap-2.5"><span class="text-ink-300 mt-0.5">—</span><span>Hangi iş emri kapandı?</span></li>
-        </ul>
-      </div>
-
-      <!-- Sağ kart: ToolA (%60) -->
-      <div class="card !p-7 md:col-span-3 border-l-4 !border-l-copper-500">
-        <h3 class="text-[22px] font-semibold text-forest-900 mb-2">ToolA</h3>
-        <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-5">İşin nasıl yapıldığını ve sonucunu da kaydeder</div>
-
-        <div class="space-y-5">
-          <div>
-            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Uygulama</div>
-            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Doğru prosedür uygulandı mı?</span></li>
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Gerekli ölçüm ve testler yapıldı mı?</span></li>
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>İşin doğru yapıldığını hangi kanıt gösteriyor?</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Teşhis</div>
-            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Kök neden neydi?</span></li>
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Neden bu müdahale seçildi?</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.08em] uppercase mb-2">Sonuç</div>
-            <ul class="space-y-1.5 text-[16.5px] text-ink-700">
-              <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Müdahale gerçekten işe yaradı mı?</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">
-      ToolA bu teknik bilgiyi yapılan iş ve ekipmanın teknik geçmişiyle ilişkilendirir.
-    </p>
-  </div>
-</section>
-
-<!-- ================== DO IT RIGHT ================== -->
-<section id="yapilirken" class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
-  <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
-  <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-copper-500/10 blur-3xl"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-12">
-      <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-4">İŞ YAPILIRKEN</div>
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-3">
-        İşi ilk seferde doğru yapın.
-      </h2>
-      <p class="text-[20px] md:text-[22px] font-medium text-copper-500/85 mb-5">Do it right.</p>
-      <p class="text-[16.5px] text-white/70 leading-relaxed">
-        ToolA, teknisyene yapılan işe ve ekipmana uygun teknik bilgiyi gösterir; saha kanıtlarını toplar ve tanımlanmış teknik sapmaları iş tamamlanmadan görünür hale getirir.
+      <p class="foot rise" data-i18n="hero.foot">
+        Mevcut CMMS, EAM ve ERP sistemlerinizin yanında çalışır. Yerini almaz.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4">
-            <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-          </div>
-          <div class="text-[16.5px] font-mono text-copper-500">01 ·</div>
-        </div>
-        <h3 class="text-[20px] font-semibold mb-2">Doğru prosedür</h3>
-        <p class="text-[16.5px] text-white/70 leading-relaxed">İlgili teknik dokümanları ve kritik uygulama adımlarını gösterir.</p>
+    <div class="scope-card rise">
+        <div class="label" data-i18n="hero.card">Kritik teknik işler</div>
+        <ol>
+          <li><span class="n">01</span><div>
+            <div class="t" data-i18n="hero.w1">Kurulum</div>
+            <div class="d" data-i18n="hero.d1">Prosedür · ölçüm · kanıt</div>
+          </div></li>
+          <li><span class="n">02</span><div>
+            <div class="t" data-i18n="hero.w2">Test / Devreye Alma</div>
+            <div class="d" data-i18n="hero.d2">Test sonucu · kriter</div>
+          </div></li>
+          <li><span class="n">03</span><div>
+            <div class="t" data-i18n="hero.w3">Bakım</div>
+            <div class="d" data-i18n="hero.d3">Geçmiş · kritik adımlar</div>
+          </div></li>
+          <li><span class="n">04</span><div>
+            <div class="t" data-i18n="hero.w4">Arıza</div>
+            <div class="d" data-i18n="hero.d4">Belirti · kök neden</div>
+          </div></li>
+        </ol>
       </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
-          </div>
-          <div class="text-[16.5px] font-mono text-copper-500">02 ·</div>
-        </div>
-        <h3 class="text-[20px] font-semibold mb-2">Ekipman geçmişi</h3>
-        <p class="text-[16.5px] text-white/70 leading-relaxed">Önceki kurulum, test, bakım, arıza ve müdahaleleri gösterir.</p>
-      </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          </div>
-          <div class="text-[16.5px] font-mono text-copper-500">03 ·</div>
-        </div>
-        <h3 class="text-[20px] font-semibold mb-2">Saha kanıtı</h3>
-        <p class="text-[16.5px] text-white/70 leading-relaxed">Fotoğraf, video, ses, ölçüm, test sonucu ve teknik notları yapılan işle ilişkilendirir.</p>
-      </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-lg bg-copper-500/20 text-copper-500 flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <div class="text-[16.5px] font-mono text-copper-500">04 ·</div>
-        </div>
-        <h3 class="text-[20px] font-semibold mb-2">Teknik sapmalar</h3>
-        <p class="text-[16.5px] text-white/70 leading-relaxed">Tanımlanmış ölçüm, tolerans ve teknik kriterlere göre kontrol edilmesi gereken noktaları görünür hale getirir.</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ================== UNDERSTAND WHAT HAPPENED ================== -->
-<section class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-12">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">ARIZA OLDUĞUNDA</div>
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-3">
-        Arızanın nedenini anlayın.
-      </h2>
-      
-      <p class="text-[18px] text-ink-700 leading-relaxed">
-        ToolA, ekipmanın teknik geçmişini, benzer vakaları ve saha kanıtlarını birlikte kullanarak teşhis sürecini yapılandırır.
-      </p>
-    </div>
-
-    <div class="card !p-7 md:!p-9 max-w-3xl">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">TEŞHİS SÜRECİ</div>
-      <div class="space-y-1">
-                <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Belirti</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">Arızanın ilk gözlenen belirtisi</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-center text-ink-300 py-0.5 pl-10">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
-        <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Kanıt</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">Fotoğraf, ses, ölçüm ve test sonuçları</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-center text-ink-300 py-0.5 pl-10">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
-        <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Olası nedenler</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">İlk teknik ihtimaller</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-center text-ink-300 py-0.5 pl-10">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
-        <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Elenen ihtimaller</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">Kontrol edilen ancak doğrulanmayan nedenler</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-center text-ink-300 py-0.5 pl-10">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
-        <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Kök neden</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">Arızaya yol açan asıl neden</div>
-          </div>
-        </div>
-        <div class="flex items-center justify-center text-ink-300 py-0.5 pl-10">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-        </div>
-        <div class="flex items-start gap-3 py-2 border-b border-line-soft last:border-b-0">
-          <div class="w-7 h-7 rounded-full bg-forest-50 text-forest-700 flex items-center justify-center text-[14px] font-mono flex-shrink-0 mt-0.5">•</div>
-          <div class="min-w-0">
-            <div class="text-[17px] text-forest-900 font-medium leading-tight">Müdahale</div>
-            <div class="text-[15.5px] text-ink-500 leading-snug mt-0.5">Uygulanan teknik müdahale</div>
-          </div>
-        </div>
-      </div>
-      <p class="text-[16.5px] text-ink-500 leading-relaxed mt-6">Böylece yalnızca arızanın nasıl kapatıldığı değil, sonuca nasıl ulaşıldığı da ekipmanın teknik geçmişinin parçası olur.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================== LEARN WHAT WORKS ================== -->
-<section class="py-24 md:py-32 bg-forest-50 border-y border-line-soft">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-12">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">İŞTEN SONRA</div>
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-3">
-        Neyin gerçekten işe yaradığını bilin.
-      </h2>
-      
-      <p class="text-[18px] text-ink-700 leading-relaxed mb-4">Bir müdahale yalnızca "Arıza giderildi." veya "Parça değiştirildi." kaydı olarak kalmaz. ToolA teknik vakayı yapılandırır ve sonucu zaman içinde takip eder.</p>
-    </div>
-
-    <div class="card !p-7 md:!p-8 max-w-4xl mb-10">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">TEKNİK VAKA</div>
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15.5px] md:text-[16.5px] text-forest-900 font-medium leading-snug">
-        <span>Belirti</span>
-<span class="text-ink-300">→</span>
-<span>Kanıt</span>
-<span class="text-ink-300">→</span>
-<span>Elenen ihtimaller</span>
-<span class="text-ink-300">→</span>
-<span>Kök neden</span>
-<span class="text-ink-300">→</span>
-<span>Müdahale</span>
-<span class="text-ink-300">→</span>
-<span>Parça / malzeme</span>
-<span class="text-ink-300">→</span>
-<span>Doğrulanmış sonuç</span>
-      </div>
-    </div>
-
-    <div class="max-w-3xl">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-4">SONUÇ ZAMAN İÇİNDE DOĞRULANIR</div>
-      <ul class="space-y-2.5 text-[17px] text-ink-700">
-        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Arıza tekrar etti mi?</span></li>
-        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Ölçüm ve test değerleri normale döndü mü?</span></li>
-        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Değiştirilen parça problemi çözdü mü?</span></li>
-        <li class="flex items-start gap-2.5"><span class="text-copper-600 mt-0.5">—</span><span>Aynı müdahale benzer vakalarda işe yaradı mı?</span></li>
-      </ul>
-      <p class="text-[16.5px] text-ink-700 leading-relaxed mt-6">Böylece ekip yalnızca ne yapıldığını değil, neyin işe yaradığını da bilir.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================== MV KABLO EKİ ÖRNEĞİ ================== -->
-<section class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-12">
-      <div class="text-[16.5px] font-mono text-copper-600 tracking-[0.12em] uppercase mb-3">ÖRNEK · MV KABLO EKİ</div>
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Teknik sapmayı iş tamamlanmadan görün.
-      </h2>
-      <p class="text-[18px] text-ink-700 leading-relaxed">Bu örnekte kritik ölçüm ve VLF testi uygun; bağlantı torku ise gerekli değerin altında.</p>
-    </div>
-
-    <div class="card !p-7 md:!p-9 max-w-3xl">
-      <div class="space-y-3">
-                <div class="data-row">
-          <div class="min-w-0">
-            <div class="text-[16.5px] text-forest-900 font-medium">Kritik ölçüm</div>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
-              <div>
-                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Gerekli</div>
-                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">215–225 mm</div>
-              </div>
-            <div>
-              <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Ölçülen</div>
-              <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">218 mm</div>
-            </div>
-            </div>
-          </div>
-          <div class="text-[16.5px] font-semibold text-forest-700 self-start whitespace-nowrap text-right">Uygun ✓</div>
-        </div>
-        <div class="data-row">
-          <div class="min-w-0">
-            <div class="text-[16.5px] text-forest-900 font-medium">Bağlantı torku</div>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
-              <div>
-                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Gerekli</div>
-                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">40 Nm</div>
-              </div>
-            <div>
-              <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Ölçülen</div>
-              <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">31 Nm</div>
-            </div>
-            </div>
-          </div>
-          <div class="text-[16.5px] font-semibold text-copper-600 self-start whitespace-nowrap text-right">⚠ Kontrol gerekli</div>
-        </div>
-        <div class="data-row">
-          <div class="min-w-0">
-            <div class="text-[16.5px] text-forest-900 font-medium">VLF testi</div>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-1.5">
-              <div>
-                <div class="text-[14px] font-mono text-ink-500 uppercase tracking-wide">Sonuç</div>
-                <div class="text-[16.5px] font-mono text-forest-900 mt-0.5">Geçti ✓</div>
-              </div>
-            </div>
-          </div>
-          <div class="text-[16.5px] font-semibold text-forest-700 self-start whitespace-nowrap text-right"></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="text-[18px] text-ink-700 leading-relaxed mt-10 max-w-3xl">Kurulum kaydı ekipmanın teknik geçmişine eklenir. Aynı noktada ileride arıza oluşursa kullanılan malzeme, ölçüm ve test sonuçları geçmiş bakım, arıza, kök neden ve müdahalelerle birlikte görülebilir.</p>
-    <p class="text-[16.5px] text-ink-500 leading-relaxed mt-3 max-w-3xl">ToolA nihai teknik kabulün yerini almaz; gerekli kanıtları toplar ve tanımlanmış teknik sapmaları görünür hale getirir.</p>
-  </div>
-</section>
-
-<!-- ================== SAĞLADIĞI DEĞER ================== -->
-<section id="deger" class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-2xl mb-14">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Sağladığı değer
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-4">
-            <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">İlk seferde doğru yapın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Eksik adımları ve teknik sapmaları iş tamamlanmadan görün.</p>
-        </div>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
-        <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Tekrar işi azaltın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Aynı ekipmanda daha önce ne yapıldığını ve sonucunu bilin.</p>
-        </div>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Teşhisi hızlandırın.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Geçmiş vakaları, kök nedenleri ve doğrulanmış sonuçları yeniden kullanın.</p>
-        </div>
-      </div>
-      <div class="card flex items-start gap-3.5">
-        <div class="icon-box flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-        <div>
-          <h3 class="text-[18px] font-semibold text-forest-900 mb-1.5">Teknik bilgiyi kurumda tutun.</h3>
-          <p class="text-[16.5px] text-ink-500 leading-relaxed">Teşhis muhakemesi ve saha deneyimi yalnızca birkaç uzmanın hafızasında kalmasın.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== MEVCUT SİSTEMLER ================== -->
-<section class="py-24 md:py-32 bg-forest-900 text-white relative overflow-hidden">
-  <div class="absolute inset-0 grid-bg opacity-[0.05]"></div>
-
-  <div class="relative max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-10">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-4">
-        ToolA bir CMMS, EAM veya ERP değildir.
-      </h2>
-      <p class="text-[18px] text-white/80 leading-relaxed mb-3">İş emri ve varlık yönetimini mevcut sistemlerinizde sürdürürsünüz. ToolA, bu sistemlerin üzerinde çalışan teknik bilgi ve doğrulama katmanıdır.</p>
-    </div>
-
-    <div class="rounded-2xl bg-white/5 border border-white/10 p-7 max-w-3xl mb-8">
-      <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-3">TEKNİK BİLGİ KATMANI</div>
-      <p class="text-[18px] md:text-[19px] text-white/90 leading-[1.7]">
-        Prosedür + Saha kanıtı + Ölçüm ve test + Teşhis süreci + Kök neden + Müdahale + Doğrulanmış sonuç
-      </p>
-    </div>
-
-    <div class="flex flex-wrap gap-2 max-w-3xl">
-      <span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">SAP</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">IBM Maximo</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Infor</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Oracle</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">EAM / CMMS</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">GIS / SCADA</span>
-<span class="text-[15px] px-3 py-1.5 rounded-md bg-white/10 text-white/80 border border-white/10">Doküman sistemleri</span>
-    </div>
-    <p class="text-[16.5px] text-ink-500 leading-relaxed mt-6 max-w-3xl">Mevcut kurumsal sistemlerle birlikte çalışacak şekilde tasarlanmıştır.</p>
-  </div>
-</section>
-
-<!-- ================== KULLANIM ALANLARI ================== -->
-<section id="kullanim" class="py-24 md:py-32 border-t border-line-soft">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-14">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Kullanım alanları
-      </h2>
-      <p class="text-[18px] text-ink-700 leading-relaxed">ToolA, teknik bir hatanın yüksek maliyet, kesinti veya güvenlik riski yaratabileceği operasyonlar için tasarlanmıştır.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-4">
-            <div class="card !p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">01</div>
-          <h3 class="text-[18px] font-semibold text-forest-900">Enerji ve Elektrik Şebekeleri</h3>
-        </div>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Kablo, trafo, şalt ekipmanları, hat ve saha ekipmanları</p>
-      </div>
-      <div class="card !p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">02</div>
-          <h3 class="text-[18px] font-semibold text-forest-900">Veri Merkezleri ve Kritik Güç</h3>
-        </div>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">OG sistemleri, UPS, jeneratör ve kritik güç altyapısı</p>
-      </div>
-      <div class="card !p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">03</div>
-          <h3 class="text-[18px] font-semibold text-forest-900">Endüstriyel Üretim</h3>
-        </div>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Kritik üretim ekipmanları, bakım ve tekrarlayan arızalar</p>
-      </div>
-      <div class="card !p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">04</div>
-          <h3 class="text-[18px] font-semibold text-forest-900">Altyapı Operasyonları</h3>
-        </div>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Dağıtık saha varlıkları ve teknik müdahaleler</p>
-      </div>
-      <div class="card !p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="text-[16.5px] font-mono text-copper-600 tracking-wide">05</div>
-          <h3 class="text-[18px] font-semibold text-forest-900">Havacılık · Savunma · Denizcilik</h3>
-        </div>
-        <p class="text-[16.5px] text-ink-500 leading-relaxed">Yüksek güvenilirlik gerektiren teknik operasyonlar</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== VERİ GÜVENLİĞİ ================== -->
-<section id="guvenlik" class="py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-6 md:px-8">
-    <div class="max-w-3xl mb-10">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] text-forest-900 mb-4">
-        Güvenlik ve veri sahipliği
-      </h2>
-    </div>
-
-    <div class="card !p-7 md:!p-9 max-w-3xl">
-      <div class="flex items-start gap-4 mb-6">
-        <div class="w-10 h-10 rounded-lg bg-forest-50 text-forest-700 flex items-center justify-center flex-shrink-0">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div>
-          <h3 class="text-[20px] font-semibold text-forest-900 mb-1.5">Veriniz size aittir.</h3>
-          <p class="text-[16.5px] text-ink-700 leading-relaxed">Teknik verileriniz, saha kayıtlarınız ve doğrulanmış vakalarınız kurumunuza ait kalır.</p>
-        </div>
-      </div>
-      <div class="space-y-3 text-[16.5px] text-ink-700 border-t border-line-soft pt-5">
-        <p class="leading-relaxed">Erişim, yetkilendirme ve veri işleme politikaları kurumsal gereksinimlerinize göre yapılandırılır.</p>
-        <p class="leading-relaxed">ToolA tarafından oluşturulan yapılandırılmış teknik kayıtlar dışa aktarılabilir ve mevcut kurumsal sistemlerle entegre edilebilir.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== PİLOT CTA ================== -->
-<section id="pilot" class="py-24 md:py-32">
-  <div class="max-w-5xl mx-auto px-6 md:px-8">
-    <div class="rounded-3xl bg-forest-900 text-white p-8 md:p-14 relative overflow-hidden">
-      <div class="absolute inset-0 grid-bg opacity-[0.04]"></div>
-      <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-copper-500/15 blur-3xl"></div>
-      <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-forest-500/30 blur-3xl"></div>
-
-      <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-[-0.02em] mb-5 text-center">
-          Tek bir kritik teknik işle başlayın.
-        </h2>
-
-        <div class="text-center mb-8">
-          <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase mb-3">6 HAFTALIK PİLOT</div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-3xl mx-auto">
-          <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
-            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">5–10</div>
-            <div class="text-[15px] text-white/70">Teknik kullanıcı</div>
-          </div>
-          <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
-            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">1</div>
-            <div class="text-[15px] text-white/70">Kritik iş veya ekipman ailesi</div>
-          </div>
-          <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
-            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">50–100</div>
-            <div class="text-[15px] text-white/70">Gerçek saha işi veya teknik vaka</div>
-          </div>
-          <div class="rounded-xl bg-white/5 border border-white/10 p-5 text-center">
-            <div class="text-[24px] md:text-[28px] font-semibold text-white tracking-[-0.02em] mb-1">1</div>
-            <div class="text-[15px] text-white/70">Pilot etki raporu</div>
-          </div>
-        </div>
-
-        <div class="max-w-2xl mx-auto mb-8">
-          <div class="text-[16.5px] font-mono text-copper-500 tracking-[0.12em] uppercase text-center mb-4">Pilot sonunda birlikte ölçeriz</div>
-          <ul class="space-y-2 text-[16.5px] text-white/80">
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>First-Time-Right oranı</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Tekrar iş / tekrar ziyaret</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Teşhis süresi</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Teknik kayıt kalitesi</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Uzman doğrulama süresi</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-copper-500 mt-0.5">—</span><span>Doğrulanmış teknik bilginin yeniden kullanımı</span></li>
-          </ul>
-        </div>
-
-        <div class="text-center">
-          <a href="#pilot" data-pilot-trigger class="btn-primary !text-[18px]">Pilot Görüşmesi →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================== FOOTER ================== -->
-<footer class="border-t border-line-soft bg-white/50">
-  <div class="max-w-6xl mx-auto px-6 md:px-8 py-7">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-      <div class="flex items-center gap-2.5 shrink-0">
-        <div class="w-7 h-7 rounded-md bg-forest-700 flex items-center justify-center">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <span class="font-semibold text-[16.5px] text-forest-900 whitespace-nowrap">ToolA</span>
-        <span class="text-[16.5px] text-ink-500 whitespace-nowrap">Kritik Teknik İş Zekâsı</span>
-      </div>
-
-      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-[15px] text-ink-500">
-        <span class="text-ink-700 whitespace-nowrap">info@toola.net</span>
-        <span class="text-ink-300">·</span>
-        <span class="whitespace-nowrap">Teknopark İstanbul, Türkiye</span>
-        <span class="text-ink-300">·</span>
-        <span class="whitespace-nowrap">QSTP, Doha, Qatar</span>
-      </div>
-
-      <div class="flex items-center justify-end gap-3 shrink-0">
-        <span class="text-[15px] text-ink-500 whitespace-nowrap">© 2026 ToolA</span>
-        <div class="flex items-center gap-1">
-          <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA LinkedIn" class="w-8 h-8 rounded-md flex items-center justify-center text-ink-500 hover:text-forest-700 hover:bg-forest-50 transition">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 0 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-            </svg>
-          </a>
-          <a href="https://www.instagram.com/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA Instagram" class="w-8 h-8 rounded-md flex items-center justify-center text-ink-500 hover:text-forest-700 hover:bg-forest-50 transition">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="mt-6 text-center text-[16.5px] text-ink-700 italic">Do it right. Understand what happened. Learn what works.</div>
-  </div>
-</footer>
-
-<!-- ================== PILOT MODAL ================== -->
-<div id="pilotModal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-6" role="dialog" aria-modal="true" aria-labelledby="pilotModalTitle">
-  <div id="pilotModalOverlay" class="absolute inset-0 bg-forest-900/60 backdrop-blur-sm"></div>
-  <div class="relative bg-white rounded-2xl border border-line-soft shadow-lift max-w-md w-full max-h-[90vh] overflow-y-auto p-7 md:p-9">
-    <button id="pilotModalClose" type="button" aria-label="Kapat" class="absolute top-4 right-4 w-9 h-9 rounded-md text-ink-500 hover:text-forest-900 hover:bg-forest-50 flex items-center justify-center transition">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-    </button>
-
-    <div id="pilotFormWrap">
-      <div class="mb-6">
-        <h2 id="pilotModalTitle" class="text-[26px] md:text-[28px] font-semibold tracking-[-0.02em] leading-[1.15] text-forest-900 mb-2">Pilot Görüşmesi Ayarlayın</h2>
-        <p class="text-[18px] text-ink-500">24 saat içinde size dönüş yapacağız.</p>
-      </div>
-
-      <form id="pilotForm" class="space-y-4" action="https://formspree.io/f/xkoaoopq" method="POST" novalidate>
-        <div>
-          <label for="pilotName" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Ad Soyad</label>
-          <input type="text" id="pilotName" name="name" required aria-required="true" autocomplete="name" placeholder="Ahmet Yılmaz" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
-        </div>
-        <div>
-          <label for="pilotCompany" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Şirket</label>
-          <input type="text" id="pilotCompany" name="company" required aria-required="true" autocomplete="organization" placeholder="Şirket adı" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
-        </div>
-        <div>
-          <label for="pilotPhone" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">Telefon</label>
-          <input type="tel" id="pilotPhone" name="phone" required aria-required="true" autocomplete="tel" inputmode="tel" placeholder="+90 5xx xxx xx xx" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
-        </div>
-        <div>
-          <label for="pilotEmail" class="block text-[16.5px] font-semibold text-forest-900 mb-1.5">E-posta</label>
-          <input type="email" id="pilotEmail" name="email" required aria-required="true" autocomplete="email" placeholder="email@sirket.com" class="w-full px-3.5 py-2.5 rounded-lg border border-line-mid bg-white text-[18px] text-forest-900 placeholder:text-ink-300 focus:outline-none focus:border-forest-700 focus:ring-2 focus:ring-forest-100 transition">
-        </div>
-        <p id="pilotFormError" class="hidden text-[16.5px] text-red-600 text-center mt-2" role="alert"></p>
-        <button type="submit" id="pilotSubmitBtn" class="w-full mt-1 px-5 py-3 rounded-lg bg-copper-500 hover:bg-copper-600 text-white text-[18px] font-medium transition flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
-          <span class="btn-label">Pilot Görüşmesi Talebi Gönder →</span>
-        </button>
-        <p class="text-[16.5px] text-ink-300 text-center mt-1">Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</p>
-      </form>
-
-      <div id="pilotSuccess" class="hidden text-center py-4">
-        <div class="w-12 h-12 rounded-full bg-copper-50 text-copper-600 flex items-center justify-center mx-auto mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-        </div>
-        <h3 class="text-[20px] font-semibold text-forest-900 mb-2">Talebiniz alındı.</h3>
-        <p class="text-[18px] text-ink-500 mb-6">24 saat içinde sizinle iletişime geçeceğiz.</p>
-        <button type="button" id="pilotSuccessClose" class="px-5 py-2.5 rounded-lg border border-line-mid text-forest-700 hover:bg-forest-50 text-[18px] font-medium transition">
-          Kapat
-        </button>
-      </div>
+<!-- 2 · PROGRAMLAR -->
+<div class="trust">
+  <div class="wrap row rise">
+    <span class="label" data-i18n="trust.label">Kabul edildiğimiz programlar</span>
+    <div class="progs">
+      <span>QSTP</span><span>İTÜ Çekirdek</span><span>EIT Digital</span><span>HAVELSAN JetCube</span>
     </div>
   </div>
 </div>
 
+<!-- 3 · KANIT -->
+<section class="proof">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="eyebrow" data-i18n="proof.eyebrow">Sahadan · OG kablo eki</div>
+      <h2 data-i18n="proof.h2">Sapma, iş kapanmadan görünür.</h2>
+      <p class="lead" data-i18n="proof.lead">
+        Kritik ölçüm ve VLF testi uygun. Bağlantı torku gerekli değerin altında.
+        Teknisyen bunu işi kapatmadan önce görür.
+      </p>
+    </div>
 
-</main>
+    <div class="record rise">
+      <div class="rec-top">
+        <span class="rec-tag" data-i18n="rec.tag">KBL-F7-EK03 · 36 kV XLPE kablo eki</span>
+        <span class="rec-state" data-i18n="rec.state">Kurulum · devam ediyor</span>
+      </div>
+
+      <div class="rec-cols">
+        <span data-i18n="rec.c1">Kontrol</span><span data-i18n="rec.c2">Kriter</span>
+        <span data-i18n="rec.c3">Saha değeri</span>
+        <span style="text-align:right" data-i18n="rec.c4">Durum</span>
+      </div>
+
+      <div class="rec-row">
+        <span class="name" data-i18n="rec.r1n">Kritik ölçüm</span>
+        <span class="crit">215–225 mm</span>
+        <span class="val">218 mm</span>
+        <span class="st" data-i18n="rec.ok">Uygun ✓</span>
+      </div>
+
+      <div class="rec-row dev">
+        <span class="name" data-i18n="rec.r2n">Bağlantı torku</span>
+        <span class="crit">38–42 Nm</span>
+        <span class="val">31 Nm</span>
+        <span class="st" data-i18n="rec.warn">Kontrol gerekli ⚠</span>
+
+        <div class="gauge" id="gauge">
+          <div class="track">
+            <div class="rail"></div>
+            <div class="band" style="left:55.6%;width:22.2%"></div>
+            <div class="tick" style="left:55.6%"></div>
+            <div class="tick" style="left:77.8%"></div>
+            <div class="needle" style="left:16.7%"></div>
+          </div>
+          <div class="scale">
+            <span>28</span><span data-i18n="rec.scale">Kriter aralığı · Nm</span><span>46</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-row">
+        <span class="name" data-i18n="rec.r3n">VLF testi</span>
+        <span class="crit" data-i18n="rec.r3c">21 kV · 60 dk</span>
+        <span class="val" data-i18n="rec.r3v">Geçti</span>
+        <span class="st" data-i18n="rec.ok">Uygun ✓</span>
+      </div>
+
+      <div class="rec-note" data-i18n="rec.note">
+        Kayıt ekipmanın teknik geçmişine eklenir. Aynı noktada ileride arıza
+        oluşursa kullanılan malzeme, ölçüm ve test sonuçları; geçmiş bakım,
+        kök neden ve müdahalelerle birlikte görülür.
+      </div>
+    </div>
+
+    <p class="disclaimer rise" data-i18n="proof.disc">
+      ToolA nihai teknik kabulün yerine geçmez; gerekli kanıtları toplar ve
+      tanımlanmış teknik sapmaları görünür hale getirir.
+    </p>
+  </div>
+</section>
+
+<!-- 4 · NE OLDUĞU -->
+<section>
+  <div class="wrap">
+    <div class="head rise">
+      <h2 data-i18n="what.h2">Teknisyenin telefonunda çalışır.</h2>
+      <p class="lead" data-i18n="what.lead">
+        Sahada telefon, ofiste tarayıcı. İş emri mevcut sisteminizde kalır;
+        işin nasıl yapıldığına dair teknik kayıt ToolA'da oluşur.
+      </p>
+    </div>
+
+    <div class="what">
+      <div class="notes rise">
+        <div>
+          <h3 data-i18n="what.n1t">Çevrimdışı çalışır</h3>
+          <p data-i18n="what.n1p">Kayıt cihazda tutulur, bağlantı geldiğinde kendiliğinden
+            gönderilir. Şalt sahasında kapsama beklenmez.</p>
+        </div>
+        <div>
+          <h3 data-i18n="what.n2t">Ek raporlama yükünü azaltır</h3>
+          <p data-i18n="what.n2p">Yapılan ölçüm ve testler iş sırasında kaydedilir. Ayrı bir iş
+            sonrası rapor veya tekrar veri girişi ihtiyacı azalır.</p>
+        </div>
+        <div>
+          <h3 data-i18n="what.n3t">Sapmayı anında gösterir</h3>
+          <p data-i18n="what.n3p">Kriter dışı bir değer girildiğinde iş, gerekçesi yazılmadan
+            kapanmaz. Kontrol haftalar sonraya kalmaz.</p>
+        </div>
+      </div>
+
+      <div class="device rise" aria-hidden="true">
+        <div class="dev-bar"><span>TOOLA</span><span data-i18n="dev.off">ÇEVRİMDIŞI</span></div>
+        <div class="dev-screen">
+          <div class="dev-eyebrow" data-i18n="dev.step">Adım 4 / 6 · Kritik ölçüm</div>
+          <div class="dev-title" data-i18n="rec.r2n">Bağlantı torku</div>
+          <div class="dev-crit" data-i18n="dev.crit">Kriter 38–42 Nm · Talimat §4.1</div>
+          <div class="dev-val">31<span>Nm</span></div>
+          <div class="dev-track">
+            <div class="dev-rail"></div><div class="dev-band"></div><div class="dev-needle"></div>
+          </div>
+          <div class="dev-warn" data-i18n="dev.warn">⚠ Kontrol gerekli — değer kriter dışı</div>
+          <div class="dev-input" data-i18n="dev.input">Gerekçe ve yapılan işlem</div>
+          <div class="dev-btn" data-i18n="dev.btn">Sapmayı kaydet ve devam</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · BOŞLUK -->
+<section>
+  <div class="wrap">
+    <div class="head rise">
+      <h2 data-i18n-html="gap.h2">Kayıt var.<br>Teknik doğruluk yok.</h2>
+      <p class="lead" data-i18n="gap.lead">
+        Teknik operasyonlarda hata çoğu zaman iş kapanırken değil, haftalar
+        sonra maliyet olarak görünür.
+      </p>
+    </div>
+
+    <div class="cols2 rise">
+      <div class="panel now">
+        <h3 data-i18n="gap.now">Mevcut sistemler</h3>
+        <ul>
+          <li data-i18n="gap.n1">Ne yapıldı?</li>
+          <li data-i18n="gap.n2">Kim yaptı?</li>
+          <li data-i18n="gap.n3">Ne zaman kapandı?</li>
+          <li data-i18n="gap.n4">Hangi parça değişti?</li>
+        </ul>
+      </div>
+      <div class="panel toola">
+        <h3>ToolA</h3>
+        <ul>
+          <li data-i18n="gap.t1">Doğru prosedür uygulandı mı?</li>
+          <li data-i18n="gap.t2">Hangi ölçüm bunu kanıtlıyor?</li>
+          <li data-i18n="gap.t3">Kök neden neydi?</li>
+          <li data-i18n="gap.t4">Müdahale gerçekten işe yaradı mı?</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="gap-line rise" data-i18n="gap.line">Kritik işlerde risk ilk listede değil, ikincisinde.</p>
+  </div>
+</section>
+
+<!-- 6 · NASIL ÇALIŞIR -->
+<section id="nasil">
+  <div class="wrap">
+    <div class="head rise"><h2 data-i18n="how.h2">ToolA üç şey yapar.</h2></div>
+
+    <div class="step rise">
+      <div class="num">01</div>
+      <div>
+        <h3 data-i18n="how.s1t">İşi ilk seferde doğru yapın.</h3>
+        <p data-i18n="how.s1p">
+          Teknisyenin ekranında doğru prosedür, ekipmanın geçmişi ve o iş için
+          tanımlanmış kritik ölçümler bulunur. Fotoğraf, ses, ölçüm ve test
+          sonucu yapılan işle ilişkilendirilir; kayıt ekipmanın teknik
+          geçmişine işlenir.
+        </p>
+        <div class="applies" data-i18n="how.s1a">Kurulum · Test / Devreye alma · Bakım</div>
+      </div>
+    </div>
+
+    <div class="step rise">
+      <div class="num">02</div>
+      <div>
+        <h3 data-i18n="how.s2t">Arızanın nedenini anlayın.</h3>
+        <p data-i18n="how.s2p">
+          Teşhis adım adım kaydedilir: belirti, kanıt, olası nedenler, elenen
+          ihtimaller, kök neden ve müdahale. Böylece arızanın nasıl kapatıldığı
+          değil, sonuca nasıl varıldığı da kayıtta kalır.
+        </p>
+        <div class="applies" data-i18n="how.s2a">Arıza</div>
+      </div>
+    </div>
+
+    <div class="step rise">
+      <div class="num">03</div>
+      <div>
+        <h3 data-i18n="how.s3t">Neyin işe yaradığını bilin.</h3>
+        <p data-i18n="how.s3p">
+          Müdahale, iş kapandığında bitmez. İşin türüne göre belirlenen
+          doğrulama süresinde sonuç yeniden kontrol edilir:
+        </p>
+        <ul class="qlist">
+          <li data-i18n="how.q1">Arıza tekrar etti mi?</li>
+          <li data-i18n="how.q2">Ölçüm ve test değerleri normale döndü mü?</li>
+          <li data-i18n="how.q3">Değiştirilen parça problemi çözdü mü?</li>
+        </ul>
+        <p style="margin-top:14px" data-i18n="how.s3p2">
+          ToolA, aynı müdahalenin benzer vakalardaki sonuçlarını karşılaştırır
+          ve bu bilgiyi sonraki işler için yeniden kullanılabilir hale getirir.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · DOĞRULANMIŞ VAKA -->
+<section class="chain">
+  <div class="wrap">
+    <div class="eyebrow rise" data-i18n="chain.eyebrow">Her işten sonra</div>
+    <h2 class="rise" style="margin-top:12px" data-i18n="chain.h2">Doğrulanmış teknik vaka.</h2>
+
+    <p class="lead rise" style="margin-top:18px;max-width:58ch" data-i18n="chain.lead">
+      Kurulum, test / devreye alma, bakım ve arıza aynı ekipman geçmişinde
+      birikir. Bugün yapılan kurulumun ölçümleri, iki yıl sonraki arızada
+      teknisyenin önüne gelir.
+    </p>
+
+    <div class="chain-flow rise">
+      <span class="node" data-i18n="ch.1">Belirti</span><span class="arrow">→</span>
+      <span class="node" data-i18n="ch.2">Kanıt</span><span class="arrow">→</span>
+      <span class="node" data-i18n="ch.3">Elenen ihtimaller</span><span class="arrow">→</span>
+      <span class="node" data-i18n="ch.4">Kök neden</span><span class="arrow">→</span>
+      <span class="node" data-i18n="ch.5">Müdahale</span><span class="arrow">→</span>
+      <span class="node" data-i18n="ch.6">Parça</span><span class="arrow">→</span>
+      <span class="node final" data-i18n="ch.7">Doğrulanmış sonuç</span>
+    </div>
+
+    <p class="rise" data-i18n="chain.p">
+      Aynı arızaya gelen bir sonraki teknisyen bu kaydı yeniden kullanır.
+      Teşhis muhakemesi birkaç kişinin hafızasında kalmaz.
+    </p>
+  </div>
+</section>
+
+<!-- 8 · DEĞER -->
+<section id="deger">
+  <div class="wrap">
+    <div class="head rise"><h2 data-i18n="val.h2">Ne değişir.</h2></div>
+    <div class="grid4 rise">
+      <div class="val-item">
+        <h3 data-i18n="val.1t">İlk seferde doğru</h3>
+        <p data-i18n="val.1p">Eksik adım ve teknik sapma, iş kapanmadan görünür.</p>
+      </div>
+      <div class="val-item">
+        <h3 data-i18n="val.2t">Daha az tekrar iş</h3>
+        <p data-i18n="val.2p">Aynı ekipmanda daha önce ne yapıldığı ve sonucu bilinir.</p>
+      </div>
+      <div class="val-item">
+        <h3 data-i18n="val.3t">Daha hızlı teşhis</h3>
+        <p data-i18n="val.3p">Geçmiş vakalar, kök nedenler ve doğrulanmış sonuçlar yeniden kullanılır.</p>
+      </div>
+      <div class="val-item">
+        <h3 data-i18n="val.4t">Bilgi kurumda kalır</h3>
+        <p data-i18n="val.4p">Saha deneyimi birkaç uzmanın hafızasına bağlı kalmaz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · KULLANIM ALANLARI -->
+<section id="alanlar">
+  <div class="wrap">
+    <div class="head rise"><h2 data-i18n="use.h2">Teknik hatanın pahalı olduğu operasyonlar.</h2></div>
+    <ul class="uses rise">
+      <li><strong data-i18n="use.1t">Enerji ve elektrik şebekeleri</strong><span data-i18n="use.1p">Kablo, trafo, şalt ekipmanları, hat ve saha ekipmanları</span></li>
+      <li><strong data-i18n="use.2t">Veri merkezleri ve kritik güç</strong><span data-i18n="use.2p">OG sistemleri, UPS, jeneratör ve kritik güç altyapısı</span></li>
+      <li><strong data-i18n="use.3t">Endüstriyel üretim</strong><span data-i18n="use.3p">Kritik üretim ekipmanları, bakım ve tekrarlayan arızalar</span></li>
+      <li><strong data-i18n="use.4t">Altyapı operasyonları</strong><span data-i18n="use.4p">Dağıtık saha varlıkları ve teknik müdahaleler</span></li>
+      <li><strong data-i18n="use.5t">Havacılık · savunma · denizcilik</strong><span data-i18n="use.5p">Yüksek güvenilirlik gerektiren teknik operasyonlar</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 · SINIRLAR -->
+<section>
+  <div class="wrap">
+    <div class="head rise"><h2 data-i18n="bnd.h2">ToolA neyi yapmaz.</h2></div>
+    <div class="grid3 rise">
+      <div class="bnd">
+        <h3 data-i18n="bnd.1t">CMMS, EAM veya ERP değildir.</h3>
+        <p data-i18n="bnd.1p">
+          İş emri ve varlık yönetimini mevcut sistemlerinizde sürdürürsünüz.
+          ToolA bunların üzerinde çalışan teknik bilgi ve doğrulama katmanıdır.
+        </p>
+      </div>
+      <div class="bnd">
+        <h3 data-i18n="bnd.2t">Pilotta tek sistemle başlayın.</h3>
+        <p data-i18n="bnd.2p">
+          ToolA'da oluşan teknik kayıtlar yapılandırılmış biçimde dışa aktarılır.
+          Seçtiğiniz CMMS, EAM veya ERP ile veri bağlantısını pilot kapsamında
+          birlikte kuruyoruz.
+        </p>
+        <div class="systems">
+          <span class="chip">SAP</span><span class="chip">IBM Maximo</span>
+          <span class="chip">Infor</span><span class="chip">Oracle</span>
+          <span class="chip">EAM / CMMS</span><span class="chip">GIS / SCADA</span>
+          <span class="chip" data-i18n="bnd.docs">Doküman sistemleri</span>
+        </div>
+        <p class="fine" data-i18n="bnd.fine">Pilotta hedeflenebilecek sistemler.</p>
+      </div>
+      <div class="bnd">
+        <h3 data-i18n="bnd.3t">Veriniz size aittir.</h3>
+        <p data-i18n="bnd.3p">
+          Teknik kayıtlarınız ve doğrulanmış vakalarınız kurumunuza ait kalır;
+          yapılandırılmış biçimde dışa aktarılabilir.
+        </p>
+        <p style="margin-top:10px" data-i18n="bnd.3p2">
+          Barındırma, erişim ve yetkilendirme modelini pilot başlamadan önce
+          kurumunuzun gereksinimlerine göre birlikte belirliyoruz.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · PİLOT -->
+<section class="pilot" id="pilot">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="eyebrow" data-i18n="pil.eyebrow">6 haftalık pilot</div>
+      <h2 data-i18n="pil.h2">Tek bir kritik işle başlayın.</h2>
+      <p class="lead" data-i18n="pil.lead">
+        Sınırlı kapsam, gerçek saha işi ve sonunda ölçülebilir bir etki raporu.
+      </p>
+    </div>
+
+    <div class="scope rise">
+      <div><b>6</b><span data-i18n="pil.s1">hafta</span></div>
+      <div><b>5–10</b><span data-i18n="pil.s2">teknik kullanıcı</span></div>
+      <div><b>1</b><span data-i18n="pil.s3">kritik iş veya ekipman ailesi</span></div>
+      <div><b>50–100</b><span data-i18n="pil.s4">gerçek saha işi veya teknik vaka</span></div>
+      <div><b>1</b><span data-i18n="pil.s5">pilot etki raporu</span></div>
+    </div>
+
+    <div class="metrics rise">
+      <div class="eyebrow" data-i18n="pil.mh">Pilot sonunda birlikte ölçeriz</div>
+      <dl>
+        <div><dt data-i18n="pil.m1t">First-Time-Right</dt><dd data-i18n="pil.m1d">Sapma olmadan ve tekrar gerektirmeden kapanan iş oranı</dd></div>
+        <div><dt data-i18n="pil.m2t">Tekrar iş / ziyaret</dt><dd data-i18n="pil.m2d">Aynı ekipmana kısa süre içinde ikinci gidiş sayısı</dd></div>
+        <div><dt data-i18n="pil.m3t">Teşhis süresi</dt><dd data-i18n="pil.m3d">Belirtinin kaydedilmesinden kök nedenin belirlenmesine geçen süre</dd></div>
+        <div><dt data-i18n="pil.m4t">Teknik kayıt kalitesi</dt><dd data-i18n="pil.m4d">Gerekli ölçüm, test ve saha kanıtı eksiksiz olan kayıtların oranı</dd></div>
+        <div><dt data-i18n="pil.m5t">Uzman doğrulama süresi</dt><dd data-i18n="pil.m5d">Kıdemli teknisyenin bir kaydı gözden geçirip onaylaması için harcadığı süre</dd></div>
+        <div><dt data-i18n="pil.m6t">Bilginin yeniden kullanımı</dt><dd data-i18n="pil.m6d">Doğrulanmış geçmiş bir vakanın yeni bir işte kullanılma sayısı</dd></div>
+      </dl>
+    </div>
+
+    <div class="need rise">
+      <div class="eyebrow" data-i18n="pil.nh">Sizden ne gerekir</div>
+      <ul>
+        <li data-i18n="pil.n1">Bir kritik iş ya da ekipman ailesi seçimi</li>
+        <li data-i18n="pil.n2">Mevcut prosedür ve kabul kriterleriniz — elinizdeki hâliyle, yeniden yazmadan</li>
+        <li data-i18n="pil.n3">5–10 teknik kullanıcı ve haftada bir kısa görüşme</li>
+      </ul>
+    </div>
+
+    <p class="partner rise" data-i18n="pil.partner">
+      İlk 1–2 kurumla design partner olarak çalışıyoruz. Pilotun amacı, etkiyi
+      gerçek saha verisiyle birlikte ölçmek.
+    </p>
+
+    <p class="founder rise" data-i18n="pil.founder">
+      ToolA'yı elektrik-elektronik mühendisliği ve saha operasyonları
+      geçmişinden gelen bir ekip geliştiriyor.
+    </p>
+
+    <div class="actions rise">
+      <button class="cta cta-lg js-pilot" data-i18n="cta.pilot">Pilot görüşmesi →</button>
+      <button class="linkish js-pilot" data-i18n="cta.intro">Önce kısa bir tanıtım isterseniz yazın →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbar">
+      <div>
+        <div class="who">ToolA</div>
+        <div class="where" data-i18n="foot.where">Teknopark İstanbul, Türkiye · QSTP, Doha, Katar</div>
+      </div>
+      <div class="fcontact">
+        <a class="fmail" href="mailto:info@toola.net">info@toola.net</a>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v13H.22V8zM8.34 8h4.37v1.78h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 7V21h-4.56v-6.14c0-1.46-.03-3.35-2.04-3.35-2.05 0-2.36 1.6-2.36 3.25V21H8.34V8z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/toolanet/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" fill="none" stroke="currentColor" stroke-width="1.9"/>
+              <circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.9"/>
+              <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="tagline">
+      Do it right. Understand what happened. Learn what works. &nbsp;·&nbsp; © 2026 ToolA
+    </div>
+  </div>
+</footer>
+
+<!-- PİLOT FORMU -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modal">
+    <button class="close" id="modalClose" aria-label="Kapat" data-i18n-aria="modal.close">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <h2 id="modalTitle" data-i18n="modal.title">Pilot Görüşmesi Ayarlayın</h2>
+    <p class="sub" data-i18n="modal.sub">24 saat içinde size dönüş yapacağız.</p>
+
+    <form id="pilotForm" novalidate>
+      <div class="field">
+        <label for="fName" data-i18n="modal.name">Ad Soyad</label>
+        <input id="fName" name="name" type="text" required placeholder="Ahmet Yılmaz" data-i18n-ph="modal.namePh">
+      </div>
+      <div class="field">
+        <label for="fCompany" data-i18n="modal.company">Şirket</label>
+        <input id="fCompany" name="company" type="text" required placeholder="Şirket adı" data-i18n-ph="modal.companyPh">
+      </div>
+      <div class="field">
+        <label for="fPhone" data-i18n="modal.phone">Telefon</label>
+        <input id="fPhone" name="phone" type="tel" placeholder="+90 5xx xxx xx xx" data-i18n-ph="modal.phonePh">
+      </div>
+      <div class="field">
+        <label for="fEmail" data-i18n="modal.email">E-posta</label>
+        <input id="fEmail" name="email" type="email" required placeholder="email@sirket.com" data-i18n-ph="modal.emailPh">
+      </div>
+
+      <input id="fTrap" class="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button class="submit" type="submit" data-i18n="modal.submit">Pilot Görüşmesi Talebi Gönder →</button>
+      <p class="formerr" id="formErr" data-i18n="modal.err">
+        Gönderilemedi. Lütfen tekrar deneyin ya da info@toola.net adresine yazın.
+      </p>
+      <p class="privacy" data-i18n="modal.privacy">
+        Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.
+      </p>
+    </form>
+
+    <div class="done">
+      <div class="tick" aria-hidden="true">✓</div>
+      <h3 data-i18n="modal.doneT">Talebiniz alındı.</h3>
+      <p style="margin-top:10px" data-i18n="modal.doneP">24 saat içinde size dönüş yapacağız.</p>
+    </div>
+  </div>
+</div>
 
 <script>
+/* ============================================================
+   1 · FORM HEDEFİ
+   Formspree uç noktası. Boş bırakılırsa form, e-posta taslağı
+   olarak info@toola.net adresine düşer.
+   ============================================================ */
+var FORM_ENDPOINT = "https://formspree.io/f/mvzevbog";
 
-(function() {
-  try {
-    var stored = localStorage.getItem('toolA_lang');
-    var path = window.location.pathname;
-    var isEnPath = (path === '/en' || path.indexOf('/en') === 0);
-    var isTrPath = !isEnPath;
+/* ============================================================
+   2 · İNGİLİZCE SÖZLÜK
+   HTML içindeki metinler Türkçedir; aşağısı yalnızca EN karşılıkları.
+   ============================================================ */
+var EN = {
+  "meta.title":"ToolA · Critical Technical Work Intelligence",
+  "meta.desc":"Your CMMS records what was done. ToolA also records how the work was done and the outcome.",
 
-    if (stored === 'tr' && isEnPath) { window.location.replace('/'); return; }
-    if (stored === 'en' && isTrPath) { window.location.replace('/en'); return; }
-    if (stored) return;
+  "logo.tag":"Critical Technical Work Intelligence",
+  "nav.how":"How it works","nav.value":"Value","nav.uses":"Use cases",
+  "cta.pilot":"Book a pilot discussion →",
+  "cta.intro":"Prefer a short introduction first? Contact us →",
 
-    var nav = (navigator.language || 'en').toLowerCase();
-    if (nav.indexOf('tr') === 0 && isEnPath) { window.location.replace('/'); return; }
-    if (nav.indexOf('tr') !== 0 && isTrPath) { window.location.replace('/en'); return; }
+  "hero.h1":"The work order is closed.<br>But was it done right?",
+  "hero.lead":"Your CMMS records what was done. ToolA also records how the work was done and the outcome.",
+  "hero.foot":"Works alongside your existing CMMS, EAM, and ERP systems. It does not replace them.",
+  "hero.card":"Critical technical work",
+  "hero.w1":"Installation","hero.w2":"Testing / Commissioning",
+  "hero.w3":"Maintenance","hero.w4":"Failure",
+  "hero.d1":"Procedure · measurement · evidence",
+  "hero.d2":"Test result · criteria",
+  "hero.d3":"History · critical steps",
+  "hero.d4":"Symptom · root cause",
 
-    fetch('https://api.country.is/')
-      .then(function(r) { return r.json(); })
-      .then(function(d) {
-        if (d.country === 'TR' && isEnPath) { localStorage.setItem('toolA_lang','tr'); window.location.replace('/'); }
-        else if (d.country !== 'TR' && isTrPath) { localStorage.setItem('toolA_lang','en'); window.location.replace('/en'); }
-      })
-      .catch(function() {});
-  } catch (e) {}
-})();
+  "trust.label":"Selected for",
 
+  "proof.eyebrow":"From the field · MV cable joint",
+  "proof.h2":"Make deviations visible before the job is closed.",
+  "proof.lead":"The critical measurement and VLF test are within criteria. The connection torque is below the required range. The technician sees this before closing the job.",
+  "rec.tag":"KBL-F7-EK03 · 36 kV XLPE cable joint",
+  "rec.state":"Installation · in progress",
+  "rec.c1":"Check","rec.c2":"Criteria","rec.c3":"Field value","rec.c4":"Status",
+  "rec.r1n":"Critical measurement","rec.r2n":"Connection torque","rec.r3n":"VLF test",
+  "rec.r3c":"21 kV · 60 min","rec.r3v":"Passed",
+  "rec.ok":"Within criteria ✓","rec.warn":"Review required ⚠",
+  "rec.scale":"Criteria range · Nm",
+  "rec.note":"The record becomes part of the equipment's technical history. If a failure occurs at the same location later, the materials used, measurements, and test results can be reviewed together with previous maintenance, root causes, and interventions.",
+  "proof.disc":"ToolA does not replace final technical acceptance. It captures the required evidence and makes defined technical deviations visible.",
 
+  "what.h2":"Works on the technician's phone.",
+  "what.lead":"In the field, technicians use their phone. In the office, teams use the browser. The work order remains in your existing system; ToolA creates the technical record of how the work was performed.",
+  "what.n1t":"Works offline",
+  "what.n1p":"Records are stored on the device and synchronized when connectivity returns. Technicians do not need to wait for coverage at a substation or remote site.",
+  "what.n2t":"Reduces extra reporting work",
+  "what.n2p":"Measurements and tests are recorded as the work happens. The need for a separate post-job report or duplicate data entry decreases.",
+  "what.n3t":"Flags deviations immediately",
+  "what.n3p":"When a value falls outside the defined criteria, the deviation must be addressed or explained before the job can be closed. Review does not happen weeks later.",
+  "dev.off":"OFFLINE","dev.step":"Step 4 / 6 · Critical measurement",
+  "dev.crit":"Criteria 38–42 Nm · Procedure §4.1",
+  "dev.warn":"⚠ Review required — value outside criteria",
+  "dev.input":"Reason and corrective action","dev.btn":"Record deviation and continue",
 
-  function setLang(lang) {
-    try { localStorage.setItem('toolA_lang', lang); } catch (e) {}
-    window.location.href = (lang === 'tr') ? '/' : '/en';
+  "gap.h2":"The record exists.<br>Technical correctness does not.",
+  "gap.lead":"In technical operations, mistakes often do not become visible when the job is closed. They appear weeks or months later as cost, downtime, or failure.",
+  "gap.now":"Existing systems",
+  "gap.n1":"What was done?","gap.n2":"Who did it?","gap.n3":"When was it closed?","gap.n4":"Which part was replaced?",
+  "gap.t1":"Was the correct procedure followed?","gap.t2":"Which measurement proves it?",
+  "gap.t3":"What was the root cause?","gap.t4":"Did the intervention actually work?",
+  "gap.line":"In critical technical work, the risk is usually in the second list.",
+
+  "how.h2":"ToolA does three things.",
+  "how.s1t":"Get it right the first time.",
+  "how.s1p":"The technician sees the correct procedure, equipment history, and the critical measurements defined for the job. Photos, audio, measurements, and test results are connected to the work and become part of the equipment's technical history.",
+  "how.s1a":"Installation · Testing / Commissioning · Maintenance",
+  "how.s2t":"Understand why it failed.",
+  "how.s2p":"The diagnostic process is captured step by step: symptom, evidence, possible causes, eliminated hypotheses, root cause, and intervention. The record then contains not only how the failure was closed, but also how the team reached the conclusion.",
+  "how.s2a":"Failure",
+  "how.s3t":"Know what actually worked.",
+  "how.s3p":"An intervention does not end when the work order is closed. The outcome is reviewed again after a verification period defined for the type of work:",
+  "how.q1":"Did the failure occur again?",
+  "how.q2":"Did measurements and test values return to normal?",
+  "how.q3":"Did the replaced part actually solve the problem?",
+  "how.s3p2":"ToolA compares the outcomes of the same intervention across similar cases and makes that knowledge reusable for future work.",
+
+  "chain.eyebrow":"After every job","chain.h2":"A verified technical case.",
+  "chain.lead":"Installation, testing / commissioning, maintenance, and failures accumulate in the same equipment history. Measurements taken during an installation today can be available to the technician diagnosing a failure two years later.",
+  "ch.1":"Symptom","ch.2":"Evidence","ch.3":"Eliminated hypotheses","ch.4":"Root cause",
+  "ch.5":"Intervention","ch.6":"Part","ch.7":"Verified outcome",
+  "chain.p":"The next technician facing the same failure can reuse the case. Diagnostic reasoning no longer remains only in the memory of a few senior technicians.",
+
+  "val.h2":"What changes.",
+  "val.1t":"Get it right the first time","val.1p":"Missing steps and technical deviations become visible before the job is closed.",
+  "val.2t":"Less rework","val.2p":"Teams know what was previously done on the same equipment and what happened afterward.",
+  "val.3t":"Faster diagnosis","val.3p":"Previous cases, root causes, and verified outcomes can be reused.",
+  "val.4t":"Knowledge stays inside the organization","val.4p":"Field experience no longer depends on the memory of a few senior experts.",
+
+  "use.h2":"Built for operations where technical mistakes are expensive.",
+  "use.1t":"Energy & electrical grids","use.1p":"Cables, transformers, switchgear, power lines, and field equipment",
+  "use.2t":"Data centers & critical power","use.2p":"MV systems, UPS, generators, and critical power infrastructure",
+  "use.3t":"Industrial manufacturing","use.3p":"Critical production equipment, maintenance, and recurring failures",
+  "use.4t":"Infrastructure operations","use.4p":"Distributed field assets and technical interventions",
+  "use.5t":"Aviation · defense · maritime","use.5p":"Technical operations requiring high levels of reliability",
+
+  "bnd.h2":"What ToolA does not do.",
+  "bnd.1t":"It is not a CMMS, EAM, or ERP.",
+  "bnd.1p":"Continue managing work orders and assets in your existing systems. ToolA works on top of them as a technical knowledge and verification layer.",
+  "bnd.2t":"Start with one system during the pilot.",
+  "bnd.2p":"Technical records created in ToolA can be exported in a structured format. During the pilot, we work together to establish the required data connection with the selected CMMS, EAM, or ERP system.",
+  "bnd.docs":"Document systems",
+  "bnd.fine":"Systems that can be targeted during the pilot.",
+  "bnd.3t":"Your data belongs to you.",
+  "bnd.3p":"Your technical records and verified cases remain owned by your organization and can be exported in a structured format.",
+  "bnd.3p2":"Hosting, access, and authorization models are defined together before the pilot according to your organization's requirements.",
+
+  "pil.eyebrow":"6-week pilot","pil.h2":"Start with one critical technical workflow.",
+  "pil.lead":"Limited scope. Real field work. A measurable impact report at the end.",
+  "pil.s1":"weeks","pil.s2":"technical users","pil.s3":"critical workflow or equipment family",
+  "pil.s4":"real field jobs or technical cases","pil.s5":"pilot impact report",
+  "pil.mh":"At the end of the pilot, we measure together",
+  "pil.m1t":"First-Time-Right","pil.m1d":"Percentage of jobs completed without technical deviation or rework",
+  "pil.m2t":"Rework / repeat visits","pil.m2d":"Number of repeat visits to the same equipment within a defined period",
+  "pil.m3t":"Diagnostic time","pil.m3d":"Time from recording the initial symptom to identifying the root cause",
+  "pil.m4t":"Technical record quality","pil.m4d":"Percentage of records containing all required measurements, tests, and field evidence",
+  "pil.m5t":"Expert validation time","pil.m5d":"Time spent by a senior technician reviewing and validating a technical record",
+  "pil.m6t":"Knowledge reuse","pil.m6d":"Number of times a verified historical case is reused in a new job",
+  "pil.nh":"What we need from you",
+  "pil.n1":"One critical workflow or equipment family",
+  "pil.n2":"Your existing procedures and acceptance criteria — as they are, without rewriting them",
+  "pil.n3":"5–10 technical users and one short weekly review",
+  "pil.partner":"We are working with the first 1–2 organizations as design partners. The purpose of the pilot is to measure the impact together using real field data.",
+  "pil.founder":"ToolA is being developed by a team with backgrounds in electrical and electronics engineering and field operations.",
+
+  "foot.where":"Teknopark Istanbul, Türkiye · QSTP, Doha, Qatar",
+
+  "modal.title":"Book a pilot discussion","modal.sub":"We will get back to you within 24 hours.",
+  "modal.name":"Full name","modal.namePh":"Jane Smith",
+  "modal.company":"Company","modal.companyPh":"Company name",
+  "modal.phone":"Phone","modal.phonePh":"+90 5xx xxx xx xx",
+  "modal.email":"Email","modal.emailPh":"name@company.com",
+  "modal.submit":"Send pilot request →",
+  "modal.sending":"Sending…",
+  "modal.err":"Could not be sent. Please try again or write to info@toola.net.",
+  "modal.privacy":"Your information is kept confidential and used only to contact you.",
+  "modal.close":"Close",
+  "modal.doneT":"Request received.","modal.doneP":"We will get back to you within 24 hours."
+};
+
+/* ============================================================
+   3 · DİL
+   ============================================================ */
+var TR = {};   // HTML'deki özgün Türkçe metinler ilk yüklemede buraya alınır
+var lang = "tr";
+
+function collectTR(){
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    TR[el.getAttribute("data-i18n")] = el.textContent.trim();
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+    TR[el.getAttribute("data-i18n-html")] = el.innerHTML.trim();
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
+    TR[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder");
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
+    TR[el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label");
+  });
+  TR["meta.title"] = document.title;
+  TR["meta.desc"] = document.getElementById("metaDesc").getAttribute("content");
+}
+
+function setLang(l){
+  lang = (l === "en") ? "en" : "tr";
+  var d = (lang === "en") ? EN : TR;
+
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var v = d[el.getAttribute("data-i18n")];
+    if(v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(function(el){
+    var v = d[el.getAttribute("data-i18n-html")];
+    if(v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
+    var v = d[el.getAttribute("data-i18n-ph")];
+    if(v !== undefined) el.setAttribute("placeholder", v);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
+    var v = d[el.getAttribute("data-i18n-aria")];
+    if(v !== undefined) el.setAttribute("aria-label", v);
+  });
+
+  document.documentElement.lang = lang;
+  if(d["meta.title"]) document.title = d["meta.title"];
+  if(d["meta.desc"]) document.getElementById("metaDesc").setAttribute("content", d["meta.desc"]);
+
+  document.querySelectorAll(".langs button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+  });
+
+  try{ localStorage.setItem("toola-lang", lang); }catch(e){}
+}
+
+/* Türkiye dışından gelen ziyaretçi doğrudan İngilizce görür.
+   Sırayla: URL parametresi > kayıtlı tercih > tarayıcı dili / saat dilimi */
+function detectLang(){
+  var q = new URLSearchParams(location.search).get("lang");
+  if(q === "en" || q === "tr") return q;
+
+  var saved = null;
+  try{ saved = localStorage.getItem("toola-lang"); }catch(e){}
+  if(saved === "en" || saved === "tr") return saved;
+
+  var nav = (navigator.language || "").toLowerCase();
+  var langs = (navigator.languages || []).join(",").toLowerCase();
+  if(nav.indexOf("tr") === 0 || langs.indexOf("tr") > -1) return "tr";
+
+  try{
+    if(Intl.DateTimeFormat().resolvedOptions().timeZone === "Europe/Istanbul") return "tr";
+  }catch(e){}
+
+  return "en";
+}
+
+collectTR();
+TR["modal.sending"] = "Gönderiliyor…";   /* sadece koddan kullanılır */
+setLang(detectLang());
+
+document.querySelectorAll(".langs button").forEach(function(b){
+  b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); });
+});
+
+/* ============================================================
+   4 · PİLOT FORMU
+   ============================================================ */
+var overlay = document.getElementById("overlay");
+var modal   = document.getElementById("modal");
+var form    = document.getElementById("pilotForm");
+var lastFocus = null;
+
+function openModal(){
+  lastFocus = document.activeElement;
+  overlay.classList.add("open");
+  document.body.classList.add("locked");
+  setTimeout(function(){ document.getElementById("fName").focus(); }, 40);
+}
+function closeModal(){
+  overlay.classList.remove("open");
+  document.body.classList.remove("locked");
+  if(lastFocus) lastFocus.focus();
+}
+
+document.querySelectorAll(".js-pilot").forEach(function(b){
+  b.addEventListener("click", openModal);
+});
+document.getElementById("modalClose").addEventListener("click", closeModal);
+overlay.addEventListener("mousedown", function(e){ if(e.target === overlay) closeModal(); });
+document.addEventListener("keydown", function(e){
+  if(!overlay.classList.contains("open")) return;
+  if(e.key === "Escape"){ closeModal(); return; }
+  if(e.key !== "Tab") return;
+  var f = [].slice.call(modal.querySelectorAll("button, input, a[href]"))
+            .filter(function(el){ return el.offsetParent !== null; });
+  if(!f.length) return;
+  var first = f[0], last = f[f.length-1];
+  if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+});
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  /* Alanlara id ile erişiyoruz: form.name, input yerine formun kendi
+     name özelliğini döndürdüğü için doğrudan erişim güvenli değil. */
+  var elName    = document.getElementById("fName");
+  var elCompany = document.getElementById("fCompany");
+  var elPhone   = document.getElementById("fPhone");
+  var elEmail   = document.getElementById("fEmail");
+
+  var data = {
+    name:    elName.value.trim(),
+    company: elCompany.value.trim(),
+    phone:   elPhone.value.trim(),
+    email:   elEmail.value.trim(),
+    lang:    lang,
+    page:    location.href
+  };
+  if(!data.name || !data.company || !data.email){
+    [elName, elCompany, elEmail].forEach(function(i){
+      if(!i.value.trim()) i.style.borderColor = "#C0663A";
+    });
+    return;
   }
 
-  (function() {
-    // Pilot modal
-    var modal = document.getElementById('pilotModal');
-    var overlay = document.getElementById('pilotModalOverlay');
-    var closeBtn = document.getElementById('pilotModalClose');
-    var form = document.getElementById('pilotForm');
-    var success = document.getElementById('pilotSuccess');
-    var successClose = document.getElementById('pilotSuccessClose');
-    var triggers = document.querySelectorAll('[data-pilot-trigger]');
+  var btn = form.querySelector(".submit");
+  var err = document.getElementById("formErr");
+  var dict = (lang === "en") ? EN : TR;
+  err.classList.remove("show");
+  btn.disabled = true;
+  btn.textContent = dict["modal.sending"];
 
-    function openModal() {
-      if (!modal) return;
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      if (form) {
-        form.classList.remove('hidden');
-        try { form.reset(); } catch(e) {}
-      }
-      if (success) success.classList.add('hidden');
-      setTimeout(function() {
-        var f = document.getElementById('pilotName');
-        if (f) f.focus();
-      }, 50);
-    }
-    function closeModal() {
-      if (!modal) return;
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
+  function done(){ modal.classList.add("sent"); }
+  function fail(){
+    btn.disabled = false;
+    btn.textContent = dict["modal.submit"];
+    err.classList.add("show");
+  }
 
-    triggers.forEach(function(t) {
-      t.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal();
-      });
+  if(FORM_ENDPOINT){
+    data["_subject"] = (lang === "en")
+      ? "ToolA · New pilot request — " + data.company
+      : "ToolA · Yeni pilot görüşmesi talebi — " + data.company;
+    data["_gotcha"] = document.getElementById("fTrap").value;
+
+    fetch(FORM_ENDPOINT, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+      body: JSON.stringify(data)
+    }).then(function(res){
+      if(res && res.ok) done(); else fail();
+    }).catch(fail);
+  }else{
+    var subject = (lang === "en") ? "Pilot discussion request" : "Pilot görüşmesi talebi";
+    var body = [
+      (lang === "en" ? "Name: " : "Ad Soyad: ") + data.name,
+      (lang === "en" ? "Company: " : "Şirket: ") + data.company,
+      (lang === "en" ? "Phone: " : "Telefon: ") + data.phone,
+      (lang === "en" ? "Email: " : "E-posta: ") + data.email
+    ].join("\n");
+    window.location.href = "mailto:info@toola.net?subject=" +
+      encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    setTimeout(done, 400);
+  }
+});
+
+/* ============================================================
+   5 · GİRİŞ ANİMASYONLARI
+   ============================================================ */
+if(!("IntersectionObserver" in window)){
+  /* Destek yoksa animasyonu atla; içerik gizli kalmasın. */
+  document.querySelectorAll(".rise, .gauge").forEach(function(el){ el.classList.add("in"); });
+}else{
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
     });
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (overlay) overlay.addEventListener('click', closeModal);
-    if (successClose) successClose.addEventListener('click', closeModal);
+  },{threshold:.12, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".rise").forEach(function(el){ io.observe(el); });
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
-    });
-
-    // Form submit
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var formError = document.getElementById('pilotFormError');
-        var submitBtn = document.getElementById('pilotSubmitBtn');
-        var btnLabel = submitBtn ? submitBtn.querySelector('.btn-label') : null;
-        var originalLabel = btnLabel ? btnLabel.textContent : '';
-        var loadingLabel = btnLabel ? (btnLabel.getAttribute('data-loading') || 'Gönderiliyor…') : '';
-
-        if (formError) { formError.classList.add('hidden'); formError.textContent = ''; }
-        if (submitBtn) submitBtn.disabled = true;
-        if (btnLabel) btnLabel.textContent = loadingLabel;
-
-        var data = new FormData(form);
-        fetch(form.action || 'https://formspree.io/f/xkoaoopq', {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        }).then(function(resp) {
-          if (resp.ok) {
-            if (form) form.classList.add('hidden');
-            if (success) success.classList.remove('hidden');
-            if (submitBtn) submitBtn.disabled = false;
-            if (btnLabel) btnLabel.textContent = originalLabel;
-          } else {
-            resp.json().then(function(d) {
-              if (formError) {
-                var msg = (d && d.errors) ? d.errors.map(function(e){return e.message;}).join(', ') : 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
-                formError.textContent = msg;
-                formError.classList.remove('hidden');
-              }
-              if (submitBtn) submitBtn.disabled = false;
-              if (btnLabel) btnLabel.textContent = originalLabel;
-            }).catch(function() {
-              if (formError) {
-                formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
-                formError.classList.remove('hidden');
-              }
-              if (submitBtn) submitBtn.disabled = false;
-              if (btnLabel) btnLabel.textContent = originalLabel;
-            });
-          }
-        }).catch(function(err) {
-          if (formError) {
-            formError.textContent = 'Gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.';
-            formError.classList.remove('hidden');
-          }
-          if (submitBtn) submitBtn.disabled = false;
-          if (btnLabel) btnLabel.textContent = originalLabel;
-          console.error('Form submission error:', err);
-        });
+  var g = document.getElementById("gauge");
+  if(g){
+    var gio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); gio.unobserve(e.target); }
       });
-    }
-
-    // Mobile menu toggle
-    var mobileBtn = document.getElementById('mobileMenuBtn');
-    var mobileMenu = document.getElementById('mobileMenu');
-    var mobileLinks = document.querySelectorAll('.mobile-link');
-    if (mobileBtn && mobileMenu) {
-      var hamburgerIcon = document.getElementById('hamburgerIcon');
-      var closeIcon = document.getElementById('closeIcon');
-      mobileBtn.addEventListener('click', function() {
-        var isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden');
-        var nowOpen = !isOpen;
-        mobileBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
-        mobileMenu.setAttribute('aria-hidden', nowOpen ? 'false' : 'true');
-        if (hamburgerIcon) hamburgerIcon.classList.toggle('hidden', nowOpen);
-        if (closeIcon) closeIcon.classList.toggle('hidden', !nowOpen);
-        document.body.style.overflow = nowOpen ? 'hidden' : '';
-      });
-      mobileLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
-          mobileBtn.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
-          if (closeIcon) closeIcon.classList.add('hidden');
-          document.body.style.overflow = '';
-        });
-      });
-    }
-  })();
-
-
+    },{threshold:.5});
+    gio.observe(g);
+  }
+}
 </script>
+</body>
+</html>
