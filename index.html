@@ -23,10 +23,26 @@
      Hesap açıp domaini doğruladıktan sonra bu satır çalışır. Kaldırılırsa sayfa etkilenmez. -->
 <script defer data-domain="toola.net" src="https://plausible.io/js/script.js"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fontlar kendi sunucumuzda. Harici istek yok: Brave/uBlock/kurumsal proxy engelleyemez,
+     ziyaretçi IP'si üçüncü tarafa gitmez (GDPR), ek DNS+TLS turu yok. -->
+<link rel="preload" href="fonts/archivo-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Animasyon yalnızca desteklenirse açılır; JS çalışmazsa içerik doğrudan görünür kalır. -->
+<script>if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim')}</script>
 <style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/archivo-400-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/archivo-400-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0041,U+00C1,U+011E-011F,U+0130,U+015E-015F,U+20BA}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/archivo-500-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/archivo-500-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0041,U+00C1,U+011E-011F,U+0130,U+015E-015F,U+20BA}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/archivo-600-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/archivo-600-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0041,U+00C1,U+011E-011F,U+0130,U+015E-015F,U+20BA}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/ibm-plex-mono-400-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/ibm-plex-mono-400-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0061-0062,U+011E-011F,U+0130,U+015E-015F,U+20BA}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/ibm-plex-mono-500-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/ibm-plex-mono-500-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0061-0062,U+011E-011F,U+0130,U+015E-015F,U+20BA}
+
 :root{
   --paper:#F4F6F8; --surface:#FFFFFF;
   --ink:#0C1114; --ink-2:#48545E; --ink-3:#828F99;
@@ -305,8 +321,10 @@ tr:last-child td{border-bottom:none}
 .done .btn{margin-top:24px}
 body.locked{overflow:hidden}
 
-.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:none}
+/* Güvenli varsayılan: içerik görünür. Animasyon yalnızca html.anim varken devreye girer. */
+.rv{transition:opacity .6s ease,transform .6s ease}
+html.anim .rv{opacity:0;transform:translateY(14px)}
+html.anim .rv.in{opacity:1;transform:none}
 
 html[lang="tr"] [data-en]{display:none}
 html[lang="en"] [data-tr]{display:none}
@@ -1171,7 +1189,7 @@ if (band && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   requestAnimationFrame(function(){ band.classList.add('run'); });
 }
 
-if ('IntersectionObserver' in window) {
+if (document.documentElement.classList.contains('anim')) {
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
@@ -1186,8 +1204,18 @@ if ('IntersectionObserver' in window) {
     });
   }, {threshold:0.4});
   document.querySelectorAll('[data-sec]').forEach(function(el){ sio.observe(el); });
-} else {
-  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* Bölüm ölçümü animasyondan bağımsızdır */
+if (!document.documentElement.classList.contains('anim') && 'IntersectionObserver' in window) {
+  var seen2={};
+  var sio2=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var k=e.target.getAttribute('data-sec');
+      if(e.isIntersecting && !seen2[k]){ seen2[k]=1; track('Bolum',{bolum:k}); sio2.unobserve(e.target); }
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('[data-sec]').forEach(function(el){ sio2.observe(el); });
 }
 </script>
 </body>
