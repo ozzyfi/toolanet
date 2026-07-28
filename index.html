@@ -1194,6 +1194,11 @@ if (document.documentElement.classList.contains('anim')) {
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  // Reveal safety: initial viewport'taki .rv'leri IO async callback'ten önce göster (hızlı scroll / observer kaçırma durumu için)
+  document.querySelectorAll('.rv').forEach(function(el){
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+  });
 
   /* Hangi bölüme kadar okunuyor — ısı haritası yerine sade sayaç */
   var seen={};
