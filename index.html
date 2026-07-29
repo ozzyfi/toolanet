@@ -74,14 +74,15 @@ body>header,body>section,body>footer,body>.strip{
 .subs .sub{margin-top:0}
 
 h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.06;font-weight:600}
-.display{font-size:clamp(2.15rem,5.2vw,3.9rem);line-height:1.04}
+.display{font-size:clamp(2.25rem,5vw,4rem);line-height:1.05}
 .display span{display:block}
 .display .dim{color:var(--ink-3);font-weight:500}
+.display-sub{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.1;color:var(--ink-3);font-weight:500;margin-top:20px;max-width:820px}
 h2{font-size:clamp(1.6rem,3.2vw,2.35rem);max-width:520px}
 h2.wide{max-width:660px}
 h3{font-size:1.05rem}
 h4{font-size:.98rem}
-.lede{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--ink-2);max-width:620px;line-height:1.55}
+.lede{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--ink-2);max-width:680px;line-height:1.55}
 .body{color:var(--ink-2);max-width:660px}
 .body+.body{margin-top:16px}
 .small{font-size:.93rem;color:var(--ink-3)}
@@ -116,7 +117,8 @@ em.q{font-style:normal;color:var(--ink)}
 
 /* hero */
 .hero{padding:clamp(52px,7vw,88px) 0 clamp(52px,6vw,76px)}
-.hero .lede{margin-top:24px}
+.hero .lede{margin-top:28px}
+.hero .wrap> :not(.band-card){max-width:820px}
 .hero-note{margin-top:24px;font-size:.89rem;color:var(--ink-3)}
 
 /* SIGNATURE band */
@@ -452,20 +454,21 @@ html[lang="en"] [data-tr]{display:none}
       <span data-en>Technical Evidence and Verification Layer for Critical Field Work</span>
     </span>
     <h1 class="display">
-      <span data-tr>Kritik işteki hata, iş kapanırken her zaman görünmez.</span>
-      <span data-tr class="dim">Sonradan arıza, kesinti veya teslim gecikmesi olarak ortaya çıkar.</span>
-      <span data-en>A defect in critical work is not always visible when the job is closed.</span>
-      <span data-en class="dim">It may surface later as a failure, outage, or handover delay.</span>
+      <span data-tr>Kritik işteki hata,</span>
+      <span data-tr>iş kapanırken görünmeyebilir.</span>
+      <span data-en>Critical work can be closed</span>
+      <span data-en>while a defect remains hidden.</span>
     </h1>
 
-    <div data-tr>
-      <p class="lede">ToolA, kritik elektriksel kurulum ve müdahalelerin kabul kriterlerine uygun yapıldığına dair teknik kanıtı iş sırasında oluşturur.</p>
-      <p class="lede" style="margin-top:14px">Tork, ölçüm, malzeme, fotoğraf ve test kanıtlarını ilgili teknik kriterlerle eşleştirir. Eksik kanıt veya kriter dışı bir değer varsa ekip sahadan ayrılmadan görünür hâle getirir.</p>
-    </div>
-    <div data-en>
-      <p class="lede">ToolA creates technical evidence during the work that critical electrical installations and interventions meet their acceptance criteria.</p>
-      <p class="lede" style="margin-top:14px">It matches torque, measurement, material, photo, and test evidence with the relevant technical criteria. Missing evidence or out-of-spec values become visible before the crew leaves the site.</p>
-    </div>
+    <p class="display-sub">
+      <span data-tr>Sonradan arıza, kesinti veya teslim gecikmesi olarak ortaya çıkar.</span>
+      <span data-en>It may surface later as a failure, outage, or handover delay.</span>
+    </p>
+
+    <p class="lede">
+      <span data-tr>ToolA, kritik elektriksel işlerde teknik kanıtı iş sırasında oluşturur; tork, ölçüm, malzeme, fotoğraf ve test kanıtlarını ilgili kriterlerle eşleştirir. Eksik kanıt veya kriter dışı bir değer varsa ekip sahadan ayrılmadan görünür hâle getirir.</span>
+      <span data-en>ToolA creates technical evidence during critical electrical work. It matches torque, measurement, material, photo, and test evidence with the relevant criteria. Missing evidence or out-of-spec values become visible before the crew leaves the site.</span>
+    </p>
 
     <div class="btns">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span> →</button>
