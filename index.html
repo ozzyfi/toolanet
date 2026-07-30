@@ -828,12 +828,19 @@ html[lang="en"] [data-tr]{display:none}
         <div class="fd-p">
           <div class="fd-n">03</div>
           <div class="fd-box">
-            <div class="fd-scale">
-              <div class="fd-rail"></div>
-              <div class="fd-band"></div>
-              <div class="fd-lim a">38</div>
-              <div class="fd-lim b">42</div>
-              <div class="fd-mk"><span>31</span><i></i><b></b></div>
+            <div class="fd-crits" style="display:flex;flex-wrap:wrap;gap:14px">
+              <div class="fd-crit" style="padding:12px 14px;border:1px solid var(--line-2);border-radius:4px;background:var(--surface);min-width:96px">
+                <div style="font-size:.7rem;color:var(--ink-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Alt sınır</span><span data-en>Lower limit</span></div>
+                <div style="font-size:1.35rem;font-weight:600;color:var(--ink);margin-top:5px;line-height:1.1">38<span style="font-size:.75rem;color:var(--ink-3);font-weight:400;margin-left:4px">Nm</span></div>
+              </div>
+              <div class="fd-crit" style="padding:12px 14px;border:1px solid var(--line-2);border-radius:4px;background:var(--surface);min-width:96px">
+                <div style="font-size:.7rem;color:var(--ink-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Üst sınır</span><span data-en>Upper limit</span></div>
+                <div style="font-size:1.35rem;font-weight:600;color:var(--ink);margin-top:5px;line-height:1.1">42<span style="font-size:.75rem;color:var(--ink-3);font-weight:400;margin-left:4px">Nm</span></div>
+              </div>
+              <div class="fd-crit" style="padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--copper);border-radius:4px;background:var(--surface);min-width:96px">
+                <div style="font-size:.7rem;color:var(--copper);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Saha değeri</span><span data-en>Field value</span></div>
+                <div style="font-size:1.35rem;font-weight:600;color:var(--ink);margin-top:5px;line-height:1.1">31<span style="font-size:.75rem;color:var(--ink-3);font-weight:400;margin-left:4px">Nm</span></div>
+              </div>
             </div>
           </div>
           <div class="fd-c"><span data-tr>Değer, o iş için tanımlı kabul kriteriyle eşleştirilir.</span><span data-en>The value is matched against the acceptance criterion defined for that job.</span></div>
@@ -859,9 +866,6 @@ html[lang="en"] [data-tr]{display:none}
       </p>
     </div>
 
-    <p class="note" style="margin-top:22px">
-      <span data-tr>ToolA nihai mühendislik kabulünün yerine geçmez. Karar verecek kişinin ihtiyaç duyduğu teknik kanıtı yapılandırır.</span>
-      <span data-en>ToolA does not replace final engineering acceptance. It structures the technical evidence the decision-maker needs.</span>
     </p>
   </div>
 </section>
@@ -927,7 +931,7 @@ html[lang="en"] [data-tr]{display:none}
       <span data-en><b>The common thread is not a sector. It is a type of work:</b> done by hand, governed by technical criteria, expensive when it goes wrong, and impossible to evidence after the fact.</span>
     </p>
 
-    <h3 style="margin-top:44px"><span data-tr>Merkez ekip ne görür?</span><span data-en>What the central team sees.</span></h3>
+    <h3 style="margin-top:44px"><span data-tr>Aynı kaydı iki kişi görür.</span><span data-en>Two people see the same record.</span></h3>
     <div class="roles">
       <div class="role">
         <b><span data-tr>Sahada kanıtı üreten</span><span data-en>The person creating evidence in the field</span></b>
