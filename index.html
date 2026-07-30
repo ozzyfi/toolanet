@@ -467,8 +467,8 @@ html[lang="en"] [data-tr]{display:none}
     </p>
 
     <p class="lede">
-      <span data-tr>ToolA, kritik elektriksel işlerde teknik kanıtı iş sırasında oluşturur; tork, ölçüm, malzeme, fotoğraf ve test kanıtlarını ilgili kriterlerle eşleştirir. Eksik kanıt veya kriter dışı bir değer varsa ekip sahadan ayrılmadan görünür hâle getirir.</span>
-      <span data-en>ToolA creates technical evidence during critical electrical work. It matches torque, measurement, material, photo, and test evidence with the relevant criteria. Missing evidence or out-of-spec values become visible before the crew leaves the site.</span>
+      <span data-tr>ToolA, kritik elektriksel işlerde teknik kanıtı iş sırasında oluşturur; tork, ölçüm, malzeme, fotoğraf ve test kanıtlarını ilgili kriterlerle eşleştirir. Yakalanan kanıt eksikse veya tanımlı kriterin dışındaysa, sonucu ekip sahadan ayrılmadan görünür hâle getirir.</span>
+      <span data-en>ToolA creates technical evidence during critical electrical work and matches torque, measurement, material, photo, and test evidence with the relevant criteria. If the captured evidence is missing or outside the defined criteria, the result is made visible before the crew leaves the site.</span>
     </p>
 
     <div class="btns">
@@ -556,7 +556,6 @@ html[lang="en"] [data-tr]{display:none}
       <div class="q"><span class="q-t"><span data-tr>Hangi prosedür uygulandı?</span><span data-en>Which procedure was followed?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
       <div class="q"><span class="q-t"><span data-tr>Gerçek ölçüm neydi?</span><span data-en>What was the actual measurement?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
       <div class="q"><span class="q-t"><span data-tr>Bağlantı hangi torkla sıkıldı?</span><span data-en>To what torque was it tightened?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
-      <div class="q"><span class="q-t"><span data-tr>Hangi malzeme kullanıldı?</span><span data-en>Which material was used?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
       <div class="q"><span class="q-t"><span data-tr>Sapma olduysa neden kabul edildi?</span><span data-en>If there was a deviation, why was it accepted?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
     </div>
     <div class="after">
@@ -575,8 +574,8 @@ html[lang="en"] [data-tr]{display:none}
       <span data-en>In critical technical work, the record usually rests on the technician's own declaration. Asking the person doing the job to re-type the same information into a form adds work and limits how far the record can be trusted.</span>
     </p>
     <p class="body" style="margin-top:18px;color:var(--ink);font-size:1.1rem;font-weight:600;max-width:46ch">
-      <span data-tr>ToolA kritik doğrulamayı teknisyenin beyanına dayandırmaz. İş sırasında oluşan kanıtı analiz eder.</span>
-      <span data-en>ToolA does not base critical verification on the technician's declaration. It analyses the evidence the work already produces.</span>
+      <span data-tr>ToolA, doğrulanabilir bilginin bulunduğu noktalarda kullanıcı beyanı yerine iş sırasında oluşan kanıtı esas alır.</span>
+      <span data-en>Where verifiable information is available, ToolA bases its decisions on the evidence produced during the work instead of user declarations.</span>
     </p>
 
     <div class="flow2">
@@ -769,16 +768,34 @@ html[lang="en"] [data-tr]{display:none}
       </div>
     </div>
 
-    <div class="callout" style="border-left-color:var(--ink);background:var(--surface)">
-      <b style="color:var(--ink)"><span data-tr>Ölçüm kanıtı nedir?</span><span data-en>What is measurement evidence?</span></b>
-      <p><span data-tr>Teknisyen ölçü aletini konumunda tutarak görüntü alır. ToolA değeri <b>alet üzerinden</b> okur. Görüntüden boyut tahmin etmez.</span><span data-en>The technician captures the measuring instrument in position. ToolA reads the value <b>from the instrument</b>. It does not estimate dimensions from the image.</span></p>
-    </div>
-
     <div class="callout">
       <b><span data-tr>Sapma, iş kapanmadan görünür.</span><span data-en>The deviation surfaces before the job closes.</span></b>
       <p>
         <span data-tr>Bağlantı tamamlanmış ve VLF testi geçmiş olabilir. Ancak 31 Nm tork, tanımlı 38–42 Nm aralığının dışındadır. ToolA bunu teknisyene sahadayken gösterir: <b>kontrol gerekli — değer kabul kriterinin dışında.</b> Gerekçe ve yapılan işlem kaydedilmeden teknik doğrulama tamamlanmaz.</span>
         <span data-en>The joint may be complete and the VLF test may have passed. But 31 Nm falls outside the defined 38–42 Nm range. ToolA shows this to the technician while still on site: <b>check required — value outside acceptance criteria.</b> Technical verification is not complete until the justification and the action taken are recorded.</span>
+      </p>
+    </div>
+
+    <div class="devmgmt" style="margin-top:24px">
+      <p class="body" style="font-weight:600;color:var(--ink);max-width:54ch;margin:0 0 12px">
+        <span data-tr>Sapma yalnızca gösterilmez. Kapanana kadar yönetilir.</span>
+        <span data-en>The deviation is not only shown — it is managed until it is closed.</span>
+      </p>
+      <ol class="dev-steps" style="margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px;max-width:64ch">
+        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">01</span><span class="body" style="margin:0"><span data-tr>Kriter dışı sonuç tespit edilir.</span><span data-en>Out-of-criteria result is detected.</span></span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">02</span><span class="body" style="margin:0"><span data-tr>Sapma ilgili teknisyen, ekip veya yükleniciye atanır.</span><span data-en>The deviation is assigned to the relevant technician, crew or contractor.</span></span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">03</span><span class="body" style="margin:0"><span data-tr>Düzeltici işlem ve gerekçe kaydedilir.</span><span data-en>Corrective action and the reason are recorded.</span></span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">04</span><span class="body" style="margin:0"><span data-tr>Yeni ölçüm veya teknik kanıt istenir.</span><span data-en>New measurement or technical evidence is requested.</span></span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">05</span><span class="body" style="margin:0"><span data-tr>Teknik sorumlu sonucu inceler ve onaylar.</span><span data-en>The technical lead reviews and approves the outcome.</span></span></li>
+      </ol>
+      <div class="card" style="max-width:64ch;padding:16px 18px;border-left:3px solid var(--ink);background:var(--surface)">
+        <p class="body" style="font-weight:600;color:var(--ink);margin:0 0 6px"><span data-tr>Bağlantı yeniden sıkılır.</span><span data-en>The connection is re-tightened.</span></p>
+        <p class="body" style="margin:0 0 6px"><span data-tr>Yeni ölçüm: 40,2 Nm</span><span data-en>New measurement: 40.2 Nm</span></p>
+        <p class="body" style="margin:0"><span class="pill pill-ok" style="padding:3px 10px"><span data-tr>Doğrulandı</span><span data-en>Verified</span></span></p>
+      </div>
+      <p class="small" style="margin-top:14px;color:var(--ink-3);max-width:64ch;max-width:64ch">
+        <span data-tr>Sapma kapanmadan faaliyet doğrulanmış olarak raporlanmaz.</span>
+        <span data-en>The activity is not reported as verified before the deviation is closed.</span>
       </p>
     </div>
 
@@ -910,7 +927,7 @@ html[lang="en"] [data-tr]{display:none}
       <span data-en><b>The common thread is not a sector. It is a type of work:</b> done by hand, governed by technical criteria, expensive when it goes wrong, and impossible to evidence after the fact.</span>
     </p>
 
-    <h3 style="margin-top:44px"><span data-tr>Aynı kaydı iki kişi görür.</span><span data-en>Two people see the same record.</span></h3>
+    <h3 style="margin-top:44px"><span data-tr>Merkez ekip ne görür?</span><span data-en>What the central team sees.</span></h3>
     <div class="roles">
       <div class="role">
         <b><span data-tr>Sahada kanıtı üreten</span><span data-en>The person creating evidence in the field</span></b>
