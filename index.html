@@ -6,7 +6,7 @@
 <title>ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı</title>
 <meta name="description" content="Kritik elektriksel bağlantılarda kabul kriterine uygunluğun kanıtı iş yapılırken oluşur. Sapma, ekip sahadan ayrılmadan görünür.">
 <link rel="canonical" href="https://toola.net/">
-<meta name="theme-color" content="#F4F6F8">
+<meta name="theme-color" content="#F1EFE9">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://toola.net/">
@@ -16,8 +16,25 @@
 <meta property="og:image" content="https://toola.net/og.png">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı">
+<link rel="alternate" hreflang="tr" href="https://toola.net/?lang=tr">
+<link rel="alternate" hreflang="en" href="https://toola.net/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://toola.net/">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230C1114'/><rect x='16' y='14.5' width='10' height='3' rx='1.5' fill='%23ffffff'/><circle cx='9' cy='16' r='3' fill='%23BE3A11'/></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication",
+ "name":"ToolA","applicationCategory":"BusinessApplication",
+ "operatingSystem":"iOS, Android, Web",
+ "description":"Kritik saha işleri için teknik kanıt ve doğrulama katmanı.",
+ "url":"https://toola.net/",
+ "publisher":{"@type":"Organization","name":"Toola Teknoloji A.Ş.","email":"info@toola.net",
+   "url":"https://toola.net/","sameAs":["https://www.linkedin.com/company/toolanet/","https://www.instagram.com/toolanet/"],
+   "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"}}}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2314120D'/><rect x='16' y='14.5' width='10' height='3' rx='1.5' fill='%23ffffff'/><circle cx='9' cy='16' r='3' fill='%23BE3A11'/></svg>">
 
 <!-- Analytics: Plausible (çerezsiz, kişisel veri toplamaz, onay bandı gerektirmez).
      Hesap açıp domaini doğruladıktan sonra bu satır çalışır. Kaldırılırsa sayfa etkilenmez. -->
@@ -29,6 +46,16 @@
 <link rel="preload" href="fonts/archivo-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 
+
+<script>
+/* Dil, ilk boyamadan once belirlenir: ?lang= > kayitli tercih > tarayici dili. */
+(function(){try{
+  var q=null; try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+  var sv=null; try{sv=localStorage.getItem('toola-lang')}catch(e){}
+  var nv=(navigator.language||'tr').slice(0,2).toLowerCase();
+  document.documentElement.lang = (q==='en'||q==='tr')?q:(sv==='en'||sv==='tr')?sv:(nv==='tr'?'tr':'en');
+}catch(e){}})();
+</script>
 
 <style>
 @font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/archivo-400-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
@@ -43,17 +70,19 @@
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/ibm-plex-mono-500-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0061-0062,U+011E-011F,U+0130,U+015E-015F,U+20BA}
 
 :root{
-  --paper:#F4F6F8; --surface:#FFFFFF;
-  --ink:#0C1114; --ink-2:#48545E; --ink-3:#828F99;
-  --line:#DDE3E8; --line-2:#C6CFD6;
-  --conform:#0F7A52; --conform-bg:#E9F4EF;
-  --dev:#BE3A11; --dev-bg:#FBEDE7;
+  --paper:#F1EFE9; --surface:#FFFFFF;
+  --ink-dark:#131109; --on-dark:#FFFFFF; --on-dark-2:#B0AA9B; --line-dark:rgba(255,255,255,.16);
+  --ink:#14120D; --ink-2:#4A463C; --ink-3:#6B6558;
+  --line:#E4E1D8; --line-2:#CCC8BB;
+  --bg-2:#FBFAF6;
+  --conform:#0F7A52; --conform-bg:#E7F1E8;
+  --dev:#BE3A11; --dev-bg:#F8EADF;
   --sans:'Archivo',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
   --pad:clamp(66px,8vw,116px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:78px}
+html{scroll-behavior:smooth;scroll-padding-top:82px;scrollbar-gutter:stable}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 /* ── YERLEŞİM SAVUNMASI ──
    body herhangi bir sebeple grid/flex olursa (harici stil, eklenti, farklı build)
@@ -64,7 +93,6 @@ body>header,body>section,body>footer,body>.strip{
   grid-column:1/-1;flex:0 0 100%;position:relative;float:none;clear:both;
 }
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box}
-.narrow{max-width:900px}
 .sec{padding:var(--pad) 0;border-top:1px solid var(--line)}
 .sec-a{background:var(--surface)}
 .sec-tight{padding:clamp(46px,5.2vw,72px) 0}
@@ -73,15 +101,15 @@ body>header,body>section,body>footer,body>.strip{
 .subs{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .subs .sub{margin-top:0}
 
-h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.06;font-weight:600}
-.display{font-size:clamp(2.25rem,5vw,4rem);line-height:1.05}
+h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.06;font-weight:600;text-wrap:balance}
+.display{font-size:clamp(2.25rem,5vw,4rem);line-height:1.03;letter-spacing:-.034em}
 .display span{display:block}
 .display .dim{color:var(--ink-3);font-weight:500}
 .display-sub{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.1;color:var(--ink-3);font-weight:500;margin-top:20px;max-width:820px}
 h2{font-size:clamp(1.6rem,3.2vw,2.35rem);max-width:520px}
 h2.wide{max-width:660px}
-h3{font-size:1.05rem}
-h4{font-size:.98rem}
+h3{font-size:1.2rem;letter-spacing:-.018em}
+h4{font-size:1.06rem;letter-spacing:-.015em}
 .lede{font-size:clamp(1.03rem,1.5vw,1.19rem);color:var(--ink-2);max-width:680px;line-height:1.55}
 .body{color:var(--ink-2);max-width:660px}
 .body+.body{margin-top:16px}
@@ -99,7 +127,7 @@ em.q{font-style:normal;color:var(--ink)}
 .strip-n{font-weight:600;font-size:.92rem;letter-spacing:-.01em;color:var(--ink-2)}
 
 /* header */
-.hd{position:sticky;top:0;z-index:60;background:rgba(244,246,248,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hd{position:sticky;top:0;z-index:60;background:rgba(241,239,233,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .hd-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
 .logo{font-weight:700;font-size:1.57rem;letter-spacing:-.038em;line-height:1;text-decoration:none;color:var(--ink)}
 .logo em{font-style:normal;color:var(--ink-3)}
@@ -155,14 +183,28 @@ em.q{font-style:normal;color:var(--ink)}
 @keyframes fade{from{opacity:0}}
 @keyframes mkIn{from{opacity:0;transform:translateX(-24px)}}
 
+.ico{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ico-arw{width:.92em;height:.92em;transition:transform .18s}
+.btn:hover .ico-arw{transform:translateX(2px)}
+.ico-ck{width:.95em;height:.95em;stroke-width:2}
+.pipe .ico-arw{vertical-align:-.12em;margin:0 6px;color:var(--ink-3)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+/* .sr mutlak konumlu: iceren blogu tasiyicisi olmazsa tablonun yatay kaydirma
+   kabindan kacip sayfayi genisletiyor. Rozeti konumlandirici yapiyoruz. */
+.pill{position:relative}
+.skip{position:absolute;left:-9999px;top:0;z-index:200}
+.skip:focus{left:12px;top:12px}
 .pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;padding:5px 10px;border-radius:3px;white-space:nowrap}
 .pill-dev{background:var(--dev-bg);color:var(--dev)}
 .pill-ok{background:var(--conform-bg);color:var(--conform)}
-.pill-q{background:var(--paper);color:var(--ink-2);border:1px solid var(--line-2)}
 
 /* value band */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:44px}
 .trio>div{background:var(--surface);padding:28px 24px 32px}
+/* cercevesiz varyant: ayni izgarayi arka arkaya iki kez gostermemek icin */
+.trio-open{background:none;border:none;border-radius:0;gap:34px;overflow:visible}
+.trio-open>div{background:none;padding:20px 0 0;border-top:2px solid var(--ink)}
+.dim2{color:var(--ink-3);font-weight:500}
 .trio h3{margin-bottom:10px}
 .trio p{font-size:.94rem;color:var(--ink-2);line-height:1.5}
 .trio .n{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.1em;display:block;margin-bottom:16px}
@@ -182,7 +224,9 @@ em.q{font-style:normal;color:var(--ink)}
 .flow2 .who{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin-bottom:14px}
 .flow2 ol{list-style:none;display:flex;flex-direction:column;gap:10px}
 .flow2 li{font-size:.95rem;color:var(--ink-2);padding-left:20px;position:relative}
-.flow2 li::before{content:'→';position:absolute;left:0;color:var(--ink-3);font-size:.85rem}
+.flow2 li::before{content:'';position:absolute;left:0;top:.5em;width:11px;height:9px;background:currentColor;color:var(--ink-3);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 13' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 6.5h13M9.5 2 14 6.5 9.5 11'/%3E%3C/svg%3E") no-repeat center/contain;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 13' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 6.5h13M9.5 2 14 6.5 9.5 11'/%3E%3C/svg%3E") no-repeat center/contain}
 
 /* ---- SIGNATURE 2: evidence ladder ---- */
 .ladder{margin-top:44px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
@@ -209,7 +253,9 @@ em.q{font-style:normal;color:var(--ink)}
 .rec-hd{padding:17px 22px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
 .rec-id{font-family:var(--mono);font-size:.79rem}
 .rec-st{font-family:var(--mono);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
-.tw{overflow-x:auto}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tw-hint{display:none;padding:9px 22px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:760px){.tw-hint{display:block}}
 table{width:100%;border-collapse:collapse;min-width:660px}
 th{text-align:left;font-family:var(--mono);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3);padding:12px 20px;border-bottom:1px solid var(--line);white-space:nowrap}
 td{padding:15px 20px;border-bottom:1px solid var(--line);font-size:.92rem;vertical-align:middle}
@@ -226,7 +272,7 @@ tr:last-child td{border-bottom:none}
 /* compare */
 .cmp{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .cmp-c{background:var(--surface);padding:28px 24px 32px}
-.cmp-c.b{background:#FAFCFD}
+.cmp-c.b{background:#FBFAF6}
 .cmp-h{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin-bottom:18px}
 .cmp-c.b .cmp-h{color:var(--ink)}
 .cmp-l{list-style:none;display:flex;flex-direction:column;gap:11px}
@@ -239,10 +285,6 @@ tr:last-child td{border-bottom:none}
 .use{padding-top:20px;border-top:2px solid var(--ink)}
 .use h3{margin-bottom:8px}
 .use p{font-size:.92rem;color:var(--ink-2);line-height:1.5}
-.roles{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.role{background:var(--surface);padding:24px}
-.role b{display:block;margin-bottom:7px}
-.role p{font-size:.93rem;color:var(--ink-2)}
 
 /* integration */
 .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -272,7 +314,7 @@ tr:last-child td{border-bottom:none}
 .ft-in{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between}
 .ft p{font-size:.85rem;color:var(--ink-3)}
 .ft .cat{color:var(--ink-2);margin-top:8px;max-width:400px}
-.ft a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-2)}
+.ft a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-2);display:inline-block;padding:4px 0}
 .ft-r{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
 .tag{font-family:var(--mono);font-size:.75rem;color:var(--ink-3)}
 .soc{display:flex;gap:8px}
@@ -286,8 +328,11 @@ tr:last-child td{border-bottom:none}
 .consent input{margin-top:3px;width:16px;height:16px;flex:none;accent-color:var(--ink);cursor:pointer}
 .consent label{font-size:.83rem;color:var(--ink-2);line-height:1.45;cursor:pointer}
 .consent.bad label{color:var(--dev)}
+.consent-e{margin:-8px 0 14px 26px;font-size:.8rem;color:var(--dev)}
+.consent-e[hidden]{display:none}
+.fld input[aria-invalid="true"]{border-color:var(--dev);background:var(--dev-bg)}
 .consent a,.lnk{color:var(--ink);text-decoration:underline;text-underline-offset:2px;background:none;border:none;padding:0;font:inherit;cursor:pointer}
-.pmodal{z-index:110}
+.modal.pmodal{z-index:110}
 .pmodal .modal-box{max-width:620px}
 .legal h3{font-size:1.28rem;margin-bottom:6px}
 .legal .modal-s{margin-bottom:22px}
@@ -296,82 +341,14 @@ tr:last-child td{border-bottom:none}
 .legal dd{color:var(--ink-2)}
 .legal .fine{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-3);line-height:1.5}
 .ft-legal{margin-top:8px;text-align:right}
-.ft-legal button{background:none;border:none;padding:0;font:inherit;font-size:.85rem;color:var(--ink-2);cursor:pointer;border-bottom:1px solid var(--line-2)}
+.ft-legal button{background:none;border:none;padding:4px 0;font:inherit;font-size:.85rem;color:var(--ink-2);cursor:pointer;border-bottom:1px solid var(--line-2)}
 .ft-legal button:hover{color:var(--ink)}
 
-
-/* ── KANIT ZİNCİRİ ŞEMASI (saf CSS, JS'e bağlı değil) ── */
-.fd{margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,3vw,30px)}
-.fd-h{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);margin-bottom:24px}
-.fd-track{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
-.fd-p{position:relative;display:flex;flex-direction:column;opacity:.28;animation-duration:9s;animation-iteration-count:infinite;animation-timing-function:ease}
-.fd-p:nth-child(1){animation-name:fd1}
-.fd-p:nth-child(2){animation-name:fd2}
-.fd-p:nth-child(3){animation-name:fd3}
-.fd-p:nth-child(4){animation-name:fd4}
-@keyframes fd1{0%,3%{opacity:.28;transform:translateY(4px)}9%,100%{opacity:1;transform:none}}
-@keyframes fd2{0%,24%{opacity:.28;transform:translateY(4px)}30%,100%{opacity:1;transform:none}}
-@keyframes fd3{0%,45%{opacity:.28;transform:translateY(4px)}51%,100%{opacity:1;transform:none}}
-@keyframes fd4{0%,67%{opacity:.28;transform:translateY(4px)}73%,100%{opacity:1;transform:none}}
-.fd-n{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;color:var(--ink-3);margin-bottom:12px}
-.fd-box{position:relative;height:104px;border:1px solid var(--line-2);border-radius:4px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.fd-c{margin-top:12px;font-size:.83rem;color:var(--ink-2);line-height:1.45}
-
-/* 01 · telefon */
-.fd-phone{width:38px;height:62px;border:2px solid var(--ink);border-radius:6px;position:relative;background:var(--surface)}
-.fd-phone::after{content:'';position:absolute;left:50%;top:8px;transform:translateX(-50%);width:22px;height:14px;border:1px solid var(--line-2);border-radius:2px}
-.fd-flash{position:absolute;inset:0;background:var(--ink);opacity:0;animation:fdFlash 9s infinite ease}
-@keyframes fdFlash{0%,12%{opacity:0}14%{opacity:.16}18%,100%{opacity:0}}
-
-/* 02 · cihaz ekranı */
-.fd-lcd{width:112px;padding:12px 10px;border:2px solid var(--ink);border-radius:3px;background:var(--ink);text-align:center}
-.fd-val{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1;opacity:0;animation:fdVal 9s infinite ease}
-.fd-unit{font-family:var(--mono);font-size:.62rem;color:#9AA6AE;letter-spacing:.14em;margin-top:5px;opacity:0;animation:fdVal 9s infinite ease}
-@keyframes fdVal{0%,29%{opacity:0}34%,100%{opacity:1}}
-
-/* 03 · kriter bandı — skala 28–46, band 38–42, işaretçi 31 */
-.fd-scale{position:relative;width:88%;height:46px}
-.fd-rail{position:absolute;top:28px;left:0;right:0;height:2px;background:var(--line-2)}
-.fd-band{position:absolute;top:19px;left:55.6%;width:22.2%;height:20px;border-radius:2px;background:var(--conform-bg);border:1px solid rgba(15,122,82,.4);transform-origin:left center;transform:scaleX(0);animation:fdBand 9s infinite ease}
-@keyframes fdBand{0%,50%{transform:scaleX(0)}57%,100%{transform:scaleX(1)}}
-.fd-lim{position:absolute;top:0;font-family:var(--mono);font-size:.6rem;color:var(--conform);opacity:0;animation:fdVal 9s infinite ease;animation-name:fdLim}
-@keyframes fdLim{0%,57%{opacity:0}63%,100%{opacity:1}}
-.fd-lim.a{left:55.6%;transform:translateX(-50%)}
-.fd-lim.b{left:77.8%;transform:translateX(-50%)}
-.fd-mk{position:absolute;top:20px;left:16.7%;opacity:0;animation:fdMk 9s infinite ease}
-@keyframes fdMk{0%,62%{opacity:0;transform:translateX(-14px)}70%,100%{opacity:1;transform:none}}
-.fd-mk i{display:block;width:2px;height:18px;background:var(--dev);margin:0 auto}
-.fd-mk b{display:block;width:9px;height:9px;border-radius:50%;background:var(--dev);margin:-4px auto 0;box-shadow:0 0 0 3px var(--dev-bg)}
-.fd-mk span{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--dev);white-space:nowrap}
-
-/* 04 · sonuç */
-.fd-out{text-align:center}
-.fd-chip{display:inline-block;font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:3px;background:var(--dev-bg);color:var(--dev);opacity:0;animation:fdChip 9s infinite ease}
-@keyframes fdChip{0%,72%{opacity:0;transform:scale(.9)}78%,100%{opacity:1;transform:none}}
-.fd-lock{margin-top:9px;font-family:var(--mono);font-size:.58rem;color:var(--ink-3);letter-spacing:.06em;opacity:0;animation:fdLock 9s infinite ease}
-@keyframes fdLock{0%,80%{opacity:0}86%,100%{opacity:1}}
-
-.fd-arw{position:absolute;top:52px;right:-11px;width:14px;height:1px;background:var(--line-2);z-index:1}
-.fd-arw::after{content:'';position:absolute;right:0;top:-2.5px;border:3px solid transparent;border-left-color:var(--line-2)}
-.fd-p:last-child .fd-arw{display:none}
-.fd-note{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-3);line-height:1.5}
-
-@media(max-width:760px){
-  .fd-track{grid-template-columns:repeat(2,1fr);gap:20px 14px}
-  .fd-p:nth-child(2) .fd-arw{display:none}
-}
-@media(max-width:460px){ .fd-track{grid-template-columns:1fr} .fd-arw{display:none!important} .fd-scale{width:100%;min-width:260px;height:64px} .fd-lim,.fd-mk span{font-size:.7rem} .fd-box{overflow-x:auto} }
-@media(prefers-reduced-motion:reduce){
-  .fd-p{opacity:1!important;transform:none!important}
-  .fd-val,.fd-unit,.fd-lim,.fd-mk,.fd-chip,.fd-lock{opacity:1!important;transform:none!important}
-  .fd-band{transform:scaleX(1)!important}
-  .fd-flash{display:none}
-}
 
 /* modal */
 .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
 .modal[hidden]{display:none}
-.modal-bd{position:absolute;inset:0;background:rgba(12,17,20,.42);backdrop-filter:blur(3px);animation:fade .22s ease}
+.modal-bd{position:absolute;inset:0;background:rgba(20,18,13,.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:fade .22s ease}
 .modal-box{position:relative;width:100%;max-width:452px;max-height:88vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:clamp(26px,3.6vw,38px);box-shadow:0 26px 64px -22px rgba(12,17,20,.34);animation:modalIn .26s cubic-bezier(.2,.7,.3,1)}
 @keyframes modalIn{from{opacity:0;transform:translateY(12px)}}
 .modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;background:none;border:1px solid transparent;border-radius:3px;cursor:pointer;color:var(--ink-3);font-size:20px;line-height:1}
@@ -398,6 +375,17 @@ tr:last-child td{border-bottom:none}
 .done p{font-size:.94rem;color:var(--ink-2)}
 .done .btn{margin-top:24px}
 body.locked{overflow:hidden}
+
+/* mobilde sabit alt CTA: 620px altinda header butonu gizlendigi icin
+   sayfa boyunca tiklanabilir tek nokta kalmiyordu. */
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(241,239,233,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.mcta .btn{flex:1;justify-content:center;padding:14px 16px}
+@media(max-width:620px){.mcta{display:flex} body{padding-bottom:76px} .modal,.pmodal{z-index:120}}
+@media print{.hd,.mcta,.modal,.pmodal,.lang{display:none!important}
+  body{background:#fff;font-size:11pt} .sec{padding:18px 0;break-inside:avoid}
+  .trio,.flow2,.cmp,.roles,.ladder,.rec{break-inside:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}}
 
 /* Scroll animasyonu kaldırıldı. İçerik her koşulda görünür; hiçbir JS'e bağlı değil.
    .rv sınıfı geriye dönük uyumluluk için duruyor, hiçbir etkisi yok. */
@@ -434,17 +422,98 @@ html[lang="en"] [data-tr]{display:none}
   .rv{opacity:1;transform:none}
 }
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+/* ─────────── RAFİNASYON KATMANI ───────────
+   Aşağıdaki kurallar yalnızca görsel sistemi düzenler.
+   Hiçbir metin, yapı veya davranış değişmez. */
+
+/* A · Yarıçap sistemi: altı farklı değer yerine iki seviye.
+      4px = kontroller (buton, giriş, çip, rozet) · 10px = yüzeyler (kart, tablo, modal) */
+.band-card,.trio,.flow2,.cmp,.roles,.ladder,.rec,.modal-box,.ctr-panel{border-radius:10px}
+.btn,.chip,.pill,.lang,.fld input,.soc a,.modal-x,.ctx,.pipe{border-radius:4px}
+.callout{border-radius:0 4px 4px 0}
+.zone{border-radius:3px}
+/* tek kenarlikli ogelerde yaricap yok: .use, .card, .trio-open, .mnote */
+.uses .use,.card{border-radius:0}
+
+/* Cercevesiz uclu: kutu yerine ust kural cizgisi.
+   02. bolumdeki kutulu izgaranin hemen ardindan ayni kalibi tekrar etmemek icin. */
+.trio.trio-open{background:none;border:none;border-radius:0;overflow:visible;gap:0 40px}
+.trio.trio-open>div{background:none;border:none;border-radius:0;padding:18px 0 0;border-top:2px solid var(--ink)}
+.trio.trio-open h3{margin-bottom:8px}
+.trio.trio-open .n{margin-bottom:14px}
+.trio.trio-open p{max-width:34ch}
+@media(max-width:900px){.trio.trio-open{gap:30px 0}}
+.done-i{border-radius:50%}
+
+/* B · Mono etiketler: 16 ayrı varyant yerine üç kademe.
+      Aynı anlam düzeyindeki etiketler artık aynı sesle konuşuyor. */
+.eyebrow{font-size:.72rem;letter-spacing:.15em}
+.strip-lbl,.band-tag,.band-label,.ro-l,.flow2 .who,.cmp-h,.mgrp-h,.rec-st,.tw-hint,.legal dt,.fld label{
+  font-size:.685rem;letter-spacing:.12em}
+th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
+.pill,.q-a{letter-spacing:.09em}
+.trio .n,.fd-n{font-size:.72rem;letter-spacing:.12em}
+
+/* C · Hairline'lar ve yüzey ayrımı */
+.sec{border-top-color:var(--line)}
+.trio:not(.trio-open)>div,.flow2>div,.cmp-c,.role{background:var(--surface)}
+.cmp-c.b{background:#FBFAF6}
+.lad-h{background:var(--bg-2)}
+
+/* D · Etkileşim: dokunulabilirlik hissi */
+.btn{transition:opacity .18s,transform .18s,border-color .18s}
+.btn:active{transform:translateY(1px)}
+.chip{transition:border-color .15s,color .15s}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.q{transition:background .15s}
+.lad-r,.rec tbody tr{transition:background .15s}
+
+/* E · Marka işareti — favicon'daki mark artık sayfada da var */
+.logo{display:inline-flex;align-items:center;gap:9px}
+.mark{width:22px;height:22px;flex:none;border-radius:5px;display:block}
+.ft .logo .mark{width:20px;height:20px}
+
+/* F · KOYU ÇAPA — sayfanın tek koyu anı.
+      15 bölümlük açık tonlu akışı kapanışta durduruyor. */
+.close{background:var(--ink-dark);color:var(--on-dark);border-top:none}
+.close h2{color:var(--on-dark)}
+.close .dim2{color:var(--on-dark-2)}
+.close .note{color:var(--on-dark-2)}
+.close .btn{background:var(--on-dark);border-color:var(--on-dark);color:var(--ink-dark)}
+.close .btn:hover{opacity:.88}
+.close .btn-2{background:none;border-color:var(--line-dark);color:var(--on-dark)}
+.close .btn-2:hover{border-color:var(--on-dark);opacity:1}
+.close :focus-visible{outline-color:var(--on-dark)}
+.ft{border-top:none}
+
+/* ═══════════ B2 · terracotta yalnizca koyu kapanis bolumunde ═══════════ */
+.close .btn{background:#A8452A;border-color:#A8452A;color:#fff}
+.close .btn:hover{background:#8F3821;border-color:#8F3821;opacity:1}
+.close .btn-2{background:none;border-color:var(--line-dark);color:var(--on-dark)}
+.close .btn-2:hover{border-color:var(--on-dark);opacity:1}
+
+/* ─── SAPMA: renk + sekil + metin ile uc kez kodlanir ───
+   Kirmizi-yesil ayrimi zayif kullanicilar renge guvenemez. */
+.pill-dev::before,.td-dev::before,.lad-r.bot .lad-l::before{
+  content:'';display:inline-block;width:.9em;height:.9em;margin-right:5px;vertical-align:-.13em;
+  background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='M8 1.4 15.3 14H.7L8 1.4Zm0 3.9a.85.85 0 0 0-.85.9l.25 3.5a.6.6 0 0 0 1.2 0l.25-3.5A.85.85 0 0 0 8 5.3Zm0 5.6a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8Z'/%3E%3C/svg%3E") no-repeat center/contain;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='M8 1.4 15.3 14H.7L8 1.4Zm0 3.9a.85.85 0 0 0-.85.9l.25 3.5a.6.6 0 0 0 1.2 0l.25-3.5A.85.85 0 0 0 8 5.3Zm0 5.6a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8Z'/%3E%3C/svg%3E") no-repeat center/contain}
+.td-dev::before{width:.82em;height:.82em}
+/* hero olcum isaretcisi sayfanin en onemli tek gostergesi */
+.mk-stem{width:3px}
+.mk-dot{width:12px;height:12px;box-shadow:0 0 0 3px var(--paper)}
 </style>
 </head>
 <body>
 
-<header class="hd">
+<a class="skip btn" href="#main"><span data-tr>İçeriğe atla</span><span data-en>Skip to content</span></a>
+<header class="hd" id="top">
   <div class="wrap hd-in">
-    <a href="#" class="logo">Tool<em>A</em></a>
+    <a href="#top" class="logo" aria-label="ToolA"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#14120D"/><rect x="16" y="14.5" width="10" height="3" rx="1.5" fill="#ffffff"/><circle cx="9" cy="16" r="3" fill="#BE3A11"/></svg><span>Tool<em>A</em></span></a>
     <div class="hd-r">
       <div class="lang" role="group" aria-label="Dil / Language">
-        <button id="btn-tr" class="on" onclick="setLang('tr')">TR</button>
-        <button id="btn-en" onclick="setLang('en')">EN</button>
+        <button type="button" id="btn-tr" class="on" data-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" id="btn-en" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <button type="button" class="btn btn-sm" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span></button>
     </div>
@@ -452,7 +521,7 @@ html[lang="en"] [data-tr]{display:none}
 </header>
 
 <!-- 01 · HERO -->
-<section class="hero">
+<section class="hero" id="main" data-sec="Hero">
   <div class="wrap">
     <span class="eyebrow cat-line">
       <span data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</span>
@@ -476,8 +545,8 @@ html[lang="en"] [data-tr]{display:none}
     </p>
 
     <div class="btns">
-      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span> →</button>
-      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Request information by email</span> →</button>
+      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Request information by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
     </div>
     <p class="hero-note">
       <span data-tr>Mevcut CMMS, EAM, ERP, devreye alma ve proje yönetim sistemlerinizle birlikte çalışır. Yerlerine geçmez.</span>
@@ -509,7 +578,7 @@ html[lang="en"] [data-tr]{display:none}
 <!-- SELECTED FOR -->
 <div class="strip">
   <div class="wrap strip-in">
-    <span class="strip-lbl">Selected for</span>
+    <span class="strip-lbl"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Selected for</span></span>
     <span class="strip-n">QSTP</span>
     <span class="strip-n">İTÜ Çekirdek</span>
     <span class="strip-n">EIT Digital</span>
@@ -546,10 +615,10 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 03 · TİCARİ DEĞER -->
-<section class="sec sec-a" style="border-top:none">
+<section class="sec" data-sec="Ticari deger">
   <div class="wrap rv">
     <h2><span data-tr>Kanıt üç yerde işinize yarar.</span><span data-en>Evidence pays off in three places.</span></h2>
-    <div class="trio">
+    <div class="trio trio-open">
       <div>
         <span class="n">01</span>
         <h3><span data-tr>İş kapanmadan</span><span data-en>Before the job closes</span></h3>
@@ -577,7 +646,7 @@ html[lang="en"] [data-tr]{display:none}
 -->
 
 <!-- 04 · PROBLEM -->
-<section class="sec" id="problem">
+<section class="sec sec-a" id="problem" data-sec="Problem">
   <div class="wrap rv">
     <h2><span data-tr>İşçilik kanıtı sonradan üretilemez.</span><span data-en>Evidence of workmanship cannot be produced after the fact.</span></h2>
     <p class="body" style="margin-top:22px">
@@ -597,7 +666,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 05 · TOOLA FARKI -->
-<section class="sec sec-a" id="nasil">
+<section class="sec" id="nasil" data-sec="Nasil calisir">
   <div class="wrap rv">
     <h2 class="wide"><span data-tr>Teknisyene “doğru yaptın mı?” diye sormak kanıt değildir.</span><span data-en>Asking a technician “did you do it right?” is not evidence.</span></h2>
     <p class="body" style="margin-top:22px">
@@ -644,7 +713,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 06 · KANITIN GÜCÜ -->
-<section class="sec" id="kanit" data-sec="Kanit merdiveni">
+<section class="sec sec-a" id="kanit" data-sec="Kanit merdiveni">
   <div class="wrap rv">
     <h2><span data-tr>Kanıtın gücü neye bağlı?</span><span data-en>What determines the strength of the evidence?</span></h2>
 
@@ -740,6 +809,7 @@ html[lang="en"] [data-tr]{display:none}
         <span class="rec-id">KBL-F7-EK03</span>
         <span class="rec-st"><span data-tr>Kurulum · Adım 4 / 6</span><span data-en>Installation · Step 4 of 6</span></span>
       </div>
+      <p class="tw-hint"><span data-tr>Tabloyu yana kaydırın</span><span data-en>Scroll the table sideways</span></p>
       <div class="tw">
         <table>
           <thead><tr>
@@ -755,13 +825,13 @@ html[lang="en"] [data-tr]{display:none}
               <td class="td-n"><span data-tr>Talimat §3.2</span><span data-en>Instruction §3.2</span></td>
               <td class="td-n">—</td>
               <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.4"/></svg><span data-tr>Kanıtlı — görsel</span><span data-en>Evidence-backed — visual</span></span></td>
-              <td><span class="pill pill-ok">✓</span></td>
+              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
             </tr>
             <tr>
               <td><span data-tr>Kritik ölçüm</span><span data-en>Critical dimension</span></td>
               <td class="td-n">215–225 mm</td><td class="td-n">218 mm</td>
               <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M7 8v3M12 8v4M17 8v3"/></svg><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></span></td>
-              <td><span class="pill pill-ok">✓</span></td>
+              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
             </tr>
             <tr class="row-dev">
               <td><span data-tr>Bağlantı torku</span><span data-en>Connector torque</span></td>
@@ -774,7 +844,7 @@ html[lang="en"] [data-tr]{display:none}
               <td class="td-n">21 kV · 60 <span data-tr>dk</span><span data-en>min</span></td>
               <td class="td-n"><span data-tr>Geçti</span><span data-en>Passed</span></td>
               <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.4"/></svg><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></span></td>
-              <td><span class="pill pill-ok">✓</span></td>
+              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
             </tr>
           </tbody>
         </table>
@@ -806,7 +876,7 @@ html[lang="en"] [data-tr]{display:none}
         <p class="body" style="margin:0 0 6px"><span data-tr>Yeni ölçüm: 40,2 Nm</span><span data-en>New measurement: 40.2 Nm</span></p>
         <p class="body" style="margin:0"><span class="pill pill-ok" style="padding:3px 10px"><span data-tr>Doğrulandı</span><span data-en>Verified</span></span></p>
       </div>
-      <p class="small" style="margin-top:14px;color:var(--ink-3);max-width:64ch;max-width:64ch">
+      <p class="small" style="margin-top:14px;color:var(--ink-3);max-width:64ch">
         <span data-tr>Sapma kapanmadan faaliyet doğrulanmış olarak raporlanmaz.</span>
         <span data-en>The activity is not reported as verified before the deviation is closed.</span>
       </p>
@@ -818,7 +888,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 09 · MEVCUT SİSTEMLERDEN FARKI -->
-<section class="sec sec-a">
+<section class="sec sec-a" data-sec="Karsilastirma">
   <div class="wrap rv">
     <h2><span data-tr>Kayıt var. Teknik kanıt yok.</span><span data-en>There is a record. There is no technical evidence.</span></h2>
     <div class="cmp">
@@ -856,7 +926,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 11 · KULLANIM ALANLARI -->
-<section class="sec sec-a" id="kullanim">
+<section class="sec" id="kullanim" data-sec="Kullanim alanlari">
   <div class="wrap rv">
     <h2><span data-tr>Hatası sonradan ortaya çıkan işler.</span><span data-en>Work whose errors surface later.</span></h2>
 
@@ -936,7 +1006,7 @@ html[lang="en"] [data-tr]{display:none}
               <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>A2 · Trafo sahası</span><span data-en>A2 · Transformer area</span></span></td>
               <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill" style="padding:2px 8px;font-size:.7rem"><span data-tr>Yüklenici ekip</span><span data-en>Contractor</span></span></td>
               <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>14 dk önce</span><span data-en>14 min ago</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill pill-ok" style="padding:2px 8px;font-size:.7rem">✓</span></td>
+              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill pill-ok" style="padding:2px 8px;font-size:.7rem"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
               <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.8rem"><span data-tr>Onaylandı</span><span data-en>Approved</span></span></td>
             </tr>
             <tr>
@@ -959,12 +1029,12 @@ html[lang="en"] [data-tr]{display:none}
         </table>
       </div>
     </div>
-    <p class="small" style="margin-top:10px;color:var(--ink-3)"><span data-tr>Panel, ürünün merkez kontrol yaklaşımını gösteren temsili bir görünümdür.</span><span data-en>The panel is an illustrative representation of the product’s central control approach.</span></p>
+    <p class="small" style="margin-top:10px;color:var(--ink-3)"><span data-tr>Panel, ürünün merkez kontrol yaklaşımını gösteren temsili bir görünümdür.</span><span data-en>The panel is an illustrative representation of the product's central control approach.</span></p>
   </div>
 </section>
 
 <!-- 12 · ENTEGRASYON -->
-<section class="sec">
+<section class="sec sec-a" data-sec="Entegrasyon">
   <div class="wrap rv">
     <h2><span data-tr>Mevcut altyapınızı değiştirmeden başlayın.</span><span data-en>Start without changing your infrastructure.</span></h2>
 
@@ -977,8 +1047,8 @@ html[lang="en"] [data-tr]{display:none}
       </div>
       <p class="body" style="margin-top:20px"><span data-tr>Pilot için ağır entegrasyon gerekmez:</span><span data-en>The pilot needs no heavy integration:</span></p>
       <div class="pipe">
-        <span data-tr>iş emri / varlık referansı &nbsp;→&nbsp; ToolA &nbsp;→&nbsp; kanıtlı teknik kayıt</span>
-        <span data-en>work order / asset reference &nbsp;→&nbsp; ToolA &nbsp;→&nbsp; evidence-backed record</span>
+        <span data-tr>iş emri / varlık referansı<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>ToolA<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>kanıtlı teknik kayıt</span>
+        <span data-en>work order / asset reference<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>ToolA<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>evidence-backed record</span>
       </div>
       <p class="small" style="margin-top:14px"><span data-tr>Değer doğrulandıktan sonra gerekli sistem bağlantıları kurulur.</span><span data-en>Once value is proven, the required connections are built.</span></p>
     </div>
@@ -995,7 +1065,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 13 · PİLOT -->
-<section class="sec sec-a" id="pilot" data-sec="Pilot">
+<section class="sec" id="pilot" data-sec="Pilot">
   <div class="wrap rv">
     <h2><span data-tr>6 hafta. Tek bir kritik iş.</span><span data-en>6 weeks. One critical job.</span></h2>
     <p class="body" style="margin-top:20px">
@@ -1020,7 +1090,7 @@ html[lang="en"] [data-tr]{display:none}
           <li><span data-tr>Haftada bir kısa değerlendirme</span><span data-en>One short review call per week</span></li>
         </ul>
         <div class="btns">
-          <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span> →</button>
+          <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
         </div>
       </div>
       <div>
@@ -1042,7 +1112,7 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 14 · TEKNİK HAFIZA -->
-<section class="sec sec-tight">
+<section class="sec sec-a sec-tight" data-sec="Teknik hafiza">
   <div class="wrap rv split">
     <h2><span data-tr>Bir sonraki teknisyen sıfırdan başlamaz.</span><span data-en>The next technician doesn't start from zero.</span></h2>
     <p class="body" style="margin-top:20px">
@@ -1057,18 +1127,18 @@ html[lang="en"] [data-tr]{display:none}
 </section>
 
 <!-- 15 · CTA -->
-<section class="close" data-sec="Kapanis CTA" style="display:block;width:100%;box-sizing:border-box">
-  <div style="max-width:1120px;margin:0 auto;padding:0 24px;box-sizing:border-box;text-align:center">
+<section class="close" data-sec="Kapanis CTA">
+  <div class="wrap">
 
-    <h2 style="margin:0 auto 6px;max-width:480px"><span data-tr>Teknisyen işi yapsın.</span><span data-en>Let the technician do the work.</span></h2>
-    <h2 style="margin:0 auto;max-width:480px;color:#828F99;font-weight:500"><span data-tr>Kanıt iş sırasında oluşsun.</span><span data-en>Let the evidence form as the work happens.</span></h2>
+    <h2 style="margin:0 auto 6px"><span data-tr>Teknisyen işi yapsın.</span><span data-en>Let the technician do the work.</span></h2>
+    <h2 class="dim2" style="margin:0 auto"><span data-tr>Kanıt iş sırasında oluşsun.</span><span data-en>Let the evidence form as the work happens.</span></h2>
 
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px;visibility:visible;opacity:1">
-      <button type="button" data-open="pilot" style="display:inline-flex;align-items:center;gap:9px;font-family:'Archivo',system-ui,sans-serif;font-size:.94rem;font-weight:500;line-height:1.2;padding:13px 21px;border-radius:3px;text-decoration:none;cursor:pointer;box-sizing:border-box;visibility:visible;opacity:1;border:1px solid #0C1114;background:#0C1114;color:#fff"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span> &#8594;</button>
-      <button type="button" data-open="intro" style="display:inline-flex;align-items:center;gap:9px;font-family:'Archivo',system-ui,sans-serif;font-size:.94rem;font-weight:500;line-height:1.2;padding:13px 21px;border-radius:3px;text-decoration:none;cursor:pointer;box-sizing:border-box;visibility:visible;opacity:1;border:1px solid #C6CFD6;background:transparent;color:#0C1114"><span data-tr>E-posta ile bilgi alın</span><span data-en>Get details by email</span> &#8594;</button>
+    <div class="btns" style="justify-content:center">
+      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Get details by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
     </div>
 
-    <p style="margin:26px auto 0;max-width:640px;font-size:.92rem;color:#828F99;font-style:italic;line-height:1.6;visibility:visible;opacity:1">
+    <p class="note" style="margin:26px auto 0;max-width:640px">
       <span data-tr>Pilotun amacı büyük bir yazılım dönüşümü yapmak değil. Tek bir kritik saha işinde teknik doğrulamanın ölçülebilir değer üretip üretmediğini gerçek veriyle göstermek.</span>
       <span data-en>The pilot is not a large software transformation. It is a real-data test of whether technical verification produces measurable value on one critical field job.</span>
     </p>
@@ -1079,7 +1149,7 @@ html[lang="en"] [data-tr]{display:none}
 <footer class="ft">
   <div class="wrap ft-in">
     <div>
-      <div class="logo" style="margin-bottom:12px">Tool<em>A</em></div>
+      <div class="logo" style="margin-bottom:12px"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#14120D"/><rect x="16" y="14.5" width="10" height="3" rx="1.5" fill="#ffffff"/><circle cx="9" cy="16" r="3" fill="#BE3A11"/></svg><span>Tool<em>A</em></span></div>
       <p class="cat" data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</p>
       <p class="cat" data-en>Technical Evidence and Verification System for Critical Field Work</p>
       <p style="margin-top:16px">Teknopark İstanbul · Türkiye &nbsp;·&nbsp; QSTP · Doha, <span data-tr>Katar</span><span data-en>Qatar</span></p>
@@ -1101,6 +1171,19 @@ html[lang="en"] [data-tr]{display:none}
   </div>
 </footer>
 
+<div class="mcta">
+  <a class="btn" href="mailto:info@toola.net?subject=ToolA%20-%20Pilot%20g%C3%B6r%C3%BC%C5%9Fmesi" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span></a>
+</div>
+
+<noscript>
+  <style>.mcta{display:none!important}body{padding-bottom:0}</style>
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:200;background:#0C1114;color:#fff;padding:14px 20px;font-size:.9rem;text-align:center">
+    <span data-tr>Formlar JavaScript gerektirir. Doğrudan yazabilirsiniz: </span>
+    <span data-en>The forms need JavaScript. You can write to us directly: </span>
+    <a href="mailto:info@toola.net" style="color:#fff">info@toola.net</a>
+  </div>
+</noscript>
+
 <!-- MODAL -->
 <div class="modal" id="modal" hidden>
   <div class="modal-bd" data-close></div>
@@ -1112,23 +1195,23 @@ html[lang="en"] [data-tr]{display:none}
       <form id="pForm" novalidate>
         <div class="fld">
           <label for="f1"><span data-tr>Ad Soyad</span><span data-en>Full name</span></label>
-          <input id="f1" type="text" autocomplete="name" data-ph-tr="Ahmet Yılmaz" data-ph-en="Jane Doe">
-          <span class="fld-e"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
+          <input id="f1" name="f1" aria-describedby="e1" type="text" autocomplete="name" data-ph-tr="Ahmet Yılmaz" data-ph-en="Jane Doe">
+          <span class="fld-e" id="e1"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
         </div>
         <div class="fld" id="fldCompany">
           <label for="f2"><span data-tr>Şirket</span><span data-en>Company</span></label>
-          <input id="f2" type="text" autocomplete="organization" data-ph-tr="Şirket adı" data-ph-en="Company name">
-          <span class="fld-e"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
+          <input id="f2" name="f2" aria-describedby="e2" type="text" autocomplete="organization" data-ph-tr="Şirket adı" data-ph-en="Company name">
+          <span class="fld-e" id="e2"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
         </div>
         <div class="fld" id="fldPhone">
           <label for="f3"><span data-tr>Telefon</span><span data-en>Phone</span></label>
-          <input id="f3" type="tel" autocomplete="tel" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx">
-          <span class="fld-e"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
+          <input id="f3" name="f3" aria-describedby="e3" type="tel" autocomplete="tel" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx">
+          <span class="fld-e" id="e3"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
         </div>
         <div class="fld">
           <label for="f4"><span data-tr>E-posta</span><span data-en>Email</span></label>
-          <input id="f4" type="email" autocomplete="email" data-ph-tr="email@sirket.com" data-ph-en="you@company.com">
-          <span class="fld-e"><span data-tr>Geçerli bir e-posta girin.</span><span data-en>Enter a valid email address.</span></span>
+          <input id="f4" name="f4" aria-describedby="e4" type="email" autocomplete="email" data-ph-tr="email@sirket.com" data-ph-en="you@company.com">
+          <span class="fld-e" id="e4"><span data-tr>Geçerli bir e-posta girin.</span><span data-en>Enter a valid email address.</span></span>
         </div>
         <div class="consent" id="consentRow">
           <input type="checkbox" id="cons">
@@ -1140,6 +1223,10 @@ html[lang="en"] [data-tr]{display:none}
             </button>
           </label>
         </div>
+        <p class="consent-e" id="consErr" hidden>
+          <span data-tr>Devam etmek için bu kutuyu işaretlemeniz gerekiyor.</span>
+          <span data-en>You need to tick this box to continue.</span>
+        </p>
 
         <input type="text" name="_gotcha" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p class="modal-err" id="mErr" hidden>
@@ -1148,7 +1235,7 @@ html[lang="en"] [data-tr]{display:none}
           <a href="mailto:info@toola.net">info@toola.net</a>
           <span data-tr>adresine yazın.</span><span data-en>.</span>
         </p>
-        <button type="submit" class="btn modal-submit" id="mSubmit"></button>
+        <button type="submit" class="btn modal-submit" id="mSubmit"><span id="mSubmitTxt"></span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
         <p class="modal-note">
           <span data-tr>Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</span>
           <span data-en>Your details stay confidential and are used only to contact you.</span>
@@ -1157,7 +1244,7 @@ html[lang="en"] [data-tr]{display:none}
     </div>
     <div id="mDone" hidden>
       <div class="done">
-        <div class="done-i">✓</div>
+        <div class="done-i"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true" style="width:20px;height:20px"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg></div>
         <h3><span data-tr>Talebiniz alındı.</span><span data-en>Request received.</span></h3>
         <p id="doneMsg"></p>
         <button type="button" class="btn btn-2" data-close><span data-tr>Kapat</span><span data-en>Close</span></button>
@@ -1213,12 +1300,12 @@ var FORM_ENDPOINT = 'https://formspree.io/f/mvzevbog';
 
 var MT = {
   pilot:{
-    tr:{title:'Pilot görüşmesi ayarlayın', sub:'24 saat içinde size dönüş yapacağız.', cta:'Pilot görüşmesi talebi gönder →'},
-    en:{title:'Book a pilot call', sub:'We will get back to you within 24 hours.', cta:'Send pilot request →'}
+    tr:{title:'Pilot görüşmesi ayarlayın', sub:'24 saat içinde size dönüş yapacağız.', cta:'Pilot görüşmesi talebi gönder'},
+    en:{title:'Book a pilot call', sub:'We will get back to you within 24 hours.', cta:'Send pilot request'}
   },
   intro:{
-    tr:{title:'Bilgi gönderelim', sub:'E-posta adresinize ToolA\u2019nın kısa bir tanıtımını gönderelim. Ad ve e-posta yeterli.', cta:'Bilgi iste →'},
-    en:{title:'We\u2019ll send you the details', sub:'We\u2019ll email you a short introduction to ToolA. Name and email are enough.', cta:'Send me the details →'}
+    tr:{title:'Bilgi gönderelim', sub:'E-posta adresinize ToolA\u0027nın kısa bir tanıtımını gönderelim. Ad ve e-posta yeterli.', cta:'Bilgi iste'},
+    en:{title:'We\u0027ll send you the details', sub:'We\u0027ll email you a short introduction to ToolA. Name and email are enough.', cta:'Send me the details'}
   }
 };
 
@@ -1253,7 +1340,7 @@ function paintModal(){
   var t=MT[intent][lang()];
   document.getElementById('mTitle').textContent=t.title;
   document.getElementById('mSub').textContent=t.sub;
-  document.getElementById('mSubmit').textContent=t.cta;
+  document.getElementById('mSubmitTxt').textContent=t.cta;
 }
 function paintPlaceholders(){
   var l=lang();
@@ -1280,8 +1367,24 @@ function closeModal(){
   modal.hidden=true; document.body.classList.remove('locked');
   if(lastFocus) lastFocus.focus();
 }
+/* Onay kutusu isaretlenir isaretlenmez hata temizlensin; sonraki gonderimi beklemesin. */
+document.getElementById('cons').addEventListener('change',function(){
+  if(this.checked){
+    document.getElementById('consErr').hidden=true;
+    document.getElementById('consentRow').classList.remove('bad');
+    this.removeAttribute('aria-invalid');
+  }
+});
+/* Ayni sekilde alan duzeltilir duzeltilmez kirmizi durum kalksin. */
+['f1','f2','f3','f4'].forEach(function(id){
+  var el=document.getElementById(id);
+  el.addEventListener('input',function(){
+    if(el.classList.contains('bad')){ el.classList.remove('bad'); el.removeAttribute('aria-invalid'); }
+  });
+});
+
 document.querySelectorAll('[data-open]').forEach(function(b){
-  b.addEventListener('click',function(){openModal(b.getAttribute('data-open'), b)});
+  b.addEventListener('click',function(e){ e.preventDefault(); openModal(b.getAttribute('data-open'), b); });
 });
 modal.addEventListener('click',function(e){ if(e.target.closest('[data-close]')) closeModal(); });
 document.addEventListener('keydown',function(e){
@@ -1308,20 +1411,23 @@ pForm.addEventListener('submit',function(e){
   var ids = hafif ? ['f1','f4'] : ['f1','f2','f3','f4'];
   var f=['f1','f2','f3','f4'].map(function(id){return document.getElementById(id)}), ok=true;
   f.forEach(function(i){ i.classList.remove('bad'); });
+  f.forEach(function(i){ i.removeAttribute('aria-invalid'); });
   ids.forEach(function(id){
     var i=document.getElementById(id), v=i.value.trim();
     var good = i.type==='email' ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) : v.length>1;
-    i.classList.toggle('bad',!good); if(!good) ok=false;
+    i.classList.toggle('bad',!good);
+    if(good){ i.removeAttribute('aria-invalid'); } else { i.setAttribute('aria-invalid','true'); ok=false; }
   });
-  var cons=document.getElementById('cons'), consRow=document.getElementById('consentRow');
-  if(!cons.checked){ ok=false; consRow.classList.add('bad'); } else { consRow.classList.remove('bad'); }
+  var cons=document.getElementById('cons'), consRow=document.getElementById('consentRow'), consErr=document.getElementById('consErr');
+  if(!cons.checked){ ok=false; consRow.classList.add('bad'); consErr.hidden=false; cons.setAttribute('aria-invalid','true'); }
+  else { consRow.classList.remove('bad'); consErr.hidden=true; cons.removeAttribute('aria-invalid'); }
 
   if(!ok){
     var bad=pForm.querySelector('input.bad');
     if(bad){ bad.focus(); } else if(!cons.checked){ cons.focus(); }
     return;
   }
-  if(document.getElementById('hp').value){ return; }
+  if(document.getElementById('hp').value){ document.getElementById('mErr').hidden=false; return; }
 
   var lbl = intent==='pilot' ? 'Pilot görüşmesi' : 'E-posta ile bilgi';
   var sirket = f[1].value.trim();
@@ -1332,9 +1438,9 @@ pForm.addEventListener('submit',function(e){
     '_subject':'ToolA — '+lbl+(sirket && !hafif ? ' · '+sirket : '')
   };
   if(!hafif){ payload['Şirket']=sirket; payload['Telefon']=f[2].value.trim(); }
-  var btn=document.getElementById('mSubmit'), err=document.getElementById('mErr');
-  var original=btn.textContent, isEn=lang()==='en';
-  err.hidden=true; btn.disabled=true; btn.textContent = isEn ? 'Sending…' : 'Gönderiliyor…';
+  var btn=document.getElementById('mSubmit'), btnTxt=document.getElementById('mSubmitTxt'), err=document.getElementById('mErr');
+  var original=btnTxt.textContent, isEn=lang()==='en';
+  err.hidden=true; btn.disabled=true; btnTxt.textContent = isEn ? 'Sending...' : 'Gönderiliyor...';
 
   var done=function(){ track('Form Gonderildi', {tur: lbl});
     document.getElementById('doneMsg').textContent = hafif
@@ -1344,13 +1450,17 @@ pForm.addEventListener('submit',function(e){
               : '24 saat içinde size dönüş yapacağız. Acil bir konu varsa doğrudan info@toola.net adresine yazabilirsiniz.');
     mFormV.hidden=true; mDone.hidden=false;
                        setTimeout(function(){mDone.querySelector('.btn').focus()},60); };
-  var fail=function(){ btn.disabled=false; btn.textContent=original; err.hidden=false; };
+  var fail=function(){ btn.disabled=false; btnTxt.textContent=original; err.hidden=false; };
 
   if(FORM_ENDPOINT){
+    /* Ag takilirsa buton sonsuza kadar 'Gonderiliyor...' kalmasin diye 12 sn zaman asimi. */
+    var ac = ('AbortController' in window) ? new AbortController() : null;
+    var to = setTimeout(function(){ if(ac) ac.abort(); else fail(); }, 12000);
     fetch(FORM_ENDPOINT,{method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)})
-      .then(function(r){ r.ok ? done() : fail(); }).catch(fail);
+      body:JSON.stringify(payload), signal: ac ? ac.signal : undefined})
+      .then(function(r){ clearTimeout(to); r.ok ? done() : fail(); })
+      .catch(function(){ clearTimeout(to); fail(); });
   }else{
     var body='Ad Soyad: '+payload['Ad Soyad']+'\nŞirket: '+payload['Şirket']+
              '\nTelefon: '+payload['Telefon']+'\nE-posta: '+payload['email']+'\nTalep: '+lbl;
@@ -1359,17 +1469,37 @@ pForm.addEventListener('submit',function(e){
   }
 });
 
-function setLang(l){
+var META = {
+  tr:{ title:'ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı',
+       desc:'Kritik elektriksel bağlantılarda kabul kriterine uygunluğun kanıtı iş yapılırken oluşur. Sapma, ekip sahadan ayrılmadan görünür.',
+       ogt:'Kablo ekindeki hata, iş kapanırken görünmez.', loc:'tr_TR' },
+  en:{ title:'ToolA — Technical Evidence & Verification Layer for Critical Field Work',
+       desc:'Proof that a critical electrical connection meets its acceptance criteria is created while the work happens. Deviations surface before the crew leaves site.',
+       ogt:'A defect in the joint stays hidden as the job closes.', loc:'en_US' }
+};
+function setMeta(sel, attr, val){ var el=document.querySelector(sel); if(el) el.setAttribute(attr, val); }
+
+function setLang(l, silent){
   document.documentElement.lang = l;
-  document.getElementById('btn-tr').classList.toggle('on', l==='tr');
-  document.getElementById('btn-en').classList.toggle('on', l==='en');
-  document.title = l==='en'
-    ? 'ToolA — Technical Evidence & Verification Layer for Critical Field Work'
-    : 'ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı';
+  var btr=document.getElementById('btn-tr'), ben=document.getElementById('btn-en');
+  btr.classList.toggle('on', l==='tr'); btr.setAttribute('aria-pressed', String(l==='tr'));
+  ben.classList.toggle('on', l==='en'); ben.setAttribute('aria-pressed', String(l==='en'));
+  var m=META[l];
+  document.title = m.title;
+  setMeta('meta[name="description"]','content',m.desc);
+  setMeta('meta[property="og:title"]','content',m.ogt);
+  setMeta('meta[property="og:description"]','content',m.desc);
+  setMeta('meta[property="og:locale"]','content',m.loc);
+  try{ localStorage.setItem('toola-lang', l); }catch(e){}
   paintModal(); paintPlaceholders();
-  track('Dil', {dil: l.toUpperCase()});
+  if(!silent) track('Dil', {dil: l.toUpperCase()});
 }
-paintPlaceholders();
+document.querySelectorAll('[data-lang]').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+});
+
+/* Dil <head>'de secildi; burada yalnizca dugme durumu ve meta etiketleri senkronlanir. */
+setLang(document.documentElement.lang==='en' ? 'en' : 'tr', true);
 
 var band = document.getElementById('band');
 if (band && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
