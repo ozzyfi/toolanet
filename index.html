@@ -34,10 +34,7 @@
    "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"}}}
 </script>
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2314120D'/><rect x='16' y='14.5' width='10' height='3' rx='1.5' fill='%23ffffff'/><circle cx='9' cy='16' r='3' fill='%23BE3A11'/></svg>">
-
-<!-- Analytics: Plausible (çerezsiz, kişisel veri toplamaz, onay bandı gerektirmez).
-     Hesap açıp domaini doğruladıktan sonra bu satır çalışır. Kaldırılırsa sayfa etkilenmez. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='26' fill='%2314120D'/><g transform='translate(30.5 30) scale(0.67)'><path fill='%23fff' d='M0 100 56.4 0l56.7 100H93L56.6 35.5 20.1 100z'/><path fill='%23BE3A11' d='M56.8 67 75.4 100h-37z'/></g></svg>">
 <script defer data-domain="toola.net" src="https://plausible.io/js/script.js"></script>
 
 <!-- Fontlar kendi sunucumuzda. Harici istek yok: Brave/uBlock/kurumsal proxy engelleyemez,
@@ -129,8 +126,13 @@ em.q{font-style:normal;color:var(--ink)}
 /* header */
 .hd{position:sticky;top:0;z-index:60;background:rgba(241,239,233,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .hd-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
-.logo{font-weight:700;font-size:1.57rem;letter-spacing:-.038em;line-height:1;text-decoration:none;color:var(--ink)}
-.logo em{font-style:normal;color:var(--ink-3)}
+.logo{display:inline-flex;align-items:center;line-height:0;text-decoration:none;color:var(--ink)}
+/* Kelime markasi yuksekligiyle olceklenir: 440x100 viewBox, en-boy 4.4 */
+.wm{height:21px;width:auto;display:block}
+/* logonun dokunma hedefi 24px esiginin altina dusmesin */
+.hd .logo{padding:9px 0}
+.ft .wm{height:19px}
+@media(max-width:520px){.wm{height:19px}}
 .hd-r{display:flex;align-items:center;gap:22px}
 .hd .btn{padding:12px 20px;font-size:.92rem}
 .lang{display:flex;font-family:var(--mono);font-size:.78rem;border:1px solid var(--line-2);border-radius:3px;overflow:hidden}
@@ -469,10 +471,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 .q{transition:background .15s}
 .lad-r,.rec tbody tr{transition:background .15s}
 
-/* E · Marka işareti — favicon'daki mark artık sayfada da var */
-.logo{display:inline-flex;align-items:center;gap:9px}
-.mark{width:22px;height:22px;flex:none;border-radius:5px;display:block}
-.ft .logo .mark{width:20px;height:20px}
+/* E · Marka: kelime markasi vektor olarak gomulu (bkz. .wm) */
 
 /* F · KOYU ÇAPA — sayfanın tek koyu anı.
       15 bölümlük açık tonlu akışı kapanışta durduruyor. */
@@ -509,7 +508,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 <a class="skip btn" href="#main"><span data-tr>İçeriğe atla</span><span data-en>Skip to content</span></a>
 <header class="hd" id="top">
   <div class="wrap hd-in">
-    <a href="#top" class="logo" aria-label="ToolA"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#14120D"/><rect x="16" y="14.5" width="10" height="3" rx="1.5" fill="#ffffff"/><circle cx="9" cy="16" r="3" fill="#BE3A11"/></svg><span>Tool<em>A</em></span></a>
+    <a href="#top" class="logo" aria-label="ToolA"><svg class="wm" viewBox="0 0 427 100" role="img" aria-label="ToolA"><path fill="currentColor" d="M0 0h109v16.5H0z"/><path fill="currentColor" d="M46.25 0h16.5v100h-16.5z"/><circle cx="138" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><circle cx="231.6" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><path fill="currentColor" d="M285.25 0h16.5v100h-16.5z"/><path fill="currentColor" d="M313.6 100 370 0l56.7 100h-20.1L370.2 35.5 333.7 100z"/><path fill="var(--dev)" d="M370.4 67 389 100h-37z"/></svg></a>
     <div class="hd-r">
       <div class="lang" role="group" aria-label="Dil / Language">
         <button type="button" id="btn-tr" class="on" data-lang="tr" aria-pressed="true">TR</button>
@@ -1149,7 +1148,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 <footer class="ft">
   <div class="wrap ft-in">
     <div>
-      <div class="logo" style="margin-bottom:12px"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#14120D"/><rect x="16" y="14.5" width="10" height="3" rx="1.5" fill="#ffffff"/><circle cx="9" cy="16" r="3" fill="#BE3A11"/></svg><span>Tool<em>A</em></span></div>
+      <div class="logo" style="margin-bottom:14px"><svg class="wm" viewBox="0 0 427 100" role="img" aria-label="ToolA"><path fill="currentColor" d="M0 0h109v16.5H0z"/><path fill="currentColor" d="M46.25 0h16.5v100h-16.5z"/><circle cx="138" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><circle cx="231.6" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><path fill="currentColor" d="M285.25 0h16.5v100h-16.5z"/><path fill="currentColor" d="M313.6 100 370 0l56.7 100h-20.1L370.2 35.5 333.7 100z"/><path fill="var(--dev)" d="M370.4 67 389 100h-37z"/></svg></div>
       <p class="cat" data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</p>
       <p class="cat" data-en>Technical Evidence and Verification System for Critical Field Work</p>
       <p style="margin-top:16px">Teknopark İstanbul · Türkiye &nbsp;·&nbsp; QSTP · Doha, <span data-tr>Katar</span><span data-en>Qatar</span></p>
