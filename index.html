@@ -504,9 +504,10 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 </style>
 </head>
 <body>
+<span id="top" aria-hidden="true"></span>
 
 <a class="skip btn" href="#main"><span data-tr>İçeriğe atla</span><span data-en>Skip to content</span></a>
-<header class="hd" id="top">
+<header class="hd">
   <div class="wrap hd-in">
     <a href="#top" class="logo" aria-label="ToolA"><svg class="wm" viewBox="0 0 427 100" role="img" aria-label="ToolA"><path fill="currentColor" d="M0 0h109v16.5H0z"/><path fill="currentColor" d="M46.25 0h16.5v100h-16.5z"/><circle cx="138" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><circle cx="231.6" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><path fill="currentColor" d="M285.25 0h16.5v100h-16.5z"/><path fill="currentColor" d="M313.6 100 370 0l56.7 100h-20.1L370.2 35.5 333.7 100z"/><path fill="var(--dev)" d="M370.4 67 389 100h-37z"/></svg></a>
     <div class="hd-r">
@@ -1379,6 +1380,21 @@ document.getElementById('cons').addEventListener('change',function(){
   var el=document.getElementById(id);
   el.addEventListener('input',function(){
     if(el.classList.contains('bad')){ el.classList.remove('bad'); el.removeAttribute('aria-invalid'); }
+  });
+});
+
+/* Logo -> sayfa basi. Capa yedegi <span id="top"> olarak duruyor;
+   burada davranisi dogrudan yonetiyoruz ki adres cubuguna #top yazilmasin
+   ve gecmise gereksiz kayit dusmesin. */
+document.querySelectorAll('a.logo[href="#top"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var az = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0, left:0, behavior: az ? 'auto' : 'smooth'});
+    /* srcdoc/sandbox iframe veya file:// gibi opak kaynaklarda replaceState
+       SecurityError atar; adres cubugunu temizlemek kritik degil, sessizce gec. */
+    try{ if(history.replaceState) history.replaceState(null,'',location.pathname+location.search); }
+    catch(err){}
   });
 });
 
