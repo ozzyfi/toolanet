@@ -42,6 +42,7 @@
 <link rel="preload" href="fonts/archivo-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/archivo-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-serif-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 
 
 <script>
@@ -55,6 +56,12 @@
 </script>
 
 <style>
+/* Sektör satırı için gerçek italik. Mevcut IBM Plex Mono ile ayni superaile,
+   dolayisiyla yabanci bir yuz degil. Alt kume, sayfadaki diger fontlarla
+   birebir ayni 165 karakteri kapsiyor: ileride metin degisirse glif eksigi cikmaz. */
+@font-face{font-family:'IBM Plex Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url('fonts/ibm-plex-serif-400-italic.woff2') format('woff2')}
+
 @font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/archivo-400-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
 @font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/archivo-400-latin-ext.woff2') format('woff2');unicode-range:U+0020,U+0041,U+00C1,U+011E-011F,U+0130,U+015E-015F,U+20BA}
 @font-face{font-family:'Archivo';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/archivo-500-latin.woff2') format('woff2');unicode-range:U+0020-007E,U+00A7,U+00A9,U+00B0,U+00B7,U+00C0-00C2,U+00C4-00CF,U+00D1-00D4,U+00D6-00DC,U+00DF-00E2,U+00E4-00EF,U+00F1-00F4,U+00F6,U+00F8-00FC,U+0131,U+2013-2014,U+201C-201D,U+20AC,U+2191,U+2193}
@@ -101,8 +108,6 @@ body>header,body>section,body>footer,body>.strip{
 h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.06;font-weight:600;text-wrap:balance}
 .display{font-size:clamp(2.25rem,5vw,4rem);line-height:1.03;letter-spacing:-.034em}
 .display span{display:block}
-.display .dim{color:var(--ink-3);font-weight:500}
-.display-sub{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.1;color:var(--ink-3);font-weight:500;margin-top:20px;max-width:820px}
 h2{font-size:clamp(1.6rem,3.2vw,2.35rem);max-width:520px}
 h2.wide{max-width:660px}
 h3{font-size:1.2rem;letter-spacing:-.018em}
@@ -386,7 +391,7 @@ body.locked{overflow:hidden}
 @media(max-width:620px){.mcta{display:flex} body{padding-bottom:76px} .modal,.pmodal{z-index:120}}
 @media print{.hd,.mcta,.modal,.pmodal,.lang{display:none!important}
   body{background:#fff;font-size:11pt} .sec{padding:18px 0;break-inside:avoid}
-  .trio,.flow2,.cmp,.roles,.ladder,.rec{break-inside:avoid}
+  .trio,.flow2,.cmp,.ladder,.rec{break-inside:avoid}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}}
 
 /* Scroll animasyonu kaldırıldı. İçerik her koşulda görünür; hiçbir JS'e bağlı değil.
@@ -431,7 +436,7 @@ html[lang="en"] [data-tr]{display:none}
 
 /* A · Yarıçap sistemi: altı farklı değer yerine iki seviye.
       4px = kontroller (buton, giriş, çip, rozet) · 10px = yüzeyler (kart, tablo, modal) */
-.band-card,.trio,.flow2,.cmp,.roles,.ladder,.rec,.modal-box,.ctr-panel{border-radius:10px}
+.band-card,.trio,.flow2,.cmp,.ladder,.rec,.modal-box,.ctr-panel{border-radius:10px}
 .btn,.chip,.pill,.lang,.fld input,.soc a,.modal-x,.ctx,.pipe{border-radius:4px}
 .callout{border-radius:0 4px 4px 0}
 .zone{border-radius:3px}
@@ -455,11 +460,11 @@ html[lang="en"] [data-tr]{display:none}
   font-size:.685rem;letter-spacing:.12em}
 th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 .pill,.q-a{letter-spacing:.09em}
-.trio .n,.fd-n{font-size:.72rem;letter-spacing:.12em}
+.trio .n{font-size:.72rem;letter-spacing:.12em}
 
 /* C · Hairline'lar ve yüzey ayrımı */
 .sec{border-top-color:var(--line)}
-.trio:not(.trio-open)>div,.flow2>div,.cmp-c,.role{background:var(--surface)}
+.trio:not(.trio-open)>div,.flow2>div,.cmp-c{background:var(--surface)}
 .cmp-c.b{background:#FBFAF6}
 .lad-h{background:var(--bg-2)}
 
@@ -501,6 +506,35 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 /* hero olcum isaretcisi sayfanin en onemli tek gostergesi */
 .mk-stem{width:3px}
 .mk-dot{width:12px;height:12px;box-shadow:0 0 0 3px var(--paper)}
+
+/* ═══════════ HERO TİPOGRAFİ DENGESİ ═══════════
+   Kategori ve sektör satırı tek bir blok olarak okunuyor; alt başlık,
+   yeni ana başlıktan sonra bir kademe geri çekildi ki iki büyük punto
+   birbiriyle yarışmasın. */
+/* Kategori satiri: mono buyuk harf yerine Archivo. Kucuk puntoda 0.15em
+   harf araligiyla buyuk harf, uzun bir cumlede okuma hizini dusuruyordu.
+   Etiket oldugunu belli etmesi icin ustune kunye cizgisi: sayfadaki diger
+   2px ust kurallarla (.trio-open, .use) ayni dil. */
+.hero{padding-top:42px}
+.hero .cat-line{position:relative;padding-top:19px;
+  font-family:var(--sans);font-size:1rem;font-weight:500;text-transform:none;
+  letter-spacing:-.008em;line-height:1.5;color:var(--ink-2);max-width:640px;margin-bottom:22px}
+.hero .cat-line::before{content:'';position:absolute;left:0;top:0;width:28px;height:2px;background:var(--ink)}
+/* Sektor satiri: gercek italik serif. Ayri bir ses tonu — iddia degil, kapsam. */
+.cat-sect{display:block;margin-bottom:9px;max-width:820px;
+  font-family:'IBM Plex Serif',Georgia,serif;font-style:italic;font-weight:400;
+  font-size:1.08rem;line-height:1.5;color:var(--ink-2);letter-spacing:0}
+/* Ayraclar dik ve notr kalsin: italik serif nokta optik olarak kayiyor. */
+.cat-sect i{font-family:var(--sans);font-style:normal;font-weight:400;
+  color:var(--ink-3);margin:0 .46em;font-size:.94em;vertical-align:.06em}
+.hero .lede{margin-top:32px}
+@media(max-width:560px){
+  .hero{padding-top:34px}
+  .hero .cat-line{font-size:.95rem;margin-bottom:17px;line-height:1.5;padding-top:16px}
+  .hero .cat-line::before{width:24px}
+  .cat-sect{font-size:1rem;margin-bottom:10px;line-height:1.55}
+  .cat-sect i{margin:0 .36em}
+}
 </style>
 </head>
 <body>
@@ -527,21 +561,18 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <span data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</span>
       <span data-en>Technical Evidence and Verification System for Critical Field Work</span>
     </span>
+    <span class="cat-sect">
+      <span data-tr>EPC ve devreye alma<i aria-hidden="true">·</i>Veri merkezleri<i aria-hidden="true">·</i>Elektrik dağıtımı<i aria-hidden="true">·</i>Endüstriyel kurulum</span>
+      <span data-en>EPC and commissioning<i aria-hidden="true">·</i>Data centres<i aria-hidden="true">·</i>Electricity distribution<i aria-hidden="true">·</i>Industrial installation</span>
+    </span>
     <h1 class="display">
-      <span data-tr>Kritik işteki hata,</span>
-      <span data-tr>iş kapanırken görünmeyebilir.</span>
-      <span data-en>Critical work can be closed</span>
-      <span data-en>while a defect remains hidden.</span>
+      <span data-tr>Yapılan işi, ekip daha sahadayken doğrulayın.</span>
+      <span data-en>Verify the work while the crew is still on site.</span>
     </h1>
 
-    <p class="display-sub">
-      <span data-tr>Sonradan arıza, kesinti veya teslim gecikmesi olarak ortaya çıkar.</span>
-      <span data-en>It may surface later as a failure, outage, or handover delay.</span>
-    </p>
-
     <p class="lede">
-      <span data-tr>ToolA, teknik prosedürü sahada uygulanabilir adımlara çevirir. Teknisyenleriniz ve yüklenici ekipleriniz işi yaparken fotoğraf, ölçüm, tork, malzeme ve test kanıtı oluşturur. Eksik veya kriter dışı bir sonuç varsa, iş kapanmadan sahaya ve merkeze görünür.</span>
-      <span data-en>ToolA turns technical procedures into actionable field steps. Your technicians and contractor crews generate photo, measurement, torque, material and test evidence while doing the work. If a result is missing or outside criteria, it becomes visible in the field and centrally before the job closes.</span>
+      <span data-tr>ToolA; kurum prosedürü, şartname ve üretici talimatlarını sahada uygulanabilir adımlara çevirir. Ölçüm, tork, test ve görsel kanıtları kabul kriterleriyle eşleştirir; eksik kanıtı ve sapmayı iş kapanmadan görünür hâle getirir.</span>
+      <span data-en>ToolA turns your organisation&#39;s procedures, specifications and manufacturer instructions into steps that can be applied in the field. It matches measurement, torque, test and visual evidence against acceptance criteria, and makes missing evidence and deviations visible before the job closes.</span>
     </p>
 
     <div class="btns">
@@ -549,8 +580,8 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Request information by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
     </div>
     <p class="hero-note">
-      <span data-tr>Mevcut CMMS, EAM, ERP, devreye alma ve proje yönetim sistemlerinizle birlikte çalışır. Yerlerine geçmez.</span>
-      <span data-en>Works alongside your existing CMMS, EAM, ERP, commissioning, and project management systems. It does not replace them.</span>
+      <span data-tr>Mevcut CMMS, EAM ve ERP sistemlerinizle birlikte çalışır; yerlerine geçmez.</span>
+      <span data-en>Works alongside your existing CMMS, EAM and ERP systems; it does not replace them.</span>
     </p>
 
     <div class="band-card" id="band">
