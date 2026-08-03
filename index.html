@@ -120,7 +120,6 @@ h4{font-size:1.06rem;letter-spacing:-.015em}
 .cat-line{color:var(--ink-2);letter-spacing:.13em;margin-bottom:24px;max-width:520px;line-height:1.7}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .note{font-size:.92rem;color:var(--ink-3);font-style:italic}
-em.q{font-style:normal;color:var(--ink)}
 
 /* selected-for şeridi */
 .strip{padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
@@ -144,7 +143,7 @@ em.q{font-style:normal;color:var(--ink)}
 .lang button{background:none;border:none;padding:10px 9px;cursor:pointer;font:inherit;color:var(--ink-3);letter-spacing:.06em}
 .lang button.on{background:var(--ink);color:#fff}
 
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:.94rem;font-weight:500;padding:13px 21px;border-radius:3px;text-decoration:none;border:1px solid var(--ink);background:var(--ink);color:#fff;transition:opacity .18s;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--sans);font-size:.94rem;font-weight:500;padding:13px 21px;border-radius:3px;text-decoration:none;border:1px solid var(--ink);background:var(--ink);color:#fff;transition:opacity .18s;cursor:pointer}
 .btn:hover{opacity:.82}
 .btn-2{background:none;color:var(--ink);border-color:var(--line-2)}
 .btn-2:hover{border-color:var(--ink);opacity:1}
@@ -216,11 +215,6 @@ em.q{font-style:normal;color:var(--ink)}
 .trio p{font-size:.94rem;color:var(--ink-2);line-height:1.5}
 .trio .n{font-family:var(--mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.1em;display:block;margin-bottom:16px}
 
-/* question rows */
-.qs{margin-top:38px;border-top:1px solid var(--line-2);max-width:760px}
-.q{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
-.q-t{flex:1;font-size:1.01rem}
-.q-a{font-family:var(--mono);font-size:.71rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dev)}
 .after{margin-top:34px;max-width:680px}
 .after p{margin-bottom:9px;color:var(--ink-2)}
 .after b{color:var(--ink);font-weight:600}
@@ -292,6 +286,8 @@ tr:last-child td{border-bottom:none}
 .use{padding-top:20px;border-top:2px solid var(--ink)}
 .use h3{margin-bottom:8px}
 .use p{font-size:.92rem;color:var(--ink-2);line-height:1.5}
+/* baslik olmayan sonuc kutulari biraz daha okunur olsun */
+.q4 .use p{font-size:1rem;line-height:1.55}
 
 /* integration */
 .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -459,7 +455,7 @@ html[lang="en"] [data-tr]{display:none}
 .strip-lbl,.band-tag,.band-label,.ro-l,.flow2 .who,.cmp-h,.mgrp-h,.rec-st,.tw-hint,.legal dt,.fld label{
   font-size:.685rem;letter-spacing:.12em}
 th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
-.pill,.q-a{letter-spacing:.09em}
+.pill{letter-spacing:.09em}
 .trio .n{font-size:.72rem;letter-spacing:.12em}
 
 /* C · Hairline'lar ve yüzey ayrımı */
@@ -473,7 +469,6 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 .btn:active{transform:translateY(1px)}
 .chip{transition:border-color .15s,color .15s}
 .chip:hover{border-color:var(--ink-3);color:var(--ink)}
-.q{transition:background .15s}
 .lad-r,.rec tbody tr{transition:background .15s}
 
 /* E · Marka: kelime markasi vektor olarak gomulu (bkz. .wm) */
@@ -526,15 +521,21 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   font-size:1.08rem;line-height:1.5;color:var(--ink-2);letter-spacing:0}
 /* Ayraclar dik ve notr kalsin: italik serif nokta optik olarak kayiyor. */
 .cat-sect i{font-family:var(--sans);font-style:normal;font-weight:400;
-  color:var(--ink-3);margin:0 .46em;font-size:.94em;vertical-align:.06em}
+  color:var(--ink-3);margin:0 .62em;font-size:.94em;vertical-align:.06em}
 .hero .lede{margin-top:32px}
 @media(max-width:560px){
   .hero{padding-top:34px}
   .hero .cat-line{font-size:.95rem;margin-bottom:17px;line-height:1.5;padding-top:16px}
   .hero .cat-line::before{width:24px}
   .cat-sect{font-size:1rem;margin-bottom:10px;line-height:1.55}
-  .cat-sect i{margin:0 .36em}
+  .cat-sect i{margin:0 .5em}
 }
+
+/* Problem bolumu basligi global h2 max-width'i (520px) yuzunden uc satira
+   dusuyordu. Tek satir 1072px, yani iki satir icin en az 536px gerekiyor —
+   520 kil payi yetmiyordu. Punto degismeden yalnizca bu baslik sagda
+   genisletildi; 660px tarayici metrik farklarina karsi pay birakiyor. */
+[data-sec="Problem sorusu"] h2{max-width:660px}
 </style>
 </head>
 <body>
@@ -562,8 +563,8 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <span data-en>Technical Evidence and Verification System for Critical Field Work</span>
     </span>
     <span class="cat-sect">
-      <span data-tr>EPC ve devreye alma<i aria-hidden="true">·</i>Veri merkezleri<i aria-hidden="true">·</i>Elektrik dağıtımı<i aria-hidden="true">·</i>Endüstriyel kurulum</span>
-      <span data-en>EPC and commissioning<i aria-hidden="true">·</i>Data centres<i aria-hidden="true">·</i>Electricity distribution<i aria-hidden="true">·</i>Industrial installation</span>
+      <span data-tr>EPC ve devreye alma<i aria-hidden="true">·</i>Veri merkezleri<i aria-hidden="true">·</i>Elektrik dağıtım ve şebeke<i aria-hidden="true">·</i>Endüstriyel kurulum</span>
+      <span data-en>EPC and commissioning<i aria-hidden="true">·</i>Data centres<i aria-hidden="true">·</i>Electricity distribution and networks<i aria-hidden="true">·</i>Industrial installation</span>
     </span>
     <h1 class="display">
       <span data-tr>Yapılan işi, ekip daha sahadayken doğrulayın.</span>
@@ -577,7 +578,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
     <div class="btns">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Request information by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <a class="btn btn-2" href="#saha"><span data-tr>Örnek kanıt kaydını inceleyin</span><span data-en>See a sample evidence record</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
     <p class="hero-note">
       <span data-tr>Mevcut CMMS, EAM ve ERP sistemlerinizle birlikte çalışır; yerlerine geçmez.</span>
@@ -617,8 +618,42 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </div>
 
-<!-- 02 · TEKNİK PROSEDÜRDEN DOĞRULANMIŞ İŞE -->
-<section class="sec sec-a" style="border-top:none">
+<!-- 02 · PROBLEM -->
+<section class="sec" data-sec="Problem sorusu" style="border-top:none">
+  <div class="wrap rv">
+    <h2>
+      <span data-tr>Sapma kabul edildiyse, gerekçesi ve teknik onayı nerede?</span>
+      <span data-en>If a deviation was accepted, where is the justification and the technical approval?</span>
+    </h2>
+    <p class="body" style="margin-top:20px;max-width:62ch">
+      <span data-tr>İş tamamlandığında elinizde sonuç olabilir. Ancak sapmanın hangi kritere göre, hangi kanıtla, hangi gerekçeyle ve kimin onayıyla kabul edildiği kayıtlı değilse sorumluluk açıkta kalır.</span>
+      <span data-en>When the job is finished you may have a result. But if there is no record of the criterion, the evidence, the justification and the approval the deviation was accepted on, accountability stays exposed.</span>
+    </p>
+
+    <div class="callout">
+      <p>
+        <span data-tr>Kayıt vardır — savunulabilir teknik kanıt yoktur.</span>
+        <span data-en>There is a record — but no defensible technical evidence.</span>
+      </p>
+    </div>
+
+    <div class="uses q4" data-tr>
+      <div class="use"><p>Gerekçesi kayıtlı olmayan karar savunulamaz.</p></div>
+      <div class="use"><p>Açık sapma teknik kabulü ve hakedişi geciktirir.</p></div>
+      <div class="use"><p>Eksik kanıt ikinci ziyaret ve yeniden iş yaratır.</p></div>
+      <div class="use"><p>Uygulama hatası daha sonra arıza veya uyuşmazlık olarak geri dönebilir.</p></div>
+    </div>
+    <div class="uses q4" data-en>
+      <div class="use"><p>A decision whose justification is not recorded cannot be defended.</p></div>
+      <div class="use"><p>An open deviation delays technical acceptance and payment.</p></div>
+      <div class="use"><p>Missing evidence creates a second site visit and rework.</p></div>
+      <div class="use"><p>A workmanship error can come back later as a failure or a dispute.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · TEKNİK PROSEDÜRDEN DOĞRULANMIŞ İŞE -->
+<section class="sec sec-a">
   <div class="wrap rv">
     <h2><span data-tr>Teknik prosedürden doğrulanmış işe.</span><span data-en>From technical procedure to verified work.</span></h2>
     <p class="body" style="margin-top:20px;max-width:62ch">
@@ -645,25 +680,25 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 03 · TİCARİ DEĞER -->
+<!-- 04 · TİCARİ DEĞER -->
 <section class="sec" data-sec="Ticari deger">
   <div class="wrap rv">
-    <h2><span data-tr>Kanıt üç yerde işinize yarar.</span><span data-en>Evidence pays off in three places.</span></h2>
+    <h2><span data-tr>Kanıt üç aşamada işinize yarar.</span><span data-en>Evidence pays off at three stages.</span></h2>
     <div class="trio trio-open">
       <div>
         <span class="n">01</span>
         <h3><span data-tr>İş kapanmadan</span><span data-en>Before the job closes</span></h3>
-        <p><span data-tr>Eksik kanıt ve kriter dışı değer sahadayken görünür. İkinci ziyaret ihtiyacı azalır.</span><span data-en>Missing evidence and out-of-criteria values surface while the crew is still on site. This reduces the need for a second visit.</span></p>
+        <p><span data-tr>Eksik kanıt ve kriter dışı değer ekip sahadayken görünür. İkinci ziyaret ve yeniden iş ihtiyacı azalır.</span><span data-en>Missing evidence and out-of-criteria values surface while the crew is still on site. The need for a second visit and rework goes down.</span></p>
       </div>
       <div>
         <span class="n">02</span>
-        <h3><span data-tr>Teknik kabulde</span><span data-en>At technical acceptance</span></h3>
-        <p><span data-tr>Mühendis fotoğraf klasörü değil, kaynağı belli bir kayıt inceler. Onay süresi kısalır.</span><span data-en>The engineer reviews a sourced record — not a folder of photos. Sign-off gets faster.</span></p>
+        <h3><span data-tr>Denetim ve teknik kabulde</span><span data-en>At inspection and technical acceptance</span></h3>
+        <p><span data-tr>Mühendis veya denetçi, fotoğraf klasörü yerine kaynağı, kriteri ve sonucu belli tek bir kayıt inceler. Onay süresi kısalır.</span><span data-en>The engineer or inspector reviews a single record with a known source, criterion and result — not a folder of photos. Sign-off gets faster.</span></p>
       </div>
       <div>
         <span class="n">03</span>
         <h3><span data-tr>Teslim ve hakedişte</span><span data-en>At handover and payment</span></h3>
-        <p><span data-tr>Şartnameye göre incelenecek kanıt paketi iş sırasında oluşur. Sonradan toplanmaz.</span><span data-en>The evidence pack that will be reviewed against specification is built during the work. It isn't reconstructed afterwards.</span></p>
+        <p><span data-tr>Şartnameye bağlı kanıt paketi iş sırasında oluşur. Teslim, hakediş ve olası uyuşmazlıklarda sonradan belge toplama ihtiyacı azalır.</span><span data-en>The specification-linked evidence pack is built during the work. At handover, payment and in any dispute, there is less need to gather documents afterwards.</span></p>
       </div>
     </div>
   </div>
@@ -676,27 +711,23 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   ~%80 iddiasını doğrulayan birincil kaynak bulunamadı. Kaynak bulunursa bu blok açılabilir.
 -->
 
-<!-- 04 · PROBLEM -->
+<!-- 05 · PROBLEM -->
 <section class="sec sec-a" id="problem" data-sec="Problem">
   <div class="wrap rv">
     <h2><span data-tr>İşçilik kanıtı sonradan üretilemez.</span><span data-en>Evidence of workmanship cannot be produced after the fact.</span></h2>
     <p class="body" style="margin-top:22px">
-      <span data-tr>Bağlantı tamamlanır. Enerji verilir. Sistem çalışır. Ancak yanlış tork, hatalı hazırlık veya bir uygulama sapması aylar sonra arıza olarak ortaya çıkabilir. O gün sorular başlar:</span>
-      <span data-en>The connection is completed. Power is applied. The system runs. But incorrect torque, poor preparation or a procedural deviation can surface as a failure months later. When that day comes, the questions start:</span>
+      <span data-tr>Bağlantı tamamlanır. Enerji verilir. Sistem çalışır. Ancak yanlış tork, hatalı hazırlık veya bir uygulama sapması aylar sonra arıza olarak ortaya çıkabilir.</span>
+      <span data-en>The connection is completed. Power is applied. The system runs. But incorrect torque, poor preparation or a procedural deviation can surface as a failure months later.</span>
     </p>
-    <div class="qs">
-      <div class="q"><span class="q-t"><span data-tr>Hangi prosedür uygulandı?</span><span data-en>Which procedure was followed?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
-      <div class="q"><span class="q-t"><span data-tr>Bağlantı hangi torkla sıkıldı?</span><span data-en>To what torque was it tightened?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
-      <div class="q"><span class="q-t"><span data-tr>Sapma olduysa neden kabul edildi?</span><span data-en>If there was a deviation, why was it accepted?</span></span><span class="q-a"><span data-tr>kayıt yok</span><span data-en>no record</span></span></div>
-    </div>
+    
     <div class="after">
-      <p><span data-tr><b>Denetim bu boşluğu kapatmaz.</b> Her eki açıp bakamazsınız.</span><span data-en><b>Audits don't close this gap.</b> You cannot open every joint.</span></p>
+      <p><span data-tr><b>Denetim bu kanıt boşluğunu kapatmaz.</b> Her eki açıp bakamazsınız.</span><span data-en><b>Audits don't close this evidence gap.</b> You cannot open every joint.</span></p>
       <p><span data-tr><b>Eğitim de kapatmaz.</b> Prosedürün bilinmesi, o işte uygulandığını kanıtlamaz.</span><span data-en><b>Training doesn't either.</b> Knowing the procedure is not proof it was applied on that job.</span></p>
     </div>
   </div>
 </section>
 
-<!-- 05 · TOOLA FARKI -->
+<!-- 06 · TOOLA FARKI -->
 <section class="sec" id="nasil" data-sec="Nasil calisir">
   <div class="wrap rv">
     <h2 class="wide"><span data-tr>Teknisyene “doğru yaptın mı?” diye sormak kanıt değildir.</span><span data-en>Asking a technician “did you do it right?” is not evidence.</span></h2>
@@ -743,10 +774,14 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 06 · KANITIN GÜCÜ -->
+<!-- 07 · KANIT METODOLOJİSİ -->
 <section class="sec sec-a" id="kanit" data-sec="Kanit merdiveni">
   <div class="wrap rv">
-    <h2><span data-tr>Kanıtın gücü neye bağlı?</span><span data-en>What determines the strength of the evidence?</span></h2>
+    <h2><span data-tr>Beyan, kanıt değildir.</span><span data-en>A declaration is not evidence.</span></h2>
+    <p class="body" style="margin-top:20px;max-width:62ch">
+      <span data-tr>ToolA manuel girişi kanıt gibi göstermez. Doğrudan cihaz verisi, cihaz ekranı, görsel kanıt ve kullanıcı beyanı birbirinden açıkça ayrılır.</span>
+      <span data-en>ToolA does not present manual entry as evidence. Direct device data, instrument display, visual evidence and user declaration are clearly separated from one another.</span>
+    </p>
 
     <h3 style="margin-top:32px"><span data-tr>ToolA görmediği şeyi uydurmaz.</span><span data-en>ToolA does not invent what it cannot see.</span></h3>
     <p class="body" style="margin-top:12px">
@@ -773,7 +808,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <div class="lad-r">
         <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
         <div class="lad-n"><span data-tr>Cihaz kanıtı</span><span data-en>Instrument evidence</span></div>
-        <div class="lad-s"><span data-tr>Test veya ölçüm cihazının ekranından okundu</span><span data-en>Read from the display of a test or measurement device</span></div>
+        <div class="lad-s"><span data-tr>Test veya ölçüm cihazının ekranı görüntülenerek kaydedildi</span><span data-en>Recorded by capturing the display of a test or measurement device</span></div>
         <div class="lad-l"><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></div>
       </div>
       <div class="lad-r">
@@ -791,8 +826,8 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
     </div>
 
     <p class="body" style="margin-top:18px">
-      <span data-tr><b>ToolA manuel girişi kanıt gibi göstermez.</b> Beyan, beyan olarak kalır.</span>
-      <span data-en><b>ToolA does not present manual entry as evidence.</b> A declaration stays a declaration.</span>
+      <span data-tr><b>Beyan, beyan olarak kalır.</b></span>
+      <span data-en><b>A declaration stays a declaration.</b></span>
     </p>
 
     <div class="subs" style="margin-top:30px">
@@ -956,7 +991,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 11 · KULLANIM ALANLARI -->
+<!-- 10 · KULLANIM ALANLARI -->
 <section class="sec" id="kullanim" data-sec="Kullanim alanlari">
   <div class="wrap rv">
     <h2><span data-tr>Hatası sonradan ortaya çıkan işler.</span><span data-en>Work whose errors surface later.</span></h2>
@@ -1064,7 +1099,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 12 · ENTEGRASYON -->
+<!-- 11 · ENTEGRASYON -->
 <section class="sec sec-a" data-sec="Entegrasyon">
   <div class="wrap rv">
     <h2><span data-tr>Mevcut altyapınızı değiştirmeden başlayın.</span><span data-en>Start without changing your infrastructure.</span></h2>
@@ -1095,7 +1130,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 13 · PİLOT -->
+<!-- 12 · PİLOT -->
 <section class="sec" id="pilot" data-sec="Pilot">
   <div class="wrap rv">
     <h2><span data-tr>6 hafta. Tek bir kritik iş.</span><span data-en>6 weeks. One critical job.</span></h2>
@@ -1128,7 +1163,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
         <div class="mgrp-h"><span data-tr>Pilot sonunda ne ölçeriz?</span><span data-en>What we measure at the end</span></div>
         <ul class="mlist">
           <li><b><span data-tr>Kanıt bütünlüğü</span><span data-en>Evidence completeness</span></b><span data-tr>Zorunlu ölçüm, test ve saha kanıtı eksiksiz olan iş oranı</span><span data-en>Share of jobs with all mandatory measurements, tests and field evidence present</span></li>
-          <li><b><span data-tr>Kanıt seviyesi dağılımı</span><span data-en>Evidence-level distribution</span></b><span data-tr>Kayıtların merdivende hangi basamakta oluştuğu; beyan oranı ne kadar düştü</span><span data-en>Distribution of records across evidence levels, and reduction in manual declarations</span></li>
+          <li><b><span data-tr>Kanıt seviyesi dağılımı</span><span data-en>Evidence-level distribution</span></b><span data-tr>Kayıtların kanıt seviyelerine göre dağılımı ve beyan oranındaki değişim</span><span data-en>Distribution of records across evidence levels and the change in declaration rate</span></li>
           <li><b><span data-tr>İş kapanmadan tespit edilen sapmalar</span><span data-en>Deviations caught before closure</span></b><span data-tr>Sahadayken görülen eksiklik ve kriter dışı değer sayısı</span><span data-en>Gaps and out-of-criteria values seen while on site</span></li>
           <li><b><span data-tr>Tekrar iş / ziyaret</span><span data-en>Repeat work / return visits</span></b><span data-tr>Aynı işe kısa süre içinde ikinci müdahale</span><span data-en>Second interventions on the same job within a short window</span></li>
         </ul>
@@ -1136,13 +1171,13 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
           <span data-tr>Teknisyen kayıt süresi ve uzman doğrulama süresi de pilot raporunda ayrıca izlenir. Uzun vadede tekrar arıza oranı ve first-time-right takip edilir. Bunlar altı haftada kanıtlanmaz; kayıt biriktikçe ölçülür.</span>
           <span data-en>Technician recording time and expert review time are also tracked in the pilot report. Longer term we also track repeat failure rate and first-time-right. These cannot be proven in six weeks; they are measured as records accumulate.</span>
         </p>
-        <p class="note" style="margin-top:16px"><span data-tr>İlk kurumlarla design partner olarak çalışıyoruz.</span><span data-en>We work with our first organisations as design partners.</span></p>
+        <p class="note" style="margin-top:16px"><span data-tr>Sınırlı sayıda kurumla ücretli pilot kapsamında çalışıyoruz. Pilot bedeli, yıllık sözleşmeye geçilmesi hâlinde ilk yıl bedelinden düşülür.</span><span data-en>We work with a limited number of organisations under a paid pilot. The pilot fee is deducted from the first-year fee if an annual contract follows.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 14 · TEKNİK HAFIZA -->
+<!-- 13 · TEKNİK HAFIZA -->
 <section class="sec sec-a sec-tight" data-sec="Teknik hafiza">
   <div class="wrap rv split">
     <h2><span data-tr>Bir sonraki teknisyen sıfırdan başlamaz.</span><span data-en>The next technician doesn't start from zero.</span></h2>
@@ -1157,7 +1192,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </section>
 
-<!-- 15 · CTA -->
+<!-- 14 · CTA -->
 <section class="close" data-sec="Kapanis CTA">
   <div class="wrap">
 
@@ -1166,7 +1201,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
     <div class="btns" style="justify-content:center">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>E-posta ile bilgi alın</span><span data-en>Get details by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>Örnek kaydı e-posta ile alın</span><span data-en>Get the sample record by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
     </div>
 
     <p class="note" style="margin:26px auto 0;max-width:640px">
