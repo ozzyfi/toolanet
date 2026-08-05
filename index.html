@@ -420,6 +420,9 @@ html[lang="en"] [data-tr]{display:none}
   .ctr-metrics>div{border-right:none}
   .ctr-metrics>div:nth-child(odd){border-right:1px solid var(--line)}
   .ctr-metrics>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .stats{grid-template-columns:1fr}
+  .stats>div{border-right:none!important;border-bottom:1px solid var(--line)}
+  .stats>div:last-child{border-bottom:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -581,8 +584,12 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
     <div class="btns">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <a class="btn btn-2" href="#saha"><span data-tr>Örnek kanıt kaydını inceleyin</span><span data-en>See a sample evidence record</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
+      <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
+    <p class="hero-trust" style="margin-top:18px;font-size:.78rem;color:var(--ink-3);line-height:1.5;max-width:64ch">
+      <span data-tr><b style="color:var(--ink-2);font-weight:600">Kaynaklı kriterler:</b> Kurum prosedürleri · üretici talimatları · geçerli IEC, IEEE ve NETA standartları</span>
+      <span data-en><b style="color:var(--ink-2);font-weight:600">Sourced criteria:</b> Internal procedures · manufacturer instructions · applicable IEC, IEEE and NETA standards</span>
+    </p>
     <p class="hero-note">
       <span data-tr>Mevcut CMMS, EAM ve ERP sistemlerinizle birlikte çalışır; yerlerine geçmez.</span>
       <span data-en>Works alongside your existing CMMS, EAM and ERP systems; it does not replace them.</span>
@@ -606,6 +613,29 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
         <div class="ro"><span class="ro-l"><span data-tr>Durum</span><span data-en>Status</span></span><span class="pill pill-dev"><span data-tr>Sapma</span><span data-en>Deviation</span></span></div>
       </div>
       <p class="band-note"><span data-tr>Gerekçe kaydedilmeden teknik doğrulama tamamlanmaz.</span><span data-en>Technical verification is not complete until the justification is recorded.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 01.5 · SEKTÖR VERİLERİ -->
+<section class="sec sec-tight" style="border-top:none;padding-top:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px)">
+  <div class="wrap rv">
+    <div class="stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="stat" style="padding:24px 24px 22px;border-right:1px solid var(--line)">
+        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%92</div>
+        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>Veri merkezi operatörlerinin son üç yıldaki önemli kesintilerde insan hatasının katkısı olduğunu belirten oranı.</span><span data-en>Share of data centre operators identifying human error as a contributing factor in their most significant outages over the last three years.</span></p>
+        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>Uptime Institute, 2026</span><span data-en>Uptime Institute, 2026</span></p>
+      </div>
+      <div class="stat" style="padding:24px 24px 22px;border-right:1px solid var(--line)">
+        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%57</div>
+        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>En son büyük kesintisinin maliyetinin 100.000 doların üzerinde olduğunu bildiren işletmeler.</span><span data-en>Share of operators reporting that the cost of their most recent major outage exceeded 100,000 USD.</span></p>
+        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>Uptime Institute, 2026</span><span data-en>Uptime Institute, 2026</span></p>
+      </div>
+      <div class="stat" style="padding:24px 24px 22px">
+        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%68</div>
+        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>73 orta gerilim kablo arızası incelemesinde, arızanın teknisyenlerin çalıştığı noktalarda oluşma oranı.</span><span data-en>Share of 73 medium-voltage cable fault investigations where the fault occurred at the technician&#39;s working point.</span></p>
+        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>EA Technology adli inceleme örneklemi</span><span data-en>EA Technology forensic sample</span></p>
+      </div>
     </div>
   </div>
 </section>
@@ -1375,6 +1405,10 @@ var MT = {
   intro:{
     tr:{title:'Bilgi gönderelim', sub:'E-posta adresinize ToolA\u0027nın kısa bir tanıtımını gönderelim. Ad ve e-posta yeterli.', cta:'Bilgi iste'},
     en:{title:'We\u0027ll send you the details', sub:'We\u0027ll email you a short introduction to ToolA. Name and email are enough.', cta:'Send me the details'}
+  },
+  ornek:{
+    tr:{title:'Önce kendi dokümanınızla görün.', sub:'Bir teknik iş talimatının veya şartnamenin en fazla 5 sayfasını gönderin. ToolA\u0027nın kabul kriterlerini, zorunlu kanıtları ve saha adımlarını nasıl yapılandırdığını tek bir örnek iş akışı üzerinde gösterelim.', cta:'Örnek iste'},
+    en:{title:'See it with your own document first.', sub:'Send up to 5 pages of a technical work instruction or specification. We will show how ToolA structures the acceptance criteria, the mandatory evidence and the field steps on a single sample workflow.', cta:'Request the sample'}
   }
 };
 
@@ -1410,6 +1444,12 @@ function paintModal(){
   document.getElementById('mTitle').textContent=t.title;
   document.getElementById('mSub').textContent=t.sub;
   document.getElementById('mSubmitTxt').textContent=t.cta;
+  var noteEl=document.querySelector('#modal .modal-note');
+  if(intent==='ornek'){
+    noteEl.innerHTML='<span data-tr>Ücretsiz · NDA ile · Tek iş akışı · Entegrasyon ve saha çalışması gerekmez</span><span data-en>Free · Under NDA · One workflow · No integration or field work needed</span>';
+  } else {
+    noteEl.innerHTML='<span data-tr>Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</span><span data-en>Your details stay confidential and are used only to contact you.</span>';
+  }
 }
 function paintPlaceholders(){
   var l=lang();
@@ -1425,7 +1465,7 @@ function openModal(kind, trigger){
   document.getElementById('cons').checked=false;
   document.getElementById('consentRow').classList.remove('bad');
   track('CTA', {tur: kind==='pilot' ? 'Pilot gorusmesi' : 'Kisa tanitim'});
-  var hafif = (kind==='intro');
+  var hafif = (kind==='intro' || kind==='ornek');
   document.getElementById('fldCompany').style.display = hafif ? 'none' : '';
   document.getElementById('fldPhone').style.display   = hafif ? 'none' : '';
   paintModal(); paintPlaceholders();
@@ -1491,7 +1531,7 @@ document.addEventListener('keydown',function(e){
 
 pForm.addEventListener('submit',function(e){
   e.preventDefault();
-  var hafif = (intent==='intro');
+  var hafif = (intent==='intro' || intent==='ornek');
   var ids = hafif ? ['f1','f4'] : ['f1','f2','f3','f4'];
   var f=['f1','f2','f3','f4'].map(function(id){return document.getElementById(id)}), ok=true;
   f.forEach(function(i){ i.classList.remove('bad'); });
