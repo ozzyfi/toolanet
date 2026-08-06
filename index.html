@@ -35,6 +35,9 @@
 </script>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='26' fill='%2314120D'/><g transform='translate(30.5 30) scale(0.67)'><path fill='%23fff' d='M0 100 56.4 0l56.7 100H93L56.6 35.5 20.1 100z'/><path fill='%23BE3A11' d='M56.8 67 75.4 100h-37z'/></g></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <script defer data-domain="toola.net" src="https://plausible.io/js/script.js"></script>
 
 <!-- Fontlar kendi sunucumuzda. Harici istek yok: Brave/uBlock/kurumsal proxy engelleyemez,
@@ -92,7 +95,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
    body herhangi bir sebeple grid/flex olursa (harici stil, eklenti, farklı build)
    doğrudan çocukları yine tam genişlik kalır. Normal koşulda bu kurallar etkisizdir. */
 body{display:block!important}
-body>header,body>section,body>footer,body>.strip{
+body>main{display:block;width:100%;max-width:100%;min-width:0}
+body>header,body>section,body>footer,body>.strip,
+body>main>section,body>main>.strip{
   display:block;width:100%;max-width:100%;min-width:0;
   grid-column:1/-1;flex:0 0 100%;position:relative;float:none;clear:both;
 }
@@ -106,8 +111,11 @@ body>header,body>section,body>footer,body>.strip{
 .subs .sub{margin-top:0}
 
 h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.06;font-weight:600;text-wrap:balance}
-.display{font-size:clamp(2.25rem,5vw,4rem);line-height:1.03;letter-spacing:-.034em}
-.display span{display:block;white-space:nowrap}
+.display{font-size:clamp(2.05rem,4.8vw,3.75rem);line-height:1.04;letter-spacing:-.034em}
+/* Satir sonlari tasarim tercihi; ama nowrap yalnizca satirin SIGDIGI genislikte
+   acilir. Altinda dogal sarma devreye girer, aksi halde baslik ekrandan tasiyordu. */
+.display span{display:block;white-space:normal}
+@media(min-width:700px){.display span{white-space:nowrap}}
 h2{font-size:clamp(1.6rem,3.2vw,2.35rem);max-width:520px}
 h2.wide{max-width:660px}
 h3{font-size:1.2rem;letter-spacing:-.018em}
@@ -135,6 +143,7 @@ h4{font-size:1.06rem;letter-spacing:-.015em}
 .wm{height:21px;width:auto;display:block}
 /* logonun dokunma hedefi 24px esiginin altina dusmesin */
 .hd .logo{padding:9px 0}
+@media(max-width:620px){.hd .logo{padding:12px 0}}
 .ft .wm{height:19px}
 @media(max-width:520px){.wm{height:19px}}
 .hd-r{display:flex;align-items:center;gap:22px}
@@ -153,8 +162,11 @@ h4{font-size:1.06rem;letter-spacing:-.015em}
 /* hero */
 .hero{padding:52px 0 clamp(52px,6vw,76px)}
 .hero .lede{margin-top:28px}
-.hero h1.display{max-width:1500px}
 .hero .wrap> :not(.band-card){max-width:820px}
+/* Ozgullugu .hero .wrap > :not(.band-card) (0,3,0) kuralini gecmeli: (0,3,1).
+   Onceki ".hero h1.display{max-width:1500px}" (0,2,1) hicbir zaman uygulanmiyordu;
+   baslik 820px kutusundan tasarak calisiyordu. */
+.hero .wrap>h1.display{max-width:none}
 .hero-note{margin-top:24px;font-size:.89rem;color:var(--ink-3)}
 
 /* SIGNATURE band */
@@ -204,6 +216,9 @@ h4{font-size:1.06rem;letter-spacing:-.015em}
 .pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;padding:5px 10px;border-radius:3px;white-space:nowrap}
 .pill-dev{background:var(--dev-bg);color:var(--dev)}
 .pill-ok{background:var(--conform-bg);color:var(--conform)}
+/* Durum eki olmayan rozetler (Ic ekip / Yuklenici ekip) hicbir zeminden
+   yararlanmiyordu; rozet gibi degil duz metin gibi goruluyorlardi. */
+.pill:not(.pill-ok):not(.pill-dev){background:var(--bg-2);color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line)}
 
 /* value band */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:44px}
@@ -357,6 +372,9 @@ tr:last-child td{border-bottom:none}
 @keyframes modalIn{from{opacity:0;transform:translateY(12px)}}
 .modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;background:none;border:1px solid transparent;border-radius:3px;cursor:pointer;color:var(--ink-3);font-size:20px;line-height:1}
 .modal-x:hover{color:var(--ink);border-color:var(--line)}
+/* Kapatma dugmesi mutlak konumlu (top/right 14). Baslik ve gizlilik metni
+   basligi dar ekranda dugmenin altina giriyordu; sag pay birakiliyor. */
+.modal-t,.legal h3{padding-right:34px}
 .modal-t{font-size:1.5rem;font-weight:600;margin-bottom:8px;max-width:none}
 .modal-s{font-size:.94rem;color:var(--ink-2);margin-bottom:26px}
 .fld{margin-bottom:16px}
@@ -385,7 +403,11 @@ body.locked{overflow:hidden}
 .mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
   background:rgba(241,239,233,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 .mcta .btn{flex:1;justify-content:center;padding:14px 16px}
-@media(max-width:620px){.mcta{display:flex} body{padding-bottom:76px} .modal,.pmodal{z-index:120}}
+/* body padding'i cubugun gercek yuksekligini karsilamali: 10 + buton + 10 + guvenli alan.
+   Onceki sabit 76px, centikli iPhone'larda alt seridin altyaziyi ortmesine yol aciyordu. */
+@media(max-width:620px){.mcta{display:flex}
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  .modal,.pmodal{z-index:120}}
 @media print{.hd,.mcta,.modal,.pmodal,.lang{display:none!important}
   body{background:#fff;font-size:11pt} .sec{padding:18px 0;break-inside:avoid}
   .trio,.flow2,.cmp,.ladder,.rec{break-inside:avoid}
@@ -394,6 +416,30 @@ body.locked{overflow:hidden}
 /* Scroll animasyonu kaldırıldı. İçerik her koşulda görünür; hiçbir JS'e bağlı değil.
    .rv sınıfı geriye dönük uyumluluk için duruyor, hiçbir etkisi yok. */
 .rv{opacity:1}
+
+/* ─── SEKTOR VERILERI SERIDI ───
+   Onceden bu izgara satir ici style ile kuruluyordu. Satir ici stil her zaman
+   medya sorgusunu yendigi icin mobil kurallar hic calismiyordu ve sayfa
+   320-620px arasi 617px genisliginde yatay kayiyordu. minmax(0,1fr):
+   sutunlarin min-content genisligine kilitlenmesini de engeller. */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats>div{padding:24px 24px 22px;border-right:1px solid var(--line);min-width:0}
+.stats>div:last-child{border-right:none}
+.stat-n{font-size:clamp(2.2rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);
+  letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stats .body{margin:14px 0 6px;font-size:.94rem;line-height:1.5;max-width:38ch}
+.stats .small{margin:0;font-size:.78rem}
+
+/* ─── MERKEZ KONTROL PANELI METRIKLERI ─── ayni satir ici stil sorunu */
+.ctr-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  border-bottom:1px solid var(--line)}
+.ctr-metrics>div{padding:14px 16px;border-right:1px solid var(--line);min-width:0}
+.ctr-metrics>div:last-child{border-right:none}
+.ctr-l{font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em}
+.ctr-v{font-size:1.55rem;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.ctr-v.dev{color:var(--dev)}
 
 html[lang="tr"] [data-en]{display:none}
 html[lang="en"] [data-tr]{display:none}
@@ -408,6 +454,12 @@ html[lang="en"] [data-tr]{display:none}
   .lad-l{grid-column:2;text-align:left}
   .bars{grid-row:span 3}
 }
+@media(max-width:760px){
+  .stats{grid-template-columns:1fr}
+  .stats>div{border-right:none;border-bottom:1px solid var(--line)}
+  .stats>div:last-child{border-bottom:none}
+  .stats .body{max-width:none}
+}
 @media(max-width:620px){
   body{font-size:16px}
   .uses{grid-template-columns:1fr}
@@ -416,16 +468,19 @@ html[lang="en"] [data-tr]{display:none}
   .ft-in{flex-direction:column}
   .ft-r{align-items:flex-start}
   .ft-legal{text-align:left}
-  .ctr-metrics{grid-template-columns:repeat(2,1fr)}
+  .ctr-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ctr-metrics>div{border-right:none}
   .ctr-metrics>div:nth-child(odd){border-right:1px solid var(--line)}
   .ctr-metrics>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .stats{grid-template-columns:1fr}
-  .stats>div{border-right:none!important;border-bottom:1px solid var(--line)}
-  .stats>div:last-child{border-bottom:none}
+  /* Dokunma hedefleri: 44px esigi. Onceki degerler 31-34px idi. */
+  .lang button{padding:12px 13px}
+  .soc a{width:44px;height:44px}
+  .ft a,.ft-legal button{padding:10px 0}
+  .strip-in{gap:10px 22px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
   .rv{opacity:1;transform:none}
 }
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
@@ -559,8 +614,10 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </header>
 
+<main id="main">
+
 <!-- 01 · HERO -->
-<section class="hero" id="main" data-sec="Hero">
+<section class="hero" data-sec="Hero">
   <div class="wrap">
     <span class="eyebrow cat-line">
       <span data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</span>
@@ -584,7 +641,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
     <div class="btns">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
+      <a class="btn btn-2" data-open="ornek" href="mailto:info@toola.net?subject=ToolA%20-%20Ornek%20is%20akisi"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
     <p class="hero-trust" style="margin-top:18px;font-size:.78rem;color:var(--ink-3);line-height:1.5;max-width:64ch">
       <span data-tr><b style="color:var(--ink-2);font-weight:600">Kaynaklı kriterler:</b> Kurum prosedürleri · üretici talimatları · geçerli IEC, IEEE ve NETA standartları</span>
@@ -618,23 +675,23 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 </section>
 
 <!-- 01.5 · SEKTÖR VERİLERİ (band-card altı, hero dışı) -->
-<section class="sec sec-tight" style="border-top:none;padding-top:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px)">
+<section class="sec sec-tight" data-sec="Sektor verileri" style="border-top:none;padding-top:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px)">
   <div class="wrap rv">
-    <div class="stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-      <div class="stat" style="padding:24px 24px 22px;border-right:1px solid var(--line)">
-        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%92</div>
-        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>Veri merkezi operatörlerinin son üç yıldaki önemli kesintilerde insan hatasının katkısı olduğunu belirten oranı.</span><span data-en>Share of data centre operators identifying human error as a contributing factor in their most significant outages over the last three years.</span></p>
-        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>Uptime Institute, 2026</span><span data-en>Uptime Institute, 2026</span></p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-n"><span data-tr>%85</span><span data-en>85%</span></div>
+        <p class="body"><span data-tr>İnsan hatasının yol açtığı büyük kesintilerin, prosedürlere uyulmaması veya prosedür ve süreç kusurlarıyla ilişkili oranı.</span><span data-en>Share of major human-error outages linked to staff failing to follow procedures, or to flawed procedures and processes.</span></p>
+        <p class="small">Uptime Institute, Annual Outage Analysis 2025</p>
       </div>
-      <div class="stat" style="padding:24px 24px 22px;border-right:1px solid var(--line)">
-        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%57</div>
-        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>En son büyük kesintisinin maliyetinin 100.000 doların üzerinde olduğunu bildiren işletmeler.</span><span data-en>Share of operators reporting that the cost of their most recent major outage exceeded 100,000 USD.</span></p>
-        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>Uptime Institute, 2026</span><span data-en>Uptime Institute, 2026</span></p>
+      <div class="stat">
+        <div class="stat-n"><span data-tr>%57</span><span data-en>57%</span></div>
+        <p class="body"><span data-tr>En son büyük kesintisinin maliyetinin 100.000 doların üzerinde olduğunu bildiren işletmelerin oranı.</span><span data-en>Share of operators reporting that the cost of their most recent major outage exceeded 100,000 USD.</span></p>
+        <p class="small">Uptime Institute, Annual Outage Analysis 2026</p>
       </div>
-      <div class="stat" style="padding:24px 24px 22px">
-        <div class="stat-n" style="font-size:clamp(2.4rem,4.2vw,3.2rem);font-weight:600;color:var(--ink);letter-spacing:-.03em;line-height:1">%68</div>
-        <p class="body" style="margin:14px 0 6px;font-size:.94rem;color:var(--ink-2);line-height:1.5;max-width:36ch"><span data-tr>73 orta gerilim kablo arızası incelemesinde, arızanın teknisyenlerin çalıştığı noktalarda oluşma oranı.</span><span data-en>Share of 73 medium-voltage cable fault investigations where the fault occurred at the technician&#39;s working point.</span></p>
-        <p class="small" style="margin:0;color:var(--ink-3);font-size:.78rem"><span data-tr>EA Technology adli inceleme örneklemi</span><span data-en>EA Technology forensic sample</span></p>
+      <div class="stat">
+        <div class="stat-n"><span data-tr>%68</span><span data-en>68%</span></div>
+        <p class="body"><span data-tr>İncelenen 73 orta gerilim kablo arızasında, arızanın teknisyenlerin çalışma yaptığı noktalarda oluşma oranı.</span><span data-en>Share of the 73 medium-voltage cable faults examined where the fault occurred at the point the technician had worked.</span></p>
+        <p class="small"><span data-tr>EA Technology, adli inceleme örneklemi</span><span data-en>EA Technology, forensic sample</span></p>
       </div>
     </div>
   </div>
@@ -663,13 +720,6 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <span data-en>When the job is finished you may have a result. But if there is no record of the criterion, the evidence, the justification and the approval the deviation was accepted on, accountability stays exposed.</span>
     </p>
 
-    <div class="callout">
-      <p>
-        <span data-tr>Kayıt vardır — savunulabilir teknik kanıt yoktur.</span>
-        <span data-en>There is a record — but no defensible technical evidence.</span>
-      </p>
-    </div>
-
     <div class="uses q4" data-tr>
       <div class="use"><p>Gerekçesi kayıtlı olmayan karar savunulamaz.</p></div>
       <div class="use"><p>Açık sapma teknik kabulü ve hakedişi geciktirir.</p></div>
@@ -686,7 +736,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 </section>
 
 <!-- 03 · TEKNİK PROSEDÜRDEN DOĞRULANMIŞ İŞE -->
-<section class="sec sec-a">
+<section class="sec sec-a" data-sec="Prosedurden dogrulanmis ise">
   <div class="wrap rv">
     <h2><span data-tr>Teknik prosedürden doğrulanmış işe.</span><span data-en>From technical procedure to verified work.</span></h2>
     <p class="body" style="margin-top:20px;max-width:62ch">
@@ -776,7 +826,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
     <div class="flow2">
       <div>
         <div class="who"><span data-tr>Teknisyen</span><span data-en>The technician</span></div>
-        <ol>
+        <ol role="list">
           <li><span data-tr>Geçerli iş adımlarını görür</span><span data-en>Sees the active job steps</span></li>
           <li><span data-tr>Uygulanacak kriteri görür</span><span data-en>Sees the criterion to apply</span></li>
           <li><span data-tr>İşi gerçekleştirir</span><span data-en>Carries out the work</span></li>
@@ -786,7 +836,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       </div>
       <div>
         <div class="who">ToolA</div>
-        <ol>
+        <ol role="list">
           <li><span data-tr>Kanıtın hangi adım için gerekli olduğunu gösterir</span><span data-en>Shows which step each piece of evidence is for</span></li>
           <li><span data-tr>Kanıttan doğrulanabilen bilgiyi çıkarır</span><span data-en>Extracts what can be verified from the evidence</span></li>
           <li><span data-tr>Kanıtı iş, varlık, kullanıcı ve zamanla ilişkilendirir</span><span data-en>Links the evidence to the job, asset, user and time</span></li>
@@ -963,7 +1013,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
         <span data-tr>Sapma yalnızca gösterilmez. Kapanana kadar yönetilir.</span>
         <span data-en>The deviation is not only shown — it is managed until it is closed.</span>
       </p>
-      <ol class="dev-steps" style="margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px;max-width:64ch">
+      <ol class="dev-steps" role="list" style="margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px;max-width:64ch">
         <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">01</span><span class="body" style="margin:0"><span data-tr>Kriter dışı sonuç tespit edilir.</span><span data-en>Out-of-criteria result is detected.</span></span></li>
         <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">02</span><span class="body" style="margin:0"><span data-tr>Sapma ilgili teknisyen, ekip veya yükleniciye atanır.</span><span data-en>The deviation is assigned to the relevant technician, crew or contractor.</span></span></li>
         <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">03</span><span class="body" style="margin:0"><span data-tr>Düzeltici işlem ve gerekçe kaydedilir.</span><span data-en>Corrective action and the reason are recorded.</span></span></li>
@@ -993,7 +1043,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
     <div class="cmp">
       <div class="cmp-c">
         <div class="cmp-h">CMMS / EAM / ERP</div>
-        <ul class="cmp-l">
+        <ul class="cmp-l" role="list">
           <li><span data-tr>Kim yaptı?</span><span data-en>Who did it?</span></li>
           <li><span data-tr>Ne zaman yapıldı?</span><span data-en>When was it done?</span></li>
           <li><span data-tr>Hangi iş emri?</span><span data-en>Which work order?</span></li>
@@ -1003,7 +1053,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       </div>
       <div class="cmp-c b">
         <div class="cmp-h">ToolA</div>
-        <ul class="cmp-l">
+        <ul class="cmp-l" role="list">
           <li><span data-tr>Doğru işlem uygulandı mı?</span><span data-en>Was the correct procedure applied?</span></li>
           <li><span data-tr>Bunu gösteren kanıt var mı?</span><span data-en>Is there evidence showing that?</span></li>
           <li><span data-tr>Kanıt nereden geldi?</span><span data-en>Where did the evidence come from?</span></li>
@@ -1061,25 +1111,26 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
         </div>
         <span class="mono" style="font-size:.68rem;color:var(--ink-3);letter-spacing:.06em"><span data-tr>TR · DAĞITIM</span><span data-en>TR · DISTRIBUTION</span></span>
       </div>
-      <div class="ctr-metrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--line)">
-        <div style="padding:14px 16px;border-right:1px solid var(--line)">
-          <div class="mono" style="font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Devam eden kritik iş</span><span data-en>Ongoing critical work</span></div>
-          <div style="font-size:1.55rem;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.1">12</div>
+      <div class="ctr-metrics">
+        <div>
+          <div class="mono ctr-l"><span data-tr>Devam eden kritik iş</span><span data-en>Ongoing critical work</span></div>
+          <div class="ctr-v">12</div>
         </div>
-        <div style="padding:14px 16px;border-right:1px solid var(--line)">
-          <div class="mono" style="font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Eksik kanıt bulunan iş</span><span data-en>Jobs with missing evidence</span></div>
-          <div style="font-size:1.55rem;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.1">3</div>
+        <div>
+          <div class="mono ctr-l"><span data-tr>Eksik kanıt bulunan iş</span><span data-en>Jobs with missing evidence</span></div>
+          <div class="ctr-v">3</div>
         </div>
-        <div style="padding:14px 16px;border-right:1px solid var(--line)">
-          <div class="mono" style="font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Açık sapma</span><span data-en>Open deviations</span></div>
-          <div style="font-size:1.55rem;font-weight:600;color:var(--dev);margin-top:6px;line-height:1.1">2</div>
+        <div>
+          <div class="mono ctr-l"><span data-tr>Açık sapma</span><span data-en>Open deviations</span></div>
+          <div class="ctr-v dev">2</div>
         </div>
-        <div style="padding:14px 16px">
-          <div class="mono" style="font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em"><span data-tr>Teknik onay bekleyen</span><span data-en>Awaiting technical approval</span></div>
-          <div style="font-size:1.55rem;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.1">5</div>
+        <div>
+          <div class="mono ctr-l"><span data-tr>Teknik onay bekleyen</span><span data-en>Awaiting technical approval</span></div>
+          <div class="ctr-v">5</div>
         </div>
       </div>
-      <div style="overflow-x:auto">
+      <p class="tw-hint" style="padding:9px 16px 0"><span data-tr>Tabloyu yana kaydırın</span><span data-en>Scroll the table sideways</span></p>
+      <div class="tw">
         <table style="width:100%;border-collapse:collapse;font-size:.86rem;min-width:560px">
           <thead>
             <tr style="background:var(--bg-2)">
@@ -1182,7 +1233,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
     <div class="pil">
       <div>
         <div class="mgrp-h"><span data-tr>Sizden gereken</span><span data-en>What we need from you</span></div>
-        <ul class="mlist">
+        <ul class="mlist" role="list">
           <li><span data-tr>Bir kritik teknik iş veya ekipman ailesi</span><span data-en>One critical technical job or asset family</span></li>
           <li><span data-tr>Mevcut prosedür ve kabul kriterleriniz — <b style="display:inline">elinizdeki hâliyle, yeniden yazmadan</b></span><span data-en>Your existing procedures and acceptance criteria — <b style="display:inline">as they are, with no rewriting</b></span></li>
           <li><span data-tr>5–10 teknik kullanıcı</span><span data-en>5–10 technical users</span></li>
@@ -1194,7 +1245,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       </div>
       <div>
         <div class="mgrp-h"><span data-tr>Pilot sonunda ne ölçeriz?</span><span data-en>What we measure at the end</span></div>
-        <ul class="mlist">
+        <ul class="mlist" role="list">
           <li><b><span data-tr>Kanıt bütünlüğü</span><span data-en>Evidence completeness</span></b><span data-tr>Zorunlu ölçüm, test ve saha kanıtı eksiksiz olan iş oranı</span><span data-en>Share of jobs with all mandatory measurements, tests and field evidence present</span></li>
           <li><b><span data-tr>Kanıt seviyesi dağılımı</span><span data-en>Evidence-level distribution</span></b><span data-tr>Kayıtların kanıt seviyelerine göre dağılımı ve beyan oranındaki değişim</span><span data-en>Distribution of records across evidence levels and the change in declaration rate</span></li>
           <li><b><span data-tr>İş kapanmadan tespit edilen sapmalar</span><span data-en>Deviations caught before closure</span></b><span data-tr>Sahadayken görülen eksiklik ve kriter dışı değer sayısı</span><span data-en>Gaps and out-of-criteria values seen while on site</span></li>
@@ -1229,12 +1280,11 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 <section class="close" data-sec="Kapanis CTA">
   <div class="wrap">
 
-    <h2 style="margin:0 auto 6px"><span data-tr>Teknisyen işi yapsın.</span><span data-en>Let the technician do the work.</span></h2>
-    <h2 class="dim2" style="margin:0 auto"><span data-tr>Kanıt iş sırasında oluşsun.</span><span data-en>Let the evidence form as the work happens.</span></h2>
+    <h2 style="margin:0 auto"><span data-tr>Teknisyen işi yapsın.</span><span data-en>Let the technician do the work.</span><br><span class="dim2" data-tr>Kanıt iş sırasında oluşsun.</span><span class="dim2" data-en>Let the evidence form as the work happens.</span></h2>
 
     <div class="btns" style="justify-content:center">
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <button type="button" class="btn btn-2" data-open="intro"><span data-tr>Örnek kaydı e-posta ile alın</span><span data-en>Get the sample record by email</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <button type="button" class="btn btn-2" data-open="ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
     </div>
 
     <p class="note" style="margin:26px auto 0;max-width:640px">
@@ -1244,6 +1294,8 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
   </div>
 </section>
+
+</main>
 
 <footer class="ft">
   <div class="wrap ft-in">
@@ -1304,12 +1356,12 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
         </div>
         <div class="fld" id="fldPhone">
           <label for="f3"><span data-tr>Telefon</span><span data-en>Phone</span></label>
-          <input id="f3" name="f3" aria-describedby="e3" type="tel" autocomplete="tel" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx">
+          <input id="f3" name="f3" aria-describedby="e3" type="tel" inputmode="tel" autocomplete="tel" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx">
           <span class="fld-e" id="e3"><span data-tr>Bu alan gerekli.</span><span data-en>This field is required.</span></span>
         </div>
         <div class="fld">
           <label for="f4"><span data-tr>E-posta</span><span data-en>Email</span></label>
-          <input id="f4" name="f4" aria-describedby="e4" type="email" autocomplete="email" data-ph-tr="email@sirket.com" data-ph-en="you@company.com">
+          <input id="f4" name="f4" aria-describedby="e4" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" data-ph-tr="email@sirket.com" data-ph-en="you@company.com">
           <span class="fld-e" id="e4"><span data-tr>Geçerli bir e-posta girin.</span><span data-en>Enter a valid email address.</span></span>
         </div>
         <div class="consent" id="consentRow">
@@ -1354,11 +1406,11 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
 <div class="modal pmodal" id="pmodal" hidden>
   <div class="modal-bd" data-pclose></div>
-  <div class="modal-box legal" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+  <div class="modal-box legal" role="dialog" aria-modal="true" aria-label="Aydınlatma metni / Privacy notice">
     <button type="button" class="modal-x" data-pclose aria-label="Kapat / Close">&times;</button>
 
     <div data-tr>
-      <h3 id="pTitle">Aydınlatma Metni</h3>
+      <h3>Aydınlatma Metni</h3>
       <p class="modal-s">6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında.</p>
       <dl>
         <dt>Veri sorumlusu</dt><dd>Toola Teknoloji A.Ş. · Teknopark İstanbul, Türkiye · info@toola.net</dd>
