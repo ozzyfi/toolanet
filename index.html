@@ -164,7 +164,7 @@ h4{font-size:1.06rem;letter-spacing:-.015em}
 .hero .lede{margin-top:28px}
 .hero .wrap> :not(.band-card){max-width:820px}
 /* Ozgullugu .hero .wrap > :not(.band-card) (0,3,0) kuralini gecmeli: (0,3,1).
-   Onceki ".hero h1.display{max-width:1500px}" (0,2,1) hicbir zaman uygulanmiyordu;
+   Onceki ".hero h1.display{max-width:none}" (0,2,1) hicbir zaman uygulanmiyordu;
    baslik 820px kutusundan tasarak calisiyordu. */
 .hero .wrap>h1.display{max-width:none}
 .hero-note{margin-top:24px;font-size:.89rem;color:var(--ink-3)}
@@ -616,7 +616,7 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
 
 <main id="main">
 
-<!-- 01 · HERO -->
+<!-- 1 · HERO -->
 <section class="hero" data-sec="Hero">
   <div class="wrap">
     <span class="eyebrow cat-line">
@@ -624,83 +624,32 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <span data-en>Technical Evidence and Verification System for Critical Field Work</span>
     </span>
     <span class="cat-sect">
-      <span data-tr>EPC ve devreye alma<i aria-hidden="true">·</i>Veri merkezleri<i aria-hidden="true">·</i>Elektrik dağıtım ve şebeke<i aria-hidden="true">·</i>Endüstriyel kurulum</span>
-      <span data-en>EPC and commissioning<i aria-hidden="true">·</i>Data centres<i aria-hidden="true">·</i>Electricity distribution and networks<i aria-hidden="true">·</i>Industrial installation</span>
+      <span data-tr>ToolA</span>
+      <span data-en>ToolA</span>
     </span>
     <h1 class="display">
-      <span data-tr>Teknik sapmayı ve eksik kanıtı</span>
-      <span data-tr>ekip sahadan ayrılmadan yakalayın.</span>
-      <span data-en>Catch deviations and missing evidence</span>
-      <span data-en>before the crew leaves the site.</span>
+      <span data-tr>İş bitti demek, doğru yapıldı demek değildir.</span>
+      <span data-en>Finishing the job doesn&#39;t mean it was done right.</span>
     </h1>
-
+    <p class="display-sub" style="margin-top:18px">
+      <span data-tr>Teknisyen sahadan ayrılmadan, kritik işin teknik kriterlere uygunluğunu doğrulayın.</span>
+      <span data-en>Verify that critical work meets its technical criteria before the technician leaves the site.</span>
+    </p>
     <p class="lede">
-      <span data-tr>ToolA; kurum prosedürü, şartname ve üretici talimatlarını sahada uygulanabilir adımlara çevirir. Ölçüm, tork, test ve görsel kanıtları kabul kriterleriyle eşleştirir; eksik kanıtı ve sapmayı iş kapanmadan görünür hâle getirir.</span>
-      <span data-en>ToolA turns your organisation&#39;s procedures, specifications and manufacturer instructions into steps that can be applied in the field. It matches measurement, torque, test and visual evidence against acceptance criteria, and makes missing evidence and deviations visible before the job closes.</span>
+      <span data-tr>ToolA; prosedür, şartname ve üretici talimatlarındaki teknik gereklilikleri sahadaki uygulama ve kanıtlarla eşleştirir, sonuçları kabul kriterleriyle karşılaştırır.</span>
+      <span data-en>ToolA matches technical requirements from procedures, specifications, and manufacturer instructions with field execution and evidence, then compares the results against acceptance criteria.</span>
     </p>
-
-    <div class="btns">
-      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot discussion</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <a class="btn btn-2" data-open="ornek" href="mailto:info@toola.net?subject=ToolA%20-%20Ornek%20is%20akisi"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
-    </div>
-    <p class="hero-trust" style="margin-top:18px;font-size:.78rem;color:var(--ink-3);line-height:1.5;max-width:64ch">
-      <span data-tr><b style="color:var(--ink-2);font-weight:600">Kaynaklı kriterler:</b> Kurum prosedürleri · üretici talimatları · geçerli IEC, IEEE ve NETA standartları</span>
-      <span data-en><b style="color:var(--ink-2);font-weight:600">Sourced criteria:</b> Internal procedures · manufacturer instructions · applicable IEC, IEEE and NETA standards</span>
-    </p>
-    <p class="hero-note">
-      <span data-tr>Mevcut CMMS, EAM ve ERP sistemlerinizle birlikte çalışır; yerlerine geçmez.</span>
-      <span data-en>Works alongside your existing CMMS, EAM and ERP systems; it does not replace them.</span>
-    </p>
-
-    <div class="band-card" id="band">
-      <div class="band-head">
-        <span class="band-id">KBL-F7-EK03 · 36 kV XLPE</span>
-        <span class="band-tag"><span data-tr>Kurulum · devam ediyor</span><span data-en>Installation · in progress</span></span>
-      </div>
-      <div class="band-label"><span data-tr>Kritik ölçüm · Bağlantı torku</span><span data-en>Critical measurement · Connector torque</span></div>
-      <span class="band-crit"><span data-tr>Talimat</span><span data-en>Instruction</span> §4.1</span>
-      <div class="track" role="img" aria-label="Bağlantı torku: kabul kriteri 38–42 Nm, saha değeri 31 Nm, kriterin altında">
-        <div class="rail"></div><div class="zone"></div>
-        <div class="mk"><div class="mk-stem"></div><div class="mk-dot"></div></div>
-      </div>
-      <div class="scale" aria-hidden="true"></div>
-      <div class="readout">
-        <div class="ro"><span class="ro-l"><span data-tr>Kabul kriteri</span><span data-en>Acceptance criterion</span></span><span class="ro-v">38–42 Nm</span></div>
-        <div class="ro"><span class="ro-l"><span data-tr>Saha değeri</span><span data-en>Field value</span></span><span class="ro-v ro-dev">31 Nm</span></div>
-        <div class="ro"><span class="ro-l"><span data-tr>Durum</span><span data-en>Status</span></span><span class="pill pill-dev"><span data-tr>Sapma</span><span data-en>Deviation</span></span></div>
-      </div>
-      <p class="band-note"><span data-tr>Gerekçe kaydedilmeden teknik doğrulama tamamlanmaz.</span><span data-en>Technical verification is not complete until the justification is recorded.</span></p>
+    <div class="btns" style="margin-top:28px">
+      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Discuss a pilot</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See an example with your own documents</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- 01.5 · SEKTÖR VERİLERİ (band-card altı, hero dışı) -->
-<section class="sec sec-tight" data-sec="Sektor verileri" style="border-top:none;padding-top:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px)">
-  <div class="wrap rv">
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-n"><span data-tr>%85</span><span data-en>85%</span></div>
-        <p class="body"><span data-tr>İnsan hatasının yol açtığı büyük kesintilerin, prosedürlere uyulmaması veya prosedür ve süreç kusurlarıyla ilişkili oranı.</span><span data-en>Share of major human-error outages linked to staff failing to follow procedures, or to flawed procedures and processes.</span></p>
-        <p class="small">Uptime Institute, Annual Outage Analysis 2025</p>
-      </div>
-      <div class="stat">
-        <div class="stat-n"><span data-tr>%57</span><span data-en>57%</span></div>
-        <p class="body"><span data-tr>En son büyük kesintisinin maliyetinin 100.000 doların üzerinde olduğunu bildiren işletmelerin oranı.</span><span data-en>Share of operators reporting that the cost of their most recent major outage exceeded 100,000 USD.</span></p>
-        <p class="small">Uptime Institute, Annual Outage Analysis 2026</p>
-      </div>
-      <div class="stat">
-        <div class="stat-n"><span data-tr>%68</span><span data-en>68%</span></div>
-        <p class="body"><span data-tr>İncelenen 73 orta gerilim kablo arızasında, arızanın teknisyenlerin çalışma yaptığı noktalarda oluşma oranı.</span><span data-en>Share of the 73 medium-voltage cable faults examined where the fault occurred at the point the technician had worked.</span></p>
-        <p class="small"><span data-tr>EA Technology, adli inceleme örneklemi</span><span data-en>EA Technology, forensic sample</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SELECTED FOR -->
+<!-- 2 · PROGRAM / GÜVEN -->
 <div class="strip">
   <div class="wrap strip-in">
-    <span class="strip-lbl"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Selected for</span></span>
+    <span class="strip-lbl"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Programs we&#39;ve been accepted into</span></span>
     <span class="strip-n">QSTP</span>
     <span class="strip-n">İTÜ Çekirdek</span>
     <span class="strip-n">EIT Digital</span>
@@ -708,590 +657,158 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   </div>
 </div>
 
-<!-- 02 · PROBLEM -->
-<section class="sec" data-sec="Problem sorusu" style="border-top:none">
+<!-- 3 · GERÇEK TEKNİK ÖRNEK -->
+<section class="sec" data-sec="Teknik örnek" style="border-top:none">
   <div class="wrap rv">
-    <h2>
-      <span data-tr>Sapma kabul edildiyse, gerekçesi ve teknik onayı nerede?</span>
-      <span data-en>If a deviation was accepted, where is the justification and the technical approval?</span>
+    <h2 class="wide" style="max-width:34ch">
+      <span data-tr>Asıl risk, tamamlandı sanılan işte kalabilir.</span>
+      <span data-en>The real risk may remain hidden in work that appears complete.</span>
     </h2>
-    <p class="body" style="margin-top:20px;max-width:62ch">
-      <span data-tr>İş tamamlandığında elinizde sonuç olabilir. Ancak sapmanın hangi kritere göre, hangi kanıtla, hangi gerekçeyle ve kimin onayıyla kabul edildiği kayıtlı değilse sorumluluk açıkta kalır.</span>
-      <span data-en>When the job is finished you may have a result. But if there is no record of the criterion, the evidence, the justification and the approval the deviation was accepted on, accountability stays exposed.</span>
+    <p class="body" style="margin-top:18px;max-width:62ch">
+      <span data-tr>İnsan hatası kaynaklı büyük kesintilerin %85&#39;i, personelin prosedürleri uygulamaması veya süreç/prosedür kusurlarıyla ilişkilendiriliyor.</span>
+      <span data-en>Among major outages caused by human error, 85% were linked to staff failing to follow procedures or to flaws in the processes and procedures themselves.</span>
+    </p>
+    <p class="small" style="color:var(--ink-3);margin-top:4px"><span data-tr>Uptime Institute, Annual Outage Analysis 2025</span><span data-en>Uptime Institute, Annual Outage Analysis 2025</span></p>
+
+    <p class="body" style="margin-top:28px;max-width:56ch">
+      <span data-tr>Bir iş &#8220;tamam&#8221; görünebilir. Ama kriter dışı olabilir.</span>
+      <span data-en>A job may look &#8220;complete&#8221; while still being outside its acceptance criteria.</span>
+    </p>
+    <p class="body" style="margin-top:12px;max-width:56ch;color:var(--ink-2)">
+      <span data-tr>Teknisyen kablo bağlantısını sıkar. Test geçer.</span>
+      <span data-en>A technician torques a cable connection. The test passes.</span>
     </p>
 
-    <div class="uses q4" data-tr>
-      <div class="use"><p>Gerekçesi kayıtlı olmayan karar savunulamaz.</p></div>
-      <div class="use"><p>Açık sapma teknik kabulü ve hakedişi geciktirir.</p></div>
-      <div class="use"><p>Eksik kanıt ikinci ziyaret ve yeniden iş yaratır.</p></div>
-      <div class="use"><p>Uygulama hatası daha sonra arıza veya uyuşmazlık olarak geri dönebilir.</p></div>
+    <div class="evtab" style="margin-top:22px;border:1px solid var(--line);border-radius:6px;overflow:hidden;max-width:640px;background:var(--surface)">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:14px 18px;font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--line);background:var(--bg-2)"><span data-tr>Saha ölçümü</span><span data-en>Field measurement</span></th>
+            <th style="text-align:left;padding:14px 18px;font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--line);background:var(--bg-2)"><span data-tr>Kabul kriteri</span><span data-en>Acceptance criterion</span></th>
+            <th style="text-align:left;padding:14px 18px;font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--line);background:var(--bg-2)"><span data-tr>Durum</span><span data-en>Status</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:18px 18px;border-bottom:1px solid var(--line)"><b style="font-size:1.35rem;color:var(--ink);font-weight:600;letter-spacing:-.02em">31 Nm</b></td>
+            <td style="padding:18px 18px;border-bottom:1px solid var(--line)"><span class="mono" style="font-size:1.05rem;color:var(--ink-2)">38–42 Nm</span></td>
+            <td style="padding:18px 18px;border-bottom:1px solid var(--line)"><span class="pill pill-dev" style="padding:4px 12px;font-size:.8rem"><span data-tr>Sapma</span><span data-en>Deviation</span></span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="uses q4" data-en>
-      <div class="use"><p>A decision whose justification is not recorded cannot be defended.</p></div>
-      <div class="use"><p>An open deviation delays technical acceptance and payment.</p></div>
-      <div class="use"><p>Missing evidence creates a second site visit and rework.</p></div>
-      <div class="use"><p>A workmanship error can come back later as a failure or a dispute.</p></div>
-    </div>
+    <p class="body" style="margin-top:18px;max-width:56ch;color:var(--ink);font-weight:600">
+      <span data-tr>ToolA bunu iş kapanmadan, ekip hâlâ sahadayken gösterir.</span>
+      <span data-en>ToolA surfaces this before the job is closed, while the team is still on site.</span>
+    </p>
   </div>
 </section>
 
-<!-- 03 · TEKNİK PROSEDÜRDEN DOĞRULANMIŞ İŞE -->
-<section class="sec sec-a" data-sec="Prosedurden dogrulanmis ise">
+<!-- 4 · NASIL ÇALIŞIR -->
+<section class="sec sec-a" data-sec="Nasıl çalışır">
   <div class="wrap rv">
-    <h2><span data-tr>Teknik prosedürden doğrulanmış işe.</span><span data-en>From technical procedure to verified work.</span></h2>
-    <p class="body" style="margin-top:20px;max-width:62ch">
-      <span data-tr>ToolA, teknik gereklilikleri uygulanabilir saha adımlarına dönüştürür; ekibi iş sırasında yönlendirir ve yapılan işi kanıtlarıyla doğrular.</span>
-      <span data-en>ToolA turns technical requirements into field steps that can be applied, guides the crew as the work happens, and verifies the completed work with its evidence.</span>
-    </p>
+    <h2><span data-tr>Nasıl çalışır?</span><span data-en>How it works</span></h2>
     <div class="trio" style="margin-top:30px">
       <div>
         <span class="n">01</span>
-        <h3><span data-tr>İş akışını oluştur</span><span data-en>Build the workflow</span></h3>
-        <p><span data-tr>Teknik şartname, kurum prosedürü ve üretici talimatlarındaki kritik gereklilikler saha adımlarına dönüşür. Her adım için yapılacak işlem, kabul kriteri ve zorunlu kanıt tanımlanır.</span><span data-en>The critical requirements in your technical specifications, internal procedures and manufacturer instructions become field steps. For each step, the action to perform, the acceptance criterion and the mandatory evidence are defined.</span></p>
+        <h3><span data-tr>Geçerli kriteri gösterir</span><span data-en>Shows the applicable criterion</span></h3>
+        <p><span data-tr>Prosedür, şartname ve üretici talimatındaki geçerli gerekliliği gösterir. Kriteri ToolA üretmez; kurumunuzun teknik dokümanından gelir.</span><span data-en>ToolA identifies the applicable requirement from your procedures, specifications, and manufacturer instructions. ToolA does not invent the criterion; it comes from your technical documents.</span></p>
       </div>
       <div>
         <span class="n">02</span>
-        <h3><span data-tr>Saha ekibini yönlendir</span><span data-en>Guide the field crew</span></h3>
-        <p><span data-tr>Teknisyen veya yüklenici ekip, mobil uygulamada geçerli adımları, kabul kriterlerini ve gereken kanıtları görür. Eksik adım veya kriter dışı sonuç ekip sahadayken görünür.</span><span data-en>The technician or contractor crew sees the active steps, the acceptance criteria and the required evidence in the mobile app. A missing step or an out-of-criteria result surfaces while the crew is still on site.</span></p>
+        <h3><span data-tr>Sahayla karşılaştırır</span><span data-en>Compares it with the field</span></h3>
+        <p><span data-tr>Ölçüm, test ve saha kanıtını ilgili kriterle eşleştirir.</span><span data-en>Measurements, test results, and field evidence are matched to the relevant acceptance criterion.</span></p>
       </div>
       <div>
         <span class="n">03</span>
-        <h3><span data-tr>Yapılan işi doğrula</span><span data-en>Verify the completed work</span></h3>
-        <p><span data-tr>Teknik sorumlu; yapılan işlemi, kanıtın kaynağını, ölçüm sonucunu, açık sapmaları ve düzeltici işlemleri tek kayıt üzerinden inceler ve doğrular.</span><span data-en>The technical lead reviews the action taken, the source of the evidence, the measurement result, open deviations and corrective actions on a single record — and verifies the outcome.</span></p>
+        <h3><span data-tr>Sapmayı gösterir</span><span data-en>Flags the deviation</span></h3>
+        <p><span data-tr>Kriter dışı sonuç veya eksik kanıt varsa iş kapanmadan görünür hale getirir.</span><span data-en>If the result is outside the criterion or required evidence is missing, ToolA makes it visible before the job is closed.</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 04 · TİCARİ DEĞER -->
-<section class="sec" data-sec="Ticari deger">
+<!-- 5 · SONUCUN NEYE DAYANDIĞI -->
+<section class="sec" data-sec="İzlenebilirlik">
   <div class="wrap rv">
-    <h2><span data-tr>Kanıt üç aşamada işinize yarar.</span><span data-en>Evidence pays off at three stages.</span></h2>
-    <div class="trio trio-open">
-      <div>
-        <span class="n">01</span>
-        <h3><span data-tr>İş kapanmadan</span><span data-en>Before the job closes</span></h3>
-        <p><span data-tr>Eksik kanıt ve kriter dışı değer ekip sahadayken görünür. İkinci ziyaret ve yeniden iş ihtiyacı azalır.</span><span data-en>Missing evidence and out-of-criteria values surface while the crew is still on site. The need for a second visit and rework goes down.</span></p>
-      </div>
-      <div>
-        <span class="n">02</span>
-        <h3><span data-tr>Denetim ve teknik kabulde</span><span data-en>At inspection and technical acceptance</span></h3>
-        <p><span data-tr>Mühendis veya denetçi, fotoğraf klasörü yerine kaynağı, kriteri ve sonucu belli tek bir kayıt inceler. Onay süresi kısalır.</span><span data-en>The engineer or inspector reviews a single record with a known source, criterion and result — not a folder of photos. Sign-off gets faster.</span></p>
-      </div>
-      <div>
-        <span class="n">03</span>
-        <h3><span data-tr>Teslim ve hakedişte</span><span data-en>At handover and payment</span></h3>
-        <p><span data-tr>Şartnameye bağlı kanıt paketi iş sırasında oluşur. Teslim, hakediş ve olası uyuşmazlıklarda sonradan belge toplama ihtiyacı azalır.</span><span data-en>The specification-linked evidence pack is built during the work. At handover, payment and in any dispute, there is less need to gather documents afterwards.</span></p>
-      </div>
+    <h2><span data-tr>Sonucun neye dayandığı bellidir.</span><span data-en>Every result is traceable.</span></h2>
+
+    <div class="chain" style="margin-top:24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:780px">
+      <span class="chip" style="padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--mono);font-size:.78rem;color:var(--ink)"><span data-tr>Kaynak</span><span data-en>Source</span></span>
+      <span class="arr" style="color:var(--ink-3);font-family:var(--mono)">→</span>
+      <span class="chip" style="padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--mono);font-size:.78rem;color:var(--ink)"><span data-tr>Kriter</span><span data-en>Criterion</span></span>
+      <span class="arr" style="color:var(--ink-3);font-family:var(--mono)">→</span>
+      <span class="chip" style="padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--mono);font-size:.78rem;color:var(--ink)"><span data-tr>Kanıt</span><span data-en>Evidence</span></span>
+      <span class="arr" style="color:var(--ink-3);font-family:var(--mono)">→</span>
+      <span class="chip" style="padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-family:var(--mono);font-size:.78rem;color:var(--ink);background:var(--bg-2)"><span data-tr>Sonuç</span><span data-en>Result</span></span>
     </div>
-  </div>
-</section>
 
-<!--
-  03 · TEK RAKAM — YAYINDAN ÇIKARILDI.
-  Gerekçe: CIGRE TB 815 (2006–2015, 744 arıza) aksesuar payını %34 olarak veriyor ve
-  "aksesuarların kablodan daha çok arızalandığı yaygın inanışının aksine" diye vurguluyor.
-  ~%80 iddiasını doğrulayan birincil kaynak bulunamadı. Kaynak bulunursa bu blok açılabilir.
--->
-
-<!-- 05 · PROBLEM -->
-<section class="sec sec-a" id="problem" data-sec="Problem">
-  <div class="wrap rv">
-    <h2><span data-tr>İşçilik kanıtı sonradan üretilemez.</span><span data-en>Evidence of workmanship cannot be produced after the fact.</span></h2>
-    <p class="body" style="margin-top:22px">
-      <span data-tr>Bağlantı tamamlanır. Enerji verilir. Sistem çalışır. Ancak yanlış tork, hatalı hazırlık veya bir uygulama sapması aylar sonra arıza olarak ortaya çıkabilir.</span>
-      <span data-en>The connection is completed. Power is applied. The system runs. But incorrect torque, poor preparation or a procedural deviation can surface as a failure months later.</span>
+    <p class="body" style="margin-top:22px;max-width:64ch">
+      <span data-tr>ToolA yalnızca &#8220;sapma var&#8221; demez; hangi kriter ve kanıta dayanarak bunu söylediğini de gösterir.</span>
+      <span data-en>ToolA doesn&#39;t just say &#8220;there is a deviation.&#8221; It shows which criterion and which evidence support the result.</span>
     </p>
-    
-    <div class="after">
-      <p><span data-tr><b>Denetim bu kanıt boşluğunu kapatmaz.</b> Her eki açıp bakamazsınız.</span><span data-en><b>Audits don't close this evidence gap.</b> You cannot open every joint.</span></p>
-      <p><span data-tr><b>Eğitim de kapatmaz.</b> Prosedürün bilinmesi, o işte uygulandığını kanıtlamaz.</span><span data-en><b>Training doesn't either.</b> Knowing the procedure is not proof it was applied on that job.</span></p>
+
+    <div class="evchips" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px">
+      <span class="chip" style="padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;font-size:.82rem;color:var(--ink-2)"><span data-tr>Doğrudan cihaz verisi</span><span data-en>Direct device data</span></span>
+      <span class="chip" style="padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;font-size:.82rem;color:var(--ink-2)"><span data-tr>Cihaz ekranı</span><span data-en>Device display</span></span>
+      <span class="chip" style="padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;font-size:.82rem;color:var(--ink-2)"><span data-tr>Görsel kanıt</span><span data-en>Visual evidence</span></span>
+      <span class="chip" style="padding:6px 12px;border:1px solid var(--line-2);border-radius:999px;font-size:.82rem;color:var(--ink-2)"><span data-tr>Beyan</span><span data-en>Declaration</span></span>
     </div>
-  </div>
-</section>
 
-<!-- 06 · TOOLA FARKI -->
-<section class="sec" id="nasil" data-sec="Nasil calisir">
-  <div class="wrap rv">
-    <h2 class="wide"><span data-tr>Teknisyene “doğru yaptın mı?” diye sormak kanıt değildir.</span><span data-en>Asking a technician “did you do it right?” is not evidence.</span></h2>
-    <p class="body" style="margin-top:22px">
-      <span data-tr>Kritik teknik işlerde kayıt çoğu zaman teknisyenin beyanına dayanır. İşi yapan kişinin aynı bilgiyi tekrar forma yazması hem ek iş yaratır hem de kaydın güvenilirliğini sınırlar.</span>
-      <span data-en>In critical technical work, the record usually rests on the technician's own declaration. Asking the person doing the job to re-type the same information into a form adds work and limits how far the record can be trusted.</span>
+    <p class="body" style="margin-top:22px;max-width:64ch">
+      <span data-tr>Teknisyene &#8220;doğru yaptın mı?&#8221; diye sormak kanıt değildir.</span>
+      <span data-en>Asking a technician &#8220;did you do it right?&#8221; is not evidence.</span>
     </p>
-    <p class="body" style="margin-top:18px;color:var(--ink);font-size:1.1rem;font-weight:600;max-width:46ch">
-      <span data-tr>ToolA, doğrulanabilir bilginin bulunduğu noktalarda kullanıcı beyanı yerine iş sırasında oluşan kanıtı esas alır.</span>
-      <span data-en>Where verifiable information is available, ToolA bases its decisions on the evidence produced during the work instead of user declarations.</span>
-    </p>
-
-    <div class="flow2">
-      <div>
-        <div class="who"><span data-tr>Teknisyen</span><span data-en>The technician</span></div>
-        <ol role="list">
-          <li><span data-tr>Geçerli iş adımlarını görür</span><span data-en>Sees the active job steps</span></li>
-          <li><span data-tr>Uygulanacak kriteri görür</span><span data-en>Sees the criterion to apply</span></li>
-          <li><span data-tr>İşi gerçekleştirir</span><span data-en>Carries out the work</span></li>
-          <li><span data-tr>Fotoğraf, video, ölçüm veya test kanıtını oluşturur</span><span data-en>Generates photo, video, measurement or test evidence</span></li>
-          <li><span data-tr>Sapma varsa düzeltici işlemi kaydeder</span><span data-en>Records the corrective action if there is a deviation</span></li>
-        </ol>
-      </div>
-      <div>
-        <div class="who">ToolA</div>
-        <ol role="list">
-          <li><span data-tr>Kanıtın hangi adım için gerekli olduğunu gösterir</span><span data-en>Shows which step each piece of evidence is for</span></li>
-          <li><span data-tr>Kanıttan doğrulanabilen bilgiyi çıkarır</span><span data-en>Extracts what can be verified from the evidence</span></li>
-          <li><span data-tr>Kanıtı iş, varlık, kullanıcı ve zamanla ilişkilendirir</span><span data-en>Links the evidence to the job, asset, user and time</span></li>
-          <li><span data-tr>Sonucu tanımlı kriterle karşılaştırır</span><span data-en>Compares the result with the defined criterion</span></li>
-          <li><span data-tr>Eksikliği veya sapmayı sahada ve merkezde görünür kılar</span><span data-en>Makes gaps and deviations visible in the field and centrally</span></li>
-          <li><span data-tr>Doğrulanabilir teknik kaydı oluşturur</span><span data-en>Builds the verifiable technical record</span></li>
-        </ol>
-      </div>
-    </div>
-    <p class="small" style="margin-top:20px;max-width:66ch">
-      <span data-tr>Doğrulanabilen ekipman, malzeme, cihaz değeri ve zorunlu kanıt bilgileri iş sırasında oluşan kanıttan çıkarılır.</span>
-      <span data-en>Asset, material, instrument value and mandatory-evidence information that can be verified are derived from the evidence produced during the work.</span>
-    </p>
-    <p class="body" style="margin-top:26px;color:var(--ink);font-weight:600;font-size:1.05rem">
-      <span data-tr>Bir verinin iki kez girilmemesi temel ürün prensibidir.</span>
-      <span data-en>No piece of data should be entered twice. That is a core product principle.</span>
+    <p class="body" style="margin-top:6px;max-width:64ch">
+      <span data-tr>Beyan, kanıt gibi gösterilmez.</span>
+      <span data-en>A declaration is never presented as evidence.</span>
     </p>
   </div>
 </section>
 
-<!-- 07 · KANIT METODOLOJİSİ -->
-<section class="sec sec-a" id="kanit" data-sec="Kanit merdiveni">
+<!-- 6 · KULLANIM ALANLARI + MEVCUT SİSTEMLER -->
+<section class="sec sec-a" data-sec="Kullanım">
   <div class="wrap rv">
-    <h2><span data-tr>Beyan, kanıt değildir.</span><span data-en>A declaration is not evidence.</span></h2>
-    <p class="body" style="margin-top:20px;max-width:62ch">
-      <span data-tr>ToolA manuel girişi kanıt gibi göstermez. Doğrudan cihaz verisi, cihaz ekranı, görsel kanıt ve kullanıcı beyanı birbirinden açıkça ayrılır.</span>
-      <span data-en>ToolA does not present manual entry as evidence. Direct device data, instrument display, visual evidence and user declaration are clearly separated from one another.</span>
+    <h2><span data-tr>Kritik fiziksel işlerin olduğu yerde.</span><span data-en>Built for critical physical work.</span></h2>
+    <div class="uses" style="margin-top:24px">
+      <div class="use"><h3>EPC ve devreye alma</h3><p><span data-tr>EPC &amp; commissioning</span><span data-en>EPC &amp; commissioning</span></p></div>
+      <div class="use"><h3>Veri merkezleri ve kritik güç</h3><p><span data-tr>Data centers &amp; critical power</span><span data-en>Data centers &amp; critical power</span></p></div>
+      <div class="use"><h3>Enerji ve şebeke</h3><p><span data-tr>Energy &amp; grid</span><span data-en>Energy &amp; grid</span></p></div>
+      <div class="use"><h3>Endüstriyel operasyonlar</h3><p><span data-tr>Industrial operations</span><span data-en>Industrial operations</span></p></div>
+    </div>
+    <p class="body" style="margin-top:28px;max-width:64ch">
+      <span data-tr>Ortak nokta sektör değil, iş tipidir: teknik kriteri bulunan, hatası pahalı ve sonradan doğrulanması zor işler.</span>
+      <span data-en>The common denominator isn&#39;t the industry. It&#39;s work that has technical criteria, carries a high cost of error, and is difficult to verify after the fact.</span>
     </p>
-
-    <h3 style="margin-top:32px"><span data-tr>ToolA görmediği şeyi uydurmaz.</span><span data-en>ToolA does not invent what it cannot see.</span></h3>
-    <p class="body" style="margin-top:12px">
-      <span data-tr>Bir fotoğrafa bakarak, görünmeyen fiziksel bir değerin “39 Nm” olduğunu tahmin etmez.</span>
-      <span data-en>It does not look at a photograph and guess that an invisible physical value was “39 Nm.”</span>
-    </p>
-
-    <h3 style="margin-top:34px"><span data-tr>Her kaydın kaynağı bellidir.</span><span data-en>Every record carries its source.</span></h3>
-    <p class="body" style="margin-top:10px"><span data-tr>Etiketi de kaynağına göre değişir:</span><span data-en>Its label follows that source:</span></p>
-
-    <div class="ladder">
-      <div class="lad-h">
-        <span></span>
-        <span><span data-tr>Kanıt seviyesi</span><span data-en>Evidence level</span></span>
-        <span><span data-tr>Kaynak</span><span data-en>Source</span></span>
-        <span><span data-tr>Kayıt etiketi</span><span data-en>Record label</span></span>
-      </div>
-      <div class="lad-r">
-        <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-        <div class="lad-n"><span data-tr>Doğrudan cihaz verisi</span><span data-en>Direct device data</span></div>
-        <div class="lad-s"><span data-tr>Desteklenen ölçüm veya test cihazından dijital olarak alındı</span><span data-en>Received digitally from supported measurement or test equipment</span></div>
-        <div class="lad-l"><span data-tr>Kanıtlı — doğrudan cihaz</span><span data-en>Evidence-backed — direct device</span></div>
-      </div>
-      <div class="lad-r">
-        <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
-        <div class="lad-n"><span data-tr>Cihaz kanıtı</span><span data-en>Instrument evidence</span></div>
-        <div class="lad-s"><span data-tr>Test veya ölçüm cihazının ekranı görüntülenerek kaydedildi</span><span data-en>Recorded by capturing the display of a test or measurement device</span></div>
-        <div class="lad-l"><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></div>
-      </div>
-      <div class="lad-r">
-        <div class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div>
-        <div class="lad-n"><span data-tr>Görsel kanıt</span><span data-en>Visual evidence</span></div>
-        <div class="lad-s"><span data-tr>Fotoğraf veya videodan doğrulandı</span><span data-en>Verified from photo or video</span></div>
-        <div class="lad-l"><span data-tr>Kanıtlı — görsel</span><span data-en>Evidence-backed — visual</span></div>
-      </div>
-      <div class="lad-r bot">
-        <div class="bars" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
-        <div class="lad-n"><span data-tr>Manuel kayıt</span><span data-en>Manual entry</span></div>
-        <div class="lad-s"><span data-tr>Başka kanıt yöntemi yokken kullanıcı tarafından girildi</span><span data-en>Entered by the user where no other evidence method exists</span></div>
-        <div class="lad-l"><span data-tr>Beyan</span><span data-en>Declared</span></div>
-      </div>
-    </div>
-
-    <p class="body" style="margin-top:18px">
-      <span data-tr><b>Beyan, beyan olarak kalır.</b></span>
-      <span data-en><b>A declaration stays a declaration.</b></span>
-    </p>
-
-    <div class="subs" style="margin-top:30px">
-    <div class="sub">
-      <h3><span data-tr>Kanıt bağlamıyla birlikte tutulur.</span><span data-en>Evidence is kept with its context.</span></h3>
-      <p class="body" style="margin-top:8px"><span data-tr>Bir fotoğraf tek başına kanıt değildir. ToolA her kanıtı şu bağlamla saklar:</span><span data-en>A photograph on its own is not evidence. ToolA stores every piece of evidence with:</span></p>
-      <div class="ctx">
-        <span data-tr>iş emri · varlık · zaman · kullanıcı · kanıt kaynağı · konum</span>
-        <span data-en>work order · asset · timestamp · user · evidence source · location</span>
-      </div>
-    </div>
-
-    <div class="sub">
-      <h3><span data-tr>Bugün telefon kamerası. Zamanla bağlı saha cihazları.</span><span data-en>Today, the phone camera. Over time, connected field instruments.</span></h3>
-      <p class="body" style="margin-top:8px">
-        <span data-tr>ToolA'nın ilk sensörü teknisyenin cebindeki telefondur. Platform zamanla dijital tork anahtarları, VLF ve izolasyon test cihazları, termal kameralar ve ölçüm cihazlarıyla doğrudan veri alışverişi yapabilir.</span>
-        <span data-en>ToolA's first sensor is the phone in the technician's pocket. The platform can progressively exchange data directly with digital torque wrenches, VLF and insulation test sets, thermal cameras and measurement devices.</span>
-      </p>
-    </div>
-
-    <div class="sub">
-      <h3><span data-tr>Kriter nereden geliyor?</span><span data-en>Where does the criterion come from?</span></h3>
-      <p class="body" style="margin-top:8px"><span data-tr>ToolA kabul kriterlerini kendisi üretmez. Kriterler kurumunuzun prosedüründen, üreticinin talimatından ve geçerli teknik dokümanlardan alınır:</span><span data-en>ToolA does not invent acceptance criteria. Criteria come from your own procedures, the manufacturer's instructions and applicable technical documents:</span></p>
-      <div class="ctx">
-        <span data-tr>kaynak · doküman · bölüm / madde · versiyon · geçerlilik tarihi</span>
-        <span data-en>source · document · section / clause · version · effective date</span>
-      </div>
-      <p class="small" style="margin-top:12px">
-        <span data-tr>Talimat güncellendiğinde yeni sürüm tanımlanır. Daha önce yapılmış işler, doğrulandıkları sürümle birlikte kalır.</span>
-        <span data-en>When an instruction is updated, a new version is defined. Work already completed stays tied to the version it was verified against.</span>
-      </p>
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- 08 · SAHADAN ÖRNEK -->
-<section class="sec" id="saha" data-sec="Sahadan ornek">
-  <div class="wrap rv">
-    <span class="eyebrow"><span data-tr>Sahadan örnek</span><span data-en>From the field</span></span>
-    <h2><span data-tr>36 kV XLPE kablo eki</span><span data-en>36 kV XLPE cable joint</span></h2>
-
-    <div class="rec">
-      <div class="rec-hd">
-        <span class="rec-id">KBL-F7-EK03</span>
-        <span class="rec-st"><span data-tr>Kurulum · Adım 4 / 6</span><span data-en>Installation · Step 4 of 6</span></span>
-      </div>
-      <p class="tw-hint"><span data-tr>Tabloyu yana kaydırın</span><span data-en>Scroll the table sideways</span></p>
-      <div class="tw">
-        <table>
-          <thead><tr>
-            <th><span data-tr>Kontrol</span><span data-en>Check</span></th>
-            <th><span data-tr>Kriter</span><span data-en>Criterion</span></th>
-            <th><span data-tr>Saha</span><span data-en>Field</span></th>
-            <th><span data-tr>Kanıt</span><span data-en>Evidence</span></th>
-            <th><span data-tr>Durum</span><span data-en>Status</span></th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td><span data-tr>Kablo hazırlığı</span><span data-en>Cable preparation</span></td>
-              <td class="td-n"><span data-tr>Talimat §3.2</span><span data-en>Instruction §3.2</span></td>
-              <td class="td-n">—</td>
-              <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.4"/></svg><span data-tr>Kanıtlı — görsel</span><span data-en>Evidence-backed — visual</span></span></td>
-              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
-            </tr>
-            <tr>
-              <td><span data-tr>Kritik ölçüm</span><span data-en>Critical dimension</span></td>
-              <td class="td-n">215–225 mm</td><td class="td-n">218 mm</td>
-              <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M7 8v3M12 8v4M17 8v3"/></svg><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></span></td>
-              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
-            </tr>
-            <tr class="row-dev">
-              <td><span data-tr>Bağlantı torku</span><span data-en>Connector torque</span></td>
-              <td class="td-n">38–42 Nm</td><td class="td-n td-dev">31 Nm</td>
-              <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="M15 10l7-3v10l-7-3z"/></svg><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></span></td>
-              <td><span class="pill pill-dev"><span data-tr>Sapma</span><span data-en>Deviation</span></span></td>
-            </tr>
-            <tr>
-              <td><span data-tr>VLF testi</span><span data-en>VLF test</span></td>
-              <td class="td-n">21 kV · 60 <span data-tr>dk</span><span data-en>min</span></td>
-              <td class="td-n"><span data-tr>Geçti</span><span data-en>Passed</span></td>
-              <td><span class="ev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.4"/></svg><span data-tr>Kanıtlı — cihaz ekranı</span><span data-en>Evidence-backed — instrument display</span></span></td>
-              <td><span class="pill pill-ok"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="callout">
-      <b><span data-tr>Sapma, iş kapanmadan görünür.</span><span data-en>The deviation surfaces before the job closes.</span></b>
-      <p>
-        <span data-tr>Bağlantı tamamlanmış ve VLF testi geçmiş olabilir. Ancak 31 Nm tork, tanımlı 38–42 Nm aralığının dışındadır. ToolA bunu teknisyene sahadayken gösterir: <b>kontrol gerekli — değer kabul kriterinin dışında.</b> Gerekçe ve yapılan işlem kaydedilmeden teknik doğrulama tamamlanmaz.</span>
-        <span data-en>The joint may be complete and the VLF test may have passed. But 31 Nm falls outside the defined 38–42 Nm range. ToolA shows this to the technician while still on site: <b>check required — value outside acceptance criteria.</b> Technical verification is not complete until the justification and the action taken are recorded.</span>
-      </p>
-    </div>
-
-    <div class="devmgmt" style="margin-top:24px">
-      <p class="body" style="font-weight:600;color:var(--ink);max-width:54ch;margin:0 0 12px">
-        <span data-tr>Sapma yalnızca gösterilmez. Kapanana kadar yönetilir.</span>
-        <span data-en>The deviation is not only shown — it is managed until it is closed.</span>
-      </p>
-      <ol class="dev-steps" role="list" style="margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px;max-width:64ch">
-        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">01</span><span class="body" style="margin:0"><span data-tr>Kriter dışı sonuç tespit edilir.</span><span data-en>Out-of-criteria result is detected.</span></span></li>
-        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">02</span><span class="body" style="margin:0"><span data-tr>Sapma ilgili teknisyen, ekip veya yükleniciye atanır.</span><span data-en>The deviation is assigned to the relevant technician, crew or contractor.</span></span></li>
-        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">03</span><span class="body" style="margin:0"><span data-tr>Düzeltici işlem ve gerekçe kaydedilir.</span><span data-en>Corrective action and the reason are recorded.</span></span></li>
-        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">04</span><span class="body" style="margin:0"><span data-tr>Yeni ölçüm veya teknik kanıt istenir.</span><span data-en>New measurement or technical evidence is requested.</span></span></li>
-        <li style="display:flex;gap:12px;align-items:flex-start"><span style="color:var(--ink-3);font-family:var(--mono);font-size:.78rem;min-width:22px">05</span><span class="body" style="margin:0"><span data-tr>Teknik sorumlu sonucu inceler ve onaylar.</span><span data-en>The technical lead reviews and approves the outcome.</span></span></li>
-      </ol>
-      <div class="card" style="max-width:64ch;padding:16px 18px;border-left:3px solid var(--ink);background:var(--surface)">
-        <p class="body" style="font-weight:600;color:var(--ink);margin:0 0 6px"><span data-tr>Bağlantı yeniden sıkılır.</span><span data-en>The connection is re-tightened.</span></p>
-        <p class="body" style="margin:0 0 6px"><span data-tr>Yeni ölçüm: 40,2 Nm</span><span data-en>New measurement: 40.2 Nm</span></p>
-        <p class="body" style="margin:0"><span class="pill pill-ok" style="padding:3px 10px"><span data-tr>Doğrulandı</span><span data-en>Verified</span></span></p>
-      </div>
-      <p class="small" style="margin-top:14px;color:var(--ink-3);max-width:64ch">
-        <span data-tr>Sapma kapanmadan faaliyet doğrulanmış olarak raporlanmaz.</span>
-        <span data-en>The activity is not reported as verified before the deviation is closed.</span>
-      </p>
-    </div>
-
-
-
-  </div>
-</section>
-
-<!-- 09 · MEVCUT SİSTEMLERDEN FARKI -->
-<section class="sec sec-a" data-sec="Karsilastirma">
-  <div class="wrap rv">
-    <h2><span data-tr>Kayıt var. Teknik kanıt yok.</span><span data-en>There is a record. There is no technical evidence.</span></h2>
-    <div class="cmp">
-      <div class="cmp-c">
-        <div class="cmp-h">CMMS / EAM / ERP</div>
-        <ul class="cmp-l" role="list">
-          <li><span data-tr>Kim yaptı?</span><span data-en>Who did it?</span></li>
-          <li><span data-tr>Ne zaman yapıldı?</span><span data-en>When was it done?</span></li>
-          <li><span data-tr>Hangi iş emri?</span><span data-en>Which work order?</span></li>
-          <li><span data-tr>Hangi parça değişti?</span><span data-en>Which part was replaced?</span></li>
-          <li><span data-tr>Ne kadar sürdü?</span><span data-en>How long did it take?</span></li>
-        </ul>
-      </div>
-      <div class="cmp-c b">
-        <div class="cmp-h">ToolA</div>
-        <ul class="cmp-l" role="list">
-          <li><span data-tr>Doğru işlem uygulandı mı?</span><span data-en>Was the correct procedure applied?</span></li>
-          <li><span data-tr>Bunu gösteren kanıt var mı?</span><span data-en>Is there evidence showing that?</span></li>
-          <li><span data-tr>Kanıt nereden geldi?</span><span data-en>Where did the evidence come from?</span></li>
-          <li><span data-tr>Ölçüm kabul kriterinde mi?</span><span data-en>Is the measurement within criteria?</span></li>
-          <li><span data-tr>Sapma nasıl düzeltildi?</span><span data-en>How was the deviation corrected?</span></li>
-          <li><span data-tr>Sonuç doğrulandı mı?</span><span data-en>Was the outcome verified?</span></li>
-        </ul>
-      </div>
-    </div>
-    <p class="body" style="margin-top:26px;color:var(--ink);font-weight:600">
-      <span data-tr>Kritik işlerde risk ilk listede değil, ikincisinde.</span>
-      <span data-en>In critical work, the risk isn't in the first column. It's in the second.</span>
-    </p>
-    <p class="body" style="margin-top:16px">
-      <span data-tr>ToolA, mevcut sistemlerinizin üzerinde çalışan teknik kanıt ve doğrulama katmanıdır.</span>
-      <span data-en>ToolA is the technical evidence and verification layer that runs on top of your existing systems.</span>
-    </p>
-  </div>
-</section>
-
-<!-- 10 · KULLANIM ALANLARI -->
-<section class="sec" id="kullanim" data-sec="Kullanim alanlari">
-  <div class="wrap rv">
-    <h2><span data-tr>Hatası sonradan ortaya çıkan işler.</span><span data-en>Work whose errors surface later.</span></h2>
-
-    <div class="uses" data-tr>
-      <div class="use"><h3>Elektrik dağıtım ve şebeke</h3><p>OG kablo ekleri · sonlandırmalar · hücre ve pano bağlantıları · trafo bağlantıları · kritik bakım</p></div>
-      <div class="use"><h3>EPC ve elektrik yüklenicileri</h3><p>Kurulum · devreye alma · kalite kontrol · kabul ve hakediş kanıtı · garanti kayıtları</p></div>
-      <div class="use"><h3>Veri merkezleri ve kritik güç</h3><p>Busbar · OG dağıtım · UPS ve jeneratör bağlantıları · devreye alma ve teslim</p></div>
-      <div class="use"><h3>Endüstriyel kurulum ve otomasyon</h3><p>Makine ve robot kurulumu · taşıma ve yeniden kurulum · kritik elektriksel ve mekanik bağlantılar · kalibrasyon · güvenlik testleri · revizyon · bakım sonrası yeniden devreye alma</p></div>
-    </div>
-    <div class="uses" data-en>
-      <div class="use"><h3>Data centres and critical power</h3><p>Busbar connections · MV distribution · UPS and generator connections · commissioning and handover</p></div>
-      <div class="use"><h3>EPC and electrical contractors</h3><p>Installation · commissioning · quality control · acceptance and payment-application evidence · warranty records</p></div>
-      <div class="use"><h3>Electricity distribution and networks</h3><p>MV cable joints · terminations · switchgear connections · transformer connections · critical maintenance</p></div>
-      <div class="use"><h3>Industrial installation and automation</h3><p>Machine and robot installation · relocation and re-installation · critical electrical and mechanical connections · calibration · safety tests · revision · recommissioning after maintenance</p></div>
-    </div>
-
-    <p class="body" style="margin-top:36px">
-      <span data-tr><b>Ortak nokta bir sektör değil, bir iş tipidir:</b> insan eliyle yapılan, teknik kriteri bulunan, hatası pahalı olan ve doğruluğu sonradan kontrol edilmesi zor kritik işler.</span>
-      <span data-en><b>The common thread is not a sector. It is a type of work:</b> performed by human hands, governed by technical criteria, expensive when it goes wrong, and difficult to verify after the fact.</span>
-    </p>
-
-    <h3 style="margin-top:52px"><span data-tr>Sahada uygulanır. Merkezde doğrulanır.</span><span data-en>Executed in the field. Verified centrally.</span></h3>
     <p class="body" style="margin-top:14px;max-width:64ch">
-      <span data-tr>Merkez teknik ekip; kendi teknisyenleri, yetkili servisleri ve yüklenicileri tarafından yürütülen kritik işleri aynı teknik standartlar üzerinden takip eder.</span>
-      <span data-en>The central engineering team tracks critical work carried out by its own technicians, authorised service providers and contractors against the same technical standards.</span>
+      <span data-tr>ToolA mevcut SAP, Maximo, EAM ve CMMS sistemlerinizle birlikte çalışır; yerlerine geçmez.</span>
+      <span data-en>ToolA works with your existing SAP, Maximo, EAM, and CMMS systems; it does not replace them.</span>
     </p>
-
-    <div class="ctr-panel" style="margin-top:26px;border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden;max-width:960px">
-      <div class="ctr-hd" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-2)">
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="ctr-dot" style="width:8px;height:8px;border-radius:50%;background:var(--conform);box-shadow:0 0 0 3px var(--conform-bg);display:inline-block"></span>
-          <span class="mono" style="font-size:.78rem;color:var(--ink);font-weight:600"><span data-tr>Merkez kontrol paneli</span><span data-en>Central control panel</span></span>
-        </div>
-        <span class="mono" style="font-size:.68rem;color:var(--ink-3);letter-spacing:.06em"><span data-tr>TR · DAĞITIM</span><span data-en>TR · DISTRIBUTION</span></span>
-      </div>
-      <div class="ctr-metrics">
-        <div>
-          <div class="mono ctr-l"><span data-tr>Devam eden kritik iş</span><span data-en>Ongoing critical work</span></div>
-          <div class="ctr-v">12</div>
-        </div>
-        <div>
-          <div class="mono ctr-l"><span data-tr>Eksik kanıt bulunan iş</span><span data-en>Jobs with missing evidence</span></div>
-          <div class="ctr-v">3</div>
-        </div>
-        <div>
-          <div class="mono ctr-l"><span data-tr>Açık sapma</span><span data-en>Open deviations</span></div>
-          <div class="ctr-v dev">2</div>
-        </div>
-        <div>
-          <div class="mono ctr-l"><span data-tr>Teknik onay bekleyen</span><span data-en>Awaiting technical approval</span></div>
-          <div class="ctr-v">5</div>
-        </div>
-      </div>
-      <p class="tw-hint" style="padding:9px 16px 0"><span data-tr>Tabloyu yana kaydırın</span><span data-en>Scroll the table sideways</span></p>
-      <div class="tw">
-        <table style="width:100%;border-collapse:collapse;font-size:.86rem;min-width:560px">
-          <thead>
-            <tr style="background:var(--bg-2)">
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>İş / varlık</span><span data-en>Job / asset</span></th>
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>Lokasyon</span><span data-en>Location</span></th>
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>Sorumlu ekip</span><span data-en>Responsible crew</span></th>
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>Son kanıt</span><span data-en>Latest evidence</span></th>
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>Sapma</span><span data-en>Deviation</span></th>
-              <th style="text-align:left;padding:10px 16px;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)"><span data-tr>Teknik onay</span><span data-en>Technical approval</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b style="color:var(--ink)">KBL-F7-EK03</b><div style="color:var(--ink-3);font-size:.78rem;margin-top:2px"><span data-tr>36 kV XLPE kablo eki</span><span data-en>36 kV XLPE cable joint</span></div></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>F7 · Hücre 03</span><span data-en>F7 · Switchgear 03</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill" style="padding:2px 8px;font-size:.7rem"><span data-tr>İç ekip</span><span data-en>In-house</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>2 dk önce</span><span data-en>2 min ago</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill pill-dev" style="padding:2px 8px;font-size:.7rem"><span data-tr>Sapma</span><span data-en>Deviation</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-3);font-size:.8rem"><span data-tr>Beklemede</span><span data-en>Pending</span></span></td>
-            </tr>
-            <tr>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b style="color:var(--ink)">TRF-A2-BB01</b><div style="color:var(--ink-3);font-size:.78rem;margin-top:2px"><span data-tr>OG trafo busbar bağlantısı</span><span data-en>MV transformer busbar connection</span></div></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>A2 · Trafo sahası</span><span data-en>A2 · Transformer area</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill" style="padding:2px 8px;font-size:.7rem"><span data-tr>Yüklenici ekip</span><span data-en>Contractor</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>14 dk önce</span><span data-en>14 min ago</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill pill-ok" style="padding:2px 8px;font-size:.7rem"><svg class="ico ico-ck" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.4 3.3 3.3 6.3-7"/></svg><span class="sr" data-tr>Uygun</span><span class="sr" data-en>Conforming</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.8rem"><span data-tr>Onaylandı</span><span data-en>Approved</span></span></td>
-            </tr>
-            <tr>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><b style="color:var(--ink)">PNL-D1-MCC04</b><div style="color:var(--ink-3);font-size:.78rem;margin-top:2px"><span data-tr>MCC pano bağlantıları</span><span data-en>MCC panel connections</span></div></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>D1 · MCC sahası</span><span data-en>D1 · MCC area</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="pill" style="padding:2px 8px;font-size:.7rem"><span data-tr>İç ekip</span><span data-en>In-house</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>38 dk önce</span><span data-en>38 min ago</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-3);font-size:.8rem"><span data-tr>—</span><span data-en>—</span></span></td>
-              <td style="padding:11px 16px;border-bottom:1px solid var(--line)"><span class="mono" style="color:var(--ink-3);font-size:.8rem"><span data-tr>Eksik kanıt</span><span data-en>Missing evidence</span></span></td>
-            </tr>
-            <tr>
-              <td style="padding:11px 16px"><b style="color:var(--ink)">GEN-B3-CB12</b><div style="color:var(--ink-3);font-size:.78rem;margin-top:2px"><span data-tr>Jeneratör bağlantı testi</span><span data-en>Generator connection test</span></div></td>
-              <td style="padding:11px 16px"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>B3 · Güç odası</span><span data-en>B3 · Power room</span></span></td>
-              <td style="padding:11px 16px"><span class="pill" style="padding:2px 8px;font-size:.7rem"><span data-tr>Yüklenici ekip</span><span data-en>Contractor</span></span></td>
-              <td style="padding:11px 16px"><span class="mono" style="color:var(--ink-2);font-size:.82rem"><span data-tr>1 sa önce</span><span data-en>1 hr ago</span></span></td>
-              <td style="padding:11px 16px"><span class="pill pill-dev" style="padding:2px 8px;font-size:.7rem"><span data-tr>Sapma</span><span data-en>Deviation</span></span></td>
-              <td style="padding:11px 16px"><span class="mono" style="color:var(--ink-3);font-size:.8rem"><span data-tr>Beklemede</span><span data-en>Pending</span></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p class="small" style="margin-top:10px;color:var(--ink-3)"><span data-tr>Panel, ürünün merkez kontrol yaklaşımını gösteren temsili bir görünümdür.</span><span data-en>The panel is an illustrative representation of the product's central control approach.</span></p>
+    <p class="body" style="margin-top:14px;max-width:64ch;color:var(--ink-3)">
+      <span data-tr>Nihai kabul ve mühendislik kararı kurumunuzun yetkili personelinde kalır.</span>
+      <span data-en>Final acceptance and engineering decisions remain with your authorized personnel.</span>
+    </p>
   </div>
 </section>
 
-<!-- 11 · ENTEGRASYON -->
-<section class="sec sec-a" data-sec="Entegrasyon">
-  <div class="wrap rv">
-    <h2><span data-tr>Mevcut altyapınızı değiştirmeden başlayın.</span><span data-en>Start without changing your infrastructure.</span></h2>
-
-    <div class="subs" style="margin-top:36px">
-    <div class="sub">
-      <div class="stack">
-        <span class="chip">SAP</span><span class="chip">IBM Maximo</span><span class="chip">Infor</span><span class="chip">Oracle</span>
-        <span class="chip">EAM / CMMS</span><span class="chip">GIS / SCADA</span>
-        <span class="chip"><span data-tr>Doküman sistemleri</span><span data-en>Document systems</span></span>
-      </div>
-      <p class="body" style="margin-top:20px"><span data-tr>Pilot için ağır entegrasyon gerekmez:</span><span data-en>The pilot needs no heavy integration:</span></p>
-      <div class="pipe">
-        <span data-tr>iş emri / varlık referansı<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>ToolA<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>kanıtlı teknik kayıt</span>
-        <span data-en>work order / asset reference<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>ToolA<svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg>evidence-backed record</span>
-      </div>
-      <p class="small" style="margin-top:14px"><span data-tr>Değer doğrulandıktan sonra gerekli sistem bağlantıları kurulur.</span><span data-en>Once value is proven, the required connections are built.</span></p>
-    </div>
-
-    <div class="sub">
-      <h3><span data-tr>Nihai teknik kararı ToolA vermez.</span><span data-en>ToolA does not make the final technical decision.</span></h3>
-      <p class="body">
-        <span data-tr>ToolA kanıtı toplar, kaynağını gösterir, tanımlı kriteri kontrol eder ve sapmayı görünür hale getirir. Nihai kabul, onay ve mühendislik kararı kurumunuzun yetkili personelinde kalır.</span>
-        <span data-en>ToolA collects evidence, shows its source, checks it against defined criteria and makes deviations visible. Final acceptance, approval and engineering judgement remain with your authorised personnel.</span>
-      </p>
-    </div>
-    </div>
-  </div>
-</section>
-
-<!-- 12 · PİLOT -->
+<!-- 7 · 6 HAFTALIK PİLOT -->
 <section class="sec" id="pilot" data-sec="Pilot">
   <div class="wrap rv">
-    <h2><span data-tr>6 hafta. Tek bir kritik iş.</span><span data-en>6 weeks. One critical job.</span></h2>
-    <p class="body" style="margin-top:20px">
-      <span data-tr>İlk aşamada tüm operasyonunuzu değiştirmiyoruz. Gerçek bir saha işini seçiyoruz ve birlikte ölçüyoruz.</span>
-      <span data-en>We don't change your whole operation in the first step. We pick one real field job and measure it together.</span>
-    </p>
-    <div class="nums">
-      <div class="num"><b>6</b><span><span data-tr>hafta</span><span data-en>weeks</span></span></div>
-      <div class="num"><b>5–10</b><span><span data-tr>teknik kullanıcı</span><span data-en>technical users</span></span></div>
-      <div class="num"><b>1</b><span><span data-tr>kritik iş / ekipman ailesi</span><span data-en>critical job / asset family</span></span></div>
-      <div class="num"><b>50–100</b><span><span data-tr>gerçek saha işi</span><span data-en>real field jobs</span></span></div>
-      <div class="num"><b>1</b><span><span data-tr>pilot etki raporu</span><span data-en>pilot impact report</span></span></div>
+    <h2><span data-tr>6 haftada tek bir kritik işten başlayın.</span><span data-en>Start with one critical workflow in 6 weeks.</span></h2>
+    <div class="nums" style="margin-top:28px">
+      <div class="num"><b>1</b><span><span data-tr>kritik iş</span><span data-en>critical workflow</span></span></div>
+      <div class="num"><b>5–10</b><span><span data-tr>kullanıcı</span><span data-en>users</span></span></div>
+      <div class="num"><b>50–100</b><span><span data-tr>saha işi</span><span data-en>field jobs</span></span></div>
+      <div class="num"><b>1</b><span><span data-tr>etki raporu</span><span data-en>impact report</span></span></div>
     </div>
-
-    <div class="pil">
-      <div>
-        <div class="mgrp-h"><span data-tr>Sizden gereken</span><span data-en>What we need from you</span></div>
-        <ul class="mlist" role="list">
-          <li><span data-tr>Bir kritik teknik iş veya ekipman ailesi</span><span data-en>One critical technical job or asset family</span></li>
-          <li><span data-tr>Mevcut prosedür ve kabul kriterleriniz — <b style="display:inline">elinizdeki hâliyle, yeniden yazmadan</b></span><span data-en>Your existing procedures and acceptance criteria — <b style="display:inline">as they are, with no rewriting</b></span></li>
-          <li><span data-tr>5–10 teknik kullanıcı</span><span data-en>5–10 technical users</span></li>
-          <li><span data-tr>Haftada bir kısa değerlendirme</span><span data-en>One short review call per week</span></li>
-        </ul>
-        <div class="btns">
-          <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-        </div>
-      </div>
-      <div>
-        <div class="mgrp-h"><span data-tr>Pilot sonunda ne ölçeriz?</span><span data-en>What we measure at the end</span></div>
-        <ul class="mlist" role="list">
-          <li><b><span data-tr>Kanıt bütünlüğü</span><span data-en>Evidence completeness</span></b><span data-tr>Zorunlu ölçüm, test ve saha kanıtı eksiksiz olan iş oranı</span><span data-en>Share of jobs with all mandatory measurements, tests and field evidence present</span></li>
-          <li><b><span data-tr>Kanıt seviyesi dağılımı</span><span data-en>Evidence-level distribution</span></b><span data-tr>Kayıtların kanıt seviyelerine göre dağılımı ve beyan oranındaki değişim</span><span data-en>Distribution of records across evidence levels and the change in declaration rate</span></li>
-          <li><b><span data-tr>İş kapanmadan tespit edilen sapmalar</span><span data-en>Deviations caught before closure</span></b><span data-tr>Sahadayken görülen eksiklik ve kriter dışı değer sayısı</span><span data-en>Gaps and out-of-criteria values seen while on site</span></li>
-          <li><b><span data-tr>Tekrar iş / ziyaret</span><span data-en>Repeat work / return visits</span></b><span data-tr>Aynı işe kısa süre içinde ikinci müdahale</span><span data-en>Second interventions on the same job within a short window</span></li>
-        </ul>
-        <p class="mnote">
-          <span data-tr>Teknisyen kayıt süresi ve uzman doğrulama süresi de pilot raporunda ayrıca izlenir. Uzun vadede tekrar arıza oranı ve first-time-right takip edilir. Bunlar altı haftada kanıtlanmaz; kayıt biriktikçe ölçülür.</span>
-          <span data-en>Technician recording time and expert review time are also tracked in the pilot report. Longer term we also track repeat failure rate and first-time-right. These cannot be proven in six weeks; they are measured as records accumulate.</span>
-        </p>
-        <p class="note" style="margin-top:16px"><span data-tr>Sınırlı sayıda kurumla ücretli pilot kapsamında çalışıyoruz. Pilot bedeli, yıllık sözleşmeye geçilmesi hâlinde ilk yıl bedelinden düşülür.</span><span data-en>We work with a limited number of organisations under a paid pilot. The pilot fee is deducted from the first-year fee if an annual contract follows.</span></p>
-      </div>
+    <p class="body" style="margin-top:28px;max-width:62ch">
+      <span data-tr>Kanıt bütünlüğünü, sahadayken yakalanan sapmaları ve teknik inceleme süresini birlikte ölçelim.</span>
+      <span data-en>Together, we measure evidence completeness, deviations caught while the team is still on site, and technical review time.</span>
+    </p>
+    <div class="btns" style="margin-top:24px">
+      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Discuss a pilot</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See an example with your own documents</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
-  </div>
-</section>
-
-<!-- 13 · TEKNİK HAFIZA -->
-<section class="sec sec-a sec-tight" data-sec="Teknik hafiza">
-  <div class="wrap rv split">
-    <h2><span data-tr>Bir sonraki teknisyen sıfırdan başlamaz.</span><span data-en>The next technician doesn't start from zero.</span></h2>
-    <p class="body" style="margin-top:20px">
-      <span data-tr>Bugün oluşturulan kanıtlı kayıt, ekipmanın teknik geçmişinde kalır. Yıllar sonra aynı noktada arıza oluştuğunda kurulum kanıtı, ölçümler ve sapmalar aynı geçmişte birlikte görülür.</span>
-      <span data-en>The evidence-backed record created today stays in the asset's technical history. Years later, when a fault occurs at the same point, the installation evidence, measurements and deviations are all visible on the same history.</span>
-    </p>
-    <p class="note" style="margin-top:20px">
-      <span data-tr>Önce işi kanıtlar. Sonra kurumun neyin işe yaradığını öğrenmesini sağlar.</span>
-      <span data-en>First it proves the work. Then it lets the organisation learn what actually works.</span>
-    </p>
-  </div>
-</section>
-
-<!-- 14 · CTA -->
-<section class="close" data-sec="Kapanis CTA">
-  <div class="wrap">
-
-    <h2 style="margin:0 auto"><span data-tr>Teknisyen işi yapsın.</span><span data-en>Let the technician do the work.</span><br><span class="dim2" data-tr>Kanıt iş sırasında oluşsun.</span><span class="dim2" data-en>Let the evidence form as the work happens.</span></h2>
-
-    <div class="btns" style="justify-content:center">
-      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-      <button type="button" class="btn btn-2" data-open="ornek"><span data-tr>Kendi dokümanınızla örnek görün</span><span data-en>See a sample with your own document</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-    </div>
-
-    <p class="note" style="margin:26px auto 0;max-width:640px">
-      <span data-tr>Pilotun amacı büyük bir yazılım dönüşümü yapmak değil. Tek bir kritik saha işinde teknik doğrulamanın ölçülebilir değer üretip üretmediğini gerçek veriyle göstermek.</span>
-      <span data-en>The pilot is not a large software transformation. It is a real-data test of whether technical verification produces measurable value on one critical field job.</span>
-    </p>
-
   </div>
 </section>
 
@@ -1301,13 +818,12 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
   <div class="wrap ft-in">
     <div>
       <div class="logo" style="margin-bottom:14px"><svg class="wm" viewBox="0 0 427 100" role="img" aria-label="ToolA"><path fill="currentColor" d="M0 0h109v16.5H0z"/><path fill="currentColor" d="M46.25 0h16.5v100h-16.5z"/><circle cx="138" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><circle cx="231.6" cy="62.6" r="28.65" fill="none" stroke="currentColor" stroke-width="17.5"/><path fill="currentColor" d="M285.25 0h16.5v100h-16.5z"/><path fill="currentColor" d="M313.6 100 370 0l56.7 100h-20.1L370.2 35.5 333.7 100z"/><path fill="var(--dev)" d="M370.4 67 389 100h-37z"/></svg></div>
-      <p class="cat" data-tr>Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Sistemi</p>
-      <p class="cat" data-en>Technical Evidence and Verification System for Critical Field Work</p>
-      <p style="margin-top:16px">Teknopark İstanbul · Türkiye &nbsp;·&nbsp; QSTP · Doha, <span data-tr>Katar</span><span data-en>Qatar</span></p>
+      <p class="cat"><span data-tr>ToolA</span><span data-en>ToolA</span></p>
+      <p style="margin-top:10px;font-size:.92rem;color:var(--ink-2)">Teknopark İstanbul · <span data-tr>QSTP Doha</span><span data-en>QSTP Doha</span></p>
       <p style="margin-top:5px"><a href="mailto:info@toola.net">info@toola.net</a></p>
     </div>
     <div class="ft-r">
-      <p class="tag">Do it right. Prove it. Learn from it.</p>
+      <p class="tag"><span data-tr>İşi doğru yap. Kanıtla. Öğren.</span><span data-en>Do it right. Prove it. Learn from it.</span></p>
       <div class="soc">
         <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="ToolA LinkedIn">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21.6 8.65 22 11.1 22 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V9Z"/></svg>
