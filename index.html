@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı</title>
+<title>ToolA — Sahanın teknik hafızası</title>
 <meta name="description" content="İş bitti demek, doğru yapıldı demek değildir. ToolA kritik saha işinin teknik kriterlere uygunluğunu, teknisyen sahadan ayrılmadan doğrular.">
 <link rel="canonical" href="https://toola.net/">
 <meta name="theme-color" content="#F1EFE9">
@@ -11,14 +11,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://toola.net/">
 <meta property="og:site_name" content="ToolA">
-<meta property="og:title" content="Kablo ekindeki hata, iş kapanırken görünmez.">
+<meta property="og:title" content="İş bitti demek, doğru yapıldı demek değildir.">
 <meta property="og:description" content="İş bitti demek, doğru yapıldı demek değildir. ToolA kritik saha işinin teknik kriterlere uygunluğunu, teknisyen sahadan ayrılmadan doğrular.">
 <meta property="og:image" content="https://toola.net/og.png">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ToolA — Kritik Saha İşleri için Teknik Kanıt ve Doğrulama Katmanı">
+<meta property="og:image:alt" content="ToolA — Sahanın teknik hafızası">
 <link rel="alternate" hreflang="tr" href="https://toola.net/?lang=tr">
 <link rel="alternate" hreflang="en" href="https://toola.net/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://toola.net/">
@@ -27,7 +27,7 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication",
  "name":"ToolA","applicationCategory":"BusinessApplication",
  "operatingSystem":"iOS, Android, Web",
- "description":"Kritik saha işleri için teknik kanıt ve doğrulama katmanı.",
+ "description":"Teknik iş kapanışı ve teknik hafıza sistemi. Kritik işlerde tanımlı kriter ve saha kanıtıyla doğrulama.",
  "url":"https://toola.net/",
  "publisher":{"@type":"Organization","name":"Toola Teknoloji A.Ş.","email":"info@toola.net",
    "url":"https://toola.net/","sameAs":["https://www.linkedin.com/company/toolanet/","https://www.instagram.com/toolanet/"],
@@ -54,7 +54,11 @@
   var q=null; try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
   var sv=null; try{sv=localStorage.getItem('toola-lang')}catch(e){}
   var nv=(navigator.language||'tr').slice(0,2).toLowerCase();
-  document.documentElement.lang = (q==='en'||q==='tr')?q:(sv==='en'||sv==='tr')?sv:(nv==='tr'?'tr':'en');
+  var l=(q==='en'||q==='tr')?q:(sv==='en'||sv==='tr')?sv:(nv==='tr'?'tr':'en');
+  document.documentElement.lang = l;
+  /* og:locale ilk boyamayi dogru bassin diye burada senkronlanir. */
+  var ol=document.querySelector('meta[property="og:locale"]');
+  if(ol) ol.setAttribute('content', l==='en'?'en_US':'tr_TR');
 }catch(e){}})();
 </script>
 
@@ -414,17 +418,11 @@ tr:last-child td{border-bottom:none}
 .done .btn{margin-top:24px}
 body.locked{overflow:hidden}
 
-/* mobilde sabit alt CTA: 620px altinda header butonu gizlendigi icin
-   sayfa boyunca tiklanabilir tek nokta kalmiyordu. */
-.mcta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(241,239,233,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.mcta .btn{flex:1;justify-content:center;padding:14px 16px}
-/* body padding'i cubugun gercek yuksekligini karsilamali: 10 + buton + 10 + guvenli alan.
-   Onceki sabit 76px, centikli iPhone'larda alt seridin altyaziyi ortmesine yol aciyordu. */
-@media(max-width:620px){.mcta{display:flex}
-  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
-  .modal,.pmodal{z-index:120}}
-@media print{.hd,.mcta,.modal,.pmodal,.lang{display:none!important}
+/* Sabit alt mobil CTA kaldirildi. Hero trust satiri + footer her ekranda
+   ulasilabilir; sabit cubuk tasarim diline aykiriydi ve ana CTA'larin
+   yarismasina yol aciyordu. */
+@media(max-width:620px){.modal,.pmodal{z-index:120}}
+@media print{.hd,.modal,.pmodal,.lang{display:none!important}
   body{background:#fff;font-size:11pt} .sec{padding:18px 0;break-inside:avoid}
   .trio,.flow2,.cmp,.ladder,.rec{break-inside:avoid}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}}
@@ -897,19 +895,6 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
     </div>
   </div>
 </footer>
-
-<div class="mcta">
-  <a class="btn" href="mailto:info@toola.net?subject=ToolA%20-%20Pilot%20g%C3%B6r%C3%BC%C5%9Fmesi" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span></a>
-</div>
-
-<noscript>
-  <style>.mcta{display:none!important}body{padding-bottom:0}</style>
-  <div style="position:fixed;left:0;right:0;bottom:0;z-index:200;background:#0C1114;color:#fff;padding:14px 20px;font-size:.9rem;text-align:center">
-    <span data-tr>Formlar JavaScript gerektirir. Doğrudan yazabilirsiniz: </span>
-    <span data-en>The forms need JavaScript. You can write to us directly: </span>
-    <a href="mailto:info@toola.net" style="color:#fff">info@toola.net</a>
-  </div>
-</noscript>
 
 <!-- MODAL -->
 <div class="modal" id="modal" hidden>
