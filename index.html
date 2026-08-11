@@ -610,15 +610,12 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
    520 kil payi yetmiyordu. Punto degismeden yalnizca bu baslik sagda
    genisletildi; 660px tarayici metrik farklarina karsi pay birakiyor. */
 /* Hero trust satırı: ayrı label (mono uppercase) + liste (mono).
-   Butonlarla aynı beyaz band-card içinde; kartın padding'i
-   nefesi sağladığı için üst margin daha sıkı. */
-.hero .band-card{margin-top:36px}
-.hero .band-card .btns{margin-top:0}
+   Butonlardan bağımsız, kendi beyaz band-card'ında durur. */
 .hero-trust-label{font-family:var(--mono);font-size:.68rem;font-weight:500;
   text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3);
-  margin-top:22px;margin-bottom:0}
-.hero-trust-list{margin-top:8px;font-family:var(--mono);font-size:1rem;
-  color:var(--ink);line-height:1.55;margin-bottom:0;letter-spacing:-.005em}
+  margin:0 0 8px}
+.hero-trust-list{margin:0;font-family:var(--mono);font-size:1rem;
+  color:var(--ink);line-height:1.55;letter-spacing:-.005em}
 
 /* ─── YENİ İÇERİK YAPISI İÇİN GEREKEN AYARLAR ───
    Yalnızca yerleşim. Renk, font, ölçek ve token sistemi değişmedi. */
@@ -689,11 +686,11 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <span data-tr>Fotoğraf, ses, ölçüm ve saha notlarını iş emri ve ekipman geçmişiyle ilişkilendirir.</span>
       <span data-en>It links photos, voice, measurements and field notes to the work order and the asset&#39;s history.</span>
     </p>
-    <div class="band-card" style="margin-top:36px">
-      <div class="btns" style="margin-top:0">
-        <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
-        <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Ürünü görün</span><span data-en>See the product</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
-      </div>
+    <div class="btns" style="margin-top:28px">
+      <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
+      <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Ürünü görün</span><span data-en>See the product</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
+    </div>
+    <div class="band-card" style="margin-top:32px">
       <p class="hero-trust-label"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Selected for</span></p>
       <p class="hero-trust-list">QSTP · İTÜ Çekirdek · EIT Digital · HAVELSAN JetCube</p>
     </div>
