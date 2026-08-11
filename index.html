@@ -609,6 +609,15 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
    dusuyordu. Tek satir 1072px, yani iki satir icin en az 536px gerekiyor —
    520 kil payi yetmiyordu. Punto degismeden yalnizca bu baslik sagda
    genisletildi; 660px tarayici metrik farklarina karsi pay birakiyor. */
+/* Hero trust satırı: ayrı label (mono uppercase) + liste (mono).
+   Sayfadaki 12 mono label ile aynı ses; liste IBM Plex Mono ile
+   program isimlerinin teknik/akademik tonunu koruyor. */
+.hero-trust-label{font-family:var(--mono);font-size:.68rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3);
+  margin-top:30px;margin-bottom:0}
+.hero-trust-list{margin-top:8px;font-family:var(--mono);font-size:.86rem;
+  color:var(--ink-2);line-height:1.55;margin-bottom:0}
+
 /* ─── YENİ İÇERİK YAPISI İÇİN GEREKEN AYARLAR ───
    Yalnızca yerleşim. Renk, font, ölçek ve token sistemi değişmedi. */
 
@@ -682,8 +691,8 @@ th,.lad-h span{font-size:.665rem;letter-spacing:.1em}
       <button type="button" class="btn" data-open="pilot"><span data-tr>Pilot görüşmesi</span><span data-en>Book a pilot call</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></button>
       <a class="btn btn-2" data-open="ornek" href="#ornek"><span data-tr>Ürünü görün</span><span data-en>See the product</span><svg class="ico ico-arw" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h10M9 4.2 12.8 8 9 11.8"/></svg></a>
     </div>
-    <p class="hero-trust" style="margin-top:24px;font-size:.82rem;color:var(--ink-3);letter-spacing:.04em"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Selected for</span><br>
-      <span class="hero-trust-list" style="font-family:var(--mono);color:var(--ink-2);font-size:.78rem">QSTP · İTÜ Çekirdek · EIT Digital · HAVELSAN JetCube</span></p>
+    <p class="hero-trust-label"><span data-tr>Kabul edildiğimiz programlar</span><span data-en>Selected for</span></p>
+    <p class="hero-trust-list">QSTP · İTÜ Çekirdek · EIT Digital · HAVELSAN JetCube</p>
   </div>
 </section>
 
