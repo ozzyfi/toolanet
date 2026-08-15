@@ -971,8 +971,8 @@ var MT = {
     en:{title:'We\u0027ll send you the details', sub:'We\u0027ll email you a short introduction to ToolA. Name and email are enough.', cta:'Send me the details'}
   },
   ornek:{
-    tr:{title:'Önce kendi dokümanınızla görün.', sub:'Bir teknik iş talimatının veya şartnamenin en fazla 5 sayfasını gönderin. ToolA\u0027nın kabul kriterlerini, zorunlu kanıtları ve saha adımlarını nasıl yapılandırdığını tek bir örnek iş akışı üzerinde gösterelim.', cta:'Örnek iste'},
-    en:{title:'See it with your own document first.', sub:'Send up to 5 pages of a technical work instruction or specification. We will show how ToolA structures the acceptance criteria, the mandatory evidence and the field steps on a single sample workflow.', cta:'Request the sample'}
+    tr:{title:'Kendi dokümanınızla görün.', sub:'Bir teknik doküman gönderin. ToolA\u0027nın bunu nasıl yapılandırdığını gösterelim.', cta:'Örnek iste'},
+    en:{title:'See it with your own document.', sub:'Send us a technical document. We will show how ToolA structures it.', cta:'Request the sample'}
   }
 };
 
@@ -1009,11 +1009,7 @@ function paintModal(){
   document.getElementById('mSub').textContent=t.sub;
   document.getElementById('mSubmitTxt').textContent=t.cta;
   var noteEl=document.querySelector('#modal .modal-note');
-  if(intent==='ornek'){
-    noteEl.innerHTML='<span data-tr>Ücretsiz · NDA ile · Tek iş akışı · Entegrasyon ve saha çalışması gerekmez</span><span data-en>Free · Under NDA · One workflow · No integration or field work needed</span>';
-  } else {
-    noteEl.innerHTML='<span data-tr>Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</span><span data-en>Your details stay confidential and are used only to contact you.</span>';
-  }
+  noteEl.innerHTML='<span data-tr>Bilgileriniz gizli tutulur, sadece sizinle iletişim için kullanılır.</span><span data-en>Your details stay confidential and are used only to contact you.</span>';
 }
 function paintPlaceholders(){
   var l=lang();
