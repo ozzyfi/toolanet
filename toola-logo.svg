@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 973 240" role="img" aria-labelledby="title">
+<title id="title">ToolA</title>
+<g fill="#11120F">
+  <rect x="14" y="12" width="236" height="37"/>
+  <rect x="114" y="63" width="37" height="163"/>
+  <path d="M 229.0 147 A 93.5 82 0 1 0 416.0 147 A 93.5 82 0 1 0 229.0 147 Z M 265 148 A 57 52 0 1 1 379 148 A 57 52 0 1 1 265 148 Z" fill-rule="evenodd"/>
+  <path d="M 437 147 A 93 82 0 1 0 623 147 A 93 82 0 1 0 437 147 Z M 474.0 148 A 56.5 52 0 1 1 587.0 148 A 56.5 52 0 1 1 474.0 148 Z" fill-rule="evenodd"/>
+  <rect x="653" y="12" width="37" height="214"/>
+  <path d="M 835 16 L 959 225 L 916 225 L 835 86 L 757 225 L 713 225 Z"/>
+</g>
+<path d="M 835 157 L 875 225 L 795 225 Z" fill="#EA6D26"/>
+</svg>
