@@ -737,9 +737,7 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if(metaDesc && dict.meta_desc) metaDesc.setAttribute('content', dict.meta_desc);
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    const path = lang === 'en' ? '/en/' : '/';
-    if(ogUrl) ogUrl.setAttribute('content', 'https://toola.net' + path);
-    try { history.pushState({lang}, '', path); } catch(e) {}
+    if(ogUrl) ogUrl.setAttribute('content', lang === 'en' ? 'https://toola.net/en/' : 'https://toola.net/');
     localStorage.setItem('toola-lang', lang);
   }
   document.querySelectorAll('.lang-btn').forEach(btn => {
