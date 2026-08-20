@@ -247,11 +247,13 @@
     .provenance .pill{padding:10px 14px;font-size:var(--fs-pill);font-weight:500;letter-spacing:var(--ls-wide);color:var(--ink-2);line-height:1.5;background:transparent}
     .provenance-note{width:100%;margin-top:10px;color:var(--ink-2);font-size:14px;line-height:1.65}
 
-    .process{margin-top:54px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:var(--r-lg);overflow:hidden}
-    .step{min-height:250px;padding:24px;background:var(--bg);display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+    .process{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+    .step{min-height:200px;padding:24px 22px;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-start;gap:12px;transition:background .2s ease}
+    .step:hover{background:var(--surface-2)}
+    .step-num{color:var(--ink-3);font-size:11px;font-family:var(--f-mono);font-weight:500;letter-spacing:var(--ls-wide);margin-bottom:4px}
     .step-no{display:none}
-    .step h3{margin:0;font-size:18px;line-height:1.3;letter-spacing:var(--ls-normal);font-weight:600}
-    .step p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.65}
+    .step h3{margin:0;font-size:16px;line-height:1.3;letter-spacing:var(--ls-normal);font-weight:600}
+    .step p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.55}
 
     .memory-grid{margin-top:58px;display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
     .memory-copy,.memory-visual{min-height:360px;padding:32px;border:1px solid var(--line);border-radius:var(--r-xl);background:var(--surface-2)}
@@ -419,6 +421,9 @@
       .section-text{font-size:16px;line-height:1.68}
 
       .questions,.source-grid,.process,.use-grid,.security,.pilot-list{grid-template-columns:1fr}
+      .process{gap:0;background:transparent;border:0;border-radius:0}
+      .step{border:1px solid var(--line);border-radius:var(--r-lg);min-height:auto;padding:20px 22px;background:var(--surface-2)}
+      .step+.step{margin-top:10px}
       .questions{margin-top:46px}
       .question{min-height:118px;border-right:0;border-bottom:1px solid var(--line);padding:18px}
       .question:last-child{border-bottom:0}
@@ -630,10 +635,26 @@
 <div class="container reveal">
 <div class="section-head"><h2 class="section-title" data-i18n="workflow_title">Nasıl çalışır?</h2></div>
 <div class="process">
-<article class="step"><span class="step-no" data-i18n="s1label">01 · Problem</span><div><h3 data-i18n="s1title">Yeni vaka</h3><p data-i18n="s1body">Yeni teknik problem oluşur.</p></div></article>
-<article class="step"><span class="step-no" data-i18n="s2label">02 · Benzer vakalar</span><div><h3 data-i18n="s2title">Benzer vakalar</h3><p data-i18n="s2body">ToolA geçmişte yaşanan benzer problemleri bulur.</p></div></article>
-<article class="step"><span class="step-no" data-i18n="s3label">03 · Geçmiş çözümler</span><div><h3 data-i18n="s3title">Geçmiş çözümler</h3><p data-i18n="s3body">Ne yapıldığı ve neyin işe yaradığı gösterilir.</p></div></article>
-<article class="step"><span class="step-no" data-i18n="s4label">04 · Doğrulama</span><div><h3 data-i18n="s4title">Doğrulama</h3><p data-i18n="s4body">Yeni sonuç kaydedilir ve gelecekte tekrar kullanılabilir.</p></div></article>
+<article class="step">
+<div class="step-num">01</div>
+<h3 data-i18n="s1title">Yeni vaka</h3>
+<p data-i18n="s1body">Yeni teknik problem oluşur.</p>
+</article>
+<article class="step">
+<div class="step-num">02</div>
+<h3 data-i18n="s2title">Benzer vakalar</h3>
+<p data-i18n="s2body">ToolA geçmişte yaşanan benzer problemleri bulur.</p>
+</article>
+<article class="step">
+<div class="step-num">03</div>
+<h3 data-i18n="s3title">Geçmiş çözümler</h3>
+<p data-i18n="s3body">Ne yapıldığı ve neyin işe yaradığı gösterilir.</p>
+</article>
+<article class="step">
+<div class="step-num">04</div>
+<h3 data-i18n="s4title">Doğrulama</h3>
+<p data-i18n="s4body">Yeni sonuç kaydedilir ve gelecekte tekrar kullanılabilir.</p>
+</article>
 </div>
 </div>
 </section>
