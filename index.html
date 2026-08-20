@@ -292,7 +292,7 @@
 
     .modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px}
     .modal.is-open{display:flex}
-    .modal-backdrop{position:absolute;inset:0;background:rgba(17,18,15,.42);backdrop-filter:blur(10px)}
+    .modal-backdrop{position:absolute;inset:0;background:color-mix(in srgb, var(--bg) 72%, transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
     .modal-panel{
       position:relative;z-index:1;width:min(100%,560px);
       max-height:calc(100vh - 48px);overflow-y:auto;
