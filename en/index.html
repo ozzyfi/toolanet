@@ -240,8 +240,8 @@
     .provenance .pill{padding:10px 14px;font-size:var(--fs-pill);font-weight:500;letter-spacing:var(--ls-wide);color:var(--ink-2);line-height:1.5;background:transparent}
     
     .process{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
-    .step{min-height:200px;padding:24px 22px;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-start;gap:12px;transition:background .2s ease}
-    .step:hover{background:var(--surface-2)}
+    .step{min-height:200px;padding:24px 22px;background:var(--surface-2);display:flex;flex-direction:column;justify-content:flex-start;gap:12px;transition:transform .2s ease,box-shadow .2s ease}
+    .step:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(17,18,15,.05)}
     .step-num{color:var(--ink-3);font-size:11px;font-family:var(--f-mono);font-weight:500;letter-spacing:var(--ls-wide);margin-bottom:4px}
         .step h3{margin:0;font-size:16px;line-height:1.3;letter-spacing:var(--ls-normal);font-weight:600}
     .step p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.55}
