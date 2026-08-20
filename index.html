@@ -729,6 +729,10 @@
       const k = el.getAttribute('data-aria-i18n');
       if(dict[k] !== undefined) el.setAttribute('aria-label', dict[k]);
     });
+    document.querySelectorAll('[data-placeholder-i18n]').forEach(el => {
+      const k = el.getAttribute('data-placeholder-i18n');
+      if(dict[k] !== undefined) el.setAttribute('placeholder', dict[k]);
+    });
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('is-active', btn.dataset.lang === lang);
       btn.setAttribute('aria-current', btn.dataset.lang === lang ? 'true' : 'false');
