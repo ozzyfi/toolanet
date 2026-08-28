@@ -467,7 +467,104 @@
       font-size:16.5px;line-height:1.72;letter-spacing:-.008em;color:var(--muted)
     }
 
-    .three-grid{
+
+    .pipeline{
+      display:grid;
+      grid-template-columns:1fr 60px 1fr 60px 1fr;
+      align-items:stretch;
+      gap:14px;
+      margin-top:44px
+    }
+    .stage{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:14px
+    }
+    .pipeline-arrow{
+      display:flex;align-items:center;justify-content:center;
+      color:var(--accent);
+      align-self:center
+    }
+    .pipeline-arrow svg{width:100%;height:24px;color:var(--accent)}
+    .flow-line{
+      stroke-dasharray:4 4;
+      animation:flowMove 2.4s linear infinite
+    }
+    @keyframes flowMove{to{stroke-dashoffset:-16}}
+    .capture-sources{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:auto
+    }
+    .source-chip{
+      display:flex;align-items:center;justify-content:center;
+      padding:10px 12px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(226,220,211,.9);
+      border-radius:10px;
+      font-family:var(--font-display);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.01em;
+      color:var(--ink);
+      transition:transform .25s ease, border-color .25s ease, background .25s ease
+    }
+    .stage--capture:hover .source-chip{
+      transform:translateY(-2px);
+      border-color:var(--accent);
+      background:#fff
+    }
+    .memory-timeline{
+      display:flex;flex-direction:column;gap:8px;margin-top:auto
+    }
+    .memory-item{
+      display:flex;align-items:center;gap:10px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.6);
+      border:1px solid rgba(226,220,211,.85);
+      border-radius:10px;
+      font-size:12.5px;
+      color:var(--ink)
+    }
+    .memory-date{
+      font-family:var(--font-display);
+      font-size:10.5px;
+      letter-spacing:.04em;
+      color:var(--ink-3);
+      min-width:46px
+    }
+    .memory-text{flex:1;line-height:1.45}
+    .stage--memory:hover .memory-item{
+      border-color:var(--accent);
+      background:#fff
+    }
+    .reuse-match{
+      display:flex;flex-direction:column;gap:8px;margin-top:auto
+    }
+    .reuse-query{
+      padding:10px 12px;
+      background:rgba(255,255,255,.6);
+      border:1px solid rgba(226,220,211,.85);
+      border-radius:10px;
+      font-size:12.5px;
+      color:var(--ink-2);
+      font-style:italic
+    }
+    .reuse-answer{
+      padding:10px 12px;
+      background:var(--accent);
+      color:#fff;
+      border-radius:10px;
+      font-family:var(--font-display);
+      font-size:12.5px;
+      font-weight:600;
+      text-align:center
+    }
+    .stage--reuse:hover .reuse-query{border-color:var(--accent);background:#fff}
+    .stage--reuse:hover .reuse-answer{filter:brightness(1.05)}
+        .three-grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px
     }
     .feature{
@@ -1120,6 +1217,8 @@
       .reuse-stack{right:34px}
       .industry-grid{grid-template-columns:repeat(2,1fr)}
       .three-grid{grid-template-columns:1fr}
+      .pipeline{grid-template-columns:1fr;gap:18px}
+      .pipeline-arrow{transform:rotate(90deg);height:24px;width:24px;justify-self:center}
       .reuse-grid{grid-template-columns:1fr}
     }
 
@@ -1933,22 +2032,47 @@
 <div class="lede">Teknik ekip işine devam eder. ToolA, sahadaki bilgiyi yapılandırır ve ekipman geçmişine ekler.</div>
 </div>
 </div>
-<div class="three-grid">
-<div class="feature">
-<div class="index">01 · Yakala</div>
-<h3>Yakala</h3>
-<p>Ses, fotoğraf, video ve ölçümlerden teknik kaydı otomatik oluşturur.</p>
-</div>
-<div class="feature">
-<div class="index">02 · Hafızaya Dönüştür</div>
-<h3>Hafızaya dönüştür</h3>
-<p>Bulgu, ölçüm, müdahale ve sonucu ilgili ekipman geçmişine ekler.</p>
-</div>
-<div class="feature">
-<div class="index">03 · Yeniden Kullan</div>
-<h3>Yeniden kullan</h3>
-<p>Benzer bir problem çıktığında geçmiş olayları ve sonuçlarını ekibin önüne getirir.</p>
-</div>
+<div class="pipeline">
+  <div class="stage stage--capture feature">
+    <div class="index">01 · Yakalama</div>
+    <h3>Yakalama</h3>
+    <p>Ses, fotoğraf, video ve ölçümlerden teknik kaydı otomatik oluşturur.</p>
+    <div class="capture-sources" aria-label="Veri kaynakları">
+      <span class="source-chip">Ses</span>
+      <span class="source-chip">Fotoğraf</span>
+      <span class="source-chip">Video</span>
+      <span class="source-chip">Ölçüm</span>
+    </div>
+  </div>
+  <div class="pipeline-arrow" aria-hidden="true">
+    <svg viewBox="0 0 60 24" width="60" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow-line" d="M2 12 H54 M46 6 L54 12 L46 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+    </svg>
+  </div>
+  <div class="stage stage--memory feature">
+    <div class="index">02 · Hafıza</div>
+    <h3>Hafıza</h3>
+    <p>Bulgu, ölçüm, müdahale ve sonucu ilgili ekipman geçmişine ekler.</p>
+    <div class="memory-timeline">
+      <div class="memory-item"><span class="memory-date">12 May</span><span class="memory-text">Terminal yeniden sıkıldı</span></div>
+      <div class="memory-item"><span class="memory-date">19 Ağu</span><span class="memory-text">Yüksek sıcaklık gözlendi</span></div>
+      <div class="memory-item"><span class="memory-date">07 Tem</span><span class="memory-text">Bağlantı torku düzeltildi</span></div>
+    </div>
+  </div>
+  <div class="pipeline-arrow" aria-hidden="true">
+    <svg viewBox="0 0 60 24" width="60" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow-line" d="M2 12 H54 M46 6 L54 12 L46 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+    </svg>
+  </div>
+  <div class="stage stage--reuse feature">
+    <div class="index">03 · Yeniden Kullanım</div>
+    <h3>Yeniden Kullanım</h3>
+    <p>Benzer bir problem çıktığında geçmiş olayları ve sonuçlarını ekibin önüne getirir.</p>
+    <div class="reuse-match">
+      <div class="reuse-query">Bu ekipmanda daha önce benzer ne yaşandı?</div>
+      <div class="reuse-answer">2 benzer olay bulundu</div>
+    </div>
+  </div>
 </div>
 </div>
 </section>
