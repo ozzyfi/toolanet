@@ -479,7 +479,8 @@
       position:relative;
       display:flex;
       flex-direction:column;
-      gap:14px
+      gap:14px;
+      min-width:0
     }
     .pipeline-arrow{
       display:flex;align-items:center;justify-content:center;
@@ -580,7 +581,7 @@
       border-radius:22px;
       padding:28px 26px 26px;
       box-shadow:var(--shadow-soft);
-      min-height:250px;
+      min-height:260px;
     }
     .feature .index{
       color:#403b35;
@@ -1222,9 +1223,12 @@
       .reuse-stack{right:34px}
       .industry-grid{grid-template-columns:repeat(2,1fr)}
       .three-grid{grid-template-columns:1fr}
+      .reuse-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 760px){
       .pipeline{grid-template-columns:1fr;gap:18px}
       .pipeline-arrow{transform:rotate(90deg);height:24px;width:24px;justify-self:center}
-      .reuse-grid{grid-template-columns:1fr}
     }
 
     @media (max-width: 860px){
