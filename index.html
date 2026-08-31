@@ -1237,8 +1237,25 @@
     }
 
     @media (max-width: 760px){
-      .pipeline{grid-template-columns:1fr;gap:18px}
-      .pipeline-arrow{transform:rotate(90deg);height:24px;width:24px;justify-self:center}
+      .pipeline{grid-template-columns:1fr;gap:18px;margin-top:32px}
+      .pipeline > *{grid-column:auto!important}
+      .pipeline-arrow{
+        transform:rotate(90deg);
+        width:24px;height:24px;
+        align-self:center;justify-self:center;
+        color:var(--accent);
+        margin:0 auto
+      }
+      .pipeline-arrow svg{width:24px;height:24px}
+      .feature{min-height:0;padding:24px 22px 22px}
+      .feature h3{margin:22px 0 10px;font-size:24px}
+      .feature p{font-size:13.5px}
+      .capture-sources{gap:7px}
+      .source-chip{padding:9px 10px;font-size:11.5px}
+      .memory-field{padding:9px 12px;grid-template-columns:74px 1fr;gap:10px}
+      .memory-field-label{font-size:10px}
+      .memory-field-value{font-size:12px}
+      .reuse-query,.reuse-answer{padding:9px 12px;font-size:12px}
     }
 
     @media (max-width: 860px){
@@ -1673,6 +1690,12 @@
       }
       .programs-label{margin-bottom:18px}
     }
+    @media (max-width: 480px){
+      .pipeline{gap:14px;margin-top:26px}
+      .feature{padding:22px 20px 20px;border-radius:18px}
+      .feature h3{font-size:22px;margin:18px 0 8px}
+    }
+
     @media (max-width: 460px){
       .program-item{
         font-size:16px;
@@ -1858,6 +1881,15 @@
       .nav-actions{gap:5px}
       .lang-btn{min-width:28px;height:32px;padding:0 6px;font-size:10.5px}
       .nav-actions > .btn{min-height:40px;padding:0 11px;font-size:12.5px}
+      .pipeline{gap:12px;margin-top:22px}
+      .feature{padding:20px 16px 18px;border-radius:16px}
+      .feature h3{font-size:20px;margin:16px 0 7px}
+      .feature p{font-size:13px}
+      .source-chip{font-size:11px;padding:8px 9px}
+      .memory-field{grid-template-columns:62px 1fr;padding:8px 10px;gap:8px}
+      .memory-field-label{font-size:9.5px}
+      .memory-field-value{font-size:11.5px}
+      .reuse-query,.reuse-answer{font-size:11.5px;padding:8px 10px}
       .hero{padding-top:36px}
       .story-tabs{gap:16px}
       .story-tab{font-size:11.5px}
