@@ -1,1 +1,4 @@
-/en/* /index.html 200
+# English: redirect (not rewrite) so relative asset paths keep resolving from the site root
+/en      /?lang=en   301
+/en/     /?lang=en   301
+/en/*    /?lang=en   301
