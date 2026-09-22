@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-<title>ToolA — Kritik Teknik Operasyonlar için Teknik Hafıza</title>
+<title>ToolA — Enerji, Savunma ve Endüstri için Teknik Hafıza</title>
 <meta content="ToolA" name="application-name"/>
 <meta content="ToolA" name="apple-mobile-web-app-title"/>
-<meta content="ToolA, sahada görülen, ölçülen ve yapılan işleri teknik kayda dönüştürür; geçmiş müdahaleleri ve sonuçlarını yeni teknik işlerde yeniden kullanılabilir hale getirir." name="description"/>
+<meta content="ToolA, sahadaki deneyimi kurumun teknik hafızasına dönüştürür: bulgu, ölçüm, müdahale, sonuç. Kritik teknik işler yapan ekipler için 6 haftalık pilot." name="description"/>
 <meta content="index,follow" name="robots"/>
 <meta content="#F6F4EF" name="theme-color"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
@@ -17,20 +17,18 @@
 <meta content="website" property="og:type"/>
 <meta content="ToolA" property="og:site_name"/>
 <meta content="https://toola.net/" property="og:url"/>
-<meta content="ToolA — Kritik Teknik Operasyonlar için Teknik Hafıza" property="og:title"/>
-<meta content="Sahadaki deneyimi kurumun teknik hafızasına dönüştürün. Geçmiş müdahaleler ve sonuçlar yeni teknik işlerde yeniden kullanılsın." property="og:description"/>
+<meta content="ToolA — Sahadaki Deneyimi Teknik Hafızaya Dönüştürün" property="og:title"/>
+<meta content="Teknisyen ve mühendislerin gördüğünü, ölçtüğünü ve yaptığını teknik kayda dönüştürür. Enerji, veri merkezi, savunma ve endüstri için." property="og:description"/>
 <meta content="tr_TR" property="og:locale"/>
 <meta content="en_US" property="og:locale:alternate"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="ToolA — Kritik Teknik Operasyonlar için Teknik Hafıza" name="twitter:title"/>
-<meta content="Sahadaki deneyimi kurumun teknik hafızasına dönüştürün. Geçmiş müdahaleler ve sonuçlar yeni teknik işlerde yeniden kullanılsın." name="twitter:description"/>
+<meta content="ToolA — Sahadaki Deneyimi Teknik Hafızaya Dönüştürün" name="twitter:title"/>
+<meta content="Teknisyen ve mühendislerin gördüğünü, ölçtüğünü ve yaptığını teknik kayda dönüştürür." name="twitter:description"/>
 <meta content="https://toola.net/og-image.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="ToolA — Sahadaki deneyimi, kurumun teknik hafızasına dönüştürün." property="og:image:alt"/>
 <meta content="https://toola.net/og-image.png" name="twitter:image"/>
-<meta content="https://toola.net/media/toola-saha.mp4" property="og:video"/>
-<meta content="video/mp4" property="og:video:type"/>
 <link href="mark.svg" rel="icon" type="image/svg+xml"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link as="font" crossorigin href="fonts/archivo-latin-600-normal.woff2" rel="preload" type="font/woff2"/>
@@ -513,12 +511,43 @@ section[id]{scroll-margin-top:104px}
 .voice-top{display:flex;align-items:center;justify-content:space-between;color:var(--faint)}
 .voice-top .rec{display:inline-flex;align-items:center;gap:6px;color:var(--accent-ink)}
 .voice-top .rec i{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2.4s ease-in-out infinite}
-.wave{display:flex;align-items:flex-end;gap:2.5px;height:22px;margin:11px 0 9px}
-.wave span{
-  flex:1;background:#D7D2C6;border-radius:2px;min-height:3px;
-  animation:waveA 1.5s ease-in-out infinite;
+/* Voice-note waveform: thin mirrored bars + playback sweep */
+.wave{position:relative;height:34px;margin:14px 0 12px}
+.wave-row{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:space-between;
 }
-@keyframes waveA{0%,100%{height:22%}50%{height:96%}}
+.wave-row i{
+  display:block;flex:none;width:2px;border-radius:2px;
+  height:calc(var(--h) * 100%);min-height:3px;
+  background:#D3CDC0;
+}
+.wave-played i{background:linear-gradient(180deg,#F08A4B,var(--accent) 45%,var(--accent-strong))}
+.wave-played{clip-path:inset(0 100% 0 0);animation:wavePlay 7s cubic-bezier(.45,.05,.55,.95) infinite}
+.wave-head{
+  position:absolute;top:-4px;bottom:-4px;left:0;width:2px;margin-left:-1px;
+  border-radius:2px;background:var(--accent);
+  animation:waveHead 7s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+.wave-head::before{
+  content:"";position:absolute;top:-3px;left:50%;width:7px;height:7px;margin-left:-3.5px;
+  border-radius:50%;background:var(--accent);
+}
+@keyframes wavePlay{
+  0%{clip-path:inset(0 100% 0 0);opacity:1}
+  88%{clip-path:inset(0 0 0 0);opacity:1}
+  100%{clip-path:inset(0 0 0 0);opacity:0}
+}
+@keyframes waveHead{
+  0%{left:0;opacity:0}
+  4%{opacity:1}
+  88%{left:100%;opacity:1}
+  100%{left:100%;opacity:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .wave-played{animation:none;clip-path:inset(0 42% 0 0)}
+  .wave-head{animation:none;left:58%}
+}
 .voice-note p{font-size:13.5px;line-height:1.5;color:var(--body);font-style:italic}
 
 .record{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--paper-2)}
@@ -1046,7 +1075,9 @@ Sahada konuşulan, ölçülen ve yapılan her şey <span>tek bir teknik kayda d�
 <span class="rec"><i></i>Kayıt</span>
 </div>
 <div class="wave" aria-hidden="true">
-<span style="animation-delay:0s"></span><span style="animation-delay:.08s"></span><span style="animation-delay:.16s"></span><span style="animation-delay:.24s"></span><span style="animation-delay:.32s"></span><span style="animation-delay:.4s"></span><span style="animation-delay:.48s"></span><span style="animation-delay:.56s"></span><span style="animation-delay:.64s"></span><span style="animation-delay:.72s"></span><span style="animation-delay:.8s"></span><span style="animation-delay:.88s"></span><span style="animation-delay:.96s"></span><span style="animation-delay:1.04s"></span><span style="animation-delay:1.12s"></span><span style="animation-delay:1.2s"></span><span style="animation-delay:1.28s"></span><span style="animation-delay:1.36s"></span>
+<div class="wave-row"><i style="--h:0.33"></i><i style="--h:0.47"></i><i style="--h:0.54"></i><i style="--h:0.31"></i><i style="--h:0.11"></i><i style="--h:0.4"></i><i style="--h:0.6"></i><i style="--h:0.82"></i><i style="--h:0.71"></i><i style="--h:0.67"></i><i style="--h:0.37"></i><i style="--h:0.09"></i><i style="--h:0.11"></i><i style="--h:0.41"></i><i style="--h:0.55"></i><i style="--h:0.63"></i><i style="--h:0.63"></i><i style="--h:0.42"></i><i style="--h:0.11"></i><i style="--h:0.39"></i><i style="--h:0.75"></i><i style="--h:0.71"></i><i style="--h:0.96"></i><i style="--h:0.77"></i><i style="--h:0.6"></i><i style="--h:0.36"></i><i style="--h:0.1"></i><i style="--h:0.13"></i><i style="--h:0.09"></i><i style="--h:0.37"></i><i style="--h:0.6"></i><i style="--h:0.63"></i><i style="--h:0.59"></i><i style="--h:0.33"></i><i style="--h:0.08"></i><i style="--h:0.37"></i><i style="--h:0.69"></i><i style="--h:0.77"></i><i style="--h:0.74"></i><i style="--h:0.67"></i><i style="--h:0.39"></i><i style="--h:0.1"></i><i style="--h:0.13"></i><i style="--h:0.38"></i><i style="--h:0.52"></i><i style="--h:0.57"></i><i style="--h:0.37"></i><i style="--h:0.13"></i><i style="--h:0.32"></i><i style="--h:0.43"></i><i style="--h:0.5"></i><i style="--h:0.29"></i></div>
+<div class="wave-row wave-played"><i style="--h:0.33"></i><i style="--h:0.47"></i><i style="--h:0.54"></i><i style="--h:0.31"></i><i style="--h:0.11"></i><i style="--h:0.4"></i><i style="--h:0.6"></i><i style="--h:0.82"></i><i style="--h:0.71"></i><i style="--h:0.67"></i><i style="--h:0.37"></i><i style="--h:0.09"></i><i style="--h:0.11"></i><i style="--h:0.41"></i><i style="--h:0.55"></i><i style="--h:0.63"></i><i style="--h:0.63"></i><i style="--h:0.42"></i><i style="--h:0.11"></i><i style="--h:0.39"></i><i style="--h:0.75"></i><i style="--h:0.71"></i><i style="--h:0.96"></i><i style="--h:0.77"></i><i style="--h:0.6"></i><i style="--h:0.36"></i><i style="--h:0.1"></i><i style="--h:0.13"></i><i style="--h:0.09"></i><i style="--h:0.37"></i><i style="--h:0.6"></i><i style="--h:0.63"></i><i style="--h:0.59"></i><i style="--h:0.33"></i><i style="--h:0.08"></i><i style="--h:0.37"></i><i style="--h:0.69"></i><i style="--h:0.77"></i><i style="--h:0.74"></i><i style="--h:0.67"></i><i style="--h:0.39"></i><i style="--h:0.1"></i><i style="--h:0.13"></i><i style="--h:0.38"></i><i style="--h:0.52"></i><i style="--h:0.57"></i><i style="--h:0.37"></i><i style="--h:0.13"></i><i style="--h:0.32"></i><i style="--h:0.43"></i><i style="--h:0.5"></i><i style="--h:0.29"></i></div>
+<span class="wave-head"></span>
 </div>
 <p>“Hücre 17 düşük voltajdaydı. Terminal gevşekti. Yeniden sıktım. Son ölçüm 12.7 V.”</p>
 </div>
@@ -1485,8 +1516,8 @@ Sahada konuşulan, ölçülen ve yapılan her şey <span>tek bir teknik kayda d�
 
       const meta = {
         tr: {
-          title: 'ToolA — Kritik Teknik Operasyonlar için Teknik Hafıza',
-          description: 'ToolA, sahada görülen, ölçülen ve yapılan işleri teknik kayda dönüştürür; geçmiş müdahaleleri ve sonuçlarını yeni teknik işlerde yeniden kullanılabilir hale getirir.',
+          title: 'ToolA — Enerji, Savunma ve Endüstri için Teknik Hafıza',
+          description: 'ToolA, sahadaki deneyimi kurumun teknik hafızasına dönüştürür: bulgu, ölçüm, müdahale, sonuç. Kritik teknik işler yapan ekipler için 6 haftalık pilot.',
           navLabel: 'Ana navigasyon',
           langLabel: 'Dil seçimi',
           storyLabel: 'ToolA ürün akışı',
@@ -1514,8 +1545,8 @@ Sahada konuşulan, ölçülen ve yapılan her şey <span>tek bir teknik kayda d�
           noteText: 'Bu form üzerinden özel nitelikli kişisel veri, parola, ticari sır veya gizli teknik bilgi paylaşmayın.'
         },
         en: {
-          title: 'ToolA — Technical Memory for Critical Technical Operations',
-          description: 'ToolA turns field activity into technical records and surfaces past interventions and outcomes when new technical problems arise.',
+          title: 'ToolA — Technical Memory for Energy, Defense and Industry',
+          description: 'ToolA turns field experience into technical memory: finding, measurement, intervention, outcome. A 6-week pilot for teams doing critical technical work.',
           navLabel: 'Main navigation',
           langLabel: 'Language selection',
           storyLabel: 'ToolA product flow',
