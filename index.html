@@ -54,6 +54,29 @@
         "addressRegion": "İstanbul",
         "addressCountry": "TR"
       },
+      "location": [
+        {
+          "@type": "Place",
+          "name": "ToolA — Teknopark İstanbul (HQ)",
+          "address": { "@type": "PostalAddress", "addressLocality": "İstanbul", "addressCountry": "TR" }
+        },
+        {
+          "@type": "Place",
+          "name": "ToolA — QSTP Doha",
+          "address": { "@type": "PostalAddress", "addressLocality": "Doha", "addressCountry": "QA" }
+        },
+        {
+          "@type": "Place",
+          "name": "ToolA — Tallinn",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Pärnu mnt. 139b-14",
+            "postalCode": "11317",
+            "addressLocality": "Tallinn",
+            "addressCountry": "EE"
+          }
+        }
+      ],
       "sameAs": [
         "https://www.linkedin.com/company/toolanet/",
         "https://www.instagram.com/toolanet/"
@@ -156,7 +179,7 @@ p{text-wrap:pretty}
 .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
 .btn-dark{background:var(--ink);color:#fff}
 .btn-dark:hover{background:#000}
-.btn-sm{height:40px;padding:0 16px;font-size:.94rem}
+.btn-sm{height:46px;padding:0 20px;font-size:1rem}
 .btn-lg{height:56px;padding:0 28px;font-size:1.08rem}
 .link{display:inline-flex;align-items:center;gap:.35rem;font-weight:500;border-bottom:1px solid currentColor;padding-bottom:1px;transition:color .2s}
 .link:hover{color:var(--accent-deep)}
@@ -164,17 +187,27 @@ p{text-wrap:pretty}
 /* ---------- Nav ---------- */
 .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 84%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .25s}
 .nav.scrolled{border-bottom-color:var(--line)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
-.logo{display:flex;align-items:center;padding:8px 0}
-.logo svg{height:22px;width:auto}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:flex;align-items:center;padding:8px 0;flex:none}
+.logo svg{height:26px;width:auto;aspect-ratio:973/240;flex:none}
 .nav-right{display:flex;align-items:center;gap:14px}
-.lang{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;gap:2px}
-.lang button{font-size:.82rem;font-weight:500;padding:5px 10px;border-radius:999px;color:var(--ink-3);letter-spacing:.02em}
+.lang{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:4px;gap:2px}
+.lang button{font-size:.88rem;font-weight:500;padding:7px 12px;border-radius:999px;color:var(--ink-3);letter-spacing:.02em}
 .lang button.active{background:var(--ink);color:#fff}
 @media (max-width:480px){
   .nav-inner{height:64px}
   .nav-right{gap:10px}
-  .nav-right .btn{height:38px;padding:0 14px;font-size:.9rem}
+  .logo svg{height:22px}
+  .lang button{padding:5px 10px;font-size:.82rem}
+  .nav-right .btn{height:40px;padding:0 14px;font-size:.92rem}
+}
+@media (max-width:360px){
+  .nav-inner{gap:8px}
+  .nav-right{gap:8px}
+  .logo svg{height:19px}
+  .lang{padding:3px}
+  .lang button{padding:5px 7px;font-size:.78rem}
+  .nav-right .btn{padding:0 10px;font-size:.84rem}
 }
 
 /* ---------- Hero ---------- */
@@ -202,7 +235,10 @@ p{text-wrap:pretty}
 .hero-media video{width:100%;height:100%;object-fit:cover}
 .hero-caption{position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,3vw,28px);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;background:linear-gradient(to top,rgba(10,10,8,.72),rgba(10,10,8,0));color:#fff;pointer-events:none}
 .hero-caption strong{display:block;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:600;letter-spacing:-.01em}
-.hero-caption span{display:block;color:rgba(255,255,255,.72);font-size:.92rem;margin-top:3px}
+.hero-caption span{display:block;color:rgba(255,255,255,.78);font-size:.95rem;margin-top:4px;min-height:1.4em;transition:opacity .25s}
+.hero-caption span.swap{opacity:0}
+.hero-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.18)}
+.hero-progress i{display:block;height:100%;width:0;background:var(--accent)}
 .vid-ctrl{display:flex;gap:8px;pointer-events:auto}
 .vid-ctrl button{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);display:inline-flex;align-items:center;justify-content:center;color:#fff;transition:background .2s}
 .vid-ctrl button:hover{background:rgba(255,255,255,.28)}
@@ -211,7 +247,6 @@ p{text-wrap:pretty}
   .hero-media{aspect-ratio:4/3;border-radius:var(--r-md)}
   .hero-caption{padding-right:16px}
   .vid-ctrl{position:absolute;top:14px;right:14px}
-  .hero-caption span{display:none}
 }
 
 /* ---------- Programs ---------- */
@@ -247,7 +282,7 @@ p{text-wrap:pretty}
 .step .h3{transition:color .3s}
 .step:not(.active) .h3{color:var(--ink-2)}
 
-.panel-sticky{position:sticky;top:calc(68px + 24px)}
+.panel-sticky{position:sticky;top:calc(76px + 24px)}
 .panel{position:relative;background:var(--dark);border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 30px 80px -36px rgba(20,20,18,.5);color:var(--dark-text)}
 .panel-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--dark-line);font-size:.86rem;color:var(--dark-muted)}
 .panel-bar b{color:var(--dark-text);font-weight:500}
@@ -279,14 +314,17 @@ p{text-wrap:pretty}
 .transcript .w{display:inline-block;opacity:0;transform:translateY(4px)}
 .active .transcript .w{animation:wordIn .35s var(--ease) forwards}
 @keyframes wordIn{to{opacity:1;transform:none}}
-.attach{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.attach .card{display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(8px)}
-.active .attach .card{animation:fadeUp .5s var(--ease) forwards}
+.attach{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;align-items:stretch}
+.attach .card{display:flex;align-items:center;gap:12px;min-height:76px;opacity:0}
+.attach .card + .card{margin-top:0}
+.active .attach .card{animation:fadeIn .5s var(--ease) forwards}
+@keyframes fadeIn{to{opacity:1}}
 .active .attach .card:nth-child(1){animation-delay:2.6s}
 .active .attach .card:nth-child(2){animation-delay:3.1s}
 .attach svg{width:22px;height:22px;flex:none;color:var(--accent)}
 .attach small{display:block;color:var(--dark-muted);font-size:.8rem}
-.attach b{font-weight:500;font-size:.98rem}
+.attach b{display:block;font-weight:500;font-size:.98rem;line-height:1.3}
+.attach small{line-height:1.3}
 
 /* Scene 2: memory */
 .rows{margin-top:14px;display:grid;gap:0}
@@ -335,7 +373,7 @@ p{text-wrap:pretty}
 /* Mobile: sticky panel on top, steps below */
 @media (max-width:900px){
   .how-layout{grid-template-columns:1fr;gap:0}
-  .panel-sticky{position:sticky;top:68px;z-index:5;order:-1;padding:10px 0 14px;background:var(--paper)}
+  .panel-sticky{position:sticky;top:64px;z-index:5;order:-1;padding:10px 0 14px;background:var(--paper)}
   .panel{aspect-ratio:auto;height:min(58vh,520px)}
   .step{min-height:0;padding:30px 0}
   .scene{padding:16px}
@@ -345,7 +383,11 @@ p{text-wrap:pretty}
   .panel{height:min(68vh,600px)}
   .hist{grid-template-columns:54px 1fr}
   .found .card{padding:12px 14px}
-  .sofar{padding:12px 14px;font-size:.92rem}
+  .sofar{padding:10px 12px;font-size:.9rem;margin-top:10px}
+  .ask{padding:10px 12px;margin-top:10px}
+  .found{margin-top:8px}
+  .found-label{margin-bottom:6px}
+  .card-title b{font-size:.95rem}
   .scene{overflow-y:auto}
   .row{grid-template-columns:80px 1fr;gap:10px;font-size:.9rem;padding:10px 0}
   .attach{gap:8px}
@@ -422,23 +464,29 @@ p{text-wrap:pretty}
 
 /* ---------- Footer ---------- */
 .footer{padding:clamp(56px,8vw,96px) 0 40px}
-.footer-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:start;padding-bottom:40px;border-bottom:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(32px,6vw,96px);align-items:start;padding-bottom:40px;border-bottom:1px solid var(--line)}
 .footer-top .logo svg{height:24px}
 .footer-top p{margin-top:16px;color:var(--ink-2);max-width:34ch}
-.footer-meta{display:grid;gap:10px;font-size:.98rem;color:var(--ink-2);text-align:right}
-.footer-meta a{color:var(--ink);font-weight:500}
-.footer-meta a:hover{color:var(--accent-deep)}
+.footer-contact{display:flex;align-items:center;gap:18px;margin-top:22px;flex-wrap:wrap}
+.footer-contact > a{color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);padding:2px 0}
+.footer-contact > a:hover{color:var(--accent-deep);border-color:currentColor}
+.offices .meta-label{display:block;font-size:.84rem;color:var(--ink-3);margin-bottom:14px}
+.office-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.5vw,32px)}
+.office{border-top:2px solid var(--ink);padding-top:14px;display:grid;gap:3px;color:var(--ink-2);font-size:.95rem}
+.office-city{display:flex;align-items:center;gap:8px;font-size:1.3rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:4px}
+.office .hq{font-style:normal;font-size:.8rem;font-weight:600;letter-spacing:.06em;padding:3px 7px;border-radius:999px;background:var(--accent);color:#fff;line-height:1}
+.office-detail{color:var(--ink)}
+.office-country{color:var(--ink-3)}
 .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;padding-top:24px;font-size:.9rem;color:var(--ink-3)}
 .footer-legal{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padding:0}
 .footer-legal a{display:inline-block;padding:6px 0}
 .footer-legal a:hover{color:var(--ink)}
-.footer-meta a{display:inline-block;padding:4px 0}
-.social{display:flex;gap:10px;justify-content:flex-end}
-@media (max-width:640px){.social{justify-content:flex-start}}
+.social{display:flex;gap:10px}
 .social a{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--ink-2);transition:border-color .2s,color .2s}
 .social a:hover{border-color:var(--ink);color:var(--ink)}
 .social svg{width:17px;height:17px}
-@media (max-width:640px){.footer-top{grid-template-columns:1fr}.footer-meta{text-align:left}}
+@media (max-width:900px){.footer-top{grid-template-columns:1fr}}
+@media (max-width:480px){.office-list{grid-template-columns:1fr;gap:14px}.office{border-top:1px solid var(--line);padding-top:12px}}
 
 /* ---------- Modals ---------- */
 .modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,20,18,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -481,8 +529,9 @@ body.lock{overflow:hidden}
 
 
 /* ---------- Additions after content restore ---------- */
-section[id]{scroll-margin-top:84px}
-.kicker{font-size:1rem;font-weight:500;color:var(--accent-deep);margin-bottom:18px}
+section[id]{scroll-margin-top:92px}
+.kicker{font-size:1rem;font-weight:500;color:var(--accent-deep);margin-bottom:18px;padding-top:14px;position:relative}
+.kicker::before{content:"";position:absolute;left:0;top:0;width:36px;height:2px;background:var(--accent);border-radius:2px}
 .hero-note{margin-top:20px;color:var(--ink-2);font-size:1.02rem;text-align:center;text-wrap:balance}
 .chips{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{font-size:.9rem;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink-2)}
@@ -495,23 +544,8 @@ section[id]{scroll-margin-top:84px}
 .asset-meta li{font-size:.84rem;padding:4px 10px;border-radius:999px;background:var(--dark-3);color:var(--dark-text);white-space:nowrap}
 .tl .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .tl .tags i{font-style:normal;font-size:.8rem;padding:2px 9px;border-radius:999px;background:var(--dark-3);color:var(--dark-muted)}
-.qa{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-top:clamp(36px,5vw,56px)}
-.qa-col{border-top:2px solid var(--ink);padding-top:22px}
-.qa-col:last-child{border-top-color:var(--accent)}
-.qa-kicker{font-size:.95rem;font-weight:500;color:var(--accent-deep)}
-.qa-col .h3{margin-top:8px}
-.qa-col .muted{margin-top:12px;max-width:48ch;text-wrap:pretty}
-.qa-item{margin-top:22px;border-radius:var(--r-md);background:var(--paper-2);padding:16px 18px}
-.qa-q{font-weight:500;color:var(--ink)}
-.qa-a{margin-top:8px;color:var(--ink-2);text-wrap:pretty}
-.qa-arrow{align-self:center;color:var(--ink-3)}
-.qa-arrow svg{width:32px;height:32px}
 .fit-diagram .tool-s{fill:#A09C93;font-family:var(--sans);font-size:14px}
-.footer-meta .meta-label{display:block;font-size:.84rem;color:var(--ink-3);margin-bottom:2px}
-.footer-meta > div + div{margin-top:4px}
 @media (max-width:900px){
-  .qa{grid-template-columns:1fr}
-  .qa-arrow{transform:rotate(90deg);justify-self:start;margin-left:4px}
   .asset-meta{justify-content:flex-start}
   .asset-head{flex-direction:column;gap:10px}
 }
@@ -571,7 +605,7 @@ section[id]{scroll-margin-top:84px}
         <figcaption class="hero-caption">
           <div>
             <strong>Teknisyen işini yapar. ToolA kaydı oluşturur.</strong>
-            <span>UPS-03 · Bypass alarmı · B fazında yüksek sıcaklık</span>
+            <span class="hero-cue" id="heroCue" data-no-i18n aria-live="off">UPS-03 · Bypass alarmı · B fazında yüksek sıcaklık</span>
           </div>
           <div class="vid-ctrl" data-no-i18n>
             <button type="button" id="soundBtn" aria-label="Sesi aç" aria-pressed="false">
@@ -584,6 +618,7 @@ section[id]{scroll-margin-top:84px}
             </button>
           </div>
         </figcaption>
+        <div class="hero-progress" aria-hidden="true"><i id="heroProgress"></i></div>
       </figure>
       <p class="hero-note">Sahada konuşulan, ölçülen ve yapılan her şey tek bir teknik kayda dönüşür.</p>
     </div>
@@ -735,37 +770,6 @@ section[id]{scroll-margin-top:84px}
     </div>
   </section>
 
-  <!-- ============ NEXT JOB ============ -->
-  <section class="section" id="reuse">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2">Bir sonraki iş, geçmiş teknik bilgiyle başlar.</h2>
-        <p class="lead">Ekip benzer bir problemde sıfırdan araştırma yapmak yerine geçmiş ekipman bağlamıyla başlar.</p>
-      </div>
-      <div class="qa">
-        <div class="qa-col">
-          <p class="qa-kicker">Yeni teknik olay</p>
-          <h3 class="h3">UPS-02 · Hücre 17 tekrar düşük voltaj</h3>
-          <p class="muted">ToolA, yeni problemi ilgili geçmiş kayıtlar, ölçümler ve müdahalelerle ilişkilendirir.</p>
-          <div class="qa-item">
-            <p class="qa-q">Bu ekipmanda daha önce benzer ne yaşandı?</p>
-            <p class="qa-a">Bu hücreye ait geçmiş kayıtlarda terminal sıkma ve hücre değiştirme işlemleri bulunuyor.</p>
-          </div>
-        </div>
-        <div class="qa-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <div class="qa-col">
-          <p class="qa-kicker">İlgili hafıza</p>
-          <h3 class="h3">Daha önce ne yapıldı ve sonuç ne oldu?</h3>
-          <p class="muted">12 Mayıs tarihli olayda gevşek terminal tespit edildi, bağlantı yeniden sıkıldı ve müdahale sonrası 12.7 V ölçüldü.</p>
-          <div class="qa-item">
-            <p class="qa-q">Bu bilgi neden önemli?</p>
-            <p class="qa-a">Ekip tekrar deneme-yanılma yapmak yerine daha önce işe yarayan teknik bağlamla başlar.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ FITS WITH EXISTING SYSTEMS ============ -->
   <section class="section" id="fit">
     <div class="wrap">
@@ -848,19 +852,38 @@ section[id]{scroll-margin-top:84px}
 <footer class="footer">
   <div class="wrap">
     <div class="footer-top">
-      <div>
+      <div class="footer-brand">
         <a class="logo" href="#top" aria-label="ToolA">
           <svg viewBox="0 0 973 240" role="img" aria-hidden="true"><g fill="currentColor"><rect x="14" y="12" width="236" height="37"/><rect x="114" y="63" width="37" height="163"/><path d="M 229.0 147 A 93.5 82 0 1 0 416.0 147 A 93.5 82 0 1 0 229.0 147 Z M 265 148 A 57 52 0 1 1 379 148 A 57 52 0 1 1 265 148 Z" fill-rule="evenodd"/><path d="M 437 147 A 93 82 0 1 0 623 147 A 93 82 0 1 0 437 147 Z M 474.0 148 A 56.5 52 0 1 1 587.0 148 A 56.5 52 0 1 1 474.0 148 Z" fill-rule="evenodd"/><rect x="653" y="12" width="37" height="214"/><path d="M 835 16 L 959 225 L 916 225 L 835 86 L 757 225 L 713 225 Z"/></g><path d="M 835 157 L 875 225 L 795 225 Z" fill="#EA6D26"/></svg>
         </a>
         <p>ToolA — Sahada olanı teknik hafızaya dönüştürür.</p>
-      </div>
-      <div class="footer-meta">
-        <div><span class="meta-label">Adres</span><span data-no-i18n>Teknopark İstanbul · QSTP Doha</span></div>
-        <div><span class="meta-label">E-posta</span><a href="mailto:info@toola.net" data-no-i18n>info@toola.net</a></div>
-        <div class="social" aria-label="Sosyal medya" data-no-i18n>
-          <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5h-3V20h3zM5 4a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 4zm16 9.3c0-3.4-1.9-5-4.4-5-2 0-2.9 1.1-3.4 1.9V8.5H10V20h3.2v-6.2c0-1.7.6-2.9 2.2-2.9 1.4 0 2.1 1 2.1 2.9V20H21z"/></svg></a>
-          <a href="https://www.instagram.com/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <div class="footer-contact">
+          <a href="mailto:info@toola.net" data-no-i18n>info@toola.net</a>
+          <div class="social" aria-label="Sosyal medya" data-no-i18n>
+            <a href="https://www.linkedin.com/company/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.5h-3V20h3zM5 4a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 4zm16 9.3c0-3.4-1.9-5-4.4-5-2 0-2.9 1.1-3.4 1.9V8.5H10V20h3.2v-6.2c0-1.7.6-2.9 2.2-2.9 1.4 0 2.1 1 2.1 2.9V20H21z"/></svg></a>
+            <a href="https://www.instagram.com/toolanet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
         </div>
+      </div>
+      <div class="offices">
+        <span class="meta-label">Ofisler</span>
+        <ul class="office-list">
+          <li class="office">
+            <span class="office-city">İstanbul<i class="hq">HQ</i></span>
+            <span class="office-detail">Teknopark İstanbul</span>
+            <span class="office-country">Türkiye</span>
+          </li>
+          <li class="office">
+            <span class="office-city">Doha</span>
+            <span class="office-detail" data-no-i18n>QSTP</span>
+            <span class="office-country">Katar</span>
+          </li>
+          <li class="office">
+            <span class="office-city">Tallinn</span>
+            <span class="office-detail" data-no-i18n>Pärnu mnt. 139b-14</span>
+            <span class="office-country">Estonya</span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -944,11 +967,32 @@ section[id]{scroll-margin-top:84px}
   playBtn.addEventListener('click', () => { video.paused ? video.play().catch(() => {}) : video.pause(); });
   video.addEventListener('play', syncVideo); video.addEventListener('pause', syncVideo);
   document.addEventListener('toola:lang', syncVideo);
+  // Captions synced to the clip, so the story reads even while muted
+  const CUES = {
+    tr: [[0, 'Teknisyen kaydı başlatır'], [2, 'UPS-03 panosunda ölçüm alır'], [4.2, 'Bulguyu sesli anlatır: bypass alarmı, B fazında yüksek sıcaklık'], [8, 'Kayıt hazır: UPS-03 · Bypass alarmı · B fazında yüksek sıcaklık']],
+    en: [[0, 'The technician starts the record'], [2, 'Takes a reading on the UPS-03 panel'], [4.2, 'Describes the finding by voice: bypass alarm, high temperature on phase B'], [8, 'Record ready: UPS-03 · Bypass alarm · High temperature on phase B']]
+  };
+  const cueEl = document.getElementById('heroCue'), progEl = document.getElementById('heroProgress');
+  let cueIdx = -1;
+  function updateCue() {
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'tr';
+    const t = video.currentTime, list = CUES[lang];
+    let i = 0; for (let k = 0; k < list.length; k++) if (t >= list[k][0]) i = k;
+    if (i !== cueIdx) {
+      cueIdx = i; cueEl.classList.add('swap');
+      setTimeout(() => { cueEl.textContent = list[i][1]; cueEl.classList.remove('swap'); }, 180);
+    }
+    if (video.duration) progEl.style.width = (t / video.duration * 100) + '%';
+  }
+  video.addEventListener('timeupdate', updateCue);
+  video.addEventListener('seeked', updateCue);
+  document.addEventListener('toola:lang', () => { cueIdx = -1; updateCue(); });
+  updateCue();
   if (reduce) { video.removeAttribute('autoplay'); video.pause(); }
   else if ('IntersectionObserver' in window) {
     new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) video.play().catch(() => {}); else video.pause();
-    }), { threshold: .25 }).observe(video);
+    }), { threshold: .15 }).observe(video);
   }
   syncVideo();
 
@@ -1019,12 +1063,20 @@ section[id]{scroll-margin-top:84px}
   // Extend the layout below the list so the sticky panel is still fully on screen
   // at that moment (desktop only; on mobile the panel sits above the list).
   const panelEl = document.getElementById('panel');
+  function fitPanelMobile() {
+    // On narrow screens size the panel to its tallest scene (capped), so no scene is cut off.
+    panelEl.style.height = '';
+    if (!mobile.matches) return;
+    const bar = panelEl.querySelector('.panel-bar').getBoundingClientRect().height;
+    const tallest = Math.max(...scenes.map(sc => sc.scrollHeight));
+    panelEl.style.height = Math.min(tallest + bar + 2, window.innerHeight * 0.84) + 'px';
+  }
   function fitLastStep() {
     stepsWrap.style.removeProperty('--how-pad');
-    if (mobile.matches) { updateRail(); return; }
-    const anchor = window.innerHeight * 0.5;
-    const stickyTop = parseFloat(getComputedStyle(document.querySelector('.panel-sticky')).top) || 92;
-    const panelBottom = stickyTop + panelEl.getBoundingClientRect().height;
+    fitPanelMobile();
+    const anchor = window.innerHeight * (mobile.matches ? 0.7 : 0.5);
+    const stickyTop = parseFloat(getComputedStyle(document.querySelector('.panel-sticky')).top) || (mobile.matches ? 64 : 100);
+    const panelBottom = stickyTop + panelEl.getBoundingClientRect().height + (mobile.matches ? 24 : 0);
     stepsWrap.style.setProperty('--how-pad', Math.max(0, panelBottom - anchor + 24) + 'px');
     updateRail();
   }
@@ -1123,14 +1175,8 @@ section[id]{scroll-margin-top:84px}
     "Termal görüntü eklendi · izlemeye alındı": "Thermal image added · monitoring started",
     "termal görüntü": "thermal image",
     "Terminal yeniden sıkıldı · Son ölçüm: 12.7 V": "Terminal retightened · Final measurement: 12.7 V",
-    "Bir sonraki iş, geçmiş teknik bilgiyle başlar.": "The next job starts with past technical knowledge.",
-    "Ekip benzer bir problemde sıfırdan araştırma yapmak yerine geçmiş ekipman bağlamıyla başlar.": "Instead of researching from scratch, the team starts with the asset’s previous technical context.",
-    "ToolA, yeni problemi ilgili geçmiş kayıtlar, ölçümler ve müdahalelerle ilişkilendirir.": "ToolA links the new problem to relevant past records, measurements, and interventions.",
-    "Bu hücreye ait geçmiş kayıtlarda terminal sıkma ve hücre değiştirme işlemleri bulunuyor.": "Previous records for this cell include terminal tightening and cell replacement.",
     "İlgili hafıza": "Related memory",
     "Daha önce ne yapıldı ve sonuç ne oldu?": "What was done before, and what was the outcome?",
-    "12 Mayıs tarihli olayda gevşek terminal tespit edildi, bağlantı yeniden sıkıldı ve müdahale sonrası 12.7 V ölçüldü.": "In the May 12 event, a loose terminal was identified, the connection was retightened, and a post-intervention measurement of 12.7 V was recorded.",
-    "Bu bilgi neden önemli?": "Why does this matter?",
     "Mevcut sistemler işi yönetir. ToolA, teknik deneyimi hatırlar.": "Your existing systems keep running. ToolA remembers the technical experience.",
     "ERP, CMMS ve PLM sistemleriniz işi yönetmeye devam eder. ToolA, iş sırasında oluşan teknik bilgiyi ekipman geçmişine dönüştürür.": "Your ERP, CMMS and PLM systems keep managing the work. ToolA turns the technical knowledge created during the job into asset history.",
     "İşi yönetir": "Manages the work",
@@ -1153,7 +1199,15 @@ section[id]{scroll-margin-top:84px}
     "5–10 teknik kullanıcı": "5–10 technical users",
     "6 hafta": "6 weeks",
     "ToolA — Sahada olanı teknik hafızaya dönüştürür.": "ToolA — Turns what happens in the field into technical memory.",
-    "Adres": "Address",
+    "Ofisler": "Offices",
+    "İstanbul": "Istanbul",
+    "Teknopark İstanbul": "Teknopark Istanbul",
+    "Türkiye": "Türkiye",
+    "Doha": "Doha",
+    "Katar": "Qatar",
+    "Tallinn": "Tallinn",
+    "Estonya": "Estonia",
+    "HQ": "HQ",
     "E-posta": "Email",
     "Gizlilik ve Veri Kullanımı": "Privacy & Data Use",
     "KVKK Aydınlatma Metni": "KVKK Notice",

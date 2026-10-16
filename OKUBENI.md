@@ -3,7 +3,7 @@
 Dağıtım: klasörün tamamını olduğu gibi yükleyin (Cloudflare Pages / Netlify). `_headers`, `_redirects`, `robots.txt`, `sitemap.xml`, OG görselleri ve video dosyaları değişmedi.
 
 Değişenler
-- `index.html` — sıfırdan yazıldı (yapı, tipografi, animasyonlar). Metinler eski siteyle birebir aynı; sadece bölüm sırası ve düzeni değişti.
+- `index.html` — yeni tasarım. Metinler eski siteyle aynı; eklenenler: footer ofis listesi (İstanbul, Doha, Tallinn) ve hero videosunun zamanlı alt yazıları (`CUES` listesi).
 - `legal.js` — eski sitedeki 5 yasal metin (Gizlilik, KVKK, Pilot Aydınlatma, Çerezler, Kullanım Koşulları) birebir korunarak ayrı dosyaya alındı.
 - `fonts/` — Archivo + IBM Plex Mono yerine Geist + Geist Mono (SIL OFL 1.1, lisans dosyası klasörde). Variable font olduğu için 4 dosya yeter.
 
