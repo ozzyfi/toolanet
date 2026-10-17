@@ -1,4 +1,4 @@
-# ToolA landing — yeniden tasarım (Ekim 2026)
+# ToolA landing — v5 (koyu video hero + açık gövde) — Ekim 2026
 
 Dağıtım: klasörün tamamını olduğu gibi yükleyin (Cloudflare Pages / Netlify). `_headers`, `_redirects`, `robots.txt`, `sitemap.xml`, OG görselleri ve video dosyaları değişmedi.
 
